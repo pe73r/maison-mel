@@ -1,0 +1,41 @@
+<div class="grid__item {{ grid_class }} {{ extra_class }}">
+  <a href="{{ shop.url }}{{ collection.url }}" class="block clearfix relative color--{{ text_color }}" >
+
+
+    {% if collection.image %}
+      {%- assign collection_image = collection.image -%}
+    {% elsif collection.products.first and collection.products.first.images != empty %}
+      {%- assign collection_image = collection.products.first.featured_image -%}
+    {% else %}
+      {%- assign collection_image = blank -%}
+    {% endif %}
+
+    {% capture img_id %}CollectionImage-{{ collection_image.id }}{% endcapture %}
+    {% capture wrapper_id %}CollectionImageWrapper-{{ collection_image.id }}{% endcapture %}
+    {%- assign img_url = collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    <div id="{{ wrapper_id }}" class="resp-img-wrapper js">
+      <div style="padding-top:{{ 1 | divided_by: collection_image.aspect_ratio | times: 100}}%;">
+        <img id="{{ img_id }}"
+             class="resp-img lazyload"
+             src="{{ collection_image | img_url: '300x' }}"
+             data-src="{{ img_url }}"
+             data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="{{ collection_image.aspect_ratio }}"
+             data-sizes="auto"
+             alt="{{ collection_image.alt | escape }}">
+      </div>
+    </div>
+    <noscript>
+      <img src="{{ collection_image.src | img_url: 'large' }}" alt="{{ collection_image.alt | escape }}">
+    </noscript>
+
+    <div class="content absolute top--0 left--0 bottom--0 right--0 full">
+      <div class="table full">
+        <div class="table-cell text-align--center align--middle">
+          <h3 class="f--title font-size--xxxl lg--font-size--xxxxl">{{ collection.title }}</h3>
+        </div>
+      </div>
+    </div>
+
+  </a>
+</div>

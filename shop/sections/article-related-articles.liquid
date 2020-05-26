@@ -1,0 +1,89 @@
+{% if section.settings.show_related_articles %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+{% assign count = 1 %}
+{% assign current_article_tags = article.tags %}
+{% assign current_article_title = article.title %}
+{% assign related_article_handles = '' %}
+
+{% if blog.articles.size > 2 %}
+<section class="section bg--section m0 py4">
+  <div class="wrapper section--wrapper">
+
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">
+      {{ 'blogs.general.more_of_blog' | t: blog: blog.title }}
+    </h2>
+
+    <div class="grid">
+      {% for article in blog.articles %}
+        {% unless article.title == current_article_title %}
+          {% if count < 5 %}
+            {% for tag in article.tags %}
+              {% if current_article_tags contains tag %}
+                {% assign related_article_handles = related_article_handles | append: article.handle %}
+                <div class="grid__item lg--one-half dt--one-quarter">
+                  {% include 'article-standard' %}
+                </div>
+                {% assign count = count | plus: 1 %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+      {% for article in blog.articles %}
+
+        {% unless article.title == current_article_title or related_article_handles contains article.handle %}
+          {% if count < 5 %}
+            <div class="grid__item lg--one-half dt--one-quarter">
+              {% include 'article-standard' %}
+            </div>
+            {% assign count = count | plus: 1 %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% endif %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Related articles",
+    "class": "section-article-related-products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_related_articles",
+        "label": "Enable related articles",
+        "info":   "Show related articles from the same blog."
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_cropping",
+        "label": "Crop thumbnails",
+        "options": [
+          {
+            "value": "none",
+            "label": "No crop"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          }
+        ],
+        "default": "none"
+      }
+    ]
+  }
+{% endschema %}

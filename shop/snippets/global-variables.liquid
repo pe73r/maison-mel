@@ -1,0 +1,17 @@
+{% assign __primary_shop_button__ = 'bg--primary color--primary-overlay hv-bg--shop-accent hv--shop-accent-overlay' %}
+{% if settings.button_color == 'primary' %}
+  {% assign __button__ = 'bg--primary color--primary-overlay hv-bg--main-accent hv--main-accent-overlay' %}
+  {% assign __shop_button__ = 'bg--primary color--primary-overlay hv-bg--shop-accent hv--shop-accent-overlay' %}
+{% else %}
+  {% assign __button__ = 'bg--main-accent color--main-accent-overlay hv-bg--primary hv--primary-overlay' %}
+  {% assign __shop_button__ = 'bg--shop-accent color--shop-accent-overlay hv-bg--primary hv--primary-overlay' %}
+{% endif %}
+
+{% if settings.secondary_color == 'primary' %}
+  {% assign __secondary__ = 'color--primary' %}
+  {% assign __shop_secondary__ = 'color--primary' %}
+{% else %}
+  {% assign __secondary__ = 'color--main-accent' %}
+  {% assign __shop_secondary__ = 'color--shop-accent' %}
+{% endif %}
+

@@ -1,0 +1,65 @@
+<p>test</p>
+<div>
+{% for block in section.blocks offset: 0 %}
+          {% if block.settings.blog and block.settings.blog != '' %}
+            {% assign selected_blog = blog[block.settings.blog] %}
+            {% assign text_color = block.settings.text_color %}
+            {% include 'blog-list_item', blog: selected_blog, text_color: text_color %}
+          {% endif %}
+{% endfor %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Blog list",
+  "class": "section-blog",
+  "settings": [
+    {
+       "type":      "text",
+       "id":        "title",
+       "label":     "Heading"
+    }
+  ],
+
+  "blocks" :  [
+    {
+      "type": "blog",
+      "name": "blog",
+      "settings": [
+        {
+           "type": "blog",
+           "id": "blog",
+           "label": "Choose blog:"
+        },
+        {
+           "type": "select",
+           "id": "text_color",
+           "options": [
+              { "value": "primary", "label": "Primary"},
+              { "value": "shop-accent ", "label": "Shop Accent"},
+              { "value": "white ", "label": "White"},
+              { "value": "black", "label": "Black"}
+           ],
+           "label": "Text color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "blog list",
+      "category": "blog",
+      "blocks": [
+        {
+          "type": "blog"
+        },
+        {
+          "type": "blog"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

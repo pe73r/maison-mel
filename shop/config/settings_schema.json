@@ -1,0 +1,590 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Editorial",
+    "theme_author": "Switch",
+    "theme_version": "3.5.3",
+    "theme_documentation_url": "http:\/\/support.switchthemes.co",
+    "theme_support_email": "support@switchthemes.co"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary",
+        "default": "#333333",
+        "info": "Main color for text and buttons"
+      },
+      {
+        "type": "color",
+        "id": "color_main_accent",
+        "label": "Main Accent",
+        "default": "#FFE83B",
+        "info": "Main accent color used for content, blogs and articles."
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_accent",
+        "label": "Secondary Accent",
+        "default": "#FFE83B",
+        "info": "Secondary accent color used for notice bar, newsletter and footer."
+      },
+      {
+        "type": "color",
+        "id": "color_shop_accent",
+        "label": "Shop Accent",
+        "default": "#1EAABA",
+        "info": "Accent color for collections and products."
+      },
+      {
+        "type": "color",
+        "id": "color_borders",
+        "label": "Borders",
+        "default": "#e5e5e5"
+      },
+      {
+        "type": "header",
+        "content": "Backgrounds"
+      },
+      {
+        "type": "color",
+        "id": "color_body_bg",
+        "label": "Background",
+        "default": "#F7F7F7"
+      },
+      {
+        "type": "color",
+        "id": "color_section_bg",
+        "label": "Section background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "select",
+        "id": "button_color",
+        "label": "Color",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "accent",
+            "label": "Accent"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Secondary text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Used for price, dates and pagination."
+      },
+      {
+        "type": "select",
+        "id": "secondary_color",
+        "label": "Color",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "accent",
+            "label": "Accent"
+          }
+        ],
+        "default": "accent"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "select",
+        "id": "color_footer_bg",
+        "label": "Background",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "main-accent",
+            "label": "Main Accent"
+          },
+          {
+            "value": "secondary-accent",
+            "label": "Secondary Accent"
+          },
+          {
+            "value": "shop-accent",
+            "label": "Shop Accent"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "color_footer_accent",
+        "label": "Accent",
+        "options": [
+          {
+            "value": "primary",
+            "label": "Primary"
+          },
+          {
+            "value": "main-accent",
+            "label": "Main Accent"
+          },
+          {
+            "value": "secondary-accent",
+            "label": "Secondary Accent"
+          },
+          {
+            "value": "shop-accent",
+            "label": "Shop Accent"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_main",
+        "label": "Main",
+        "default": "rubik_n4",
+        "info": "Typeface for everything except headings and body copy."
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header",
+        "label": "Header",
+        "default": "playfair_display_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body",
+        "label": "Body",
+        "default": "crimson_text_n4"
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "select",
+        "id": "header_text_transform",
+        "label": "Text transform",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "Uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "Capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Section titles"
+      },
+      {
+        "type": "select",
+        "id": "section_title_typeface",
+        "label": "Typeface",
+        "options": [
+          {
+            "value": "main",
+            "label": "Main"
+          },
+          {
+            "value": "headings",
+            "label": "Headings"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "section_title_weight",
+        "label": "Modify font weight",
+        "options": [
+          {
+            "value": "lighter",
+            "label": "Lighter"
+          },
+          {
+            "value": "inherit",
+            "label": "Default"
+          },
+          {
+            "value": "bolder",
+            "label": "Bolder"
+          }
+        ],
+        "default": "inherit",
+        "info": "This setting will only apply if the value selected is available."
+      },
+      {
+        "type": "select",
+        "id": "section_title_text_transform",
+        "label": "Text transform",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "Uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "Capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "section_title_letterspacing",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "label": "Letterspacing",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Navigation"
+      },
+      {
+        "type": "select",
+        "id": "navigation_text_transform",
+        "label": "Text transform",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "Uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "Capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "navigation_letterspacing",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "label": "Letterspacing",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "select",
+        "id": "buttons_text_transform",
+        "label": "Text transform",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "Uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "Capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "buttons_letterspacing",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "label": "Letterspacing",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Meta"
+      },
+      {
+        "type": "select",
+        "id": "meta_text_transform",
+        "label": "Text transform",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "Uppercase",
+            "label": "Uppercase"
+          },
+          {
+            "value": "Capitalize",
+            "label": "Capitalize"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "meta_letterspacing",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "label": "Letterspacing",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Borders and horizontal rules"
+      },
+      {
+        "type": "range",
+        "id": "hr_border_height",
+        "min": 1,
+        "max": 3,
+        "step": 1,
+        "unit": "px",
+        "label": "Height",
+        "default": 2
+      }
+    ]
+  },
+  {
+    "name": "Products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "products_show_second_image_on_hover",
+        "label": "Show second image on hover",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Articles",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show author",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "16 x 16px png"
+      }
+    ]
+  },
+  {
+    "name": "Dates",
+    "settings": [
+      {
+        "type": "select",
+        "id": "date_format",
+        "label": "Date format",
+        "info": "Date format for all article instances. Time Ago (e.g. 6 days ago) or Standard (e.g. 17th February 2017)",
+        "options": [
+          {
+            "value": "time_ago",
+            "label": "Time Ago"
+          },
+          {
+            "value": "standard",
+            "label": "Standard"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cart page",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_vendor_enable",
+        "label": "Show product vendor"
+      },
+      {
+        "type": "select",
+        "id": "ajax_cart_method",
+        "label": "Cart type",
+        "options": [
+          {
+            "value": "drawer",
+            "label": "Drawer"
+          },
+          {
+            "value": "page",
+            "label": "Page"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing image"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image",
+        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
+      },
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_email",
+        "label": "Share by email",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Social accounts"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https:\/\/facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest",
+        "info": "https:\/\/pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "http:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr",
+        "info": "http:\/\/shopify.tumblr.com"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat",
+        "info": "https:\/\/www.snapchat.com\/add\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https:\/\/www.youtube.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      }
+    ]
+  }
+]

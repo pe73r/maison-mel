@@ -1,0 +1,36 @@
+
+<div class="share share--desktop f--main  t--meta clearfix relative font-size--s inline-block mb3 pl3 py1 md-dn--hide">
+
+  <div class="">
+    <span class="share__icon left font-size--xs">{% include 'svg-icon', icon: 'share' %}</span>
+    <span class="right">{{ 'products.general.share' | t }}</span>
+  </div>
+
+  {% if template.name == 'product' %}
+    {% capture share_url %}{{ shop.url }}{{ product.url }}{% endcapture %}
+    {% assign share_image = product.featured_image.src | img_url: 'grande' %}
+  {% endif %}
+
+  {% if template.name == 'article' %}
+    {% capture share_url %}{{ shop.url }}{{ article.url }}{% endcapture %}
+    {% assign share_image = article.image.src | img_url: 'grande' %}
+  {% endif %}
+
+  {% capture tweet %}{{ product.title }}: {{ product_url }}{% endcapture %}
+  {% include 'share__list' %}
+</div>
+
+
+<div class="share share--mobile f--main   t--meta clearfix relative font-size--s inline-block mb3 pl3 py1 lg--hide">
+
+  <div class="">
+    <span class="share__icon share__icon--arrow left font-size--xs">{% include 'svg-icon', icon: 'share' %}</span>
+    <span class="share__icon share__icon--close left font-size--xs hide">{% include 'svg-icon', icon: 'close' %}</span>
+    <span class="right">{{ 'products.general.share' | t }}</span>
+  </div>
+
+  {% capture product_url %}{{ shop.url }}{{ product.url }}{% endcapture %}
+  {% capture tweet %}{{ product.title }}: {{ product_url }}{% endcapture %}
+  {% include 'share__list' %}
+
+</div>

@@ -1,0 +1,67 @@
+<section class="section section--newsletter m0 ">
+  <div class="color--secondary-accent-overlay py3 bg--secondary-accent">
+    <div class="wrapper section--wrapper text-align--center px2">
+      <div class="py3">
+        <h3 class="f--title font-size--xl">{{ section.settings.title | escape }}</h3>
+        <div class="f--main font-size--s lg--font-size--m">{{ section.settings.text }}</div>
+
+        <div class="newsletter__form mx--auto mt3">
+        {% form 'customer' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+            <p class="form--success f--main">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
+            <div class="input-group">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email"
+                name="contact[email]"
+                id="Email"
+                class="input-group-field input-underline input-underline--secondary-overlay f--main color--secondary-accent-overlay"
+                value="{% if customer %}{{ customer.email }}{% endif %}"
+                placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}"
+                autocorrect="off"
+                autocapitalize="off">
+              <span class="input-group-btn">
+                <button type="submit" class="btn newsletter__submit bg--secondary-accent-overlay" name="commit" id="Subscribe">
+                  <span class="newsletter__submit-text--medium color--secondary-accent">{{ 'general.newsletter_form.submit' | t }}</span>
+                </button>
+              </span>
+            </div>
+          {% endif %}
+        {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "class": "full_bleed",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Sign up to our newsletter"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Subheading",
+      "default": "<p>Receive special offers and first look at new products.</p>"
+    },
+    {
+       "type":      "paragraph",
+       "content":   "Customers who subscribe will have their email address added to the “accepts marketing” [customer list](/admin/customers?query=&accepts_marketing=1)."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

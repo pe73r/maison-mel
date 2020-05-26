@@ -1,0 +1,24 @@
+<div itemscope itemtype="http://schema.org/Product" class="grid section-product single-product py2 clearfix" id="{{ sectionID }}" data-section-id="{{ single_product_id }}" data-money-format="{{ shop.money_format }}">
+  <div class="grid__item">
+    <div class="grid product-single">
+      <div class="grid__item lg--one-half dt--seven-twelfths text-center relative">
+        <div class="mb3 lg--mb0 product-single__imageHolder relative clearfix">
+          <div class="placeholder full">
+            {{ 'product-1' | placeholder_svg_tag }}
+          </div>
+        </div>
+      </div><!-- end product images -->
+
+      <div class="grid__item lg--one-half dt--five-twelfths text-align--center pt2 lg--pt1 dt--pt4">
+
+        <div class="mx--auto lg--four-fifths dt--three-fifths">
+          {% include 'product-page-form_onboarding' %}
+        </div>
+
+      </div><!-- end product form -->
+
+    </div><!-- end images and form grid -->
+
+  </div>
+
+</div>

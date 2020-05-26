@@ -1,0 +1,54 @@
+<article class="article article--large">
+  <div class="grid {% if section.settings.image_position == 'right' %}grid--rev{% endif %}">
+    <div class="grid__item dt--seven-twelfths">
+      <a href="{{ feature_article.url }}">
+        <div class="full">
+          {% if feature_article.image %}
+            {% capture img_id %}ArticleImage-{{ feature_article.image.id }}{% endcapture %}
+            {% capture wrapper_id %}ArticleImage-Wrapper-{{ feature_article.image.id }}{% endcapture %}
+            {%- assign img_url = feature_article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
+              <div style="padding-top:{{ 1 | divided_by: feature_article.image.aspect_ratio | times: 100}}%;">
+                <img id="{{ img_id }}"
+                      class="resp-img lazyload feature-image"
+                      src="{{ feature_article.image | img_url: '50x' }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                      data-aspectratio="{{ article.image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ feature_article.image.alt | escape }}">
+              </div>
+            </div>
+            <noscript>
+              <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+            </noscript>
+          {% endif %}
+        </div>
+      </a>
+    </div>
+    <div class="grid__item dt--five-twelfths text-center">
+      <div class="mx--auto px3 pt3">
+        <a href="{{ feature_article.url }}">
+          <h4 class="f--main t--meta font-size--xs  lg--font-size--s mt3 mx--auto"><a href="/blogs/{{ article_blog[2] }}">{{ blog_title }}</a></h4>
+          <h3 class="f--title article__title article__title--feature font-size--xl lg--font-size--xxxl mt2 mx--auto">
+            <a href="{{ feature_article.url }}">{{ feature_article.title }}</a>
+          </h3>
+
+          <hr class="my3 rule bg--main-accent mx--auto" />
+
+          <p class="f--body article__excerpt article__excerpt--feature lg--font-size--ml mx--auto">
+            {% if feature_article.excerpt.size > 0 %}
+              {{ feature_article.excerpt }}
+            {% else %}
+              {{ feature_article.content | strip_html | truncatewords: 20 }}
+            {% endif %}
+          </p>
+          {% if settings.show_author %}
+          <h5 class="f--main t--meta font-size--xs lg--font-size--s lg--font-size--s mt3">{{ 'blogs.article.author_by_html' | t: author:  feature_article.author  }}</h5>
+          {% endif %}
+          <h6 class="mt1 t--meta f--main font-size--xs lg--font-size--s {{ __secondary__ }}">{% include 'date', date_object: feature_article.published_at  %}</h6>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

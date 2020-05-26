@@ -1,0 +1,58 @@
+{% capture media_id %}FeaturedMedia-{{ sectionID }}-{{ media.id }}{% endcapture %}
+{% capture media_wrapper_id %}{{ media_id }}-wrapper{% endcapture %}
+
+<div id="{{ media_wrapper_id }}"
+     class="product-single__media-wrapper {% if slider == false and featured_media != media %}hide{% endif %}"
+     {% if media.media_type == 'image' %} data-product-media-type-image data-product-image-index="{% increment image_index %}"{% endif %}
+     {% if media.media_type == 'video' or media.media_type == 'external_video' %} data-product-media-type-video data-enable-video-looping="{{ enable_video_looping }}"{% endif %}
+     {% if media.media_type == 'model' %} data-product-media-type-model{% endif %}
+     {% if media.media_type == 'external_video' %} data-video-id="{{ media.external_id }}"{% endif %}
+     data-product-single-media-wrapper
+     data-media-id="{{ sectionID }}-{{ media.id }}"
+     {% if featured_media == media %}data-featured-media{% endif %}
+     tabindex="-1"
+     >
+  {% case media.media_type %}
+    {% when 'image' %}
+      <div class="product-single__media"
+            style="padding-top:{{ 1 | divided_by: media.aspect_ratio | times: 100}}%;"
+            {% if zoom_enabled == true %}
+            data-product-zoomable-image
+            data-zoom-item
+            data-image-master-url="{{ media | img_url: 'master' }}"
+            data-image-master-width="{{ media.width }}"
+            data-image-master-height="{{ media.height }}"
+            data-product-image-index="{% increment image_counter %}"
+            {% endif %}
+            >
+        {% capture img_id_class %}ProductMedia-{{ media_id }}{% endcapture %}
+        {% assign img_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+        {% include 'image-style' with image: media, width: '2000', height: '2000', small_style: false, wrapper_id: media_wrapper_id, img_id_class: img_id_class %}
+        <img
+          id="{{ media_id }}"
+          class="resp-img lazyload {{ img_id_class }}"
+          src="{{ media | img_url: '300x300' }}"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 590, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+          data-aspectratio="{{ media.preview_image.aspect_ratio }}"
+          data-sizes="auto"
+          alt="{{ media.alt | escape }}">
+      </div>
+    {% when 'video' %}
+      <div class="product-single__media product-single__media--video product-single__media--{{ media.id }}" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
+        {{ media | video_tag: class: 'media-video', image_size: '2000x2000' }}
+      </div>
+    {% when 'external_video' %}
+      <div class="product-single__media" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
+        {{ media | external_video_tag }}
+      </div>
+    {% when 'model' %}
+      <div class="product-single__media" style="padding-top: 100%;">
+        {{ media | model_viewer_tag: image_size: '2000x2000', reveal: 'interaction', toggleable: true, data-model-id: media.id }}
+      </div>
+    {% else %}
+      <div class="product-single__media" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+        {{ media | media_tag: class: 'media-item', image_size: '2000x2000' }}
+      </div>
+  {% endcase %}
+</div>

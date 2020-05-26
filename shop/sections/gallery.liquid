@@ -1,0 +1,284 @@
+<!-- /snippets/section_gallery.liquid -->
+
+{% if section.blocks.size > 0 %}
+  {% capture block__1 %}
+    {% assign image = section.blocks[0].settings.image %}
+    {% assign caption = section.blocks[0].settings.caption %}
+    {% assign link = section.blocks[0].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 1 %}
+  {% capture block__2 %}
+    {% assign image = section.blocks[1].settings.image %}
+    {% assign caption = section.blocks[1].settings.caption %}
+    {% assign link = section.blocks[1].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 2 %}
+  {% capture block__3 %}
+    {% assign image = section.blocks[2].settings.image %}
+    {% assign caption = section.blocks[2].settings.caption %}
+    {% assign link = section.blocks[2].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 3 %}
+  {% capture block__4 %}
+    {% assign image = section.blocks[3].settings.image %}
+    {% assign caption = section.blocks[3].settings.caption %}
+    {% assign link = section.blocks[3].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 4 %}
+  {% capture block__5 %}
+    {% assign image = section.blocks[4].settings.image %}
+    {% assign caption = section.blocks[4].settings.caption %}
+    {% assign link = section.blocks[4].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 5 %}
+  {% capture block__6 %}
+    {% assign image = section.blocks[5].settings.image %}
+    {% assign caption = section.blocks[5].settings.caption %}
+    {% assign link = section.blocks[5].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 6 %}
+  {% capture block__7 %}
+    {% assign image = section.blocks[6].settings.image %}
+    {% assign caption = section.blocks[6].settings.caption %}
+    {% assign link = section.blocks[6].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 7 %}
+  {% capture block__8 %}
+    {% assign image = section.blocks[7].settings.image %}
+    {% assign caption = section.blocks[7].settings.caption %}
+    {% assign link = section.blocks[7].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blocks.size > 8 %}
+  {% capture block__9 %}
+    {% assign image = section.blocks[8].settings.image %}
+    {% assign caption = section.blocks[8].settings.caption %}
+    {% assign link = section.blocks[8].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+{% if section.blockis.size > 9 %}
+  {% capture block__10 %}
+    {% assign image = section.blocks[9].settings.image %}
+    {% assign caption = section.blocks[9].settings.caption %}
+    {% assign link = section.blocks[9].settings.url %}
+    {% include 'gallery-item' %}
+  {% endcapture %}
+{% endif %}
+
+<section class="section bg--section section--gallery m0 {% if section.settings.title != '' %}py4{% else %}py3{% endif %}"  data-section-type="gallery" data-section-id="{{ section.id }}">
+  <div class="wrapper section--wrapper">
+
+    {% if section.settings.title != '' %}
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+    <div class="grid grid--gallery mxn1">
+
+      {% unless section.blocks.size == 10 %}
+        {%- assign grid_item_width = '' -%}
+        {%- case section.blocks.size  -%}
+          {%- when 2 -%}
+            {%- assign grid_item_width = 'lg--one-half' -%}
+          {%- when 3 -%}
+            {%- assign grid_item_width = 'lg--one-third' -%}
+          {%- when 4 -%}
+            {%- assign grid_item_width = 'lg--one-quarter' -%}
+          {%- when 5 -%}
+            {%- assign grid_item_width = 'lg--one-fifth' -%}
+          {%- when 6 -%}
+            {%- assign grid_item_width = 'lg--one-sixth' -%}
+          {%- when 7 -%}
+            {%- assign grid_item_width = 'lg--one-quarter' -%}
+          {%- when 8 -%}
+            {%- assign grid_item_width = 'lg--one-quarter' -%}
+          {%- when 9 -%}
+            {%- assign grid_item_width = 'lg--one-third' -%}
+        {%- endcase -%}
+
+        {% for block in section.blocks %}
+          {% if section.blocks.size == 7 %}
+            {%- assign grid_item_width = 'lg--one-third' -%}
+            {% if forloop.index > 3 %}
+            {%- assign grid_item_width = 'lg--one-quarter' -%}
+            {% endif %}
+          {% endif %}
+        <div class="grid__item {{ grid_item_width }} mt1">
+          {% assign image = block.settings.image %}
+          {% assign caption = block.settings.caption %}
+          {% assign link = block.settings.url %}
+          {% include 'gallery-item' %}
+        </div>
+        {% endfor %}
+      {% endunless %}
+
+      {% if section.blocks.size == 10 %}
+      <div class="grid__item grid grid--gallery grid--gallery--sub-grid mt1">
+        <div class="grid__item lg--one-half">
+          {{ block__1 }}
+        </div>
+        <div class="grid__item mt1 lg--mt0 lg--one-half">
+          <div class="grid grid--gallery grid--gallery-inner">
+            <div class="grid__item one-half">
+              {{ block__2 }}
+            </div>
+            <div class="grid__item one-half">
+              {{ block__3 }}
+            </div>
+            <div class="grid__item one-half">
+              {{ block__4 }}
+            </div>
+            <div class="grid__item one-half">
+              {{ block__5 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid__item grid grid--gallery grid--gallery--sub-grid">
+        <div class="grid__item lg--one-half mt1">
+          <div class="grid grid--gallery grid--gallery-inner">
+            <div class="grid__item one-half">
+              {{ block__6 }}
+            </div>
+            <div class="grid__item one-half">
+              {{ block__7 }}
+            </div>
+            <div class="grid__item one-half">
+              {{ block__8 }}
+            </div>
+            <div class="grid__item one-half">
+              {{ block__9 }}
+            </div>
+          </div>
+        </div>
+        <div class="grid__item  lg--one-half mt1">
+          {{ block__10 }}
+        </div>
+      </div>
+      {% endif %}
+{% comment %}
+      {% if section.blocks.size == 5 %}
+      <div class="grid__item grid grid--gallery grid--gallery--sub-grid mt1">
+        <div class="grid__item mt1 lg--mt0 lg--one-quarter">
+          <div class="grid grid--gallery grid--gallery-inner">
+            <div class="grid__item">
+              {{ block__1 }}
+            </div>
+            <div class="grid__item">
+              {{ block__2 }}
+            </div>
+          </div>
+        </div>
+        <div class="grid__item lg--one-half">
+          {{ block__3 }}
+        </div>
+        <div class="grid__item lg--one-quarter">
+          <div class="grid grid--gallery grid--gallery-inner">
+            <div class="grid__item">
+              {{ block__4 }}
+            </div>
+            <div class="grid__item">
+              {{ block__5 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+{% endcomment %}
+    </div>  
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gallery",
+  "class": "gallery",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Gallery",
+      "info": "Leave blank if you don't want to show a section title."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link (optional)"
+        },
+        {
+          "type": "richtext",
+          "id": "caption",
+          "label": "Caption (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gallery",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

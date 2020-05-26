@@ -1,0 +1,315 @@
+<!-- /templates/collection.list.liquid -->
+{% comment %}
+
+  By using a variation of the 'view all' parameter technique, you can create
+  a custom layout for any template by adding ?view=xxxx
+
+  In this example, you can have a list view of your collection page by going to
+  /collections/all?view=list
+
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+
+  For more information on the ?view parameter:
+    - http://docs.shopify.com/support/configuration/store-customization/can-i-show-more-than-50-products-on-my-homepage-can-i-add-a-view-all-function-to-my-collection-pages#add-view-all
+
+{% endcomment %}
+
+{% paginate collection.products by section.settings.no_posts %}
+
+{% assign all_filters = false %}
+{% assign any_filters = false %}
+
+{% if section.settings.enable_tag_filter or section.settings.enable_sort_filter %}
+{% assign any_filters = true %}
+{% endif %}
+
+
+{% if section.settings.enable_tag_filter and section.settings.enable_sort_filter %}
+{% assign all_filters = true %}
+{% endif %}
+
+{% assign only_tags = false %}
+{% if section.settings.enable_tag_filter and section.settings.enable_sort_filter == false %}
+{% assign only_tags = true %}
+{% endif %}
+
+{% assign description_classes = ' mt2 mb4' %}
+{% if any_filters %}
+{% assign description_classes = ' mt2 mb3' %}
+{% endif %}
+
+
+<section class="section bg--section py4">
+  <div class="wrapper section--wrapper">
+
+    <header class="text-align--center">
+      <h1 class="f--main t--section-title font-size--xl">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+      <div class="f--title font-size--xl {{ description_classes }}">
+        {{ collection.description }}
+      </div>
+      {% endif %}
+    </header>
+
+    {% if section.settings.enable_tag_filter or section.settings.enable_sort_filter %}
+    <div class="filters text-align--center pt3 pb4 {% if only_tags %}lg--hide{% endif %}">
+      {% if section.settings.enable_tag_filter %}
+      <div class="filters__tags f--main inline-block relative mx2">
+        <select class="filters__tag--select coll-filter  f--main t--meta" data-url="{% if collection.handle %}{{ routes.collections_url }}/{{ collection.handle }}{% elsif collection.products.first.type == collection.title %}{{ collection.title | url_for_type }}{% elsif collection.products.first.vendor == collection.title %}{{ collection.title | url_for_vendor }}{% endif %}" data-handle="{{ collection.handle }}">
+          <option value="">{{ 'collections.sorting.all_tags' | t }}</option>
+          {% for tag in collection.all_tags %}
+          {% if current_tags contains tag %}
+          <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+          {% else %}
+          <option value="{{ tag | handle }}">{{ tag }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      {% endif %}
+      {% if section.settings.enable_sort_filter %}
+      <div class="filters__sort f--main inline-block relative mx2">
+        <select class="filters__sort--select f--main t--meta" name="SortBy" id="SortBy" data-default="{{ collection.sort_by | default: collection.default_sort_by }}">
+          <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
+          <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
+          <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
+          <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
+          <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
+          <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
+          <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
+          <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
+        </select>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if only_tags %}
+    <div class="tags tags--collection text-align--center pt3 pb4  md-dn--hide">
+      <ul class="list-reset m0 mx--auto f--main t--meta font-size--s">
+        <li class="inline-block mx1 my2">
+          {% if collection.handle %}
+            {% assign all_tags_url = routes.collections_url | append: '/' | append: collection.handle %}
+          {% elsif collection.current_type %}
+            {% assign all_tags_url = collection.current_type | url_for_type %}
+          {% elsif collection.current_vendor %}
+            {% assign all_tags_url = collection.current_vendor | url_for_vendor %}
+          {% endif %}
+          <a class="tag__item {% if current_tags == blank %}tag__item--active color--primary{% endif %}" href="{{ all_tags_url }}">
+            {{ 'collections.sorting.all_tags' | t }}
+          </a>
+        </li>
+        {% for tag in collection.all_tags %}
+          {% if current_tags contains tag %}
+            <li class="inline-block mx1 my2">
+              <a class="tag__item tag__item--active color--primary" href="{{ tag | handle }}">{{ tag }}</a>
+            </li>
+          {% else %}
+            <li class="inline-block mx1 my2">
+              <a class="tag__item {{ __shop_secondary__ }}" href="{% if collection.handle %}/collections/{{ collection.handle }}{% elsif collection.products.first.type == collection.title %}{{ collection.title | url_for_type }}{% elsif collection.products.first.vendor == collection.title %}{{ collection.title | url_for_vendor }}{% endif %}/{{ tag | handle }}">{{ tag }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+
+    {% for product in collection.products %}
+    
+      {% assign product = all_products[section.settings.selected_product] %}
+      {% capture sectionID %}section-{{ section.id }}-{{ product.handle }}{% endcapture %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign show_quantity = section.settings.show_quantity %}
+      {% assign in_list = true %}
+
+      {% if section.settings.show_description  %}
+        {% assign paragraphs = product.description | split: '<p>' %}
+        {% assign short_description = paragraphs[1] | replace: '</p>', '' %}
+      {% endif %}
+
+      {% if section.settings.rich_text != '' %}
+        {% assign short_description = section.settings.rich_text %}
+      {% endif %}
+
+      {% comment %}
+        Check if the product is on sale and set a variable to be used below.
+      {% endcomment %}
+      {% assign on_sale = false %}
+      {% if product.compare_at_price > product.price %}
+        {% assign on_sale = true %}
+      {% endif %}
+
+      {% if section.settings.product_media_size == 'large' %}
+        {% assign product_media_class = 'lg--one-half dt--seven-twelfths' %}
+        {% assign product_desc_class = 'lg--one-half dt--five-twelfths' %}
+      {% else %}
+        {% assign product_media_class = 'lg--one-half dt--one-half' %}
+        {% assign product_desc_class = 'lg--one-half dt--one-half' %}
+      {% endif %}
+
+      {% assign has_video = false %}
+      {% assign has_external_video = false %}
+      {% assign has_model = false %}
+
+      {% for media in product.media %}
+        {% case media.media_type %}
+        {% when 'video' %}
+          {% assign has_video = true %}
+        {% when 'external_video' %}
+          {% assign has_external_video = true %}
+        {% when 'model' %}
+          {% assign has_model = true %}
+        {% endcase %}
+      {% endfor %}
+
+      <div itemscope itemtype="http://schema.org/Product"
+          class="grid section-product single-product py3  clearfix"
+          id="{{ sectionID }}"
+          data-section-id="{{ sectionID }}"
+          data-section-type="product"
+          data-money-format="{{ shop.money_format }}"
+          data-has-video="{{ has_video }}"
+          data-has-external-video="{{ has_external_video }}"
+          data-has-model="{{ has_model }}">
+
+            {% include 'single-product-inner', show_payment_button: section.settings.show_payment_button, enable_video_looping: section.settings.enable_video_looping %}
+
+      </div>
+
+    {% endfor %}
+
+    {% if paginate.pages > 1 %}
+
+      {% assign paginateURL = '' %}
+      {% if paginate.previous.is_link %}
+        {% assign paginateURL = paginate.previous.url %}
+      {% endif %}
+      {% if paginate.next.is_link %}
+        {% assign paginateURL = paginate.next.url %}
+      {% endif %}
+
+      <div class="text-align--center">
+        <ul class="pagination list-rest no-bullets mt4 max-width--4 mx--auto text-align--center f--main font-size--s inline-block relative">
+          {% if paginate.previous.is_link %}
+              <li class="pagination__link pagination__link--previous">
+                <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.previous.url }}">{{ paginate.previous.title | replace: '&laquo;', ''}}</a>
+              </li>
+          {% endif %}
+          {% assign currPage = paginate.current_page %}
+          {% if currPage > 2 %}
+            {% assign startNumber = currPage | minus: 2 %}
+          {% else %}
+            {% assign startNumber = 1 %}
+          {% endif %}
+          {% assign endNumber = currPage | plus: 2 %}
+          {% if startNumber <= 2 %}
+            {% assign startNumber = 1 %}
+            {% assign endNumber = 5 %}
+          {% endif %}
+          {% if endNumber >= paginate.pages %}
+            {% if paginate.pages > 4 %}
+             {% assign startNumber = paginate.pages | minus: 4 %}
+            {% endif %}
+            {% assign endNumber = paginate.pages %}
+          {% endif %}
+          {% for part in (startNumber..endNumber) %}
+              {% assign oldPage = paginateURL | split: '?' %}
+              {% assign oldPage = oldPage[1] | split: '&' %}
+              {% capture newPage %}page={{ part}}{% endcapture %}
+              {% assign newPaginateURL = paginateURL | replace: oldPage[0], newPage %}
+              <li class="inline-block mx1 md-dn--hide">
+                <a class="pagination__item  {{ __secondary__ }} {% if paginate.current_page == part %}active{% endif %}" href="{{ newPaginateURL }}">{{ part }}</a>
+              </li>
+          {% endfor %}
+          {% if paginate.next.is_link %}
+              <li class="pagination__link pagination__link--next">
+                <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.next.url }}">{{ paginate.next.title | replace: '&raquo;', '' }}</a>
+              </li>
+          {% endif %}
+        </ul>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Collection List pages",
+    "class": "collection-template-list",
+    "settings": [
+      {
+       "type": "select",
+       "id": "no_posts",
+       "options": [
+          { "value": "4", "label": "4 Products"},
+          { "value": "6", "label": "6 Products"},
+          { "value": "8", "label": "8 Products"}
+       ],
+       "label": "No of products per page"
+      },
+      {
+        "type": "checkbox",
+        "id": "alternate_rows",
+        "label": "Alternate rows",
+        "info": "Every second product will have the image on the right"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_tag_filter",
+        "label": "Enable filtering by product tag"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sort_filter",
+        "label": "Enable collection sorting"
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity",
+        "label": "Show quantity"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show description",
+        "info": "Show first paragraph of product description"
+      },
+      {
+        "type": "header",
+        "content": "Media",
+        "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label":  "Enable video looping",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_media_size",
+        "label": "Product media size - desktop",
+        "options": [
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "large"
+      }
+    ]
+  }
+{% endschema %}

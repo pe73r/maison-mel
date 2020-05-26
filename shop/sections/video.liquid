@@ -1,0 +1,141 @@
+<!-- /snippets/video.liquid -->
+{% include 'global-variables' %}
+
+{% assign section_class = 'm0 py4' %}
+{% assign if_single_video = false %}
+{% for block in section.blocks %}
+  {% case block.type %}
+  {% when 'single_video' %}
+    {% assign section_class = 'm0 pt4 pb2 pr2 pl2' %}
+    {% assign if_single_video = true %}
+    {% if section.settings.title == '' %}
+    {% assign section_class = 'm0 p2' %}
+    {% endif %}
+  {% endcase %}
+{% endfor %}
+
+<section class="video section bg--section {{ section_class }}"   data-section-type="videos" data-section-id="{{ section.id }}">
+
+  {% if section.settings.title != '' %}
+  <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ section.settings.title | escape }}</h2>
+  {% elsif if_single_video %}
+  {% else %}
+  <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ 'homepage.onboarding.video_section-title' | t }}</h2>
+  {% endif %}
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'single_video' %}
+      {% if block.settings.video_url %}
+        {% if block.settings.video_url.type == 'youtube' %}
+          <iframe width="560" height="315" src="//www.youtube.com/embed/{{ block.settings.video_url.id }}?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen  {{ block.shopify_attributes }}></iframe>
+        {% endif %}
+        {% if block.settings.video_url.type == 'vimeo' %}
+          <iframe src="//player.vimeo.com/video/{{ block.settings.video_url.id }}?color=00ff00" width="500" height="232" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen  {{ block.shopify_attributes }}></iframe>
+        {% endif %}
+      {% else %}
+        <iframe width="560" height="315" src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen  {{ block.shopify_attributes }}></iframe>
+      {% endif %}
+    {% when 'youtube_uploads' %}
+    <div class="wrapper section--wrapper"  {{ block.shopify_attributes }}>
+      <div class="youtube youtube--uploads" data-channelid="{{ block.settings.youtube_channel_id | escape }}" data-channelname="{{ block.settings.youtube_channel_name | escape }}">
+
+        {% if block.settings.youtube_channel_name == '' and block.settings.youtube_channel_id == '' %}
+          {% include 'video-placeholder' %}
+        {% else %}
+          {% include 'video-core' %}
+        {% endif %}
+
+
+      </div>
+    </div>
+    {% when 'youtube_playlist' %}
+      <div class="wrapper section--wrapper"  {{ block.shopify_attributes }}>
+        <div class="youtube youtube--playlist" data-playlistid="{{ block.settings.youtube_playlist_id | escape }}">
+
+          {% if block.settings.youtube_playlist_id == '' %}
+            {% include 'video-placeholder' %}
+          {% else %}
+            {% include 'video-core' %}
+          {% endif %}
+
+        </div>
+      </div>
+    {% endcase %}
+
+  {% endfor %}
+
+</section>
+
+{% schema %}
+{
+  "name": "Video",
+  "class": "section-video",
+  "max_blocks": 1,
+  "settings": [
+    {
+       "type":      "text",
+       "id":        "title",
+       "label":     "Heading",
+       "default":   "Video"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Videos",
+      "category": "Video",
+      "blocks": [
+        {
+          "type": "youtube_uploads"
+        }
+      ]
+    }
+  ],
+  "blocks" :  [
+    {
+      "type": "single_video",
+      "name": "Single Video",
+      "settings": [
+        {
+          "id": "video_url",
+          "type": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        }
+      ]
+    },
+    {
+      "type": "youtube_uploads",
+      "name": "YouTube Uploads",
+      "settings": [
+        {
+           "type": "paragraph",
+           "content": "Enter your Channel Name, if you don't have a Channel Name - enter your Channel ID instead."
+        },
+        {
+          "id": "youtube_channel_name",
+          "type": "text",
+          "label": "Channel Name"
+        },
+        {
+          "id": "youtube_channel_id",
+          "type": "text",
+          "label": "Channel ID"
+        }
+      ]
+    },
+    {
+      "type": "youtube_playlist",
+      "name": "YouTube Playlist",
+      "settings": [
+        {
+          "id": "youtube_playlist_id",
+          "type": "text",
+          "label": "Playlist ID"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

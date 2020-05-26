@@ -1,0 +1,73 @@
+<section id="section-{{ section.id }}" class="section--pages"  data-section-type="homepage-pages" data-section-id="{{ section.id }}">
+  <div class="container-medium">
+    <div class="grid">
+      {% for block in section.blocks %}
+       <div class="{% if forloop.index == 1 or forloop.index == 3 %} 1/4--lap-and-up {% else %} 2/4--lap-and-up {% endif %} grid__cell homepage_block">
+          {% if block.settings.image != blank  %}
+           <div class="homepages_image" style="background-image: url('{{ block.settings.image | img_url:'master' }}')">
+           </div>
+          {% endif %}
+         <h3 class="homepages_title">{{ block.settings.title }}</h3>
+         <div>{{ block.settings.text}}</div>
+         {% if block.settings.url != blank %}
+           <a href="{{ cta_url }}" class="btn bg--primary btn--pages">
+              {{ block.settings.button }}
+           </a>
+         {% endif %}
+       </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Homepage pages",
+  "max_blocks": 3,
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "page",
+      "name": "page",
+      "settings": [
+           {
+             "type": "image_picker",
+             "id": "image",
+             "label": "Image"
+           },
+           {
+             "type": "text",
+             "id": "title",
+             "label": "Title",
+             "default": "Notre histoire"
+           },
+           {
+             "type": "richtext",
+             "id": "text",
+             "label": "Text",
+             "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.</p>"
+           },
+           {
+             "type": "text",
+             "id": "button",
+             "label": "Button",
+             "default": "Je decouvre"
+           },
+           {
+             "type": "url",
+             "id": "url",
+             "label": "Link 1"
+           }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage pages",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

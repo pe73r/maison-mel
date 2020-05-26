@@ -1,0 +1,42 @@
+<ul class="mobile-nav mobile-nav--footer mt2 font-size--s list--reset">
+  <li>
+    <div class="px3">
+      <h4 class="f--main t--nav font-size--s">
+        {{ linklists[selected_linklist].title }}
+      </h4>
+      <hr class="rule {{ accent_bg_color }} m0 my2 text-align--left" />
+    </div>
+  </li>
+  {% for link in linklists[selected_linklist].links %}
+    {% assign child_list_handle = link.title | handleize %}
+    {% if linklists[child_list_handle].links != blank %}
+      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  {{ bg_color }} t--nav" aria-haspopup="true">
+        <div class="mobile-nav__has-sublist  {{ text_color }}">
+          <a href="{{ link.url }}" class="mobile-nav__link {{ text_color }}">{{ link.title }}</a>
+          <div class="mobile-nav__toggle color--white">
+            <button type="button" class="mobile-nav__toggle-open font-size--xs {{ text_color }}">
+              {% include 'svg-icon', icon: 'chevron-down' %}
+            </button>
+            <button type="button" class="mobile-nav__toggle-close font-size--xs {{ text_color }}">
+              {% include 'svg-icon', icon: 'chevron-up' %}
+            </button>
+            <button type="button" class="mobile-nav__toggle-open font-size--xs {{ text_color }}">
+              {% include 'svg-icon', icon: 'chevron-down' %}
+            </button>
+          </div>
+        </div>
+        <ul class="mobile-nav__sublist">
+          {% for childlink in linklists[child_list_handle].links %}
+            <li class="mobile-nav__item {% if childlink.active %} mobile-nav__item--active{% endif %}">
+              <a href="{{ childlink.url }}" class="mobile-nav__link {{ text_color }}"><span class="mr1 inline-block">&#8212;</span>{{ childlink.title | escape }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% else %}
+      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  {{ bg_color }} t--nav">
+        <a href="{{ link.url }}" class="mobile-nav__link {{ text_color }}">{{ link.title }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

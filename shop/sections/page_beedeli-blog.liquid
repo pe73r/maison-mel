@@ -1,0 +1,425 @@
+<!-- /sections/page_beendi-blog.liquid -->
+{% comment %}
+Receive articles on all blogs selected
+{% endcomment %}
+{% include 'global-variables' %}
+
+{% assign all_articles = false %}
+{% assign all_articles_sorted = false %}
+{% assign onboarding = true %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+
+{% if section.settings.blog_1 and section.settings.blog_1  != empty %}
+  {% if all_articles %}
+    {% assign all_articles = all_articles | concat:blogs[section.settings.blog_1].articles %}
+  {% else %}
+    {% assign all_articles = blogs[section.settings.blog_1].articles %}
+  {% endif %}
+  {% assign onboarding = false %}
+{% endif %}
+
+{% if section.settings.blog_2 and section.settings.blog_2  != empty   %}
+  {% if all_articles %}
+    {% assign all_articles = all_articles | concat:blogs[section.settings.blog_2].articles %}
+  {% else %}
+    {% assign all_articles = blogs[section.settings.blog_2].articles %}
+  {% endif %}
+  {% assign onboarding = false %}
+{% endif %}
+
+{% if section.settings.blog_3 and section.settings.blog_3  != empty  %}
+  {% if all_articles %}
+    {% assign all_articles = all_articles | concat:blogs[section.settings.blog_3].articles %}
+  {% else %}
+    {% assign all_articles = blogs[section.settings.blog_3].articles %}
+  {% endif %}
+  {% assign onboarding = false %}
+{% endif %}
+
+{% if section.settings.blog_4 and section.settings.blog_4  != empty   %}
+  {% if all_articles %}
+    {% assign all_articles = all_articles | concat:blogs[section.settings.blog_4].articles %}
+  {% else %}
+    {% assign all_articles = blogs[section.settings.blog_4].articles %}
+  {% endif %}
+  {% assign onboarding = false %}
+{% endif %}
+
+{% if section.settings.blog_5 and section.settings.blog_5 != empty  %}
+  {% if all_articles %}
+    {% assign all_articles = all_articles | concat:blogs[section.settings.blog_5].articles %}
+  {% else %}
+    {% assign all_articles = blogs[section.settings.blog_5].articles %}
+  {% endif %}
+  {% assign onboarding = false %}
+{% endif %}
+
+
+{% assign all_articles_sorted = all_articles | sort:'published_at' | reverse %}
+
+
+{% if section.settings.enable_latest_articles %}
+
+  {% if onboarding == false  %}
+  {% assign latest_articles_title = section.settings.title | escape %}
+  {% assign feature_article = all_articles_sorted[0] %}
+  {% assign article_blog = feature_article.url  | split: '/' %}
+  {% assign blog_slug = article_blog[2] %}
+  {% assign blog_title = blogs[blog_slug].title %}
+
+  {% assign latest_article_handles = '' %}
+  {% assign latest_article_handles = latest_article_handles | append: feature_article.url %}
+
+  <section class="section m0 py4 bg--section">
+    <div class="wrapper section--wrapper">
+
+      {% if latest_articles_title != '' %}
+        <h2 class="t--section-title t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 pb3">{{ latest_articles_title }}</h2>
+      {% else %}
+        <h2 class="t--section-title t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 pb3">{{ 'homepage.onboarding.blog_section-title' | t }}</h2>
+      {% endif %}
+
+      <div class="grid">
+
+        <div class="grid__item dt--seven-twelfths">
+          {% include 'feature-articles__main-article' %}
+        </div>
+        <div class="grid__item dt--five-twelfths mt3 lg--mt2 dt--mt0">
+          {% assign count = 0 %}
+          {% for article in all_articles_sorted limit:6 %}
+
+            {% comment %}
+              We want to skip the first article here
+            {% endcomment %}
+            {% if count == 0 %}
+            {% else %}
+
+              {% assign latest_article_handles = latest_article_handles | append: ',' | append: article.url %}
+
+              {% include 'feature-articles__aside-article' %}
+
+            {% endif %}
+            {% assign count = count | plus: 1 %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% else %}
+    {% include 'onboarding_featured-articles' %}
+  {% endif %}
+
+
+{% endif %}
+
+
+{% assign latest_article_handles = latest_article_handles | split: ',' %}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+  {% when 'articles_by_blog' %}
+
+  <section class="section m0 py2 bg--section" {{ block.shopify_attributes }}>
+    <div class="wrapper section--wrapper">
+
+      {% if block.settings.title != '' %}
+        <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl  m0 pb3">{{ block.settings.title | escape }}</h2>
+      {% elsif blogs[block.settings.selected_blog].title != '' %}
+        <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl  m0 pb3">{{ blogs[block.settings.selected_blog].title }}</h2>
+      {% else %}
+        <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl  m0 pb3">{{ 'homepage.onboarding.blog_name' | t }}</h2>
+      {% endif %}
+      
+      {% if block.settings.show_blog_link %}
+	  		<div class="grid__item text-align--center">
+              {%- assign blog = blogs[block.settings.selected_blog] -%}
+              <a href="{{ blog.url }}" class="btn mt2 mx--auto {{ __button__ }}">
+                {{ 'blogs.general.more_of_blog' | t: blog:  blogs[block.settings.selected_blog].title }}
+              </a>
+      		</div>
+      {% endif %}
+      
+      <div class="grid grid-uniform">
+        {%- assign blog = blogs[block.settings.selected_blog] -%}
+        {% if blog and blog != empty %}
+          {% assign count = 0 %}
+          {% for article in blog.articles %}
+
+            {% assign already_shown = false %}
+            {% assign current_handle = article.url %}
+
+            {% for handle in latest_article_handles %}
+              {% if handle == current_handle %}
+                {% assign already_shown = true %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            {% unless already_shown %}
+              <div class="grid__item md--one-half lg--one-half dt--one-quarter lg--pb3 dt--pb0">
+                {% include 'article-standard' %}
+              </div>
+              {% assign count = count | plus: 1 %}
+              {% comment %}
+              Break once we find no of  articles selected
+              {% endcomment %}
+              {% assign no_posts = block.settings.no_posts | plus: 0 %}
+              {% if count == no_posts %}
+                {% break %}
+              {% endif %}
+            {% endunless %}
+        	{% endfor %}
+            
+      		
+         
+        {% else %}
+          {% for i in (1..4) %}
+            <div class="grid__item lg--one-half dt--one-quarter">
+              {% include 'article-standard_onboarding' %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {% when 'articles_by_tag' %}
+
+    <section class="section bg--section m0 py4" {{ block.shopify_attributes }}>
+      <div class="wrapper section--wrapper">
+
+        {% if block.settings.title != '' %}
+          <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ block.settings.title | escape }}</h2>
+        {% else %}
+          <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ 'general.meta.tags' | t: tags: block.settings.tag  }}</h2>
+        {% endif %}
+
+        <div class="grid grid-uniform">
+          {% if block.settings.tag != '' %}
+            {% assign count = 0 %}
+            {% assign selected_tag = block.settings.tag %}
+
+            {% assign articles_array = false %}
+
+            {% for article in all_articles_sorted %}
+
+              {% assign already_shown = false %}
+              {% assign current_handle = article.url %}
+
+              {% for handle in latest_article_handles %}
+                {% if handle == current_handle %}
+                  {% assign already_shown = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+
+              {% unless already_shown %}
+                {% for tag in article.tags %}
+                  {% if tag == selected_tag %}
+                      <div class="grid__item lg--one-half dt--one-quarter">
+                        {% include 'article-standard' %}
+                      </div>
+                      {% assign count = count | plus: 1 %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% endunless %}
+
+
+              {% comment %}
+              Break once we find no of  articles selected
+              {% endcomment %}
+              {% assign no_posts = block.settings.no_posts | plus: 0 %}
+              {% if count == no_posts %}
+                {% break %}
+              {% endif %}
+
+            {% endfor %}
+          {% else %}
+            {% for i in (1..4) %}
+              <div class="grid__item lg--one-half dt--one-quarter">
+                {% include 'article-standard_onboarding' %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+
+      </div>
+    </section>
+
+  {% endcase %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Blog",
+  "class": "section-blog",
+  "presets": [
+    {
+      "name": "Blog posts",
+      "category": "Blog",
+      "blocks": [
+        {
+          "type": "articles_by_blog"
+        },
+        {
+          "type": "articles_by_tag"
+        }
+      ]
+    }
+  ],
+  "blocks" :  [
+      {
+        "type": "articles_by_blog",
+        "name": "Articles by blog",
+        "settings": [
+          {
+            "type":      "paragraph",
+            "content":   "If latest articles is enabled, blog posts shown in latest articles won't be shown again inside this block."
+          },
+          {
+             "type":      "text",
+             "id":        "title",
+             "label":     "Heading",
+             "info":     "If left blank, name of blog will be used."
+          },
+          {
+            "type":      "blog",
+            "id":        "selected_blog",
+            "label":     "Select blog:"
+          },
+          {
+             "type":      "range",
+             "id":        "no_posts",
+             "min":       4,
+             "max":        12,
+             "step":       4,
+             "label":     "No of posts to show",
+             "default":   4
+          },
+           {
+             "type": "checkbox",
+             "id": "show_blog_link",
+             "label": "Show link to Blog"
+           }
+        ]
+      },
+      {
+        "type": "articles_by_tag",
+        "name": "Articles by tag",
+        "settings": [
+          {
+            "type":      "paragraph",
+            "content":   "If latest articles is enabled, blog posts shown in latest articles won't be shown again inside this block."
+          },
+          {
+             "type":      "text",
+             "id":        "title",
+             "label":     "Heading",
+             "info":     "If left blank, name of blog will be used."
+          },
+          {
+             "type":      "text",
+             "id":        "tag",
+             "label":     "Tag:",
+             "info":     "Posts will match this tag."
+          },
+          {
+             "type":      "range",
+             "id":        "no_posts",
+             "min":       4,
+             "max":        12,
+             "step":       4,
+             "label":     "No of posts to show",
+             "default":   4
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+         "type":     "header",
+         "content": "Setup"
+      },
+      {
+        "type":      "paragraph",
+        "content":   "Select up to 5 blogs. These will be used for \"latest articles\" and \"articles by tag\" blocks."
+      },
+      {
+        "type":      "blog",
+        "id":        "blog_1",
+        "label":     "Select blog:"
+      },
+      {
+        "type":      "blog",
+        "id":        "blog_2",
+        "label":     "Select blog:"
+      },
+      {
+        "type":      "blog",
+        "id":        "blog_3",
+        "label":     "Select blog:"
+      },
+      {
+        "type":      "blog",
+        "id":        "blog_4",
+        "label":     "Select blog:"
+      },
+      {
+        "type":      "blog",
+        "id":        "blog_5",
+        "label":     "Select blog:"
+      },
+      {
+        "type":      "header",
+        "content":   "Latest articles"
+      },
+      {
+        "type":      "paragraph",
+        "content":   "Show 6 most recent posts from selected blogs."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_latest_articles",
+        "label": "Enable latest articles",
+        "default": true
+      },
+      {
+         "type":      "text",
+         "id":        "title",
+         "label":     "Heading",
+         "default":   "Blog"
+      },
+      {
+        "type":      "header",
+        "content":   "Thumbnail images"
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_cropping",
+        "label": "Crop",
+        "options": [
+          {
+            "value": "none",
+            "label": "No crop"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          }
+        ],
+        "default": "none"
+      }
+    ]
+  }
+  {% endschema %}
+

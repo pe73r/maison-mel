@@ -1,0 +1,80 @@
+<!-- /templates/list-collections.liquid -->
+{% comment %}
+
+  This page represents the /collections and /products pages.
+  It is an optional, but highly recommended, template for your theme.
+
+  More info:
+    - http://docs.shopify.com/manual/configuration/store-customization/taking-control-of-collections-listing
+
+{% endcomment %}
+
+
+
+<section class="section bg--section m0 py3 f--main">
+  <div class="wrapper section--wrapper">
+    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ page_title }}</h1>
+
+    <div class="grid grid-uniform  py2">
+      {% if section.blocks.size == 0 %}
+        {% for collection in collections %}
+          {% unless collection.handle == 'frontpage' %}
+            {% assign grid_class = 'lg--one-half' %}
+            {% assign extra_class = 'mb3' %}
+            {% assign text_color = 'white' %}
+            {% include 'collection-list_item', collection: collection, text_color: text_color %}
+          {% endunless %}
+        {% endfor %}
+      {% else %}
+        {% for block in section.blocks %}
+          {% if block.settings.collection and block.settings.collection != '' %}
+            {% assign collection = collections[block.settings.collection] %}
+            {% assign grid_class = 'lg--one-half' %}
+            {% assign extra_class = 'mb3' %}
+            {% assign text_color = block.settings.text_color %}
+            {% include 'collection-list_item', collection: collection, text_color: text_color %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "class": "section-store",
+  "settings": [
+    {
+       "type": "paragraph",
+       "content": "All of your collections are listed by default. To customize your list, add collections below."
+    }
+  ],
+  "blocks" :  [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+           "type": "collection",
+           "id": "collection",
+           "label": "Choose collection:"
+        },
+        {
+           "type": "select",
+           "id": "text_color",
+           "options": [
+              { "value": "white ", "label": "White"},
+              { "value": "primary", "label": "Primary"},
+              { "value": "shop-accent ", "label": "Shop Accent"},
+              { "value": "black", "label": "Black"}
+           ],
+           "label": "Text color"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

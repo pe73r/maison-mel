@@ -1,0 +1,34 @@
+<section class="section section-page bg--section m0 pt3 pb4"  data-section-type="page" data-section-id="{{ section.id }}">
+  <div class="wrapper section--wrapper">
+
+    <h1 class="font-size--xxl lg--font-size--xxxxl f--title m0 mt2 px2 text-align--center">{{ page.title }}</h1>
+    <hr class="rule bg--main-accent my3 mx--auto" />
+    {% comment %}
+      Regular page content goes here.
+    {% endcomment %}
+    <div class="rte rte--page {% if section.settings.large_first_paragraph %}rte--large-first-paragraph{% endif %} {% if section.settings.full_width_images %}rte--full-width-images{% endif %}">
+      {{ page.content }}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "large_first_paragraph",
+        "label": "Make first paragraph larger",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width_images",
+        "label": "Display images as full width",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

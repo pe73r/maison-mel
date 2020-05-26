@@ -1,0 +1,76 @@
+  {%- assign social_icons = false -%}
+
+{% if
+  settings.social_twitter_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_instagram_link != blank
+  or settings.social_tumblr_link != blank
+  or settings.social_snapchat_link != blank
+  or settings.social_youtube_link != blank
+  or settings.social_vimeo_link != blank
+%}
+  {%- assign social_icons = true -%}
+{% endif %}
+
+
+{% if social_icons %}
+<ul class="social-icons social-icons{{ class }} align--middle list-reset inline-block inline-list">
+  {% if settings.social_facebook_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_facebook_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+        {% include 'svg-icon', icon: 'facebook' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_twitter_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_twitter_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+        {% include 'svg-icon', icon: 'twitter' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_pinterest_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+        {% include 'svg-icon', icon: 'pinterest' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_instagram_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_instagram_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+        {% include 'svg-icon', icon: 'instagram' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_tumblr_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_tumblr_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+        {% include 'svg-icon', icon: 'tumblr' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_snapchat_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_snapchat_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+        {% include 'svg-icon', icon: 'snapchat' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_youtube_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_youtube_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+        {% include 'svg-icon', icon: 'youtube' %}
+      </a>
+    </li>
+  {% endif %}
+  {% if settings.social_vimeo_link != blank %}
+    <li>
+      <a class="social-icons__link color--{{ color }}" href="{{ settings.social_vimeo_link }}" title="{{ 'layout.social.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+        {% include 'svg-icon', icon: 'vimeo' %}
+      </a>
+    </li>
+  {% endif %}
+</ul>
+{% endif %}

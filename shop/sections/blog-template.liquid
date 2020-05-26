@@ -1,0 +1,157 @@
+<!-- /templates/blog.liquid -->
+{% comment %}
+
+  Loop through a defined number of articles with the 'paginate' tag.
+  Don't forget to close the tag after your loop.
+
+{% endcomment %}
+{% include 'global-variables' %}
+{% paginate blog.articles by section.settings.no_posts %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+
+<section class="section bg--section py3">
+  <div class="wrapper section--wrapper">
+
+    <header class="text-align--center pt3">
+      {% if current_tags %}
+        <h1 class="f--main t--section-title  font-size--xl">{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}</h1>
+      {% else %}
+        <h1 class="f--main t--section-title font-size--xl">
+          {{ blog.title }}
+          {% if section.settings.show_rss_icon %}
+          <a class="inline-block font-size--xxs ml1 pb1" href="{{ shop.url }}{{ blogs[blog.handle].url }}.atom" target="_blank">{% include 'svg-icon', icon: 'subscribe' %}</a>
+          {% endif %}
+        </h1>
+      {% endif %}
+    </header>
+
+    {% if section.settings.enable_tag_filter %}
+    <div class="tags text-align--center pt3 pb4  md-dn--hide">
+      <ul class="list-reset m0 mx--auto f--main t--meta font-size--s">
+        <li class="inline-block mx1">
+          <a class="tag__item {% if current_tags == blank %}tag__item--active color--primary {% else %} color--main-accent{% endif %}" href="{{ blog.url  }}">{{ 'blogs.sorting.all_tags' | t }}</a>
+        </li>
+        {% for tag in blog.all_tags %}
+          {% if current_tags contains tag %}
+            <li class="inline-block mx1">
+              <a class="tag__item tag__item--active color--primary" href="{{ tag | handle }}">{{ tag }}</a>
+            </li>
+          {% else %}
+            <li class="inline-block mx1">
+              <a class="tag__item color--main-accent" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+
+
+    {% for article in blog.articles %}
+
+      {% capture thecycle %}{% cycle '1', '2', '3', '4', '5', '6' %}{% endcapture %}
+
+      {% if thecycle == '1' %}
+      <div class="grid mt3">
+        <div class="grid__item dt--seven-twelfths">
+          {% assign feature_article = article %}
+          {% include 'feature-articles__main-article' %}
+        </div>
+        <div class="grid__item dt--five-twelfths mt3 lg--mt2 dt--mt0">
+      {% else %}
+        {% include 'feature-articles__aside-article' %}
+      {% endif %}
+      {% if thecycle == '6' %}
+        </div>
+      </div>
+      {% elsif forloop.last == true %}
+        </div>
+      </div>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginate.pages > 1 %}
+    <div class="text-align--center">
+      <ul class="pagination list-rest no-bullets mt4 max-width--4 mx--auto text-align--center f--main font-size--s inline-block relative">
+        {% if paginate.previous.is_link %}
+            <li class="pagination__link pagination__link--previous">
+              <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.previous.url }}">{{ paginate.previous.title | replace: '&laquo;', ''}}</a>
+            </li>
+        {% endif %}
+        {% assign count = paginate.pages %}
+        {% for part in (1..count) %}
+            <li class="inline-block mx1 md-dn--hide">
+              <a class="pagination__item  {{ __secondary__ }} {% if paginate.current_page == part %}active{% endif %}" href="{{ collection.url }}?page={{ forloop.index }}">{{ forloop.index }}</a>
+            </li>
+        {% endfor %}
+        {% if paginate.next.is_link %}
+            <li class="pagination__link pagination__link--next">
+              <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.next.url }}">{{ paginate.next.title | replace: '&raquo;', '' }}</a>
+            </li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "class": "section-blog",
+    "settings": [
+      {
+          "type":      "range",
+          "id":        "no_posts",
+          "min":       6,
+          "max":        24,
+          "step":       6,
+          "label":     "No of posts per page",
+          "default":   6
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_tag_filter",
+        "label": "Enable filtering by tag"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_rss_icon",
+        "label": "Show RSS subscribe icon"
+      },
+      {
+        "type":      "header",
+        "content":   "Thumbnail images"
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_cropping",
+        "label": "Crop",
+        "options": [
+          {
+            "value": "none",
+            "label": "No crop"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          }
+        ],
+        "default": "none"
+      }
+    ]
+  }
+{% endschema %}

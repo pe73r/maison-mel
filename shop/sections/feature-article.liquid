@@ -1,0 +1,78 @@
+<!-- /snippets/store.liquid -->
+
+<section class="section m0 py4 bg--section section--feature-article">
+  <div class="wrapper section--wrapper">
+    {% assign feature_article = articles[section.settings.featured_article] %}
+    {% if feature_article and feature_article != blank %}
+      {% include 'feature_article' %}
+    {% else %}
+      <article class="article article--large">
+        <div class="grid {% if section.settings.image_position == 'right' %}grid--rev{% endif %}">
+          <div class="grid__item dt--seven-twelfths">
+            <a href="{{ feature_article.url }}">
+              <div class="full">
+                <div class="ratio-box ratio-box--4-3">
+                  <div class="ratio-box__content">
+                    <div class="placeholder full">
+                      {{ 'lifestyle-1' | placeholder_svg_tag }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="grid__item dt--five-twelfths text-center">
+            <div class="mx--auto px3 pt3">
+              <a href="{{ feature_article.url }}">
+                <h4 class="f--main t--meta font-size--xs  lg--font-size--s mt3 mx--auto"><a href="/blogs/{{ article_blog[2] }}">{{ blog_title }}</a></h4>
+                <h3 class="f--title article__title article__title--feature font-size--xl lg--font-size--xxxl mt2 mx--auto">
+                  <a href="">{{ 'homepage.onboarding.blog_title' | t }}</a>
+                </h3>
+
+                
+
+                
+                <h6 class="mt1 t--meta f--main font-size--xs lg--font-size--s {{ __secondary__ }}">{% include 'date', date_object: placeholder_date  %}</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured blog post",
+  "class": "section-store",
+  "settings": [
+    {
+      "type": "article",
+      "id": "featured_article",
+      "label": "Article"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured blog post",
+      "category": "Blog"
+    }
+  ]
+}
+{% endschema %}

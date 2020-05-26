@@ -1,0 +1,66 @@
+<!-- /sections/product-recommendations.liquid -->
+{%- if section.settings.show_product_recommendations -%}
+<section class="product-recommendations section bg--section m0 py4"
+         data-base-url="{{ routes.product_recommendations_url }}"
+         data-product-id="{{ product.id }}"
+         data-section-id="{{ section.id }}"
+         data-section-type="product-recommendations"
+         data-limit="4">
+  {%- assign count = recommendations.products_count -%}
+  {%- if count > 0 -%}
+  <div class="wrapper section--wrapper">
+    {%- case count -%}
+      {% when 1 %}
+        {% assign grid_item_width = '' %}
+      {% when 2 %}
+        {% assign grid_item_width = 'lg--one-half one-half sm--one-half md--one-half' %}
+      {% when 3 %}
+        {% assign grid_item_width = 'lg--one-third one-half sm--one-half md--one-half' %}
+      {% when 4 %}
+        {% assign grid_item_width = 'lg--one-quarter one-half sm--one-half md--one-half mt4' %}
+      {% when 5 %}
+        {% assign grid_item_width = 'lg--one-fifth one-half sm--one-half md--one-half' %}
+      {% when 6 %}
+        {% assign grid_item_width = 'lg--one-sixth one-half sm--one-half md--one-half' %}
+      {% else %}
+        {% assign grid_item_width = 'lg--one-quarter one-half sm--one-half md--one-half' %}
+    {%- endcase -%}
+    {%- assign grid_item_width = grid_item_width | prepend: 'mt4 ' -%}
+
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ section.settings.product_recommendations_heading }}</h2>
+
+    <div class="grid-uniform product-grid">
+
+      <div class="product-grid__inner clearfix">
+        {%- for product in recommendations.products -%}
+          {% include 'product-grid-item' %}
+        {%- endfor -%}
+      </div>
+    </div>
+
+  </div>
+  {%- endif -%}
+</section>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Product recommendations",
+    "class": "section-product-recommendations",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_product_recommendations",
+        "label": "Show dynamic recommendations",
+        "info": "Dynamic recommendations change and improve with time. [Learn more](https://help.shopify.com/en/themes/development/recommended-products)",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "product_recommendations_heading",
+        "label": "Heading",
+        "default": "You may also like"
+      }
+    ]
+  }
+{% endschema %}
+

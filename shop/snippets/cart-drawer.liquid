@@ -1,0 +1,35 @@
+{% if settings.ajax_cart_method == "drawer" %}
+
+<div class="cart-drawer drawer drawer--right fixed top--0 bottom--0 f--main p2 bg--section">
+
+
+  <div class="cart-drawer__header relative my3">
+    <h3 class="cart-drawer__title t--section-title f--main font-size--ml m0">
+      {{ 'cart.general.title' | t }}
+    </h3>
+    <button type="button" class="cart-drawer__close-btn js--close-drawer absolute top--0 right--0 hv--shop-accent">
+      {% include 'svg-icon', icon: 'close' %}
+    </button>
+  </div>
+
+  <hr class="rule rule--full bg--main-accent" />
+
+  <div id="CartContainer" class="font-size--s"></div>
+</div>
+
+
+  {% comment %}
+  <div id="CartDrawer" class="drawer drawer--right">
+    <div class="drawer__header">
+      <div class="drawer__title h3">{{ 'cart.general.title' | t }}</div>
+      <div class="drawer__close js-drawer-close">
+        <button type="button" class="icon-fallback-text">
+          <span class="icon icon-x" aria-hidden="true"></span>
+          <span class="fallback-text">{{ 'cart.general.close_cart' | t | json }}</span>
+        </button>
+      </div>
+    </div>
+    <div id="CartContainer"></div>
+  </div>
+  {% endcomment %}
+{% endif %}

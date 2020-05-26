@@ -1,0 +1,113 @@
+<!-- /snippets/featured-content.liquid -->
+
+<section class="featured-content section section--featured-content m0 py4">
+  {% if section.settings.title != '' %}
+  <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ section.settings.title | escape }}</h2>
+  {% endif %}
+  <div class="wrapper section--wrapper text-align--center color--{{ section.settings.text_color }}">
+    {% if section.settings.rich_text_mobile != '' %}
+    <h2 class="featured-content__title {{ section.settings.font_size }} f--title m0 px1">
+      <div class="md-dn--hide">{{ section.settings.rich_text }}</div>
+      <div class="hide md-dn--show">{{ section.settings.rich_text_mobile }}</div>
+    </h2>
+    {% else %}
+    <h2 class="featured-content__title {{ section.settings.font_size }} f--title m0 px1">{{ section.settings.rich_text }}</h2>
+    {% endif %}
+
+    {% for block in section.blocks %}
+    <a class="featured-content__link t--meta color--{{ section.settings.text_color }} border--{{ section.settings.highlight_color }} f--main mx3 mt2 inline-block clearfix" href="{{ block.settings.cta_url}}">
+      {{ block.settings.cta_text }}
+      <span class="featured-content__arrow relative inline-block">
+        {% include 'svg-icon', icon: 'arrow-right', class: 'icon--baseline' %}
+      </span>
+    </a>
+    {% endfor %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    {
+     "type":      "text",
+     "id":        "title",
+     "label":     "Heading"
+    },
+    {
+      "id": "rich_text",
+      "type": "richtext",
+      "label": "Text",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+    },
+    {
+      "id": "rich_text_mobile",
+      "type": "richtext",
+      "label": "Text - Mobile",
+      "info": "Optional - use this if you would like different formatting / text on mobile devices."
+    },
+    {
+     "type": "select",
+     "id": "font_size",
+     "options": [
+        { "value": "featured-content__title--large", "label": "Large"},
+        { "value": "featured-content__title--medium", "label": "Medium"},
+        { "value": "featured-content__title--small", "label": "Small"}
+     ],
+     "label": "Font size"
+   },
+   {
+      "type": "select",
+      "id": "text_color",
+      "options": [
+         { "value": "primary", "label": "Primary"},
+         { "value": "main-accent ", "label": "Main Accent"},
+         { "value": "secondary-accent ", "label": "Secondary Accent"},
+         { "value": "shop-accent ", "label": "Shop Accent"},
+         { "value": "white ", "label": "White"},
+         { "value": "black", "label": "Black"}
+      ],
+      "label": "Text color"
+   },
+   {
+      "type": "select",
+      "id": "highlight_color",
+      "options": [
+         { "value": "primary", "label": "Primary"},
+         { "value": "main-accent ", "label": "Main Accent"},
+         { "value": "secondary-accent ", "label": "Secondary Accent"},
+         { "value": "shop-accent ", "label": "Shop Accent"},
+         { "value": "white ", "label": "White"},
+         { "value": "black", "label": "Black"}
+      ],
+      "label": "Highlight color"
+   }
+  ],
+  "presets": [
+    {
+      "name": "Rich text",
+      "category": "Text"
+    }
+  ],
+  "blocks" :  [
+    {
+      "type": "link",
+      "name": "Call to Action",
+      "limit": 2,
+      "settings": [
+        {
+           "type":      "text",
+           "id":        "cta_text",
+           "label":     "Link text"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1 @@
+{%- if settings.date_format == 'standard' -%}{{ date_object | time_tag: format: 'month_day_year' }}{%- else -%}{%- assign date_in_seconds = date_object | date: "%s" -%}{%- include 'timeago', date_in_seconds: date_in_seconds -%}{%- endif -%}

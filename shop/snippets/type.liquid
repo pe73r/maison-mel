@@ -1,0 +1,28 @@
+{% assign google_fonts = '' %}
+
+{% if settings.main_typeface contains 'Google' %}
+  {%- assign main_typeface_parts = settings.main_typeface | split: '_' -%}
+  {% capture mainGoogleUrl %}{{ main_typeface_parts[1] }}:400,700{% endcapture %}
+  {% assign google_fonts = mainGoogleUrl %}
+{% endif %}
+
+{% if settings.header_typeface contains 'Google' %}
+  {% unless settings.header_typeface contains main_typeface_parts[1]  %}
+    {%- assign header_typeface_parts = settings.header_typeface | split: '_' -%}
+    {% capture headerGoogleUrl %}{% if google_fonts != '' %}|{% endif %}{{ header_typeface_parts[1] }}:400,700{% endcapture %}
+    {% assign google_fonts = google_fonts | append: headerGoogleUrl %}
+  {% endunless %}
+{% endif %}
+
+{% if settings.body_typeface contains 'Google' %}
+  {% unless settings.body_typeface contains header_typeface_parts[1] or settings.body_typeface contains main_typeface_parts[1] %}
+    {%- assign body_typeface_parts = settings.body_typeface | split: '_' -%}
+    {% capture bodyGoogleUrl %}{% if google_fonts != '' %}|{% endif %}{{ body_typeface_parts[1] }}:400{% endcapture %}
+    {% assign google_fonts = google_fonts | append: bodyGoogleUrl %}
+  {% endunless %}
+{% endif %}
+
+
+{% if google_fonts != '' %}
+{{ '//fonts.googleapis.com/css?family=' | append: google_fonts | stylesheet_tag }}
+{% endif %}

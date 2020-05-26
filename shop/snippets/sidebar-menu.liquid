@@ -1,0 +1,196 @@
+{% include 'global-variables' %}
+
+<div class="drawer drawer--left fixed top--0 bottom--0 f--main bg--section">
+
+  <div class="drawer__container">
+
+  <button class="js--close-drawer right p2 pointer">
+    {% include 'svg-icon', icon: 'close' %}
+  </button>
+
+  <!-- begin mobile-nav -->
+  <ul class="mobile-nav mt2 t--nav">
+    {% for link in linklists[section.settings.main_linklist].links %}
+
+      {% if link.links != blank %}
+        <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}" aria-haspopup="true">
+          <div class="mobile-nav__has-sublist">
+            <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+            <div class="mobile-nav__toggle"  aria-controls>
+              <button type="button" class="mobile-nav__toggle-open font-size--s">
+                {% include 'svg-icon', icon: 'chevron-down' %}
+              </button>
+              <button type="button" class="mobile-nav__toggle-close font-size--s">
+                {% include 'svg-icon', icon: 'chevron-up' %}
+              </button>
+            </div>
+          </div>
+          <ul class="mobile-nav__sublist t--nav">
+            {% for childlink in link.links %}
+              {% if childlink.links != blank %}
+              <li class="mobile-nav__item {% if link.active %} mobile-nav__item--active{% endif %}" aria-haspopup="true">
+                <div class="mobile-nav__has-sublist">
+                  <a href="{{ childlink.url }}" class="mobile-nav__link"><span class="mr1 inline-block">&#8212;</span>{{ childlink.title | escape }}</a>
+                  <div class="mobile-nav__toggle" aria-controls>
+                    <button type="button" class="mobile-nav__toggle-open font-size--s">
+                      {% include 'svg-icon', icon: 'chevron-down' %}
+                    </button>
+                    <button type="button" class="mobile-nav__toggle-close font-size--s">
+                      {% include 'svg-icon', icon: 'chevron-up' %}
+                    </button>
+                  </div>
+                </div>
+                <ul class="mobile-nav__sublist t--nav font-size--s">
+                  {% for childchildlink in childlink.links %}
+                    <li class="mobile-nav__item  mobile-nav__item--thirdlevel {% if link.active %} mobile-nav__item--active{% endif %}">
+                      <a href="{{ childchildlink.url }}" class="mobile-nav__link">{{ childchildlink.title | escape }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% else %}
+              <li class="mobile-nav__item {% if childlink.active %} mobile-nav__item--active{% endif %}">
+                <a href="{{ childlink.url }}" class="mobile-nav__link"><span class="mr1 inline-block">&#8212;</span>{{ childlink.title | escape }}</a>
+              </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}">
+          <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% comment %}
+      If customer accounts are enabled, provide login and create account links
+
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <li class="mobile-nav__item">
+          {% if customer.first_name != blank %}
+            {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+            <a href="{{ routes.account_url }}">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+          {% else %}
+            <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+          {% endif %}
+        </li>
+        <li class="mobile-nav__item">
+          {{ 'layout.customer.log_out' | t | customer_logout_link }}
+        </li>
+      {% else %}
+        <li class="mobile-nav__item">
+          {{ 'layout.customer.log_in' | t | customer_login_link }}
+        </li>
+        <li class="mobile-nav__item">
+          {{ 'layout.customer.create_account' | t | customer_register_link }}
+        </li>
+      {% endif %}
+    {% endif %}
+    {% endcomment %}
+  </ul>
+  <!-- //mobile-nav -->
+
+  <div class="p2">
+    <hr class="m0 mt2 rule bg--main-accent rule--full" />
+  </div>
+
+  {% if section.settings.secondary_linklist != blank %}
+    <ul class="mobile-nav mobile-nav--secondary t--nav mt2">
+      {% for link in linklists[section.settings.secondary_linklist].links %}
+        {% comment %}
+          Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+          More info on dropdowns:
+            - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+        {% endcomment %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% if linklists[child_list_handle].links != blank %}
+          <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}" aria-haspopup="true">
+            <div class="mobile-nav__has-sublist">
+              <a href="{{ link.url }}" class="mobile-nav__link mobile-nav__link--secondary font-size--s">{{ link.title }}</a>
+              <div class="mobile-nav__toggle mobile-nav__toggle--secondary">
+                <button type="button" class="mobile-nav__toggle-open  font-size--xs">
+                  {% include 'svg-icon', icon: 'chevron-down' %}
+                </button>
+                <button type="button" class="mobile-nav__toggle-close font-size--xs">
+                  {% include 'svg-icon', icon: 'chevron-up' %}
+                </button>
+              </div>
+            </div>
+            <ul class="mobile-nav__sublist">
+              {% for childlink in linklists[child_list_handle].links %}
+                <li class="mobile-nav__item {% if childlink.active %} mobile-nav__item--active{% endif %}">
+                  <a href="{{ childlink.url }}" class="mobile-nav__link mobile-nav__link--secondary mobile-nav__link--secondary font-size--s"><span class="mr1 inline-block">&#8212;</span>{{ childlink.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}">
+            <a href="{{ link.url }}" class="mobile-nav__link mobile-nav__link--secondary font-size--s">{{ link.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% comment %}
+      If customer accounts are enabled, provide login and create account links
+    {% endcomment %}
+  {% if shop.customer_accounts_enabled %}
+  <div class="my3">
+    <ul class="list-reset f--main t--nav font-size--s">
+      {% if customer %}
+        <li class="drawer-nav__item customer-item first pl2 mt2">
+          {% if customer.first_name != blank %}
+            {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+            <a href="{{ routes.account_url }}">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+          {% else %}
+            <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+          {% endif %}
+        </li>
+        <li class="drawer-nav__item customer-item pl2 mt2">
+          {{ 'layout.customer.log_out' | t | customer_logout_link }}
+        </li>
+      {% else %}
+        <li class="drawer-nav__item customer-item first pl2 mt2">
+          {{ 'layout.customer.log_in' | t | customer_login_link }}
+        </li>
+        {% if shop.customer_accounts_optional %}
+        <li class="drawer-nav__item customer-item pl2 mt2">
+          {{ 'layout.customer.create_account' | t | customer_register_link }}
+        </li>
+        {% endif %}
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+
+
+  {% if section.settings.show_search_sidebar %}
+    <div class="mt1 mb2 p2">
+
+      <form action="{{ routes.search_url }}" method="get" class="input-group search-bar" role="search">
+        {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="input-group-field search__input f--main t--nav font-size--s" aria-label="{{ 'general.search.placeholder' | t }}">
+        <span class="input-group-btn">
+          <button type="submit" class="btn icon-fallback-text search__submit font-size--s">
+            {% include 'svg-icon', icon: 'search' %}
+          </button>
+        </span>
+      </form>
+
+    </div>
+  {% endif %}
+
+  {% if section.settings.show_social_sidebar %}
+    <div class="mt1 p2">
+      {% include 'social', class: '--drawer' %}
+    </div>
+  {% endif %}
+
+  </div>
+
+</div>

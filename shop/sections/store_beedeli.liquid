@@ -1,0 +1,356 @@
+<!-- /snippets/store.liquid -->
+{% include 'global-variables' %}
+
+<section class="store section m0 py0 bg--section" data-section-type="store">
+  <div class="wrapper section--wrapper">
+    {% if section.settings.title != '' %}
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb0">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+
+    {% assign count = 0 %}
+    {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'feature_text' %}
+
+
+        {% if block.settings.rich_text_mobile != '' %}
+        <h3 class="store__feature-text f--title text-align--center font-size--l lg--font-size--xl m0 {% if count == 0 %}pb3{% else %}py3{% endif %}" {{ block.shopify_attributes }}>
+          <div class="md-dn--hide">{{ block.settings.rich_text }}</div>
+          <div class="hide md-dn--show">{{ block.settings.rich_text_mobile }}</div>
+        </h2>
+        {% else %}
+          <h3 class="store__feature-text f--title text-align--center font-size--l lg--font-size--xl m0  {% if count == 0 %}pb3{% else %}py3{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.rich_text }}</h3>
+        {% endif %}
+
+      {% when 'featured_collection' %}
+
+        {% assign no_products = block.settings.no_products %}
+
+        {% case no_products %}
+          {% when 2 %}
+            {% assign grid_item_width = 'md-dn--one-whole lg--one-half dt--one-half mt4' %}
+          {% when 3 %}
+            {% assign grid_item_width = 'md-dn--one-whole lg--one-third dt--one-third mt4' %}
+          {% when 4 %}
+            {% assign grid_item_width = 'md-dn--one-whole lg--one-quarter dt--one-quarter mt4' %}
+          {% else %}
+            {% assign grid_item_width = 'md-dn--one-whole lg--one-quarter dt--one-quarter mt4' %}
+        {% endcase %}
+
+        <div class="grid grid-uniform product-grid py2 text-align--center" {{ block.shopify_attributes }}>
+          <div class="product-grid__inner">
+            {% if block.settings.selected_collection and block.settings.selected_collection  != empty %}
+              {% for product in collections[block.settings.selected_collection].products limit:4 %}
+                {% include 'product-grid-item' %}
+              {% endfor %}
+            {% else %}
+              {% for i in (1..4) %}
+              {% include 'product-grid-item_placeholder' %}
+              {% endfor %}
+            {% endif %}
+          </div>
+          {% if block.settings.show_collection_link %}
+            <div class="grid__item text-align--center">
+              <a href="{{ collections[block.settings.selected_collection].url }}" class="btn mt3 mx--auto {{ __shop_button__ }}">
+                {{ "Tous les mélanges beedeli"}}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+
+      {% when 'collection_list' %}
+
+        {% assign grid_class = '' %}
+        {% if block.settings.collection_2 and block.settings.collection_2 != empty %}
+          {% assign grid_class = 'lg--one-half' %}
+        {% endif %}
+
+        <div class="grid py2" {{ block.shopify_attributes }}>
+          {% assign onboarding = true %}
+          {% if block.settings.collection_1 and block.settings.collection_1 != empty%}
+            {% assign onboarding = false %}
+          {% endif %}
+
+          {% if onboarding %}
+            {% assign grid_class = 'lg--one-half' %}
+            {% include 'collection-list_item--onboarding', text_color: text_color %}
+            {% include 'collection-list_item--onboarding', text_color: text_color %}
+          {% else %}
+            {% if block.settings.collection_1 != empty %}
+              {% assign selected_collection = collections[block.settings.collection_1] %}
+              {% assign text_color = block.settings.collection_1_text_color %}
+              {% include 'collection-list_item', collection: selected_collection, text_color: text_color %}
+            {% endif %}
+
+            {% if block.settings.collection_2 != empty %}
+              {% assign selected_collection = collections[block.settings.collection_2] %}
+              {% assign text_color = block.settings.collection_2_text_color %}
+              {% assign extra_class = 'mt3 lg--mt0' %}
+              {% include 'collection-list_item', collection: selected_collection, text_color: text_color %}
+            {% endif %}
+          {% endif %}
+
+
+        </div>
+
+
+
+      {% when 'single_product' %}
+        {% assign product = all_products[block.settings.selected_product] %}
+        {% capture sectionID %}section-{{ section.id }}-block-{{ block.id }}-{{ product.id }}{% endcapture %}
+        {% capture single_product_id %}section-{{ section.id }}-{{ product.handle }}{% endcapture %}
+        {% assign current_variant = product.selected_or_first_available_variant %}
+        {% assign show_quantity = block.settings.show_quantity %}
+        {% assign in_list = true %}
+
+        {% if block.settings.show_description  %}
+          {% assign paragraphs = product.description | split: '<p>' %}
+          {% assign short_description = paragraphs[1] | replace: '</p>', '' %}
+        {% endif %}
+
+        {% if block.settings.rich_text != '' %}
+          {% assign short_description = block.settings.rich_text %}
+        {% endif %}
+
+        {% comment %}
+          Check if the product is on sale and set a variable to be used below.
+        {% endcomment %}
+        {% assign on_sale = false %}
+        {% if product.compare_at_price > product.price %}
+          {% assign on_sale = true %}
+        {% endif %}
+
+        {% if block.settings.product_media_size == 'large' %}
+          {% assign product_media_class = 'lg--one-half dt--seven-twelfths' %}
+          {% assign product_desc_class = 'lg--one-half dt--five-twelfths' %}
+        {% else %}
+          {% assign product_media_class = 'lg--one-half dt--one-half' %}
+          {% assign product_desc_class = 'lg--one-half dt--one-half' %}
+        {% endif %}
+
+        {% if block.settings.selected_product and block.settings.selected_product  != empty %}
+
+        {% assign has_video = false %}
+        {% assign has_external_video = false %}
+        {% assign has_model = false %}
+
+        {% for media in product.media %}
+          {% case media.media_type %}
+          {% when 'video' %}
+            {% assign has_video = true %}
+          {% when 'external_video' %}
+            {% assign has_external_video = true %}
+          {% when 'model' %}
+            {% assign has_model = true %}
+          {% endcase %}
+        {% endfor %}
+
+        <div itemscope itemtype="http://schema.org/Product"
+             class="grid section-product single-product py2 clearfix"
+             id="{{ sectionID }}"
+             data-section-id="{{ sectionID }}"
+             data-section-type="product"
+             data-money-format="{{ shop.money_format }}"
+             data-has-video="{{ has_video }}"
+             data-has-external-video="{{ has_external_video }}"
+             data-has-model="{{ has_model }}"
+             {{ block.shopify_attributes }}>
+
+          {% include 'single-product-inner', show_payment_button: block.settings.show_payment_button, enable_video_looping: block.settings.enable_video_looping %}
+
+        </div>
+        {% else %}
+          {% include 'onboarding_single-product' %}
+        {% endif %}
+      {% endcase %}
+
+      {% assign count = count | plus: 1 %}
+    {% endfor %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Store",
+  "class": "section-store",
+  "settings": [
+    {
+       "type":      "text",
+       "id":        "title",
+       "default":   "Store",
+       "label":     "Heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured store content",
+      "category": "Products and collections",
+      "blocks": [
+        {
+          "type": "feature_text"
+        },
+        {
+          "type": "collection_list"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ],
+  "blocks" :  [
+    {
+      "type": "feature_text",
+      "name": "Feature text",
+      "settings": [
+        {
+           "type":      "richtext",
+           "id":        "rich_text",
+           "label":     "Text",
+           "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "id": "rich_text_mobile",
+          "type": "richtext",
+          "label": "Text - Mobile",
+          "info": "Optional - use this if you would like different formatting / text on mobile devices."
+        }
+      ]
+    },
+    {
+      "type": "single_product",
+      "name": "Single product",
+      "settings": [
+        {
+           "type": "product",
+           "id": "selected_product",
+           "label": "Choose product:"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_button",
+          "label": "Show dynamic checkout button",
+          "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_quantity",
+          "label": "Show quantity"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_description",
+          "label": "Show description",
+          "info": "Show first paragraph of product description"
+        },
+        {
+           "type":      "richtext",
+           "id":        "rich_text",
+           "label":     "Short Description",
+           "info": "Optional: enter custom short description which will override product description."
+        },
+        {
+          "type": "select",
+          "id": "product_media_size",
+          "label": "Product media size - desktop",
+          "options": [
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "large"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_video_looping",
+          "label":  "Enable video looping",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "featured_collection",
+      "name": "Featured collection",
+      "settings": [
+        {
+           "type": "collection",
+           "id": "selected_collection",
+           "label": "Choose collection:"
+        },
+        {
+          "type":      "range",
+          "id":        "no_products",
+          "min":       2,
+          "max":        4,
+          "step":       1,
+          "label":     "No of products",
+          "default":   4
+        },
+        {
+          "type": "checkbox",
+          "id": "show_collection_link",
+          "label": "Show link to Collection"
+        }
+      ]
+    },
+    {
+      "type": "collection_list",
+      "name": "Collection list",
+      "settings": [
+        {
+           "type": "paragraph",
+           "content": "Select up to two collections:"
+        },
+        {
+           "type": "header",
+           "content": "Collection 1:"
+        },
+        {
+           "type": "collection",
+           "id": "collection_1",
+           "label": "Choose collection:"
+        },
+        {
+           "type": "select",
+           "id": "collection_1_text_color",
+           "options": [
+              { "value": "primary", "label": "Primary"},
+              { "value": "shop-accent ", "label": "Shop Accent"},
+              { "value": "white ", "label": "White"},
+              { "value": "black", "label": "Black"}
+           ],
+           "label": "Text color"
+        },
+        {
+           "type": "header",
+           "content": "Collection 2:"
+        },
+        {
+           "type": "collection",
+           "id": "collection_2",
+           "label": "Choose collection:"
+        },
+        {
+           "type": "select",
+           "id": "collection_2_text_color",
+           "options": [
+              { "value": "primary", "label": "Primary"},
+              { "value": "shop-accent ", "label": "Shop Accent"},
+              { "value": "white ", "label": "White"},
+              { "value": "black", "label": "Black"}
+           ],
+           "label": "Text color"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

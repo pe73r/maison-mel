@@ -1,0 +1,54 @@
+
+
+{% case thumbnail_cropping %}
+  {% when 'square' %}
+    {%- assign ratio = '1' -%}
+  {% when 'landscape' %}
+    {%- assign ratio = '1.3' -%}
+  {% when 'portrait' %}
+    {%- assign ratio = '0.8' -%}
+  {% else %}
+    {%- assign ratio = article.image.aspect_ratio -%}
+{% endcase %}
+
+<article class="article article--row text-align--center mb3 lg--mb0">
+  <a href="{{ article.url }}">
+      {% if article.image %}
+        {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+        {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}
+        {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x{height}.' -%}
+        <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
+          <div style="padding-top:{{ 1 | divided_by: ratio | times: 100}}%;"
+              {% unless thumbnail_cropping == 'none' %}
+              class="lazyload bg-cover"
+              data-bgset="{% include 'bgset', image: article.image %}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              style="background-image: url('{{ article.image | img_url: '300x300' }});"
+              {% endunless %}
+          >
+            {% if thumbnail_cropping == 'none' %}
+            <img id="{{ img_id }}"
+                 class="resp-img lazyload feature-image"
+                 src="{{ article.image | img_url: '50x' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ article.image.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ article.image.alt | escape }}">
+            {% endif %}
+          </div>
+        </div>
+        <noscript>
+          <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+        </noscript>
+      {% endif %}
+
+      {% assign article_blog = article.url  | split: '/' %}
+      {% assign blog_slug = article_blog[2] %}
+      {% assign blog_title = blogs[blog_slug].title %}
+      <h3 class="f--title font-size--ml lg--font-size--l mt2">{{ article.title }}</h3>
+      <h5 class="f--main t--meta mt2 font-size--xs lg--font-size--s  {{ __secondary__ }} mt2">{% include 'date', date_object: article.published_at  %}</h5>
+
+  </a>
+</article>

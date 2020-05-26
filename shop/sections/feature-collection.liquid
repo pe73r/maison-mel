@@ -1,0 +1,97 @@
+<!-- /snippets/store.liquid -->
+
+{% assign no_products = section.settings.no_products %}
+
+{% case no_products %}
+  {% when 2 %}
+    {% assign grid_item_width = 'md-dn--one-whole lg--one-half dt--one-half mt4' %}
+  {% when 3 %}
+    {% assign grid_item_width = 'md-dn--one-whole lg--one-third dt--one-third mt4' %}
+  {% when 4 %}
+    {% assign grid_item_width = 'md-dn--one-whole lg--one-quarter dt--one-quarter mt4' %}
+  {% else %}
+    {% assign grid_item_width = 'md-dn--one-whole lg--one-quarter dt--one-quarter mt4' %}
+{% endcase %}
+
+
+<section class="store section m0 py4 bg--section">
+  <div class="wrapper section--wrapper">
+
+    {% assign heading_class = 't--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3' %}
+      {% if section.settings.selected_collection and section.settings.selected_collection != '' %}
+        {% if section.settings.title == blank %}
+          <h2 class="{{ heading_class }}">{{ collections[section.settings.selected_collection].title }}</h2>
+        {% else %}
+          <h2 class="{{ heading_class }}">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+      {% else %}
+        {% if section.settings.title == blank %}
+          <h2 class="{{ heading_class }}">{{ 'homepage.onboarding.collection_title' | t }}</h2>
+        {% else %}
+          <h2 class="{{ heading_class }}">{{ section.settings.title }}</h2>
+        {% endif %}
+      {% endif %}
+
+
+    <div class="grid grid-uniform product-grid py2 text-align--center">
+      <div class="product-grid__inner">
+        {% if section.settings.selected_collection and section.settings.selected_collection  != empty %}
+          {% for product in collections[section.settings.selected_collection].products limit:no_products %}
+            {% include 'product-grid-item' %}
+          {% endfor %}
+        {% else %}
+          {% for i in (1..no_products) %}
+          {% include 'product-grid-item_placeholder' %}
+          {% endfor %}
+        {% endif %}
+      </div>
+      {% if section.settings.show_collection_link %}
+        <div class="grid__item text-align--center">
+          <a href="{{ collections[section.settings.selected_collection].url }}" class="btn mt3 mx--auto {{ __shop_button__ }}">
+            {{ 'collections.general.all_of_collection' | t: collection:  collections[section.settings.selected_collection].title }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "class": "section-store",
+  "settings": [
+    {
+       "type":      "text",
+       "id":        "title",
+       "label":     "Heading"
+    },
+    {
+       "type": "collection",
+       "id": "selected_collection",
+       "label": "Choose collection:"
+    },
+    {
+      "type":      "range",
+      "id":        "no_products",
+      "min":       2,
+      "max":        4,
+      "step":       1,
+      "label":     "No of products",
+      "default":   4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_link",
+      "label": "Show link to Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

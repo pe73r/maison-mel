@@ -1,0 +1,47 @@
+{%- assign time_ago = '' -%}
+{%- assign date_now = 'now' | date: "%s"  -%}
+{%- assign seconds = date_now | minus: date_in_seconds -%}
+{%- assign interval = seconds | divided_by: 31536000 -%}
+{%- assign interval_type = '' -%}
+{%- if interval >= 1 -%}
+  {%- assign interval_type = 'year' -%}
+{%- endif -%}
+{%- if interval_type == '' -%}
+  {%- assign interval = seconds | divided_by: 2592000 -%}
+  {%- if interval >= 1 -%}
+    {%- assign interval_type = 'month' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if interval_type == '' -%}
+  {%- assign interval = seconds | divided_by: 604800 -%}
+  {%- if interval >= 1 -%}
+    {%- assign interval_type = 'week' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if interval_type == '' -%}
+  {%- assign interval = seconds | divided_by: 86400 -%}
+  {%- if interval >= 1 -%}
+    {%- assign interval_type = 'day' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if interval_type == '' -%}
+  {%- assign interval = seconds | divided_by: 3600 -%}
+  {%- if interval >= 1 -%}
+    {%- assign interval_type = 'hour' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if interval_type == '' -%}
+  {%- assign interval = seconds | divided_by: 60 -%}
+  {%- if interval >= 1 -%}
+    {%- assign interval_type = 'minute' -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if interval_type == '' -%}
+  {%- assign interval_type = 'second' -%}
+{%- endif -%}
+{%- if interval > 1 or interval == 0 -%}
+  {%- capture interval_type -%}{{ interval_type }}s{%- endcapture -%}
+{%- endif -%}
+
+{% capture language_string %}blogs.date.{{ interval_type }}{% endcapture %}
+{{ language_string | t: number:  interval }}

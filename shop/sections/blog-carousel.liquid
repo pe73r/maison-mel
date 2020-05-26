@@ -1,0 +1,40 @@
+{%- assign blog = blogs[section.settings.blog] -%}
+<section id="section-{{ section.id }}" class="blog_carousel"  data-section-type="blog_carousel" data-section-id="{{ section.id }}">
+  <div class="container-medium">
+    <h2>{{ section.settings.title | escape }}</h2>
+    <div class="main-carousel" data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
+       {% for article in blog.articles limit: section.settings.post_limit %}
+        <div class="carousel-cell ">
+          <div class="blog_carousel_image" style="background-image: url('{{ article.image | img_url:'master' }}')">
+          </div>
+           <h4>{{ article.title }}</h4>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Blog carousel",
+  "settings": [
+
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "découvrez nos recettes"
+      } 
+  ],
+  "presets": [
+    {
+      "name": "Blog carousel",
+      "category": "Blog"
+    }
+  ]
+}
+{% endschema %}

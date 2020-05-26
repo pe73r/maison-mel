@@ -1,0 +1,214 @@
+<!-- /templates/cart.liquid -->
+{% include 'global-variables' %}
+{% comment %}
+
+  For info on test orders:
+    - General http://docs.shopify.com/manual/your-store/orders/test-orders
+    - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
+
+{% endcomment %}
+
+{% if cart.item_count > 0 %}
+
+<section class="section bg--section m0 py3 f--main">
+  <div class="wrapper section--wrapper">
+
+
+    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'cart.general.title' | t }}</h1>
+
+    <form action="{{ routes.cart_url }}" method="post" novalidate class="cart table-wrap overflow-visible">
+      <table class="cart-table full table--responsive">
+        <thead class="cart__row cart__header-labels">
+          <th class="text-left">{{ 'cart.label.product' | t }}</th>
+          <th class="text-center">{{ 'cart.label.price' | t }}</th>
+          <th class="text-center">{{ 'cart.label.quantity' | t }}</th>
+          <th class="text-right">{{ 'cart.label.total' | t }}</th>
+        </thead>
+        <tbody>
+          {% for item in cart.items %}
+          <tr class="cart__row table__section">
+            <td data-label="{{ 'customer.order.product' | t }}">
+              <a href="{{ item.url | within: collections.all }}" class="cart__image">
+                {% comment %}
+                  More image size options at:
+                    - http://docs.shopify.com/themes/filters/product-img-url
+                {% endcomment %}
+                <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+              </a>
+
+              <div class="cart__info">
+                <a href="{{ item.url }}" class="product-grid-title f--title font-size--xl">
+                {{ item.product.title }}
+              </a>
+
+              {% unless item.variant.title contains 'Default' %}
+                <br>
+                <small class="secondary">{{ item.variant.title }}</small>
+              {% endunless %}
+
+              {% if settings.cart_vendor_enable %}
+                <p class="secondary">{{ item.vendor }}</p>
+              {% endif %}
+
+              {% comment %}
+                Optional, loop through custom product line items if available
+
+                For more info on line item properties, visit:
+                  - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
+              {% endcomment %}
+              {% assign property_size = item.properties | size %}
+              {% if property_size > 0 %}
+                {% for p in item.properties %}
+                  {% unless p.last == blank %}
+                    {{ p.first }}:
+
+                    {% comment %}
+                      Check if there was an uploaded file associated
+                    {% endcomment %}
+                    {% if p.last contains '/uploads/' %}
+                      <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                    {% else %}
+                      {{ p.last }}
+                    {% endif %}
+
+                    <br>
+                  {% endunless %}
+                {% endfor %}
+              {% endif %}
+
+              {%- if item.line_level_discount_allocations != blank -%}
+                <ul class="m0 p0 mt1 list--reset font-size--s text-align--left color--shop-accent order-discount" aria-label="{{ 'customer.order.discount' | t }}">
+                  {%- for discount_allocation in item.line_level_discount_allocations -%}
+                    <li class="m0 order-discount__item">
+                      {{ discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money }})
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+
+              <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="cart__remove color--shop-accent">
+                <small>{{ 'cart.general.remove' | t }}</small>
+              </a>
+              </div>
+
+            </td>
+
+            <td class="data-price" data-label="{{ 'cart.label.price' | t }}">
+              <span class="feature-copy">
+                {%- if item.original_price != item.final_price -%}
+                  <del class="cart__price block">{{ item.original_price | money }}</del>
+                  <span class="order-discount cart__price color--shop-accent">{{ item.final_price | money }}</span>
+                {%- else -%}
+                  <span>{{ item.original_price | money }}</span>
+                {%- endif -%}
+              </span>
+              {%- if item.unit_price_measurement -%}
+              <span class="visually-hidden">
+                {{- 'products.product.unit_price_label' | t -}}
+              </span>
+              <span class="block feature-copy font-size--xs {% if item.original_price != item.final_price %}color--shop-accent{% endif %}">
+                {{- item.unit_price | money -}}
+                <span aria-hidden="true">
+                  /
+                </span>
+                <span class="visually-hidden">
+                  {{- 'general.accessibility.unit_price_separator' | t -}}
+                </span>
+                {%- if item.unit_price_measurement.reference_value != 1 -%}
+                  {{- item.unit_price_measurement.reference_value -}}
+                {%- endif -%}
+                {{ item.unit_price_measurement.reference_unit }}
+              </span>
+              {%- endif -%}
+            </td>
+
+            <td data-label="{{ 'cart.label.quantity' | t }}" class="cart__quantity">
+              <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
+            </td>
+
+            <td class="total-price text-right" data-label="{{ 'cart.label.total' | t }}" class="text-right">
+              <span class="feature-copy">
+
+                {%- if item.original_line_price != item.final_line_price -%}
+                  <del class="cart__price block">{{ item.original_line_price | money }}</del>
+                  <span class="order-discount cart__price color--shop-accent">{{ item.final_line_price | money }}</span>
+                {%- else -%}
+                  <span>{{ item.original_line_price | money }}</span>
+                {%- endif -%}
+
+
+              </span>
+            </td>
+
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <div class="cart__footer">
+        <div class="grid">
+          {% if settings.cart_notes_enable %}
+            <div class="grid__item two-thirds sm--one-whole">
+              <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+              <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+            </div>
+          {% endif %}
+          <div class="grid__item text-right sm--mt3 one-third sm--one-whole {% unless settings.cart_notes_enable %}  push--md--two-thirds push--lg--two-thirds{% endunless %}">
+
+            {%- if cart.cart_level_discount_applications != blank -%}
+            <div class="grid--full cart__row--table">
+              <div class="cart__discounts">
+                {%- for discount_application in cart.cart_level_discount_applications -%}
+                  <p class="color--shop-accent">
+                    <span class="visually-hidden">{{ 'customer.order.discount' | t }}:</span><span class="mr1">{{- discount_application.title -}}</span>
+                    <span class="order-discount order-discount--cart">-{{ discount_application.total_allocated_amount | money }}</span>
+                  </p>
+                {%- endfor -%}
+              </div>
+            </div>
+            {%- endif -%}
+
+            <p>
+              <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+              <span class="h3 cart__subtotal f--main">{{ cart.total_price | money }}</span>
+            </p>
+
+            <p class="font-size--s">{{ 'cart.general.shipping_at_checkout' | t }}</p>
+            <div class="grid grid--cart-button-gutter">
+              <div class="grid__item dt--one-half">
+                <button type="submit" name="update" class="btn bg--primary update-cart full--w color--primary-overlay">{{ 'cart.general.update' | t }}</button>
+              </div>
+              <div class="grid__item dt--one-half mt1 dt--mt0">
+                <button type="submit" name="checkout" class="btn bg--shop-accent full--w color--shop-accent-overlay">{{ 'cart.general.checkout' | t }}</button>
+              </div>
+            </div>
+            {% if additional_checkout_buttons %}
+            <div class="grid grid--cart-button-gutter">
+              <div class="grid__item">
+                <div class="additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</section>
+{% else %}
+<section class="section bg--section m0 py3 f--main">
+  <div class="wrapper section--wrapper text-align--center   ">
+
+    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'cart.general.title' | t }}</h1>
+
+    <p>{{ 'cart.general.empty' | t }}</p>
+    <p>{{ 'cart.general.continue_browsing_html' | t: link_url: routes.all_products_collection_url }}</p>
+
+  </div>
+</section>
+{% endif %}

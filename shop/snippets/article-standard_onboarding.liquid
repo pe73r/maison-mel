@@ -1,0 +1,19 @@
+{%- assign placeholder_date = 'now' -%}
+<article class="article article--row text-align--center mb3 lg--mb0">
+  <a href="{{ article.url }}">
+
+      <div class="full">
+        <div class="ratio-box ratio-box--4-3">
+          <div class="ratio-box__content">
+            <div class="placeholder full">
+              {{ 'lifestyle-1' | placeholder_svg_tag }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="f--title font-size--ml lg--font-size--l mt2">{{ 'homepage.onboarding.blog_title' | t }}</h3>
+      <h5 class="f--main t--meta mt2 font-size--xs lg--font-size--s color--main-accent mt2">{% include 'date', date_object: placeholder_date  %}</h5>
+
+  </a>
+</article>

@@ -1,0 +1,66 @@
+{%- assign placeholder_date = 'now' -%}
+<section class="section m0 py4 bg--section">
+  <div class="wrapper section--wrapper">
+
+    <h2 class="t--section-title t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 pb3">{{ 'homepage.onboarding.blog_section-title' | t }}</h2>
+    <div class="grid">
+
+      <div class="grid__item dt--seven-twelfths">
+        <article class="article article--large">
+
+          <a href="{{ feature_article.url }}">
+            <div class="full">
+              <div class="ratio-box ratio-box--4-3">
+                <div class="ratio-box__content">
+                  <div class="placeholder full">
+                    {{ 'lifestyle-1' | placeholder_svg_tag }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="f--main t--meta font-size--xs  lg--font-size--s   mt3"><a href="">{{ 'homepage.onboarding.blog_name' | t }}</a></h4>
+            <h3 class="f--title article__title article__title--feature font-size--xl lg--font-size--xxxl mt2">
+              <a href="">{{ 'homepage.onboarding.blog_title' | t }}</a>
+            </h3>
+
+            <hr class="my3 rule bg--main-accent text-align--left" />
+
+            <p class="f--body article__excerpt article__excerpt--feature lg--font-size--ml">
+              {{ 'homepage.onboarding.blog_excerpt' | t }}
+            </p>
+            {% if settings.show_author %}
+            <h5 class="f--main t--meta font-size--xs lg--font-size--s lg--font-size--s mt3">{{ 'homepage.onboarding.blog_author' | t }}</h5>
+            {% endif %}
+            <h6 class="mt1 t--meta f--main font-size--xs lg--font-size--s  {{ __secondary__ }}">{% include 'date', date_object: placeholder_date  %}</h6>
+          </a>
+        </article>
+      </div>
+      <div class="grid__item dt--five-twelfths mt3 lg--mt2 dt--mt0">
+        {% for i in (1..5) %}
+          <article class="article article--small {% unless count == 5 %}mb3{% endunless %}">
+            <a href="{{ article.url }}">
+
+              <div class="media ">
+                <div class="placeholder media__img article__image article__image--small">
+                  <div class="ratio-box ratio-box--4-3" style="width: 200px; max-width: 100%;">
+                    <div class="ratio-box__content">
+                      <div class="placeholder full" >
+                        {{ 'image' | placeholder_svg_tag }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bd">
+                  <h4 class="f--main t--meta font-size--xs lg--font-size--s">{{ 'homepage.onboarding.blog_name' | t }}</h4>
+                  <h3 class="f--title font-size--ml lg--font-size--lxl">{{ 'homepage.onboarding.blog_title' | t }}</h3>
+                  <h5 class="f--main t--meta  mt2 font-size--xs lg--font-size--s  {{ __secondary__ }}">{% include 'date', date_object: placeholder_date  %}</h5>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

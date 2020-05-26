@@ -1,0 +1,153 @@
+<!-- /snippets/store.liquid -->
+
+<section class="store section m0 py4 bg--section">
+  <div class="wrapper section--wrapper">
+
+    {% if section.settings.title != '' %}
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+
+    {% assign product = all_products[section.settings.selected_product] %}
+    {% capture sectionID %}section-{{ section.id }}-{{ product.handle }}{% endcapture %}
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% assign show_quantity = section.settings.show_quantity %}
+    {% assign in_list = true %}
+
+    {% if section.settings.show_description  %}
+      {% assign paragraphs = product.description | split: '<p>' %}
+      {% assign short_description = paragraphs[1] | replace: '</p>', '' %}
+    {% endif %}
+
+    {% if section.settings.rich_text != '' %}
+      {% assign short_description = section.settings.rich_text %}
+    {% endif %}
+
+    {% comment %}
+      Check if the product is on sale and set a variable to be used below.
+    {% endcomment %}
+    {% assign on_sale = false %}
+    {% if product.compare_at_price > product.price %}
+      {% assign on_sale = true %}
+    {% endif %}
+
+    {% if section.settings.product_media_size == 'large' %}
+      {% assign product_media_class = 'lg--one-half dt--seven-twelfths' %}
+      {% assign product_desc_class = 'lg--one-half dt--five-twelfths' %}
+    {% else %}
+      {% assign product_media_class = 'lg--one-half dt--one-half' %}
+      {% assign product_desc_class = 'lg--one-half dt--one-half' %}
+    {% endif %}
+
+    {% if section.settings.selected_product and section.settings.selected_product  != empty %}
+
+    {% assign has_video = false %}
+    {% assign has_external_video = false %}
+    {% assign has_model = false %}
+
+    {% for media in product.media %}
+      {% case media.media_type %}
+      {% when 'video' %}
+        {% assign has_video = true %}
+      {% when 'external_video' %}
+        {% assign has_external_video = true %}
+      {% when 'model' %}
+        {% assign has_model = true %}
+      {% endcase %}
+    {% endfor %}
+
+    <div itemscope itemtype="http://schema.org/Product"
+        class="grid section-product single-product clearfix"
+        id="{{ sectionID }}"
+        data-section-id="{{ sectionID }}"
+        data-section-type="product"
+        data-money-format="{{ shop.money_format }}"
+        data-has-video="{{ has_video }}"
+        data-has-external-video="{{ has_external_video }}"
+        data-has-model="{{ has_model }}">
+
+          {% include 'single-product-inner', show_payment_button: section.settings.show_payment_button, enable_video_looping: section.settings.enable_video_looping %}
+
+    </div>
+    {% else %}
+      {% include 'onboarding_single-product' %}
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Feature product",
+  "class": "section-store",
+  "settings": [
+    {
+       "type":      "text",
+       "id":        "title",
+       "label":     "Heading"
+    },
+    {
+       "type": "product",
+       "id": "selected_product",
+       "label": "Choose product:"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_button",
+      "label": "Show dynamic checkout button",
+      "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "Show quantity"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show description",
+      "info": "Show first paragraph of product description"
+    },
+    {
+       "type":      "richtext",
+       "id":        "rich_text",
+       "label":     "Short Description",
+       "info": "Optional: enter custom short description which will override product description."
+    },
+    {
+      "type": "header",
+      "content": "Media",
+      "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label":  "Enable video looping",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "product_media_size",
+      "label": "Product media size - desktop",
+      "options": [
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "large"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

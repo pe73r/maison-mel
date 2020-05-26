@@ -1,0 +1,60 @@
+<div class="grid__item">
+  <div class="grid product-single {% if section.settings.alternate_rows %}{% cycle '', 'grid--rev' %}{% endif %}">
+    <div class="grid__item {{ product_media_class }} text-center relative">
+      <div class="mb3 lg--mb0 product-single__imageHolder relative clearfix">
+        {% if on_sale %}
+          <div class="product__on-sale color--white bg--shop-accent f--main t--meta font-size--xs lg--font-size--s">{{ 'products.product.on_sale' | t }}</div>
+        {% endif %}
+
+        {%- assign current_variant = product.selected_or_first_available_variant -%}
+
+
+        {% assign featured_media = current_variant.featured_media | default: product.featured_media %}
+        {% assign image_counter = 0 %}
+        {% for media in product.media %}
+          <div class="product-media-slider__item">
+            {% include 'media', media: media, featured_media: featured_media, zoom_enabled: true, enable_video_looping: section.settings.enable_video_looping, slider: false %}
+          </div>
+        {% endfor %}
+        
+        {% assign first_3d_model = product.media | where: "media_type", "model" | first %}
+        {%- if first_3d_model -%}
+          <button
+            aria-label="{{ 'products.media.view_in_your_space_label' | t }}"
+            class="btn"
+            data-shopify-xr
+            data-shopify-model3d-id="{{ first_3d_model.id }}"
+            data-shopify-title="{{ product.title }}"
+            data-shopify-xr-hidden>
+            {% include 'glyph-model' %}{{ 'products.media.view_in_your_space' | t }}
+          </button>
+        {%- endif -%}
+
+
+      </div>
+    </div><!-- end product images -->
+
+    <div class="grid__item {{ product_desc_class }} text-align--center pt2 lg--pt1 dt--pt4">
+
+      <div class="mx--auto lg--four-fifths dt--three-fifths">
+        {% include 'product-page-form', show_payment_button: show_payment_button %}
+      </div>
+
+    </div><!-- end product form -->
+
+  </div><!-- end images and form grid -->
+
+
+  {% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ sectionID}}" data-product-json>
+    {{ product | json }}
+  </script>
+  <script type="application/json" id="FirstVariantJson-{{ sectionID }}" data-first-variant-json>
+    {{ product.selected_or_first_available_variant | json }}
+  </script>
+  <script type="application/json" id="ModelJson-{{ sectionID}}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+  </script>
+  {% endunless %}
+
+</div>

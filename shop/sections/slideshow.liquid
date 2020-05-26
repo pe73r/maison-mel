@@ -1,0 +1,331 @@
+{% comment %}
+Script to see if first section to hide header border
+{% endcomment %}
+
+<section id="section-{{ section.id }}" class="slideshow relative feature-image section section--feature-image section--slideshow bg--section" data-slide-speed="{{ section.settings.slide_speed }}" {% if section.settings.auto_rotate %}data-auto-rotate="true"{% endif %}  data-section-type="slideshow" data-section-id="{{ section.id }}">
+
+  {% assign style = section.settings.slideshow_style %}
+
+
+  <div class="relative">
+    <div class="slideshow-container">
+    {% for block in section.blocks %}
+
+      {% assign placeholder = false %}
+      {% if block.settings.feature_image %}
+        {% assign feature_image = block.settings.feature_image %}
+      {% else %}
+        {% assign placeholder = true %}
+      {% endif %}
+
+      {% assign main_text =  block.settings.main_text | escape %}
+      {% assign sub_text =  block.settings.title  %}
+      {% assign cta_text = block.settings.cta_text %}
+      {% assign cta_url = block.settings.cta_url %}
+
+
+
+      <div class="slideshow__slide overflow--hidden"  {{ block.shopify_attributes }}>
+        <div class="p0 clearfix relative feature-image__container--{% if style == 'full_screen' %}full_screen{% else %}content{% endif %} ">
+
+          {% if style == 'full_screen' %}
+            {% if placeholder %}
+            <div class="placeholder full">
+              {{ 'lifestyle-1' | placeholder_svg_tag }}
+            </div>
+            {% else %}
+
+            <div  class="lazyload feature-image__cover {% unless forloop.first == true %} lazypreload{% endunless %}"
+                  data-bgset="{% include 'bgset', image: feature_image %}"
+                  data-sizes="auto"
+                  data-parent-fit="cover"
+                  style="background-image: url('{{ feature_image | img_url: '300x300' }});"
+                  >
+            </div>
+
+            {% endif %}
+          {% endif %}
+
+          {% if style == 'fit_content' %}
+            {% if feature_image  %}
+
+              {% capture img_id %}FeatureImage-{{ feature_image.id }}{% endcapture %}
+              {% capture wrapper_id %}FeatureImageWrapper-{{ feature_image.id }}{% endcapture %}
+              {%- assign img_url = feature_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <div id="{{ wrapper_id }}" class="resp-img-wrapper js">
+                <div style="padding-top:{{ 1 | divided_by: feature_image.aspect_ratio | times: 100}}%;">
+                  <img id="{{ img_id }}"
+                       class="resp-img feature-image__img-content lazyload"
+                       src="{{ feature_image | img_url: '300x' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+                       data-aspectratio="{{ feature_image.aspect_ratio }}"
+                       data-sizes="auto"
+                       alt="{{ feature_image.alt | escape }}">
+                </div>
+              </div>
+              <noscript>
+                <img src="{{ feature_image.src | img_url: 'large' }}" alt="{{ feature_image.alt | escape }}" class="feature-image__img-content">
+              </noscript>
+
+            {% else %}
+            <div class="placeholder full">
+              {{ 'lifestyle-1' | placeholder_svg_tag }}
+            </div>
+            {% endif %}
+          {% endif %}
+
+          <div class="absolute top--0 left--0 full p2 lg--p4">
+            <div class="table full">
+              <div class="table-cell {{ block.settings.content_position }}">
+
+                {% if sub_text != '' %}
+                <h4 class="Slideshow--title md--font-size--s lg--font-size--xxxxl regular f--main color--{{ block.settings.text_color }}">{{ sub_text }}</h4>
+                {% endif %}
+
+                {% if main_text != '' %}
+                <h2 class="f--title font-size--xxl lg--font-size--xxxl color--{{ block.settings.text_color }} mt2">{{ main_text }}</h2>
+                {% endif %}
+
+                {% if cta_url != blank %}
+                <a href="{{ cta_url }}" class="btn bg--{{ block.settings.button_color }} color--{{ block.settings.button_text_color }}-overlay feature-image__btn font-size--l">{{ cta_text }}</a>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+    </div>
+
+    <!-- <div class="slideshow__status f--main t--meta font-size--s lg--hide">
+      <span class="current color--shop-accent "></span>
+      &nbsp;/&nbsp;
+      <span class="total"></span>
+    </div> --> 
+
+
+{% comment %}
+    {% include 'svg-icon', icon: 'chevron-left', class: 'slick--left-svg' %}
+    {% include 'svg-icon', icon: 'chevron-right', class: 'slick--next-svg' %}
+{% endcomment %}
+  </div>
+
+</section>
+<style>
+
+  #section-{{ section.id }} .Slideshow--title{
+     font-size: {{ section.settings.title_size }}px;
+   }
+//
+</style>
+
+
+
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "section-slideshow",
+  "settings": [
+    {
+      "type": "select",
+      "id": "slideshow_style",
+      "label": "Slideshow style:",
+      "options": [
+        {
+          "value": "full_screen",
+          "label": "Full Screen"
+        },
+        {
+          "value": "fit_content",
+          "label": "Content"
+        }
+      ],
+      "info": "Use 'Content' style if you want to avoid image cropping."
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate slides"
+    },
+    {
+      "type": "select",
+      "id": "slide_speed",
+      "label": "Change slides every",
+      "options": [
+        {
+          "value": "5000",
+          "label": "5 Seconds"
+        },
+        {
+          "value": "6000",
+          "label": "6 Seconds"
+        },
+        {
+          "value": "7000",
+          "label": "7 Seconds"
+        },
+        {
+          "value": "8000",
+          "label": "8 Seconds"
+        },
+        {
+          "value": "9000",
+          "label": "9 Seconds"
+        },
+        {
+          "value": "10000",
+          "label": "10 Seconds"
+        }
+      ]
+    },
+    {
+        "type":      "range",
+        "id":        "title_size",
+        "min":       20,
+        "max":        50,
+        "step":       1,
+        "unit":       "px",
+        "label":     "Heading font size",
+        "default":   30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Heading",
+          "default": "<p>Heading goes here</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "main_text",
+          "label": "Text",
+          "default": "Slideshow"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "Optional: Call to action URL"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Call to action button text",
+          "default": "Shop Now"
+        },
+        {
+         "type": "select",
+         "id": "text_color",
+         "options": [
+            { "value": "primary", "label": "Primary"},
+            { "value": "main-accent", "label": "Main Accent"},
+            { "value": "shop-accent ", "label": "Shop Accent"},
+            { "value": "secondary-accent", "label": "Secondary Accent"},
+            { "value": "white ", "label": "White"},
+            { "value": "black", "label": "Black"}
+         ],
+         "label": "Text and button color"
+         },
+		 {
+         "type": "select",
+         "id": "button_color",
+         "options": [
+            { "value": "primary", "label": "Primary"},
+            { "value": "main-accent", "label": "Main Accent"},
+            { "value": "shop-accent ", "label": "Shop Accent"},
+            { "value": "secondary-accent", "label": "Secondary Accent"},
+            { "value": "white ", "label": "White"},
+            { "value": "black", "label": "Black"}
+         ],
+         "label": "Button color"
+         },
+	     {
+         "type": "select",
+         "id": "button_text_color",
+         "options": [
+            { "value": "primary", "label": "Primary"},
+            { "value": "main-accent", "label": "Main Accent"},
+            { "value": "shop-accent ", "label": "Shop Accent"},
+            { "value": "secondary-accent", "label": "Secondary Accent"},
+            { "value": "white ", "label": "White"},
+            { "value": "black", "label": "Black"}
+         ],
+         "label": "Button color"
+         },
+         {
+          "type": "select",
+          "id": "content_position",
+          "label": "Content Position",
+          "options": [
+            {
+              "value": "text-align--left align--top",
+              "label": "Top Left"
+            },
+            {
+              "value": "text-align--center align--top",
+              "label": "Top Center"
+            },
+            {
+              "value": "text-align--right align--top",
+              "label": "Top Right"
+            },
+            {
+              "value": "text-align--left align--middle",
+              "label": "Middle Left"
+            },
+            {
+              "value": "text-align--center align--middle",
+              "label": "Middle Center"
+            },
+            {
+              "value": "text-align--right align--middle",
+              "label": "Middle Right"
+            },
+            {
+              "value": "text-align--left align--bottom",
+              "label": "Bottom Left"
+            },
+            {
+              "value": "text-align--center align--bottom",
+              "label": "Bottom Center"
+            },
+            {
+              "value": "text-align--right align--bottom",
+              "label": "Bottom Right"
+            }
+          ],
+          "default":   "text-align--center align--middle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

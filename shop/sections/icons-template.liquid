@@ -1,0 +1,32 @@
+<div class="icons">
+    {% for block in section.blocks %}
+        {{ block.settings.icon}}
+    {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Icons",
+    "class": "section-blog",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "icon",
+        "name": "icon block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Choose your icon"
+          }
+        ]
+      }
+    ] 
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

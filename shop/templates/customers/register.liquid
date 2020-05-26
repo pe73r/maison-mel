@@ -1,0 +1,36 @@
+<!-- /templates/customers/register.liquid -->
+{% include 'global-variables' %}
+
+<section class="section bg--section m0 py4 f--main">
+  <div class="wrapper section--wrapper text-align--center">
+    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">
+      {{ 'customer.register.title' | t }}
+    </h1>
+
+    <div class="form-vertical customer-form mx--auto">
+      {% form 'create_customer' %}
+
+        {{ form.errors | default_errors }}
+
+        <label for="FirstName" class="hidden-label f--main block mt2">{{ 'customer.register.first_name' | t }}</label>
+        <input type="text" name="customer[first_name]" id="FirstName" class=" full--w input-underline input-underline--primary" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words">
+
+        <label for="LastName" class="hidden-label f--main block mt2">{{ 'customer.register.last_name' | t }}</label>
+        <input type="text" name="customer[last_name]" id="LastName" class="full--w input-underline input-underline--primary" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+
+        <label for="Email" class="hidden-label f--main block mt2">{{ 'customer.register.email' | t }}</label>
+        <input type="email" name="customer[email]" id="Email" class="full--w input-underline input-underline--primary {% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'customer.register.email' | t }}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+
+        <label for="CreatePassword" class="hidden-label f--main block mt2">{{ 'customer.register.password' | t }}</label>
+        <input type="password" name="customer[password]" id="CreatePassword" class="full--w input-underline input-underline--primary {% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
+
+        <p>
+          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="mt3 btn btn--full {{ __button__ }}">
+        </p>
+        <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
+
+      {% endform %}
+    </div>
+
+  </div>
+</section>

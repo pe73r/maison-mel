@@ -1,0 +1,318 @@
+<!-- /sections/article-template.liquid -->
+{% comment %}
+
+  Comments will not appear right after they are submitted, either to be checked for spam
+  or to await moderation. When a comment is submitted, the browser is redirected to a page
+  that includes the new comment id in its URL.
+    Example: http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
+
+  More information:
+    - http://docs.shopify.com/themes/liquid-variables/comment
+
+{% endcomment %}
+
+{% assign number_of_comments = article.comments_count %}
+{% assign feature_image_size = section.settings.feature_image_size %}
+
+{% comment %}
+  If a comment was just submitted and it has no blank fields, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+
+
+<section class="section bg--section article py4" data-section-type="article" data-section-id="{{ section.id }}">
+  <div class="wrapper section--wrapper">
+    {% if feature_image_size == 'large' %}
+      <div class="article__header text-align--center mx--auto">
+        {% assign article_blog = article.url  | split: '/' %}
+        {% assign blog_slug = article_blog[2] %}
+        {% assign blog_title = blogs[blog_slug].title %}
+        <h4 class="f--main t--section-title  font-size--m lg--font-size--l">
+          <a href="/blogs/{{ blog_slug }}">{{ blog_title }}</a>
+        </h4>
+        <h1 class="f--title font-size--xxl lg--font-size--xxxxl f--title m0 mt2 px2">{{ article.title }}</h1>
+        {% if article.excerpt.size > 0 %}
+        <hr class="rule bg--main-accent my3 mx--auto">
+          <div class="f--body font-size--ml">
+            {{ article.excerpt }}
+          </div>
+        {% endif %}
+      </div>
+
+{% comment %}
+      {% if article.image %}
+      <div class="full mt3">
+        {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+        {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}
+        {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
+          <div style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+            <img id="{{ img_id }}"
+                class="resp-img lazyload feature-image"
+                src="{{ article.image | img_url: '50x' }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                data-aspectratio="{{ article.image.aspect_ratio }}"
+                data-sizes="auto"
+                alt="{{ article.image.alt | escape }}">
+          </div>
+        </div>
+        <noscript>
+          <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+        </noscript>
+      </div>
+      {% endif %}
+{% endcomment %}    
+   
+    {% endif %}
+
+    <div class="grid article__content{% if feature_image_size == 'large' %} mt3{% else %} lg--mt3{% endif %}">
+      <div class="grid__item f--main font-size--s lg--two-twelfths t--meta{% if feature_image_size == 'medium' %} md-dn--hide{% endif %}">
+        <div class="{% if feature_image_size == 'medium' %}lg--hide{% endif %}">
+          {% if settings.show_author %}
+          {% capture author %}{{ article.author }}{% endcapture %}
+          <p>{{ 'blogs.article.author_by_html' | t: author: author }}</p>
+          {% endif %}
+
+          <p>{% include 'date', date_object: article.published_at  %}</p>
+
+          {% if section.settings.show_share_links or section.settings.show_tags  %}
+          <hr class="rule bg--main-accent my3 text-align--left">
+          {% endif %}
+        </div>
+
+        <div class="md-dn--hide">
+          {% if section.settings.show_share_links %}
+            {% include 'share' %}
+          {% endif %}
+          {% if section.settings.show_tags %}
+            {% if article.tags %}
+            <ul class="m0 p0 list--reset f--main t--meta font-size--s">
+              {% for tag in article.tags %}
+                <li class="inline-block mr1 dt--block dt--mb1">
+                  <a href="/blogs/{{ blog_slug }}/tagged/{{ tag | handleize }}">#{{ tag }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          {% endif %}
+
+        </div>
+
+      </div>
+      <div class="grid__item lg--ten-twelfths">
+        {% if feature_image_size == 'medium' %}
+          <div class="article__header text-align--left md-dn--text-align--center">
+
+            {% assign article_blog = article.url  | split: '/' %}
+            {% assign blog_slug = article_blog[2] %}
+            {% assign blog_title = blogs[blog_slug].title %}
+            <h4 class="f--main t--section-title font-size--m lg--font-size--l">
+              <a href="/blogs/{{ blog_slug }}">{{ blog_title }}</a>
+            </h4>
+            <h1 class="f--title font-size--xxl lg--font-size--xxxxl f--title m0 mt2 md-dn--px2">{{ article.title }}</h1>
+            {% if article.excerpt.size > 0 %}
+            <hr class="rule bg--main-accent my3 md-dn--mx--auto" />
+              <div class="f--body font-size--ml">
+                {{ article.excerpt }}
+              </div>
+            {% endif %}
+
+          </div>
+
+          <div class="my3 md-dn--hide">
+            {% if settings.show_author %}
+            {% capture author %}{{ article.author }}{% endcapture %}
+            <p>{{ 'blogs.article.author_by_html' | t: author: author }}</p>
+            {% endif %}
+
+            <p>{% include 'date', date_object: article.published_at  %}</p>
+
+            {% if section.settings.show_share_links or section.settings.show_tags  %}
+            <hr class="rule bg--main-accent my3 text-align--left" />
+            {% endif %}
+          </div>
+
+
+          
+
+
+          <div class="lg--hide f--main font-size--s t--meta">
+            {% if settings.show_author %}
+            {% capture author %}{{ article.author }}{% endcapture %}
+            <p>{{ 'blogs.article.author_by_html' | t: author: author }}</p>
+            {% endif %}
+
+            <p>{% include 'date', date_object: article.published_at  %}</p>
+
+            {% if section.settings.show_share_links or section.settings.show_tags  %}
+            <hr class="rule bg--main-accent my3 text-align--left" />
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="rte rte--article {% if section.settings.large_first_paragraph %}rte--large-first-paragraph{% endif %} {% if section.settings.full_width_images %}rte--full-width-images{% endif %} {% if section.settings.full_width_blockquotes %}rte--full-width-blockquotes{% endif %}">
+          {{ article.content }}
+          
+          {% if article.image %}
+          <div class="full my3">
+            {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+            {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}
+            {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
+              <div style="padding-top:{{ 1 | divided_by: article.image.aspect_ratio | times: 100}}%;">
+                <img id="{{ img_id }}"
+                    class="resp-img lazyload feature-image"
+                    src="{{ article.image | img_url: '50x' }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+                    data-aspectratio="{{ article.image.aspect_ratio }}"
+                    data-sizes="auto"
+                    alt="{{ article.image.alt | escape }}">
+              </div>
+            </div>
+            <noscript>
+              <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+            </noscript>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="md-dn--show mt3 lg--hide">
+      {% if section.settings.show_share_links %}
+        {% include 'share' %}
+      {% endif %}
+      {% if section.settings.show_tags %}
+        {% if article.tags %}
+        <ul class="m0 p0 list--reset f--main t--meta font-size--s mb3">
+          {% for tag in article.tags %}
+            <li class="inline-block mr1 dt--block dt--mb1">
+              <a href="/blogs/{{ blog_slug }}/tagged/{{ tag | handleize }}">#{{ tag }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% if blog.comments_enabled? %}
+      <div class="article-comments lg--ten-twelfths push--lg--two-twelfths">
+        {% include 'article-comments' %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": {{ article.content | strip_html | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ shop.url | append: page.url | json }}
+    },
+    "headline": {{ article.title | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      {% assign image_size = article.image.width | append: 'x' %}
+      "image": [
+        {{ article | img_url: image_size | prepend: "https:" | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    {% if settings.show_author %}
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    {% else %}
+    "author": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    },
+    {% endif %}
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.share_image %}
+      {% assign image_size = settings.share_image.width | append: 'x' %}
+      "logo": {
+        "@type": "ImageObject",
+        "height": {{ settings.share_image.height | json }},
+        "url": {{ settings.share_image | img_url: image_size | prepend: "https:" | json }},
+        "width": {{ settings.share_image.width | json }}
+      },
+      {% endif %}
+      "name": {{ shop.name | json }}
+    }
+  }
+  </script>
+
+{% schema %}
+  {
+    "name": "Article pages",
+    "class": "section-article",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_links",
+        "label": "Show share links"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags"
+      },
+      {
+         "type":    "header",
+         "content": "Rich text editor"
+      },
+      {
+        "type": "checkbox",
+        "id": "large_first_paragraph",
+        "label": "Make first paragraph larger",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width_images",
+        "label": "Display images as full width",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "full_width_blockquotes",
+        "label": "Display blockquotes as full width",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "feature_image_size",
+        "label": "Feature image size - desktop",
+        "options": [
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "large"
+      }
+    ]
+  }
+{% endschema %}

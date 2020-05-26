@@ -1,0 +1,114 @@
+{% include 'global-variables' %}
+
+<div class="text-align--center" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+  <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+  {% if product.compare_at_price_max > product.price %}
+    <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+  {% endif %}
+  <div class="h2 f--main caps regular font-size--ml">
+
+    <span class="ProductPrice t--meta" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+    $19.99
+    </span>
+  </div>
+
+
+
+
+  <h1 class="f--title">
+    {{ 'homepage.onboarding.product_title' | t }}
+  </h1>
+
+  <div>
+
+  </div>
+
+  <hr class="rule bg--shop-accent mx--auto" />
+
+  <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+
+  <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+  {% comment %}
+    ID addToCartForm is a selector for the ajax cart plugin
+  {% endcomment %}
+  <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+    {% comment %}
+      Add product variants as a dropdown.
+        - By default, each variant (or combination of variants) will display as its own <option>
+        - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+      You can leverage jQuery to add a callback on page load and each time the select element changes:
+        - Include option_selection.js (as seen at the bottom of this file)
+        - This allows you to use JavaScript anytime the variant dropdown changes
+        - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+      For more information on products with multiple options, visit:
+        - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+    {% endcomment %}
+
+    {% comment %}
+    Product options from Debut
+    {% endcomment %}
+    {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+        {% for option in product.options_with_values %}
+          <div class="selector-wrapper js product-form__item t--meta">
+            {% comment %}
+            {% unless section.settings.hide_drop_down_labels %}
+            <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
+              {{ option.name }}
+            </label>
+            {% endunless %}
+            {% endcomment %}
+            <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input f--main t--meta mx--auto" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+              {% for value in option.values %}
+                <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endfor %}
+      {% endunless %}
+
+      <select name="id" id="ProductSelect-{{ sectionID }}" data-section="{{ sectionID }}" class="product-form__variants no-js">
+        {% for variant in product.variants %}
+          {% if variant.available %}
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+              {{ variant.title }}
+            </option>
+          {% else %}
+            <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+
+    {% comment %}
+    <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+    {% endcomment %}
+    {% if show_quantity %}
+      {% if settings.ajax_cart_method == "drawer" %}
+        <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector mx--auto f--main t--meta">
+      {% else %}
+        <div class="quantity--no-js relative mx--auto clearfix">
+          <label for="Quantity" class="quantity-selector left f--main font-size--m">{{ 'products.product.quantity' | t }}</label>
+          <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector mx--auto f--main t--meta">
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="cta-content {% unless current_variant.available %}hide-pay-buttons{% endunless %}  {% if section.settings.show_payment_button %}cta-content--pay-buttons{% endif %}"  data-cta-content>
+
+      <button type="submit" name="add" id="AddToCart--{{ section.id }}" class="btn addToCart mt2 mx--auto {{ __shop_button__ }}"  data-add-to-cart>
+        <span class="AddToCartText" data-add-to-cart-text>{{ 'products.product.add_to_cart' | t }}</span>
+      </button>
+
+      {% if section.settings.show_payment_button %}
+        <div class="mt2">{{ form | payment_button }}</div>
+      {% endif %}
+
+    </div>
+
+  </form>
+
+</div>

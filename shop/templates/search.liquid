@@ -1,0 +1,183 @@
+<!-- /templates/search.liquid -->
+{% comment %}
+
+  To return only products or pages in results:
+    - http://docs.shopify.com/manual/configuration/store-customization/return-only-product-in-storefront-search-results
+    - Or manually add type=product or type=page to the search URL as a parameter
+
+{% endcomment %}
+
+{% comment %}
+  Set grid_results to true and set search results as a grid instead of a list.
+  This works well when your search is only for products.
+{% endcomment %}
+{% assign grid_results = true %}
+
+{% comment %}
+  Check to enforce respond.js
+{% endcomment %}
+{% assign respond_js_secret_key = shop.domain | md5 %}
+{% unless search.terms == respond_js_secret_key %}
+
+{% comment %}
+  Avoid accessing search.results before the opening paginate tag.
+  If you do, the pagination of results will be broken.
+{% endcomment %}
+{% paginate search.results by 10 %}
+
+
+<section class="section m0 py4 f--main">
+  <div class="wrapper section--wrapper text-align--center">
+
+    {% comment %}
+    {% if search.performed %}
+      {% if search.results_count == 0 %}
+        <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+      {% else %}
+        <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+      {% endif %}
+    {% endif %}
+    {% endcomment %}
+
+    {% comment %}
+    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.title' | t }}</h1>
+    {% endcomment %}
+
+
+    <div class="mx--auto lg--one-half">
+      <form action="{{ routes.search_url }}" method="get" class="input-group search-bar " role="search">
+        {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="search-input input-group-field input-underline input-underline--primary font-size--xl" aria-label="{{ 'general.search.placeholder' | t }}">
+        <span class="input-group-btn search-btn">
+          <button type="submit" class="block font-size--xl">
+            {% include 'svg-icon', icon: 'search' %}
+          </button>
+        </span>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+{% if search.performed %}
+  {% if search.results_count == 0 %}
+    <section class="section bg--section m0 py4 f--main">
+      <div class="wrapper section--wrapper text-align--center">
+        <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+      </div>
+    </section>
+  {% endif %}
+{% endif %}
+
+{% assign has_products = false %}
+{% assign has_articles = false %}
+{% assign has_pages = false %}
+
+{% if search.performed %}
+  {% for item in search.results %}
+    {% if item.object_type == 'article' %}
+      {% assign has_articles = true %}
+    {% elsif item.object_type == 'page' %}
+      {% assign has_pages = true %}
+    {% else %}
+      {% assign has_products = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% comment %}
+Show articles first
+{% endcomment %}
+
+{% if has_articles %}
+<section class="section m0 py3 bg--section">
+  <div class="wrapper section--wrapper">
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Articles</h2>
+    <div class="grid grid-uniform">
+      {% for item in search.results %}
+        {% if item.object_type == 'article' %}
+          {% assign article = item %}
+          <div class="grid__item lg--one-half dt--one-quarter">
+            {% include 'article-standard' %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if has_products %}
+<section class="section m0 py3 bg--section">
+  <div class="wrapper section--wrapper">
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Products</h2>
+    <div class="grid grid-uniform product-grid py2">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% assign product = item %}
+          {% assign grid_item_width = 'md-dn--one-half lg--one-quarter  dt--one-quarter mt4' %}
+          {% include 'product-grid-item' %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if has_pages %}
+<section class="section m0 py3 bg--section">
+  <div class="wrapper section--wrapper">
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Pages</h2>
+    <div class="grid grid-uniform">
+      {% for item in search.results %}
+        {% if item.object_type == 'page' %}
+          <div class="grid__item lg--one-half dt--one-quarter">
+            <article class="article article--row mb3 text-align--center">
+              <a href="{{ item.url }}">
+                <h3 class="font-size--l lg--font-size--xl mt2">{{ item.title }}</h3>
+                {% assign article_date = item.created_at  | date: "%s"  %}
+                <h5 class="regular f--main mt2 font-size--xs lg--font-size--s color--main-accent mt2">{% include 'date', date_object: article_date %}</h5>
+              </a>
+            </article>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+{% if paginate.pages > 1 %}
+<section class="section m0 pt3 pb2 bg--section">
+  <div class="wrapper section--wrapper text-align--center">
+    <ul class="pagination list-rest no-bullets  max-width--4 mx--auto text-align--center f--main font-size--s inline-block relative">
+      {% if paginate.previous.is_link %}
+          <li class="pagination__link pagination__link--previous">
+            <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.previous.url }}">{{ paginate.previous.title | replace: '&laquo;', ''}}</a>
+          </li>
+      {% endif %}
+      {% assign count = paginate.pages %}
+      {% for part in (1..count) %}
+          <li class="inline-block mx1 md-dn--hide">
+            <a class="pagination__item  {{ __secondary__ }} {% if paginate.current_page == part %}active{% endif %}" href="/search?page={{ forloop.index }}&q={{ search.terms }}">{{ forloop.index }}</a>
+          </li>
+      {% endfor %}
+      {% if paginate.next.is_link %}
+          <li class="pagination__link pagination__link--next">
+            <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.next.url }}">{{ paginate.next.title | replace: '&raquo;', '' }}</a>
+          </li>
+      {% endif %}
+    </ul>
+  </div>
+</section>
+{% endif %}
+
+
+{% endpaginate %}
+
+{% else %}
+  {% include 'respond' %}
+  {% layout none %}
+{% endunless %}

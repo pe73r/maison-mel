@@ -1,0 +1,52 @@
+<div class="grid">
+
+  <div class="grid__item dt--seven-twelfths">
+    <article class="video video--large">
+
+        <a class="js--video-trigger block pointer">
+          <div class="video__container">
+            <div class="ratio-box ratio-box ratio-box--16-9 overflow--hidden">
+              <div class="ratio-box__content video__thumbnail bg-cover" background-image="">
+                <div class="video__play-icon font-size--xxxl color--white">
+                  {% include 'svg-icon', icon: 'play' %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <h3 class="f--title video__title video__title--feature font-size--xl lg--font-size--xxxl mt2">
+        </h3>
+
+        <hr class="mt1 rule bg--main-accent text-align--left" />
+
+        <p class="video__desc f--body lg--font-size--ml">
+
+        </p>
+
+        <h6 class="video__date mt1 t--meta f--main font-size--xs lg--font-size--s  {{ __secondary__ }}"></h6>
+
+    </article>
+  </div>
+  <div class="grid__item dt--five-twelfths mt2 dt--mt0 video__sidebar">
+    <article class="video video--small mb3 video--clone hide">
+        <a class="js--video-trigger block pointer">
+          <div class="media">
+            <div class="media__img video__image video__image--small">
+              <div class="ratio-box ratio-box ratio-box--16-9  overflow--hidden ">
+                <div class="ratio-box__content video__thumbnail bg-cover" background-image="">
+                  <div class="video__play-icon video__play-icon--small font-size--s lg--font-size--xl color--white">
+                    {% include 'svg-icon', icon: 'play' %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bd">
+              <h3 class="f--title video__title font-size--ml lg--font-size--lxl"></h3>
+              <h5 class="video__date f--main t--meta mt2 font-size--xs lg--font-size--s  {{ __secondary__ }}"></h5>
+            </div>
+          </div>
+        </a>
+    </article>
+  </div>
+</div>

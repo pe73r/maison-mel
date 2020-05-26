@@ -1,0 +1,42 @@
+<ul class="share__links list--reset m0 p0 font-size--xs">
+  {% if settings.share_facebook %}
+  <li class="inline-block">
+    <a href="//www.facebook.com/sharer/sharer.php?u={{ product_url }}" target="_blank" class="block facebook">
+      {% include 'svg-icon', icon: 'facebook' %}
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.share_twitter %}
+  <li class="inline-block">
+    <a href="//twitter.com/home?status={{ tweet }}" target="_blank" class="block twitter">
+      {% include 'svg-icon', icon: 'twitter' %}
+    </a>
+  </li>
+  {% endif %}
+
+  {% if template.name == 'product' and settings.share_pinterest %}
+  <li  class="inline-block">
+    <a href="//pinterest.com/pin/create/button/?url={{ share_url }}&media={{ share_image }}&description={{ product.title }}" class="block pinterest" target="_blank" >
+      {% include 'svg-icon', icon: 'pinterest' %}
+    </a>
+  </li>
+  {% endif %}
+
+
+  {% if template.name == 'article' and settings.share_pinterest %}
+  <li class="inline-block">
+    <a href="//pinterest.com/pin/create/button/?url={{ share_url }}&media={{ share_image }}&description={{ product.title }}" class="block pinterest" target="_blank" >
+      {% include 'svg-icon', icon: 'pinterest' %}
+    </a>
+  </li>
+  {% endif %}
+
+  {% if settings.share_email %}
+    <li class="inline-block">
+      <a href="mailto:?&subject=Product Title&body={{ share_url }}" class="block email" target="_blank" >
+        {% include 'svg-icon', icon: 'email' %}
+      </a>
+    </li>
+  {% endif %}
+</ul>

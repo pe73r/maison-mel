@@ -1,0 +1,121 @@
+<!-- /templates/customers/account.liquid -->
+{% comment %}
+
+  For all available customer liquid tags:
+    - http://docs.shopify.com/themes/liquid-variables/customer
+
+{% endcomment %}
+
+
+<section class="section bg--section m0 py4 f--main">
+  <div class="wrapper section--wrapper">
+    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl  m0 pb3">
+      {{ 'customer.account.title' | t }}
+    </h1>
+
+    <div class="grid">
+
+      <div class="grid__item two-thirds md-dn--one-whole">
+        <h2 class="h4 f--main font-size--ml">{{ 'customer.orders.title' | t }}</h2>
+
+        {% comment %}
+          If we have past orders, loop through each one
+        {% endcomment %}
+        {% paginate customer.orders by 20 %}
+          {% if customer.orders.size != 0 %}
+
+            <div class="table-wrap mt3">
+              <table class="full">
+                <thead>
+                  <tr>
+                    <th>{{ 'customer.orders.order_number' | t }}</th>
+                    <th>{{ 'customer.orders.date' | t }}</th>
+                    <th>{{ 'customer.orders.payment_status' | t }}</th>
+                    <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                    <th>{{ 'customer.orders.total' | t }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for order in customer.orders %}
+                    <tr>
+                      <td>{{ order.name | link_to: order.customer_url }}</td>
+                      <td>{{ order.created_at | date: format: 'month_day_year' }}</td>
+                      <td>{{ order.financial_status_label }}</td>
+                      <td>{{ order.fulfillment_status_label }}</td>
+                      <td>{{ order.total_price | money }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+          {% else %}
+
+            <p>{{ 'customer.orders.none' | t }}</p>
+
+          {% endif %}
+
+
+          {% if paginate.pages > 1 %}
+          <div class="text-align--center">
+            <ul class="pagination list-rest no-bullets mt4 max-width--4 mx--auto text-align--center f--main font-size--s inline-block relative">
+              {% if paginate.previous.is_link %}
+                  <li class="pagination__link pagination__link--previous">
+                    <a class="pagination__item color--main-accent" href="{{ paginate.previous.url }}">{{ paginate.previous.title | replace: '&laquo;', ''}}</a>
+                  </li>
+              {% endif %}
+              {% assign count = paginate.pages %}
+              {% if paginate.next.is_link %}
+                  <li class="pagination__link pagination__link--next">
+                    <a class="pagination__item color--main-accent" href="{{ paginate.next.url }}">{{ paginate.next.title | replace: '&raquo;', '' }}</a>
+                  </li>
+              {% endif %}
+            </ul>
+          </div>
+          {% endif %}
+
+        {% endpaginate %}
+      </div>
+
+      <div class="grid__item one-third md-dn--one-whole">
+        <h2 class="h4 f--main font-size--ml ">{{ 'customer.account.details' | t }}</h2>
+
+        {% if customer.default_address != nil %}
+          <p class="mt3">
+          {{ customer.name }}<br/>
+          {{ customer.default_address.address1 }}<br>
+
+          {% if customer.default_address.address2 != "" %}
+            {{ customer.default_address.address2 }}<br>
+          {% endif %}
+
+          {% if customer.default_address.city != "" %}
+            {{ customer.default_address.city }}<br>
+          {% endif %}
+
+          {% if customer.default_address.province_code != "" %}
+            {{ customer.default_address.province_code | upcase }}<br>
+          {% endif %}
+
+          {% if customer.default_address.zip != "" %}
+            {{ customer.default_address.zip | upcase }}<br>
+          {% endif %}
+
+          {% if customer.default_address.country != "" %}
+            {{ customer.default_address.country }}<br>
+          {% endif %}
+
+          {% if customer.default_address.phone != "" %}
+            {{ customer.default_address.phone }}
+          {% endif %}
+          </p>
+
+        {% endif %}
+
+        <p><a href="{{ routes.account_addresses_url }}">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,182 @@
+<!-- /snippets/product-grid-item.liquid -->
+{% comment %}
+
+  This snippet is used to showcase each product during the loop,
+  'for product in collection.products' in collection.liquid.
+
+  A liquid variable (grid_item_width) is set just before the this
+  snippet is included to change the size of the container.
+  Once the variable is set on a page, all future instances of this
+  snippet will use that width. Overwrite the variable to adjust this.
+
+  Example
+    - assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+{% include 'global-variables' %}
+
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+
+{% unless grid_item_width %}
+  {% assign grid_item_width = 'md-dn--one-half lg--one-quarter dt--one-quarter' %}
+{% endunless %}
+
+{% assign title_class = 'font-size--m md--font-size--ml' %}
+{% if large == true %}
+  {% assign title_class = 'font-size--ml lg--font-size--l dt--font-size--xl' %}
+{% endif %}
+
+{% assign price_class = 'font-size--sm ' %}
+{% if large == true %}
+  {% assign price_class = 'font-size--sm lg--font-size--m' %}
+{% endif %}
+
+{% assign unit_price_class = 'font-size--xs ' %}
+{% if large == true %}
+  {% assign unit_price_class = 'font-size--xs lg--font-size--s' %}
+{% endif %}
+
+{% comment %}
+  Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% comment %}
+  Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% comment %}
+  Assign a variant to show unit prices.
+{% endcomment %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+{% if product.price_varies and product.variants.size > 1 %}
+  {% for variant in product.variants %}
+    {% if variant.price == product.price_min %}
+      {% assign current_variant = variant %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="grid__item {{ grid_item_width }} text-align--center product-grid-item{% if current_variant.unit_price_measurement %} has-unit-price{% endif %}">
+
+  {% comment %}
+    Link to your product with the 'within: collection' filter for the link to be aware of the collection.
+    This allows you to create collection-based navigation on the product page.
+
+    Results of using 'within: collection':
+    - Instead of a URL with /products/product-handle
+      you would get /collections/collection-handle/products/product-handle
+
+    For more info on navigation within a collection
+      - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
+
+  {% endcomment %}
+
+  <a href="{{ product.url | within: collection }}" class="grid__image relative">
+    {% if on_sale %}
+      <div class="product__on-sale color--shop-accent-overlay bg--shop-accent f--main t--meta font-size--xs lg--font-size--s">{{ 'products.product.on_sale' | t }}</div>
+    {% endif %}
+    {% unless product.featured_media == blank %}
+      {% capture img_id %}ProductImage-{{ product.featured_media.id }}{% endcapture %}
+      {% capture wrapper_id %}ProductImageWrapper-{{ product.featured_media.id }}{% endcapture %}
+      {%- assign img_url = product.featured_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <div id="{{ wrapper_id }}" class="resp-img-wrapper js">
+        <div style="padding-top:{{ 1 | divided_by: product.featured_media.preview_image.aspect_ratio | times: 100}}%;">
+          <img id="{{ img_id }}"
+               class="resp-img product__img lazyload"
+               src="{{ product.featured_media | img_url: '100x' }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 470, 600, 750, 940, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ product.featured_media.preview_image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ product.featured_media.alt | escape }}">
+        </div>
+      </div>
+    {% else %}
+      <img src="{{ product.featured_media.src | img_url: 'large' }}" alt="{{ product.featured_media.alt | escape }}" class="product__img">
+    {% endunless %}
+    <noscript>
+      <img src="{{ product.featured_media.src | img_url: 'large' }}" alt="{{ product.featured_media.alt | escape }}" class="product__img">
+    </noscript>
+    {% if product.images.size > 1 and settings.products_show_second_image_on_hover %}
+      {% assign hover_image = product.media[1] %}
+      <div class="product-item-hover absolute top--0 right--0 bottom--0 left--0 z1 lazyload bg-cover"
+            data-bgset="{% include 'bgset', image: hover_image %}"
+            data-sizes="auto"
+            data-parent-fit="cover"
+            style="background-image: url({{ hover_image | img_url: '300x300' }});">
+      </div>
+    {% endif %}
+  </a>
+
+  {% if settings.show_vendor %}
+  <p class="{{ price_class }} t--meta f--main m0">{{ product.vendor }}</p>
+  {% endif %}
+  <p class="h6 {{ title_class }} f--title">
+    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+  </p>
+  <p class="{{ __shop_secondary__ }} {{ price_class }} t--meta f--main m0">
+    {% comment %}
+      You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+      if your variants have different prices.
+    {% endcomment %}
+
+      {% if on_sale %}
+        {% if product.price_varies %}
+          {% assign sale_price = product.price | money %}
+          {{ 'products.general.from_text_html' | t: price: sale_price }}
+        {% else %}
+          {% unless sold_out %}
+          {{ product.price | money }}
+          {% endunless %}
+        {% endif %}
+      {% else %}
+        {% if product.price_varies %}
+          {% assign price = product.price | money %}
+          {{ 'products.general.from_text_html' | t: price: price }}
+        {% else %}
+          {% unless sold_out %}
+          {{ product.price | money }}
+          {% endunless %}
+        {% endif %}
+      {% endif %}
+
+      {% if sold_out %}
+        <span class="sold-out color--primary">{{ 'products.product.sold_out' | t }}</span>
+      {% endif %}
+
+      {% if on_sale %}
+        <span class="visually-hidden mr1">{{ 'products.general.regular_price' | t }}</span>
+        <s class="color--primary ml1">{{ product.compare_at_price | money }}</s>
+      {% endif %}
+  </p>
+
+  <p class="{{ __shop_secondary__ }} {{ unit_price_class }} t--meta f--main m0" data-unit-price-wrapper>
+      <span data-unit-price>
+        {{- current_variant.unit_price | money -}}
+      </span>
+      <span>/</span>
+      <span data-unit-price-measurement-reference-value>
+      {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+        {{- current_variant.unit_price_measurement.reference_value -}}
+      {%- endif -%}
+      </span>
+      <span data-unit-price-measurement-reference-unit>
+        {{- current_variant.unit_price_measurement.reference_unit -}}
+      </span>
+  </p>
+
+</div>

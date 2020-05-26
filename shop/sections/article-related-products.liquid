@@ -1,0 +1,245 @@
+{% if section.settings.show_related_products %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+{% assign article_tags = article.tags %}
+
+{% assign max_count = section.settings.max_count %}
+
+{% assign count = 0 %}
+
+{% assign collection_handles = 'all' | join: '' %}
+
+{% if section.settings.priority_collection_2 and section.settings.priority_collection_2 != empty %}
+  {% assign handle_array = collections[section.settings.priority_collection_2] | map: "handle" %}
+  {% assign collection_handles = collection_handles | concat: handle_array %}
+{% endif %}
+
+{% if section.settings.priority_collection_1 and section.settings.priority_collection_1 != empty %}
+  {% assign handle_array = collections[section.settings.priority_collection_1] | map: "handle" %}
+  {% assign collection_handles = collection_handles | concat: handle_array %}
+{% endif %}
+
+{% assign collection_handles = collection_handles | reverse %}
+
+{% for collection_handle in collection_handles %}
+  {% for product in collections[collection_handle].products %}
+    {% assign duplicate = false %}
+
+    {% assign product_tags = product.tags | downcase %}
+    {% for tag in article_tags %}
+      {% assign tag_lowercase = tag | downcase %}
+      {% if product_tags contains tag_lowercase %}
+        {% unless product_handles contains product.handle %}
+          {% assign handle_array = product | map: "handle" %}
+          {% assign product_handles = product_handles | concat: handle_array %}
+        {% else %}
+          {% assign duplicate = true %}
+        {% endunless %}
+        {% unless duplicate == true %}
+          {% assign count = count | plus: 1 %}
+        {% endunless %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if count == max_count %}
+      {% break %}
+    {% endif %}
+
+  {% endfor %}
+
+  {% if count == max_count %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+
+{% if count > 0  %}
+
+{% assign large = false %}
+
+<section class="section bg--section m0 py4">
+  <div class="wrapper section--wrapper">
+
+    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 mb3">{{ section.settings.related_products_heading }}</h2>
+
+    {% if count == 1  %}
+      {% assign product_handle = product_handles[0] %}
+      {% assign product = all_products[product_handle] %}
+      {% capture sectionID %}section-{{ section.id }}-{{ product.handle }}{% endcapture %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign show_quantity = section.settings.show_quantity %}
+      {% assign in_list = true %}
+
+      {% if section.settings.show_description  %}
+        {% assign paragraphs = product.description | split: '<p>' %}
+        {% assign short_description = paragraphs[1] | replace: '</p>', '' %}
+      {% endif %}
+
+      {% if section.settings.rich_text != '' %}
+        {% assign short_description = section.settings.rich_text %}
+      {% endif %}
+
+      {% comment %}
+        Check if the product is on sale and set a variable to be used below.
+      {% endcomment %}
+      {% assign on_sale = false %}
+      {% if product.compare_at_price > product.price %}
+        {% assign on_sale = true %}
+      {% endif %}
+
+      {% if section.settings.product_media_size == 'large' %}
+        {% assign product_media_class = 'lg--one-half dt--seven-twelfths' %}
+        {% assign product_desc_class = 'lg--one-half dt--five-twelfths' %}
+      {% else %}
+        {% assign product_media_class = 'lg--one-half dt--one-half' %}
+        {% assign product_desc_class = 'lg--one-half dt--one-half' %}
+      {% endif %}
+
+      {% assign has_video = false %}
+      {% assign has_external_video = false %}
+      {% assign has_model = false %}
+
+      {% for media in product.media %}
+        {% case media.media_type %}
+        {% when 'video' %}
+          {% assign has_video = true %}
+        {% when 'external_video' %}
+          {% assign has_external_video = true %}
+        {% when 'model' %}
+          {% assign has_model = true %}
+        {% endcase %}
+      {% endfor %}
+
+      <div itemscope itemtype="http://schema.org/Product"
+          class="grid section-product single-product clearfix"
+          id="{{ sectionID }}"
+          data-section-id="{{ sectionID }}"
+          data-section-type="product"
+          data-money-format="{{ shop.money_format }}"
+          data-has-video="{{ has_video }}"
+          data-has-external-video="{{ has_external_video }}"
+          data-has-model="{{ has_model }}">
+
+            {% include 'single-product-inner', show_payment_button: section.settings.show_payment_button, enable_video_looping: section.settings.enable_video_looping %}
+
+      </div>
+
+    {% else %}
+      {% if count == 2 %}
+        {% assign large = true %}
+        {% assign grid_item_width = 'one-whole lg--one-half mt4' %}
+      {% elsif count == 3 %}
+        {% assign grid_item_width = 'one-whole lg--one-third mt4' %}
+      {% elsif count == 4 %}
+        {% assign grid_item_width = 'one-whole lg--one-quarter mt4' %}
+      {% endif %}
+
+      <div class="grid-uniform product-grid">
+        <div class="product-grid__inner clearfix">
+          {% assign last_index = count | minus: 1 %}
+          {% for i in (0..last_index) %}
+            {% assign product_handle = product_handles[i] %}
+            {% assign product = all_products[product_handle] %}
+            {% include 'product-grid-item', large: large, product: product, grid_item_width: grid_item_width %}
+          {% endfor %}
+        </div>
+      </div>
+
+    {% endif %}
+
+  </div>
+</section>
+{% endif %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Related products",
+    "class": "section-article-related-products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_related_products",
+        "label": "Enable related products",
+        "info":   "Show products that share the same tag as the article."
+      },
+      {
+          "type":      "text",
+          "id":        "related_products_heading",
+          "label":     "Title",
+          "info":      "Title for related products section",
+          "default":   "Related Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description_related",
+        "label": "Show excerpt",
+        "info":   "Shown if there is only 1 related product"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity",
+        "label": "Show quantity",
+        "info":   "Shown if there is only 1 related product"
+      },
+      {
+        "type": "header",
+        "content": "Media",
+        "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label":  "Enable video looping",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_media_size",
+        "label": "Product media size - desktop",
+        "options": [
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "large"
+      },
+      {
+        "type": "header",
+        "content": "No of Products"
+      },
+      {
+        "type": "range",
+        "id": "max_count",
+        "label": "Maximum products to show",
+        "min": 1,
+        "max": 4,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type":    "header",
+        "content": "Priority Collections"
+      },
+      {
+        "type":    "paragraph",
+        "content": "If you have over 50 products, search these collections for related products first."
+      },
+      {
+        "type":      "collection",
+        "id":        "priority_collection_1",
+        "label":     "Collection 1"
+      },
+      {
+        "type":      "collection",
+        "id":        "priority_collection_2",
+        "label":     "Collection 2"
+      }
+    ]
+  }
+{% endschema %}

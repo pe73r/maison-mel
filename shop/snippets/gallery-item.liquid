@@ -1,0 +1,37 @@
+{% assign type_classes = 'font-size--m lg--font-size--m dt--font-size--l' %}
+{% if type == 'large' %}
+{% assign type_classes = 'lg--font-size--xl ' %}
+{% endif %}
+
+<a {% if link %}href="{{ link }}"{% endif %} class="block ratio-box lazyload   bg-cover"
+  {% if image %}  
+  data-bgset="{% include 'bgset', image: image %}"
+  data-sizes="auto"
+  data-parent-fit="cover"
+  style="background-image: url('{{ feature_image | img_url: '300x300' }});"
+  style="background-color: #f5f5f5;"
+  {% endif %}>
+  <div class="ratio-box__content overflow--hidden">
+    {% unless image %}
+    <div class="placeholder">
+      {{ 'image' | placeholder_svg_tag }}
+    </div>
+    {% endunless %}
+  </div>
+  {% if caption != '' %}
+  <div class="gallery-meta bg--main-accent-rgba">
+    <div class="table full">
+      <div class="table-cell text-align--center align--bottom color--main-accent-overlay f--main gallery__caption md-dn--hide {{ type_classes }} px2">
+        {{ caption }}
+      </div>
+    </div>
+  </div>
+  <div class="gallery-metab">
+    <div class="table full">
+      <div class="table-cell text-align--center align--bottom color--main-accent-overlay f--main gallery__caption {{ type_classes }} px2">
+        {{ caption }}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</a>

@@ -1,0 +1,112 @@
+{% include 'global-variables' %}
+
+  <div id="comments" class="mt4">
+
+  <h2 class=" font-size--l f--main t--meta">{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h2>
+  <hr class="rule bg--main-accent text-align--left my3"/>
+  {% comment %}
+    Just like blog.liquid page, define how many comments should be on each page.
+  {% endcomment %}
+  {% paginate article.comments by 5 %}
+  {% comment %}
+    #comments is required, it is used as an anchor link by Shopify.
+  {% endcomment %}
+
+
+    {% if comment and comment.created_at %}
+      <p class="note form-success">
+        {% if blog.moderated? %}
+          {{ 'blogs.comments.success_moderated' | t }}
+        {% else %}
+          {{ 'blogs.comments.success' | t }}
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if number_of_comments > 0 %}
+      <ul class="no-bullets">
+        {% comment %}
+          If a comment was just submitted with no blank field, show it.
+        {% endcomment %}
+        {% if comment and comment.created_at %}
+          <li id="{{ comment.id }}" class="comment first{% if article.comments_count == 0 %} last{% endif %}">
+            {% include 'comment' %}
+          </li>
+        {% endif %}
+
+        {% comment %}
+          Showing the rest of the comments.
+        {% endcomment %}
+        {% for comment in article.comments %}
+          <li id="{{ comment.id }}" class="comment{% unless number_of_comments > article.comments_count %}{% if forloop.first %} first{% endif %}{% endunless %}{% if forloop.last %} last {% endif %}">
+            {% include 'comment' %}
+          </li>
+
+          {% unless forloop.last %}
+            <li><hr></li>
+          {% endunless %}
+        {% endfor %}
+      </ul>
+
+
+
+      {% if paginate.pages > 1 %}
+      <div class="text-align--center">
+        <ul class="pagination list-rest no-bullets mt4 max-width--4 mx--auto text-align--center f--main font-size--s inline-block relative">
+          {% if paginate.previous.is_link %}
+              <li class="pagination__link pagination__link--previous">
+                <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.previous.url }}">{{ paginate.previous.title | replace: '&laquo;', ''}}</a>
+              </li>
+          {% endif %}
+          {% assign count = paginate.pages %}
+          {% for part in (1..count) %}
+              <li class="inline-block mx1 md-dn--hide">
+                <a class="pagination__item  {{ __secondary__ }} {% if paginate.current_page == part %}active{% endif %}" href="?page={{ forloop.index }}#comments">{{ forloop.index }}</a>
+              </li>
+          {% endfor %}
+          {% if paginate.next.is_link %}
+              <li class="pagination__link pagination__link--next">
+                <a class="pagination__item  {{ __secondary__ }}" href="{{ paginate.next.url }}">{{ paginate.next.title | replace: '&raquo;', '' }}</a>
+              </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endif %}
+
+      <hr>
+
+    {% endif %}
+
+    <div class="form-vertical">
+      {% form 'new_comment', article %}
+        <h2 class="f--main mt2 font-size--m">{{ 'blogs.comments.title' | t }}</h2>
+
+        {{ form.errors | default_errors }}
+
+        <div class="grid">
+
+          <div class="grid__item large--one-half">
+            <label for="CommentAuthor" class="hidden-label">{{ 'blogs.comments.name' | t }}</label>
+            <input type="text" name="comment[author]" id="CommentAuthor" class="mt3 full--w input-underline input-underline--primary{% if form.errors contains 'author' %} error{% endif %}" placeholder="{{ 'blogs.comments.name' | t }}" value="{{ form.author }}" autocapitalize="words">
+
+            <label for="CommentEmail" class="hidden-label">{{ 'blogs.comments.email' | t }}</label>
+            <input type="email" name="comment[email]" id="CommentEmail" class="mt3 full--w input-underline input-underline--primary{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'blogs.comments.email' | t }}" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+          </div>
+
+          <div class="grid__item large--one-half">
+            <label for="CommentBody" class="hidden-label">{{ 'blogs.comments.message' | t }}</label>
+            <textarea name="comment[body]" id="CommentBody" class="full--w input-underline input-underline--primary input-underline--textarea  mt3{% if form.errors contains 'body' %} error{% endif %}" placeholder="{{ 'blogs.comments.message' | t }}">{{ form.body }}</textarea>
+          </div>
+
+        </div>
+
+        {% if blog.moderated? %}
+          <p class="f--main font-size--s mt3">{{ 'blogs.comments.moderated' | t }}</p>
+        {% endif %}
+
+        <input type="submit" class="btn {{ __button__ }}" value="{{ 'blogs.comments.post' | t }}">
+      {% endform %}
+    </div>
+
+  </div>
+{% endpaginate %}
