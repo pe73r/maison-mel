@@ -10,7 +10,7 @@
   {% for link in linklists[selected_linklist].links %}
     {% assign child_list_handle = link.title | handleize %}
     {% if linklists[child_list_handle].links != blank %}
-      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  {{ bg_color }} t--nav" aria-haspopup="true">
+      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  {{ bg_color }} footer--link" aria-haspopup="true">
         <div class="mobile-nav__has-sublist  {{ text_color }}">
           <a href="{{ link.url }}" class="mobile-nav__link {{ text_color }}">{{ link.title }}</a>
           <div class="mobile-nav__toggle color--white">
@@ -34,7 +34,7 @@
         </ul>
       </li>
     {% else %}
-      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  t--nav">
+      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  footer--link">
         <a href="{{ link.url }}" class="mobile-nav__link {{ text_color }}">{{ link.title }}</a>
       </li>
     {% endif %}

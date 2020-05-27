@@ -6433,9 +6433,13 @@ https://flickity.metafizzy.co
   font-size: 25px;
 }
 
+.homepages_text{
+  max-width: 80%;
+}
+
 @media screen and (max-width: 800px){
   .homepage_block{
-     margin-bottom: 30px;
+     margin-bottom: 40px;
   }
   .homepages_image{
     background-position: top;
@@ -6569,6 +6573,12 @@ https://flickity.metafizzy.co
   font-weight: bold;
 }
 
+.footer--link{
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
 @media screen and (max-width: 800px){
   .mobile-nav--footer {
       max-width: 100%;
@@ -6585,26 +6595,101 @@ https://flickity.metafizzy.co
 }
 
 .homepage-logos{
+  width: 95%;
+  margin: auto;
   padding: 40px 0;
 
   .carousel-cell {
     width: 20%;
     margin-right: 10px;
   }
+
+  .flickity-prev-next-button.next {
+    right: -30px;
+  }
+
+  .flickity-prev-next-button.previous {
+    left: -30px;
+  }
+
+
+}
+
+@media screen and (max-width: 800px){
+  .homepage-logos{
+    .carousel-cell {
+      width: 100%;
+    }
+    .flickity-prev-next-button.next {
+      right: -10px;
+    }
+
+    .flickity-prev-next-button.previous {
+      left: -10px;
+    }
+  }
+
+
 }
 
 /*------ gammes --------*/
+
+.carousel-flex{
+  display: flex;
+  align-items: center;
+}
+
 .homepage-gammes__image{
-  max-width: 150px; 
+  max-width: 170px;
   margin: auto;
   position: relative;
+}
+
+.homepage-gammes__title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  min-width: 120px;
 }
 
 .homepage-gammes{
   padding: 40px 0;
 
-  .carousel-cell {
-    width: 20%;
-    margin-right: 10px;
+  .carousel:after {
+    content: 'flickity';
+    display: none; /* hide :after */
+  }
+
+  @media screen and ( min-width: 768px ) {
+    /* disable Flickity for large devices */
+    .carousel:after {
+      content: '';
+    }
+    .carousel-cell {
+      width: 100%;
+    }
+
+  }
+}
+
+@media screen and (max-width: 800px){
+  .carousel-flex{
+    flex-direction: column;
+  }
+}
+
+/// header //
+
+/// no more grid padding//
+.site-header__main {
+  padding: 0;
+  margin: 0;
+  width: 95%;
+  margin: auto;
+  @include at-query($min, $large) {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

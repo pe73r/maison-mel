@@ -1,19 +1,21 @@
 <section id="section-{{ section.id }}" data-section-type="homepage-gammes" data-section-id="{{ section.id }}">
   <div class="homepage-gammes">
-    <div class="container-small">
+    <div class="container-large">
       <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3">
         {{ section.settings.title | escape }}
       </h2>
-      <div class="main-carousel"
-        data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true }'>
+      <div class="main-carousel carousel-flex"
+        data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "watchCSS": true }'>
          {% for block in section.blocks %}
           <div class="carousel-cell">
-             <div class="homepage-gammes__image">
-               <img src="{{ block.settings.image | img_url:'master'}}" alt="{{ block.settings.logo.alt }}">
-               <div class="gammes-title">
-                 <h3>{{ block.settings.title }}</h3>
+            <a href="{{ block.settings.url }}">
+               <div class="homepage-gammes__image">
+                 <img src="{{ block.settings.image | img_url:'master'}}" alt="{{ block.settings.logo.alt }}">
+                 <div class="homepage-gammes__title">
+                   <h3>{{ block.settings.title }}</h3>
+                 </div>
                </div>
-             </div>
+            </a>
           </div>
         {% endfor %}
       </div>
@@ -46,7 +48,12 @@
              "id": "title",
              "label": "Title",
              "default": "Title"
-           }
+           },
+           {
+             "type": "url",
+             "id": "url",
+             "label": "Link"
+           } 
       ]
     }
   ],

@@ -43,15 +43,15 @@
         {% include 'linklist-footer', selected_linklist: selected_linklist %}
       {% endif %}
 
-      <div class="copyright px2 py3 font-size--s">
-        <!-- <p>&copy; {{ 'now' | date: '%Y' }} <a href="/" class=" {{ text_color }}">{{ shop.name }}</a></p>
-        <hr class="rule  {{ accent_bg_color }}  m0 my2 text-align--left" /> -->
+      <!-- <div class="copyright px2 py3 font-size--s">
+         <p>&copy; {{ 'now' | date: '%Y' }} <a href="/" class=" {{ text_color }}">{{ shop.name }}</a></p>
+        <hr class="rule  {{ accent_bg_color }}  m0 my2 text-align--left" />
 
         {% if section.settings.extra_information != '' %}
           {{ section.settings.extra_information }}
         {% endif %}
 
-        <!-- <div class="payment-and-locale--mobile mt4 font-size--s">
+        <div class="payment-and-locale--mobile mt4 font-size--s">
           {% render 'locale-selectors', bg_color: bg_color, text_color: text_color, accent_color: accent_color, locale_selector: locale_selector, currency_selector: currency_selector, id_suffix: 'mobile', list_class: 'disclosure-list--left' %}
             {% unless shop.enabled_payment_types == empty %}
               <ul class="inline-list payment-icons font-size--xl list-rest m0 mt1">
@@ -62,9 +62,9 @@
                 {% endfor %}
               </ul>
             {% endunless %}
-        </div> -->
+        </div>
 
-        <div class="footer__credit">
+         <div class="footer__credit">
           <p class="font-size--xs powered-by mt3 mb1">
             {{ powered_by_link }}
           </p>
@@ -75,7 +75,7 @@
          {% endif %}
         </div>
 
-      </div>
+      </div> -->
 
     </div>
 
