@@ -112,7 +112,6 @@
           "secondary_linklist": "a-propos",
           "third_linklist": "footer",
           "extra_information": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>",
-          "show_social_icons": true,
           "show_locale_selector": true,
           "show_currency_selector": true
         }
@@ -255,8 +254,8 @@
             "type": "slide",
             "settings": {
               "feature_image": "shopify:\/\/shop_images\/87-03-BANDEAU01-1800X598.jpg",
-              "title": "Decouvrez",
-              "main_text": "notre nouvelle recette: \nlentilles à la tomate\net au paprika",
+              "title": "Decouvrez <br>\nnotre nouvelle recette: <br>\nlentilles à la tomate <br>\net au paprika",
+              "main_text": "",
               "cta_url": "shopify:\/\/collections\/tous-nos-produits",
               "cta_text": "je découvre",
               "text_color": "white",
@@ -272,7 +271,8 @@
         "settings": {
           "slideshow_style": "fit_content",
           "auto_rotate": true,
-          "slide_speed": "6000"
+          "slide_speed": "6000",
+          "title_size": 43
         }
       },
       "list-collections-template": {
@@ -694,6 +694,7 @@
       },
       "1589554331538": {
         "type": "homepage-blog",
+        "disabled": true,
         "blocks": {
           "1589554331538-0": {
             "type": "articles_by_blog",
@@ -737,15 +738,67 @@
         "settings": {
           "title": "découvrez notre gamme de mélanges"
         }
+      },
+      "1590529047111": {
+        "type": "homepage-pages",
+        "blocks": {
+          "1590531784269": {
+            "type": "page",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/BEEDELI-RIZ-QUINOA_24.png",
+              "title": "Notre histoire",
+              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+              "button": "Je decouvre",
+              "url": "shopify:\/\/pages\/beendi"
+            }
+          },
+          "1590531878206": {
+            "type": "page",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/BEEDELI-CURRY-LENTILLES-COCO_35-ok.png",
+              "title": "Notre histoire",
+              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+              "button": "Je decouvre",
+              "url": "shopify:\/\/pages\/beendi"
+            }
+          },
+          "1590531890800": {
+            "type": "page",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screenshot_2020-05-27_at_00.27.47.png",
+              "title": "Notre histoire",
+              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+              "button": "Je decouvre",
+              "url": "shopify:\/\/pages\/bloglist"
+            }
+          }
+        },
+        "block_order": [
+          "1590531784269",
+          "1590531878206",
+          "1590531890800"
+        ],
+        "settings": {
+        }
+      },
+      "1590535386582": {
+        "type": "blog-carousel",
+        "settings": {
+          "blog": "les-astuces",
+          "title": "découvrez nos recettes",
+          "bgcolor": "#ffffff"
+        }
       }
     },
     "content_for_index": [
       "1586264171772",
+      "1590529047111",
       "1586434068216",
       "1586428789812",
-      "1534040684341",
       "1586866711656",
-      "1589554331538"
+      "1589554331538",
+      "1590535386582",
+      "1534040684341"
     ]
   },
   "presets": {

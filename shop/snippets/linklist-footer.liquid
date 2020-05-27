@@ -1,10 +1,10 @@
 <ul class="mobile-nav mobile-nav--footer mt2 font-size--s list--reset">
   <li>
-    <div class="px3">
-      <h4 class="f--main t--nav font-size--s">
+    <div class="px3 footer--title">
+      <h4 class="f--main t--nav font-size--m">
         {{ linklists[selected_linklist].title }}
       </h4>
-      <hr class="rule {{ accent_bg_color }} m0 my2 text-align--left" />
+      <!-- <hr class="rule {{ accent_bg_color }} m0 my2 text-align--left" /> -->
     </div>
   </li>
   {% for link in linklists[selected_linklist].links %}
@@ -34,7 +34,7 @@
         </ul>
       </li>
     {% else %}
-      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  {{ bg_color }} t--nav">
+      <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}  t--nav">
         <a href="{{ link.url }}" class="mobile-nav__link {{ text_color }}">{{ link.title }}</a>
       </li>
     {% endif %}

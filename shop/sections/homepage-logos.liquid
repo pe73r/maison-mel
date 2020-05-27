@@ -1,0 +1,53 @@
+<section id="section-{{ section.id }}" data-section-type="homepage-logos" data-section-id="{{ section.id }}">
+  <div class="homepage-logos">
+    <div class="container-small">
+      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3">
+        {{ section.settings.title | escape }}
+      </h2>
+      <div class="main-carousel"
+        data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true }'>
+         {% for block in section.blocks %}
+          <div class="carousel-cell">
+            {% if block.settings.logo != blank %}
+              <div class="homepage-logos__image">
+                <img src="{{ block.settings.logo | img_url:'master'}}" alt="{{ block.settings.logo.alt }}">
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Homepage logos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "on parle de nous"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Logo",
+      "name": "Logo",
+      "settings": [
+           {
+             "type": "image_picker",
+             "id": "logo",
+             "label": "label"
+           }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Homepage logos",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

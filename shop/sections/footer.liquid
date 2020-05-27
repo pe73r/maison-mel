@@ -16,7 +16,7 @@
   {%- assign locale_selector = true -%}
 {%- endif -%}
 
-<footer class="site-footer small--text-center {{ bg_color }} {{ text_color }} f--main mt4" role="contentinfo" data-section-type="footer" data-section-id="{{ section.id }}">
+<footer class="site-footer small--text-center footer-bg {{ text_color }} f--main " role="contentinfo" data-section-type="footer" data-section-id="{{ section.id }}">
 
   <div class="wrapper">
 
@@ -37,27 +37,22 @@
         {% assign selected_linklist = section.settings.secondary_linklist %}
         {% include 'linklist-footer', selected_linklist: selected_linklist %}
       {% endif %}
-      
+
       {% if section.settings.third_linklist != blank %}
         {% assign selected_linklist = section.settings.third_linklist %}
         {% include 'linklist-footer', selected_linklist: selected_linklist %}
       {% endif %}
 
       <div class="copyright px2 py3 font-size--s">
-        <p>&copy; {{ 'now' | date: '%Y' }} <a href="/" class=" {{ text_color }}">{{ shop.name }}</a></p>
-        <hr class="rule  {{ accent_bg_color }}  m0 my2 text-align--left" />
+        <!-- <p>&copy; {{ 'now' | date: '%Y' }} <a href="/" class=" {{ text_color }}">{{ shop.name }}</a></p>
+        <hr class="rule  {{ accent_bg_color }}  m0 my2 text-align--left" /> -->
 
         {% if section.settings.extra_information != '' %}
           {{ section.settings.extra_information }}
         {% endif %}
 
-        <div class="payment-and-locale--mobile mt4 font-size--s">
+        <!-- <div class="payment-and-locale--mobile mt4 font-size--s">
           {% render 'locale-selectors', bg_color: bg_color, text_color: text_color, accent_color: accent_color, locale_selector: locale_selector, currency_selector: currency_selector, id_suffix: 'mobile', list_class: 'disclosure-list--left' %}
-
-
-            {% comment %}
-              Loop through available payment methods and show their icons.
-            {% endcomment %}
             {% unless shop.enabled_payment_types == empty %}
               <ul class="inline-list payment-icons font-size--xl list-rest m0 mt1">
                 {% for type in shop.enabled_payment_types %}
@@ -67,7 +62,7 @@
                 {% endfor %}
               </ul>
             {% endunless %}
-        </div>
+        </div> -->
 
         <div class="footer__credit">
           <p class="font-size--xs powered-by mt3 mb1">
@@ -90,7 +85,7 @@
 
       <div class="grid">
 
-        
+
         <div class="grid__item {{ col_size }}">
           {% if section.settings.main_linklist != blank %}
             <!-- begin mobile-nav -->
@@ -121,35 +116,35 @@
             {% endif %}
           {% endif %}
         </div>
-        
+
         {% if section.settings.show_social_icons %}
-        <div class="grid__item {{ col_size   }} text-align--right">
+        <!-- <div class="grid__item {{ col_size   }} text-align--right">
           {% include 'social', color: text_color_social %}
-        </div>
+        </div> -->
         {% endif %}
       </div>
 
       <div class="grid mt3 footer--desktop__bottom-row">
-        <div class="grid__item one-half">
+        <!-- <div class="grid__item one-half">
           <div class="footer__credit">
             <p class=" font-size--xs powered-by mb0">
               {{ powered_by_link }}
             </p>
           </div>
-        </div>
-        <div class="grid__item one-half text-align--right">
+        </div> -->
 
+        <div class="grid__item one-half text-align--right">
           {% comment %}
             Loop through available payment methods and show their icons.
           {% endcomment %}
           {% unless shop.enabled_payment_types == empty %}
-            <ul class="inline-list payment-icons font-size--xl list-rest m0">
+            <!-- <ul class="inline-list payment-icons font-size--xl list-rest m0">
               {% for type in shop.enabled_payment_types %}
                 <li class="inline-block">
                   {{ type | payment_type_svg_tag: class:'payment-icon' }}
                 </li>
               {% endfor %}
-            </ul>
+            </ul> -->
           {% endunless %}
 
           {% render 'locale-selectors', bg_color: bg_color, text_color: text_color, accent_color: accent_color, locale_selector: locale_selector, currency_selector: currency_selector, id_suffix: 'desktop', list_class: 'disclosure-list--right' %}
@@ -160,10 +155,12 @@
     </div>
 
   </div>
-
-
-
 </footer>
+<style>
+  .footer-bg{
+     background-color: {{ section.settings.bg-color }};
+   }
+</style>
 
 {% schema %}
 {
@@ -196,12 +193,6 @@
       "default": "<p>Use this to add additional information about your store, e.g. address / contact details.</p>"
     },
     {
-      "type": "checkbox",
-      "id": "show_social_icons",
-      "label": "Show social icons",
-      "info": "Social icons are configured under General Settings"
-    },
-    {
       "type": "header",
       "content": "Language Selector",
       "info": "To add a language, go to your [language settings.](/admin/settings/languages)"
@@ -222,6 +213,12 @@
       "id": "show_currency_selector",
       "label": "Show currency selector",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "Background color",
+      "default": "#fff"
     }
   ]
 }

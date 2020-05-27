@@ -3842,10 +3842,10 @@ $min-height-disclosure: 92px;
   #Site Footer
 ==============================================================================*/
 .site-footer {
-  padding: $gutter 0;
+  padding: 70px 0;
 
   @include at-query ($min, $large) {
-    padding: ($gutter * 2) 0;
+    padding: 70px 0;
   }
 }
 
@@ -5395,7 +5395,7 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 .newsletter__form {
   width: 250px;
   @include at-query($min, $large) {
-    max-width: 500px;
+    max-width: 800px;
     width: auto;
   }
 
@@ -6445,17 +6445,166 @@ https://flickity.metafizzy.co
 /*------ blog carousel --------*/
 
 .blog_carousel_image{
-   min-width: 100%; 
+   min-width: 100%;
    max-width: 300px;
    min-height: 300px;
    background-position: center;
    background-size: cover;
    margin-bottom: 10px;
+   display: flex;
+   justify-content: space-evenly;
+
+   img {
+    width: 70px;
+    height: 70px;
+    margin-top: -40px;
+   }
 }
 
 .blog_carousel{
+  padding: 35px 0px;
+
+  .flickity-viewport{
+    padding-top: 40px;
+  }
+
   .carousel-cell {
-    width: 33%; /* full width */
+    width: 33%;
+    padding: 0px 25px 40px;
+
+    h4{
+      text-align: center;
+    }
+  }
+}
+
+  .flickity-prev-next-button.previous {
+    top: 40%;
+    left: -50px;
+    background-color: transparent;
+
+    .flickity-button-icon{
+      display: none;
+    }
+  }
+  .flickity-prev-next-button.previous:after {
+    content: " ";
+    background-image: url("https://cdn.shopify.com/s/files/1/0359/9178/1421/files/fleche_gauche_copie.png?v=1590538246");
+    height: 40px;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  .flickity-prev-next-button.next {
+    top: 40%;
+    right: -50px;
+    background-color: transparent;
+
+    .flickity-button-icon{
+      display: none;
+    }
+  }
+  .flickity-prev-next-button.next:after {
+    content: " ";
+    background-image: url("https://cdn.shopify.com/s/files/1/0359/9178/1421/files/fleche_droitz_copie.png?v=1590538237");
+    height: 40px;
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+@media screen and (max-width: 800px){
+  .blog_carousel{
+    .carousel-cell {
+      width: 100%; /* full width */
+      margin: 0px 10px;
+    }
+
+  .flickity-prev-next-button.previous {
+    left: -20px;
+  }
+  .flickity-prev-next-button.next {
+    right: -20px;
+  }
+  }
+}
+
+/*------ newsletter --------*/
+
+.btn-newsletter{
+   min-width: 400px;
+   color: white;
+}
+
+.newsletter-text{
+  max-width: 500px;
+  margin: auto;
+}
+
+@media screen and (max-width: 800px){
+  .btn-newsletter{
+    min-width: 200px;
+    width: 100%;
+  }
+  .newsletter-text{
+    max-width: 300px;
+  }
+
+  .newsletter-sub{
+    padding-left: 0;
+  }
+}
+
+/*------ footer--------*/
+
+.site-footer{
+  padding-bottom: 50px;
+}
+
+.footer--title{
+  padding-left: 15px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 800px){
+  .mobile-nav--footer {
+      max-width: 100%;
+      margin: auto;
+      margin-bottom: 50px;
+  }
+}
+
+/*------ logos --------*/
+
+.homepage-logos__image{
+  max-width: 110px;
+  margin: auto;
+}
+
+.homepage-logos{
+  padding: 40px 0;
+
+  .carousel-cell {
+    width: 20%;
+    margin-right: 10px;
+  }
+}
+
+/*------ gammes --------*/
+.homepage-gammes__image{
+  max-width: 150px; 
+  margin: auto;
+  position: relative;
+}
+
+.homepage-gammes{
+  padding: 40px 0;
+
+  .carousel-cell {
+    width: 20%;
     margin-right: 10px;
   }
 }
