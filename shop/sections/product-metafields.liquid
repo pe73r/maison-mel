@@ -1,0 +1,43 @@
+{% if section.settings.display %}
+ {% if product.metafields.instructions != blank or product.metafields.ingredients != blank %}
+  <section id="section-{{ section.id }}" class="product-metafields"  data-section-type="product-metafields" data-section-id="{{ section.id }}">
+    <div class="product-metafields-bg">
+      <div class="container-medium">
+          <div class="grid">
+             <div class="1/2--lap-and-up grid__cell">
+                 {{ product.metafields.instructions }}
+                 <h2></h2>
+             </div>
+             <div class="1/2--lap-and-up grid__cell">
+                {{ product.metafields.ingredients }}
+             </div>
+          </div>
+      </div>
+    </div>
+  </section>
+ {% endif %}
+{% endif %}
+<style>
+  #section-{{ section.id }} .product-metafields-bg{
+     background-color: {{ section.settings.color }};
+   }
+</style>
+{% schema %}
+{
+  "name": "Metafields",
+  "settings": [
+     {
+       "type": "checkbox",
+       "id": "display",
+       "label": "Display section ?",
+       "default": true
+     },
+     {
+       "type": "color",
+       "id": "color",
+       "label": "Background color"
+     }
+
+  ]
+}
+{% endschema %}

@@ -4,14 +4,14 @@
   {% if section.settings.title != '' %}
   <h2 class="t--section-title text-align--center f--main font-size--xxxl lg--font-size--xxxl m0 mb3">{{ section.settings.title | escape }}</h2>
   {% endif %}
-  <div class="wrapper section--wrapper text-align--center color--{{ section.settings.text_color }} richtext-height">
+  <div class="wrapper section--wrapper text-align--center color--{{ section.settings.text_color }} ">
     {% if section.settings.rich_text_mobile != '' %}
     <h2 class="featured-content__title {{ section.settings.font_size }} f--title m0 px1">
-      <div class="md-dn--hide">{{ section.settings.rich_text }}</div>
+      <div class="md-dn--hide richtext-height">{{ section.settings.rich_text }}</div>
       <div class="hide md-dn--show">{{ section.settings.rich_text_mobile }}</div>
     </h2>
     {% else %}
-    <h2 class="featured-content__title {{ section.settings.font_size }} f--title m0 px1">{{ section.settings.rich_text }}</h2>
+    <h2 class="featured-content__title {{ section.settings.font_size }} f--title m0 px1 richtext-height">{{ section.settings.rich_text }}</h2>
     {% endif %}
 
     {% for block in section.blocks %}

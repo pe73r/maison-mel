@@ -1,0 +1,75 @@
+<section id="section-{{ section.id }}" class="image-block"  data-section-type="image-block" data-section-id="{{ section.id }}">
+  <div class="container-medium">
+      {% for block in section.blocks %}
+        <div class="grid {% if block.settings.reverse %} grid--rev {% endif %} ">
+           <div class="1/2--lap-and-up  grid__cell">
+              {% if block.settings.image != blank  %}
+                <div class="image-block_image">
+                   <img src="{{  block.settings.image | img_url:'master' }}" alt="{{ block.settings.image }}">
+                </div>
+              {% endif %}
+            </div>
+            <div class="1/2--lap-and-up grid__cell">
+               <h3 class="image-block_title">{{ block.settings.title }}</h3>
+               <div class="image-block_text">{{ block.settings.text}}</div>
+               {% if block.settings.url != blank %}
+                 <a href="{{ cta_url }}" class="btn bg--primary btn--pages">
+                    {{ block.settings.button }}
+                 </a>
+               {% endif %}
+           </div>
+         </div>
+      {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Image block",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "image-text",
+      "name": "Image text",
+      "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "label"
+          },
+          {
+            "type": "checkbox",
+            "id": "reverse",
+            "label": "Reverse block image",
+            "default": false
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "info": "info",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>"
+          },
+          {
+            "type": "text",
+            "id": "button",
+            "label": "Button",
+            "default": "Button"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link"
+          }
+      ]
+    }
+  ] 
+}
+{% endschema %}

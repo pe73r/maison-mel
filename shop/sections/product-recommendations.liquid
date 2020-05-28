@@ -5,7 +5,7 @@
          data-product-id="{{ product.id }}"
          data-section-id="{{ section.id }}"
          data-section-type="product-recommendations"
-         data-limit="4">
+         data-limit="3">
   {%- assign count = recommendations.products_count -%}
   {%- if count > 0 -%}
   <div class="wrapper section--wrapper">
@@ -63,4 +63,3 @@
     ]
   }
 {% endschema %}
-
