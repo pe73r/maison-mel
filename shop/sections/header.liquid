@@ -105,11 +105,16 @@
       Main navigation
     {% endcomment %}
 
-    <div class="grid__item lg--one-half md-dn--hide site-nav-holder">
-
+  <div class="grid__item lg--one-half md-dn--hide site-nav-holder">
+    <div class="menu-flex">
+      <div class="home-picto">
+        <a href="/">
+          {% include 'home-picto' %}
+        </a>
+      </div>
       <nav role="navigation">
         <!-- begin site-nav -->
-        <ul class="site-nav site-nav--header inline-block font-size--m t--nav hide"
+        <ul class="site-nav site-nav--header inline-block font-size--m hide"
             id="AccessibleNav">
           {% for link in linklists[section.settings.main_linklist].links %}
             {% comment %}
@@ -198,6 +203,7 @@
           {% endfor %}
         </ul>
       </nav>
+    </div><!-- menu flex-->
 
 
       <button type="button" class="site-header__icon site-header__icon--nav-menu {% unless section.settings.always_use_mobile_menu %}hide{% else %}site-header__mobile-icon--show{% endunless %} js--drawer-open-left" aria-controls="NavDrawer" aria-expanded="false">
@@ -253,11 +259,13 @@
 
 
       <ul class="header_desktop-meta list-reset align--middle inline-block inline-list">
-        
+
         {% if shop.customer_accounts_enabled %}
         <li class="header_desktop-meta-item relative">
           <button type="button" class="login js-login font-size--s">
-            {% include 'svg-icon', icon: 'user' %}
+            <!-- {% include 'svg-icon', icon: 'user' %} -->
+            <!-- <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/personne.png?v=1590669387" class="header--user" alt=""> -->
+             {% include 'personne', class: 'header-user' %}
           </button>
           <div class="account-expanded p2">
               <ul class="inline-list child-nav child-list-customer font-size--s t--meta m0 p0">
@@ -291,14 +299,16 @@
         {% endif %}
         {% if section.settings.show_search %}
         <li class="header_desktop-meta-item">
-          <button type="button" class="js--search-trigger font-size--s">
-            {% include 'svg-icon', icon: 'search' %}
+          <button type="button" class="js--search-trigger search-icon font-size--s">
+            <!-- {% include 'svg-icon', icon: 'search' %} -->
+            {% include 'magnifier-glass' %}
           </button>
         </li>
         {% endif %}
         <li class="header_desktop-meta-item">
-          <a href="{{ routes.cart_url }}" class="js--drawer-open-right font-size--s" aria-controls="NavDrawer" aria-expanded="false">
-            {% include 'svg-icon', icon: 'cart' %}
+          <a href="{{ routes.cart_url }}" class="js--drawer-open-right panier-icon font-size--s" aria-controls="NavDrawer" aria-expanded="false">
+            <!-- {% include 'svg-icon', icon: 'cart' %} -->
+            {% include 'panier' %}
             <span id="CartCount" class="cart-count">{{ cart.item_count }}</span>
           </a>
         </li>
@@ -310,8 +320,9 @@
       Mobile cart icon
     {% endcomment %}
     <div class="grid__item site-header__mobile-icon site-header__mobile-icon--cart text-align--center">
-       <a href="{{ routes.cart_url }}"  class="site-header__icon cart-icon__mobile js--drawer-open-right relative" aria-controls="NavDrawer" aria-expanded="false">
-        {% include 'svg-icon', icon: 'cart' %}
+       <a href="{{ routes.cart_url }}"  class="site-header__icon cart-icon__mobile panier-icon js--drawer-open-right relative" aria-controls="NavDrawer" aria-expanded="false">
+        <!-- {% include 'svg-icon', icon: 'cart' %} -->
+        {% include 'panier' %}
         <span id="CartCount" class="cart-count cart-count--mobile">{{ cart.item_count }}</span>
       </a>
     </div>

@@ -1336,7 +1336,7 @@ body:not(.user-is-tabbing) {
 
 .main-content {
   display: block;
-  margin-top: $gutter;
+  margin-top: 10px;
   padding-bottom: $gutter * 2;
 }
 
@@ -3301,7 +3301,7 @@ $min-height-disclosure: 92px;
     > .grid__item {
       float: none;
       display: table-cell;
-      vertical-align: middle;
+      vertical-align: bottom;
     }
   }
 }
@@ -3380,7 +3380,7 @@ $min-height-disclosure: 92px;
 
 .header_desktop-meta {
   margin-left: $gutter;
-  padding: 8px 0;
+  // padding: 8px 0;
 }
 
 .header_desktop-meta-item {
@@ -3400,16 +3400,16 @@ $min-height-disclosure: 92px;
 
 .cart-count {
   position: absolute;
-  bottom: 3px;
-  right: 3px;
+  bottom: 15px;
+  right: 17px;
   width: 20px;
   height: 20px;
   border-radius: 20px;
   text-align: center;
-  background-color: $colorSecondaryAccent;
+  // background-color: $colorSecondaryAccent;
   color: $colorSecondaryAccentOverlay;
-  font-family: $mainFontStack;
-  font-size: $font-size--s;
+  font-family: $bodyFontStack;
+  font-size: $font-size--m;
 }
 
 .cart-icon__mobile {
@@ -3419,8 +3419,8 @@ $min-height-disclosure: 92px;
 }
 
 .cart-count--mobile {
-  bottom: 15px;
-  right: 10px;
+  bottom: 18px;
+  right: 20px;
 }
 
 .site-header__search {
@@ -3453,11 +3453,11 @@ $min-height-disclosure: 92px;
   opacity: 0;
   @include transition(opacity,0.2s,ease-in-out);
   position: absolute;
-  bottom: -48px;
-  right: 2px;
+  bottom: -20px;
+  right: -10px;
   min-width: 200px;
   height: 50px;
-  background-color: $colorSections;
+  background-color: transparent;
   .child-list-customer {
     white-space: nowrap;
   }
@@ -5039,7 +5039,7 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 
   .section--feature-image,
   .section--single-video {
-    padding: ($gutter/2) 0;
+    // padding: ($gutter/2) 0;
   }
 
   .full_bleed .section--slideshow {
@@ -5054,6 +5054,7 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
     @include at-query($min, $large) {
       padding-left: ($gutter);
       padding-right: ($gutter);
+      padding-top: 15px;
     }
   }
 
@@ -6601,6 +6602,7 @@ https://flickity.metafizzy.co
 
   .carousel-cell {
     width: 20%;
+    height: 100%;
     margin-right: 10px;
   }
 
@@ -6691,5 +6693,53 @@ https://flickity.metafizzy.co
   @include at-query($min, $large) {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+.header--user{
+  width: 2em;
+  height: 2em;
+}
+
+.login{
+  svg{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.search-icon{
+  svg{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.panier-icon{
+  svg{
+    width: 35px;
+    height: 35px;
+  }
+}
+.home-picto{
+  margin-right: 15px;
+  svg{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.menu-flex{
+  display: flex;
+  padding-left: 20px;
+}
+
+.site-header__main{
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 1132px) { 
+  .home-picto{
+    display: none;
   }
 }

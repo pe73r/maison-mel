@@ -2,7 +2,7 @@
   "current": {
     "color_primary": "#141414",
     "color_main_accent": "#edbd40",
-    "color_secondary_accent": "#74c095",
+    "color_secondary_accent": "#fcdf6b",
     "color_shop_accent": "#015c66",
     "color_borders": "#e5e5e5",
     "color_body_bg": "#ffffff",
@@ -17,7 +17,7 @@
     "header_text_transform": "none",
     "section_title_typeface": "main",
     "section_title_weight": "inherit",
-    "section_title_text_transform": "Uppercase",
+    "section_title_text_transform": "none",
     "section_title_letterspacing": 1,
     "navigation_text_transform": "Uppercase",
     "navigation_letterspacing": 1,
@@ -111,9 +111,10 @@
           "main_linklist": "le-blog",
           "secondary_linklist": "a-propos",
           "third_linklist": "footer",
-          "extra_information": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>",
+          "extra_information": "",
           "show_locale_selector": true,
-          "show_currency_selector": true
+          "show_currency_selector": true,
+          "bg-color": "#fff"
         }
       },
       "collection-template": {
@@ -204,7 +205,9 @@
         "type": "newsletter",
         "settings": {
           "title": "Suivez-nous!",
-          "text": "<p><span style=\"text-decoration: none;\">Retrouvez les recettes, les coups de coeur et les conseils bien-&ecirc;tre de la Maison des M&eacute;langes en vous abonnant &agrave; la newsletter.<\/span><\/p>"
+          "text": "<p><span style=\"text-decoration: none;\">Retrouvez les recettes, les coups de coeur et les conseils bien-&ecirc;tre de la Maison des M&eacute;langes en vous abonnant &agrave; la newsletter.<\/span><\/p>",
+          "button-text": "je m'inscris",
+          "bg-color": "#fcdf6b"
         }
       },
       "product-related-articles": {
@@ -254,7 +257,7 @@
             "type": "slide",
             "settings": {
               "feature_image": "shopify:\/\/shop_images\/87-03-BANDEAU01-1800X598.jpg",
-              "title": "Decouvrez <br>\nnotre nouvelle recette: <br>\nlentilles à la tomate <br>\net au paprika",
+              "title": "Decouvrez <br>\nnotre nouvelle recette : <br>\nlentilles à la tomate <br>\net au paprika !",
               "main_text": "",
               "cta_url": "shopify:\/\/collections\/tous-nos-produits",
               "cta_text": "je découvre",
@@ -306,98 +309,6 @@
           "1586365720172"
         ],
         "settings": {
-        }
-      },
-      "1586428789812": {
-        "type": "gallery",
-        "blocks": {
-          "1586428789812-2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/beedeli_RIZ-QUINOA_200211_fbe817e2-a29d-494b-967c-b1f437d3a0e5.jpg",
-              "url": "shopify:\/\/blogs\/recettes-parfaites",
-              "caption": "<p>CUISINER<\/p>\n<p>NOS RECETTES PARFAITES<\/p>"
-            }
-          },
-          "1586428789812-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/beedeli_CURRY-LENTILLES-COCO_200211.jpg",
-              "url": "shopify:\/\/blogs\/les-astuces",
-              "caption": "<p>D&Eacute;COUVRIR<\/p>\n<p>NOS ASTUCES<\/p>"
-            }
-          },
-          "1589555737368": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/photo_qualisol_191003_4.jpg",
-              "url": "shopify:\/\/blogs\/les-amis-de-la-maison",
-              "caption": "<p>RENCONTRER<\/p>\n<p>NOS AMIS<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "1586428789812-2",
-          "1586428789812-0",
-          "1589555737368"
-        ],
-        "settings": {
-          "title": "Le journal de la maison"
-        }
-      },
-      "1586434068216": {
-        "type": "gallery",
-        "blocks": {
-          "1586434068216-2": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/cereales_et_legumineuses.png",
-              "url": "shopify:\/\/collections\/mijotes-de-legumineuses-dals",
-              "caption": "<p>mijot&eacute;s de l&eacute;gumineuses<\/p>\n<p>et dals<\/p>"
-            }
-          },
-          "1586527496210": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Couscous.png",
-              "url": "shopify:\/\/collections\/couscous-et-taboules",
-              "caption": "<p>couscous<\/p>\n<p>et taboul&eacute;s<\/p>"
-            }
-          },
-          "1586527547195": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/RIZ.png",
-              "url": "shopify:\/\/collections\/riz-sautes-et-risotto",
-              "caption": "<p>riz saut&eacute;s<\/p>\n<p>et risotto<\/p>"
-            }
-          },
-          "1586527573058": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/Legumineuse.png",
-              "url": "shopify:\/\/collections\/plats-de-cereales-legumineuses",
-              "caption": "<p>plats de c&eacute;r&eacute;ales<\/p>\n<p>et l&eacute;gumineuses<\/p>"
-            }
-          },
-          "1586434068216-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/autre.png",
-              "url": "shopify:\/\/collections\/all",
-              "caption": "<p>tous<\/p>\n<p>les produits<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "1586434068216-2",
-          "1586527496210",
-          "1586527547195",
-          "1586527573058",
-          "1586434068216-0"
-        ],
-        "settings": {
-          "title": "Découvrez les mélanges de la maison"
         }
       },
       "feature-image": {
@@ -515,6 +426,7 @@
       },
       "1586866711656": {
         "type": "custom-html",
+        "disabled": true,
         "settings": {
           "title": "",
           "html": "<script type=\"text\/javascript\" src=\"\/\/downloads.mailchimp.com\/js\/signup-forms\/popup\/unique-methods\/embed.js\" data-dojo-config=\"usePlainJson: true, isDebug: false\"><\/script><script type=\"text\/javascript\">window.dojoRequire([\"mojo\/signup-forms\/Loader\"], function(L) { L.start({\"baseUrl\":\"mc.us2.list-manage.com\",\"uuid\":\"90535ab6dd2addc721f686ecd\",\"lid\":\"59dce5bd7c\",\"uniqueMethods\":true}) })<\/script>"
@@ -692,34 +604,6 @@
           "content_position": "text-align--center align--top"
         }
       },
-      "1589554331538": {
-        "type": "homepage-blog",
-        "disabled": true,
-        "blocks": {
-          "1589554331538-0": {
-            "type": "articles_by_blog",
-            "settings": {
-              "title": "cuisiner : nos recettes",
-              "selected_blog": "recettes-parfaites",
-              "no_posts": 4,
-              "show_blog_link": false
-            }
-          }
-        },
-        "block_order": [
-          "1589554331538-0"
-        ],
-        "settings": {
-          "blog_1": "",
-          "blog_2": "",
-          "blog_3": "",
-          "blog_4": "",
-          "blog_5": "",
-          "enable_latest_articles": false,
-          "title": "Blog",
-          "thumbnail_cropping": "none"
-        }
-      },
       "store_beedeli": {
         "type": "store_beedeli",
         "blocks": {
@@ -746,9 +630,9 @@
             "type": "page",
             "settings": {
               "image": "shopify:\/\/shop_images\/BEEDELI-RIZ-QUINOA_24.png",
-              "title": "Notre histoire",
-              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
-              "button": "Je decouvre",
+              "title": "notre histoire",
+              "text": "<p>On d&eacute;veloppe le m&eacute;langes des go&ucirc;ts, pour cr&eacute;er des exp&eacute;riences.<\/p>",
+              "button": "je découvre",
               "url": "shopify:\/\/pages\/beendi"
             }
           },
@@ -756,9 +640,9 @@
             "type": "page",
             "settings": {
               "image": "shopify:\/\/shop_images\/BEEDELI-CURRY-LENTILLES-COCO_35-ok.png",
-              "title": "Notre histoire",
-              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
-              "button": "Je decouvre",
+              "title": "nos valeurs",
+              "text": "<p>On d&eacute;veloppe des m&eacute;langes des go&ucirc;ts pour cr&eacute;er des exp&eacute;riences gustatives nouvelles et diff&eacute;rentes !<\/p>",
+              "button": "je découvre",
               "url": "shopify:\/\/pages\/beendi"
             }
           },
@@ -766,8 +650,8 @@
             "type": "page",
             "settings": {
               "image": "shopify:\/\/shop_images\/Screenshot_2020-05-27_at_00.27.47.png",
-              "title": "Notre histoire",
-              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+              "title": "nos marques",
+              "text": "<p>On d&eacute;veloppe le m&eacute;langes des go&ucirc;ts.<\/p>",
               "button": "Je decouvre",
               "url": "shopify:\/\/pages\/bloglist"
             }
@@ -788,16 +672,142 @@
           "title": "découvrez nos recettes",
           "bgcolor": "#ffffff"
         }
+      },
+      "1590573160195": {
+        "type": "homepage-logos",
+        "blocks": {
+          "1590573299522": {
+            "type": "Logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/nos_amis.png"
+            }
+          },
+          "1590573302121": {
+            "type": "Logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/nos_recettes.png"
+            }
+          },
+          "1590573305929": {
+            "type": "Logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/truc_et_astuces.png"
+            }
+          },
+          "1590573850102": {
+            "type": "Logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/tous.png"
+            }
+          },
+          "1590574525626": {
+            "type": "Logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/notre_podcast.png"
+            }
+          }
+        },
+        "block_order": [
+          "1590573299522",
+          "1590573302121",
+          "1590573305929",
+          "1590573850102",
+          "1590574525626"
+        ],
+        "settings": {
+          "title": "on parle de nous"
+        }
+      },
+      "1590574894700": {
+        "type": "homepage-gammes",
+        "blocks": {
+          "1590575179552": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-VRAC_8b52454d-806a-4507-9ee1-e50e4883022e.png",
+              "title": "le vrac",
+              "url": "shopify:\/\/collections\/le-vrac"
+            }
+          },
+          "1590575187613": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-COUSCOUS_1c69e3a5-33c9-475e-a5a5-c3b1e002405d.png",
+              "title": "Couscous & taboulé",
+              "url": "shopify:\/\/collections\/couscous-et-taboules"
+            }
+          },
+          "1590575194416": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-RIZ_8c22df79-f917-4306-8e06-a6da8d9365a1.png",
+              "title": "riz & risotto",
+              "url": "shopify:\/\/collections\/riz-sautes-et-risotto"
+            }
+          },
+          "1590576967180": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-CEREALELEGUMINEUSE_c5312036-e81f-4bf3-9c4a-f74f4e4863bf.png",
+              "title": "céréales et légumineuses",
+              "url": "shopify:\/\/collections\/produits-beedeli"
+            }
+          },
+          "1590576997755": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-LEGUMINEUSES_cc2392bf-ad4c-420c-8e05-ce182cddc5b6.png",
+              "title": "légumineuses & dals",
+              "url": "shopify:\/\/collections\/mijotes-de-legumineuses-dals"
+            }
+          },
+          "1590577018202": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-AUTREPRODUIT_d7ca912a-f008-4604-b530-c3f7a7f205ed.png",
+              "title": "autres produits",
+              "url": "shopify:\/\/collections\/les-packs-beendi"
+            }
+          },
+          "1590577029385": {
+            "type": "Gamme",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/87-03-HOME-PDTS_391a4559-7bce-45d0-9fc3-71caf8b01df9.png",
+              "title": "autres produits",
+              "url": "shopify:\/\/collections\/les-melanges-beendi"
+            }
+          }
+        },
+        "block_order": [
+          "1590575179552",
+          "1590575187613",
+          "1590575194416",
+          "1590576967180",
+          "1590576997755",
+          "1590577018202",
+          "1590577029385"
+        ],
+        "settings": {
+          "title": "découvrez nos gammes des produits"
+        }
+      },
+      "1590578686923": {
+        "type": "blog-carousel",
+        "settings": {
+          "blog": "recettes-parfaites",
+          "title": "découvrez nos recettes",
+          "bgcolor": "#f8f8f8"
+        }
       }
     },
     "content_for_index": [
       "1586264171772",
       "1590529047111",
-      "1586434068216",
-      "1586428789812",
-      "1586866711656",
-      "1589554331538",
+      "1590574894700",
+      "1590578686923",
       "1590535386582",
+      "1586866711656",
+      "1590573160195",
       "1534040684341"
     ]
   },
