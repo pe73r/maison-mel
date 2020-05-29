@@ -1,0 +1,47 @@
+<section id="section-{{ section.id }}" class="section-page-heading"  data-section-type="page-heading" data-section-id="{{ section.id }}">
+  <div class="container-small">
+     <div class="relative text-align--center">
+        {% if section.settings.logo != blank %}
+           <div class="heading-logo">
+             <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ section.settings.logo.alt }}">
+           </div>
+         {% endif %}
+         <h2 class="heading-title">{{ section.settings.title }}</h2>
+         {% if section.settings.url != blank %}
+           <a href="{{ cta_url }}" class="btn bg--primary btn--pages">
+              {{ section.settings.button }}
+           </a>
+         {% endif %}
+     </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page heading",
+  "settings": [
+       {
+         "type": "image_picker",
+         "id": "logo",
+         "label": "Logo"
+       },
+       {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+         "default": "Grain àpres grain: partageons et mélangeons nous!"
+       },
+       {
+         "type": "text",
+         "id": "button",
+         "label": "Button",
+         "default": "voir tous les produits"
+       },
+       {
+         "type": "url",
+         "id": "url",
+         "label": "Link"
+       }
+  ]
+}
+{% endschema %}

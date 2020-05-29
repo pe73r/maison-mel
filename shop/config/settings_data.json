@@ -98,7 +98,7 @@
           "logo_max_width": 270,
           "main_linklist": "main-menu",
           "show_search": true,
-          "show_social_header": true,
+          "show_social_header": false,
           "always_use_mobile_menu": false,
           "secondary_linklist": "",
           "show_search_sidebar": true,
@@ -150,14 +150,14 @@
           "1588857824986"
         ],
         "settings": {
-          "show_payment_button": true,
-          "show_vendor": false,
+          "show_payment_button": false,
+          "show_vendor": true,
           "show_quantity": true,
           "show_share_links": true,
-          "show_tags": false,
+          "show_tags": true,
           "enable_image_zoom": false,
           "enable_video_looping": false,
-          "product_media_size": "medium",
+          "product_media_size": "large",
           "large_first_paragraph": true
         }
       },
@@ -594,7 +594,7 @@
         "type": "feature-image_beedeli",
         "settings": {
           "title": "",
-          "image_style": "fit_content",
+          "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/1800x598.jpg",
           "sub_text": "",
           "text": "",
@@ -665,14 +665,6 @@
         "settings": {
         }
       },
-      "1590535386582": {
-        "type": "blog-carousel",
-        "settings": {
-          "blog": "les-astuces",
-          "title": "découvrez nos recettes",
-          "bgcolor": "#ffffff"
-        }
-      },
       "1590573160195": {
         "type": "homepage-logos",
         "blocks": {
@@ -693,26 +685,12 @@
             "settings": {
               "logo": "shopify:\/\/shop_images\/truc_et_astuces.png"
             }
-          },
-          "1590573850102": {
-            "type": "Logo",
-            "settings": {
-              "logo": "shopify:\/\/shop_images\/tous.png"
-            }
-          },
-          "1590574525626": {
-            "type": "Logo",
-            "settings": {
-              "logo": "shopify:\/\/shop_images\/notre_podcast.png"
-            }
           }
         },
         "block_order": [
           "1590573299522",
           "1590573302121",
-          "1590573305929",
-          "1590573850102",
-          "1590574525626"
+          "1590573305929"
         ],
         "settings": {
           "title": "on parle de nous"
@@ -791,12 +769,104 @@
           "title": "découvrez nos gammes des produits"
         }
       },
-      "1590578686923": {
-        "type": "blog-carousel",
+      "1590686197117": {
+        "type": "articles-carousel",
         "settings": {
           "blog": "recettes-parfaites",
           "title": "découvrez nos recettes",
           "bgcolor": "#f8f8f8"
+        }
+      },
+      "1590687646183": {
+        "type": "blog-carousel",
+        "blocks": {
+          "1590689901851": {
+            "type": "Blog",
+            "settings": {
+              "blog": "les-astuces"
+            }
+          },
+          "1590689913835": {
+            "type": "Blog",
+            "settings": {
+              "blog": "les-amis-de-la-maison"
+            }
+          },
+          "1590689921866": {
+            "type": "Blog",
+            "settings": {
+              "blog": "recettes-parfaites"
+            }
+          },
+          "1590690288312": {
+            "type": "Blog",
+            "settings": {
+              "blog": "podcast-melangeons-nous"
+            }
+          }
+        },
+        "block_order": [
+          "1590689901851",
+          "1590689913835",
+          "1590689921866",
+          "1590690288312"
+        ],
+        "settings": {
+          "title": "découvrez nos blogs",
+          "bgcolor": "#ffffff"
+        }
+      },
+      "richtext": {
+        "type": "richtext",
+        "settings": {
+          "title": "Un petit mot de Beena et Yanick",
+          "rich_text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+          "rich_text_mobile": "",
+          "font_size": "featured-content__title--xs",
+          "text_color": "black",
+          "highlight_color": "secondary-accent"
+        }
+      },
+      "image-block": {
+        "type": "image-block",
+        "blocks": {
+          "1590696254319": {
+            "type": "image-text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/BEEDELI-RIZ-QUINOA_24.png",
+              "reverse": false,
+              "title": "Title",
+              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+              "button": "Button",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1590696254319"
+        ],
+        "settings": {
+        }
+      },
+      "product-metafields": {
+        "type": "product-metafields",
+        "settings": {
+          "display": true,
+          "color": ""
+        }
+      },
+      "paralax": {
+        "type": "paralax",
+        "settings": {
+          "title": "Gallery",
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/Capture_d_ecran_2020-05-15_a_17.52.41.png",
+          "sub_text": "Heading goes here",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "primary",
+          "content_position": "text-align--center align--middle"
         }
       }
     },
@@ -804,8 +874,8 @@
       "1586264171772",
       "1590529047111",
       "1590574894700",
-      "1590578686923",
-      "1590535386582",
+      "1590686197117",
+      "1590687646183",
       "1586866711656",
       "1590573160195",
       "1534040684341"

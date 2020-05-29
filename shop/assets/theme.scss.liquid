@@ -6421,6 +6421,15 @@ https://flickity.metafizzy.co
 }
 
 
+/*------  utilities --------*/
+
+.relative{
+  position: relative;
+}
+
+
+
+
 /*------  slideshow --------*/
 
 .Slideshow--title{
@@ -6614,9 +6623,11 @@ https://flickity.metafizzy.co
   width: 95%;
   margin: auto;
   padding: 40px 0;
+  min-height: 270px;
 
   .carousel-cell {
     margin-right: 10px;
+    height: 180px; 
   }
 
   .c-100{
@@ -6783,8 +6794,133 @@ https://flickity.metafizzy.co
 }
 
 .image-block_image{
-  margin: auto; 
+  margin: auto;
   img{
     width: 100%;
   }
+}
+
+// page heading //
+
+.section-page-heading{
+  padding-bottom: 40px;
+}
+
+.heading-logo{
+   position: absolute;
+   max-width: 250px;
+   left: 50%;
+   top: -50px;
+   transform: translate(-50%, 10px);
+}
+
+.heading-title{
+  font-size: $font-size--xxxxl;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+// image-block //
+
+.image-text-block{
+  padding: 40px 0;
+}
+
+.image-block_title {
+  font-size: $font-size--xxl;
+}
+
+.image-block_text{
+   max-width: 80%;
+}
+
+.image-block-beendi{
+  max-width: 270px;
+}
+
+// paralax //
+
+.paralax {
+  background-attachment: fixed;
+  max-height: 600px;
+  background-position: top;
+}
+
+.parallax-title{
+  line-height: 1em;
+}
+
+// product template //
+
+.product-template-title {
+  width: 100%;
+}
+
+.product-template-ammounts {
+  display: flex;
+
+  .product-template-options {
+    width: 50%;
+
+    select {
+      border-bottom: none;
+    }
+  }
+
+  .product-template-quantity{
+    width: 50%;
+
+    .js-qty.relative {
+      border-bottom: none;
+
+      label {
+        display: none;
+      }
+
+      button {
+        .icon-chevron-left {
+          display: none;
+        }
+
+        .icon-chevron-right {
+          display: none;
+        }
+
+      }
+
+      button.js-qty__adjust--minus {
+        width: 25px;
+        text-align: right;
+      }
+
+      button.js-qty__adjust--minus:after {
+        content: "-";
+        display: inline;
+        color: black;
+        font-size: 20px;
+        line-height: 1px;
+      }
+
+
+      button.js-qty__adjust--plus {
+        width: 25px;
+        text-align: left;
+        padding-top: 5px;
+      }
+
+      button.js-qty__adjust--plus:before {
+        content: "+";
+        display: inline;
+        color: black;
+        font-size: 20px;
+        line-height: 1px;
+      }
+
+      .table-cell.align--middle.full--w {
+        border: 4px solid red;
+      }
+    }
+  }
+
 }

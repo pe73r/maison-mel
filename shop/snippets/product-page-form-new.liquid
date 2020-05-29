@@ -1,0 +1,162 @@
+{% include 'global-variables' %}
+
+<div class="product-page--form {% if current_variant.unit_price_measurement %} has-unit-price{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer" data-product-form>
+
+  {% if show_vendor %}
+  <h1 class="{%- if in_list -%}mt1 mb3{%- else -%}mt2{%- endif -%}">
+    <span class="t--meta">{{ product.vendor }}</span>
+  </h1>
+  {% endif %}
+  <h2 class="product__title f--title product-template-title">
+    {%- if in_list -%}
+    <a href="{{ product.url | within: collection }}">
+    {%- endif -%}
+    {{ product.title }}
+    {%- if in_list -%}
+    </a>
+    {%- endif -%}
+  </h2>
+
+  <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+  {% if product.compare_at_price_max > product.price %}
+    <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+  {% endif %}
+  <div class="h2 f--main caps regular font-size--ml" data-price-wrapper>
+    {% if product.compare_at_price_max > product.price %}
+      <s id="ComparePrice" class="ComparePrice f--main t--meta color--primary-faded" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
+      &nbsp;
+    {% endif %}
+    <span class="ProductPrice t--meta" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}"  data-product-price>
+    {{ current_variant.price | money }}
+    </span>
+  </div>
+
+  {% if short_description %}
+    <div class="mt2">
+      {{ short_description }}
+    </div>
+  {% endif %}
+
+  <div class="f--main t--meta regular font-size--s mb2" data-unit-price-wrapper>
+      <span class="visually-hidden">
+        {{- 'products.product.unit_price_label' | t -}}
+      </span>
+      <span data-unit-price>
+        {{- current_variant.unit_price | money -}}
+      </span>
+      <span aria-hidden="true">
+        /
+      </span>
+      <span class="visually-hidden">
+        {{- 'general.accessibility.unit_price_separator' | t -}}
+      </span>
+      <span data-unit-price-measurement-reference-value>
+      {%- if current_variant.unit_price_measurement.reference_value != 1 -%}
+        {{- current_variant.unit_price_measurement.reference_value -}}
+      {%- endif -%}
+      </span><!--
+      --><span data-unit-price-measurement-reference-unit>
+        {{- current_variant.unit_price_measurement.reference_unit -}}
+      </span>
+  </div>
+
+  <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+
+  <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+  {% comment %}
+    ID addToCartForm is a selector for the ajax cart plugin
+  {% endcomment %}
+  <div id="AddToCartForm--{{ sectionID }}" class="form-vertical">
+    {% form 'product', product %}
+      {% comment %}
+        Add product variants as a dropdown.
+          - By default, each variant (or combination of variants) will display as its own <option>
+          - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+        You can leverage jQuery to add a callback on page load and each time the select element changes:
+          - Include option_selection.js (as seen at the bottom of this file)
+          - This allows you to use JavaScript anytime the variant dropdown changes
+          - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+        For more information on products with multiple options, visit:
+          - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+      {% endcomment %}
+
+      <div class="product-template-ammounts">
+        <div class="product-template-options">
+          {% comment %}
+          Product options from Debut
+          {% endcomment %}
+          {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+            {% for option in product.options_with_values %}
+              <div class="selector-wrapper js product-form__item t--meta">
+                {% comment %}
+                {% unless section.settings.hide_drop_down_labels %}
+                <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
+                  {{ option.name }}
+                </label>
+                {% endunless %}
+                {% endcomment %}
+                <select class="single-option-selector single-option-selector-{{ sectionID }} product-form__input f--main t--meta mx--auto" id="SingleOptionSelector-{{ sectionID }}-{{ forloop.index0 }}" data-index="option{{ forloop.index }}"  data-single-option-selector>
+                  {% for value in option.values %}
+                    <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endfor %}
+          {% endunless %}
+
+          <select name="id" id="ProductSelect-{{ sectionID }}" data-section="{{ sectionID }}" class="product-form__variants no-js"  data-product-select>
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                  {{ variant.title }}
+                </option>
+              {% else %}
+                <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="product-template-quantity">
+          {% comment %}
+          <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+          {% endcomment %}
+          {% if show_quantity %}
+            <div class="product-quantity-selector">
+              <input type="number" id="Quantity" name="quantity" value="1" min="1">
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="cta-content {% unless current_variant.available %}hide-pay-buttons{% endunless %}  {% if show_payment_button %}cta-content--pay-buttons{% endif %}"  data-cta-content>
+
+        <button type="submit" name="add" id="AddToCart--{{ sectionID }}" class="btn addToCart mt2 mx--auto {% if show_payment_button %}{{ __primary_shop_button__ }}{% else %}{{ __shop_button__ }}{% endif %}" {% unless current_variant.available %}disabled="disabled"{% endunless %}  data-add-to-cart>
+
+          <span class="AddToCartText" data-add-to-cart-text>
+            {% if current_variant.available %}
+            {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+              <span class="SoldOutText">{{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+
+        </button>
+
+        {% if show_payment_button %}
+          <div class="mt2">{{ form | payment_button }}</div>
+        {% endif %}
+
+      </div>
+
+    {% comment %}
+    </form>
+    {% endcomment %}
+    {% endform %}
+
+  </div>
+
+</div>
