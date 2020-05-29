@@ -6823,6 +6823,7 @@ https://flickity.metafizzy.co
 
 .heading-logo{
    position: absolute;
+   width: 100%;
    max-width: 250px;
    left: 50%;
    top: -50px;
@@ -6853,6 +6854,21 @@ https://flickity.metafizzy.co
 .image-block-beendi{
   max-width: 270px;
 }
+
+@media screen and (max-width: 800px) {
+  .image-block_title {
+    text-align: center;
+  }
+
+  .image-block_text{
+     text-align: center;
+     margin: auto;
+  }
+
+}
+
+
+
 
 // featured-collection //
 
@@ -6989,5 +7005,16 @@ button.addToCart {
     margin-right: 10px;
     height: 180px;
     width: 180px;
+  }
+}
+
+// instagram //
+.ooo-instagram-header__title{
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .ooo-instagram-header__title{
+      font-size: 1.25rem;
   }
 }
