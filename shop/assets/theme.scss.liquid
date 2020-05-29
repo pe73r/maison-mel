@@ -6993,8 +6993,8 @@ button.addToCart {
 
   .product-tamplate-featured {
     width: 80%;
-    margin: auto;
     max-width: 600px;
+    margin: auto;
   }
 
   .product-featured-media {
@@ -7050,20 +7050,24 @@ button.addToCart {
 
 }
 
+// metafields preparation //
+
 .metafields-preparation{
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .metafields-preparation__image{
   max-width: 150px;
 }
 
-.metafields-preparation__text{
-
-}
+// metafields ingredients //
 
 .product-metafields-bg{
   padding: 40px 0;
+   ul{
+     list-style: none;
+     margin: 0;
+   }
 }
 
 .product-metafields_instructions{
@@ -7071,6 +7075,19 @@ button.addToCart {
   margin: auto;
 }
 
+.product-form_flex{
+  display: flex;
+}
+
+.product--pictos{
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  margin-top: 10px; 
+   img{
+     max-width: 40px;
+   }
+}
 
 
 // instagram //
@@ -7081,5 +7098,22 @@ button.addToCart {
 @media screen and (max-width: 768px) {
   .ooo-instagram-header__title{
       font-size: 1.25rem;
+  }
+
+  .product-tamplate-media {
+
+    .product-tamplate-featured {
+      width: 90%;
+      margin-bottom: 20px;
+    }
+    .product-featured-media {
+      max-width: 300px;
+      margin: auto;
+    }
+  }
+
+  .product-metafields_instructions{
+    width: 100%;
+    margin-bottom: 40px;
   }
 }

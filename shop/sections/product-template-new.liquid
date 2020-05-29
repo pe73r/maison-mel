@@ -99,20 +99,34 @@ Check for any supporting pages
           </div>
       </div>
       <div class="1/2--lap-and-up grid__cell homepage_block {{ product_form_class }} dt--pt4 product-page--form-sticky">
-          {% include 'product-page-form-new', show_vendor: true, show_payment_button: false, show_quantity:true %}
 
-         {% if section.settings.display-preparation and product.metafields.product.preparation != blank %}
-           <div class="metafields-preparation">
-             {% if section.settings.preparation-image != blank %}
-                <div class="metafields-preparation__image">
-                   <img src="{{ section.settings.preparation-image | img_url: 'master' }}" alt="{{ section.settings.preparation-image.alt }}">
+       <div class="product-form_flex">
+          <div class="product--pictos">
+              {% if product.metafields.product.picto-1 != blank %}
+                <img src="{{ product.metafields.product.picto-1 }}" alt="">
+              {% endif %}
+              {% if product.metafields.product.picto-2 != blank %}
+                <div class="">
+                  {{ product.metafields.product.picto-2 }}
                 </div>
               {% endif %}
-              <div class="metafields-preparation__text">
-                 {{ product.metafields.product.preparation }}
-              </div>
+          </div>
+          <div class="">
+            {% include 'product-page-form-new', show_vendor: true, show_payment_button: false, show_quantity:true %}
+             {% if section.settings.display-preparation and product.metafields.product.preparation != blank %}
+               <div class="metafields-preparation">
+                 {% if section.settings.preparation-image != blank %}
+                    <div class="metafields-preparation__image">
+                       <img src="{{ section.settings.preparation-image | img_url: 'master' }}" alt="{{ section.settings.preparation-image.alt }}">
+                    </div>
+                  {% endif %}
+                  <div class="metafields-preparation__text">
+                     {{ product.metafields.product.preparation }}
+                  </div>
+               </div>
+             {% endif %}
            </div>
-         {% endif %}
+          </div>
       </div>
     </div>
   </div>
