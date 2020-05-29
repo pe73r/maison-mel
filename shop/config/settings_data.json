@@ -252,6 +252,7 @@
       },
       "1586264171772": {
         "type": "slideshow",
+        "disabled": true,
         "blocks": {
           "1589548379231": {
             "type": "slide",
@@ -653,7 +654,7 @@
               "title": "nos marques",
               "text": "<p>On d&eacute;veloppe le m&eacute;langes des go&ucirc;ts.<\/p>",
               "button": "Je decouvre",
-              "url": "shopify:\/\/pages\/bloglist"
+              "url": "shopify:\/\/pages\/beedeli-1"
             }
           }
         },
@@ -858,26 +859,186 @@
       "paralax": {
         "type": "paralax",
         "settings": {
-          "title": "Gallery",
           "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/Capture_d_ecran_2020-05-15_a_17.52.41.png",
-          "sub_text": "Heading goes here",
-          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+          "sub_text": "",
+          "heading_color": "#fff",
+          "title_size": 47,
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "primary",
+          "content_position": "text-align--left align--bottom"
+        }
+      },
+      "product-template-new": {
+        "type": "product-template-new",
+        "settings": {
+          "image": "",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>"
+        }
+      },
+      "page-beendi-heading": {
+        "type": "page-beendi-heading",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/beendi_logo_rose_150dpi_200116_479f7906-b061-48ec-b139-92612471b53b.png",
+          "title": "Grain àpres grain: partageons et mélangeons nous!",
+          "button": "voir tous les produits",
+          "url": "shopify:\/\/collections"
+        }
+      },
+      "page-beendi-image-text-block": {
+        "type": "page-beendi-image-text-block",
+        "blocks": {
+          "1590741633899": {
+            "type": "image-text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image-block.png",
+              "reverse": false,
+              "title": "La marque beendi",
+              "text": "Chez beendi, nous croyons à un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours.<br>\n<br>\nNos mélanges gourmands et veggie sont là pour vous nourrir sainement, vous faire découvrir de nouvelles saveurs, vous permettre de respecter les ressources de la planète et de valoriser ceux qui cultivent nos ingrédients. <br><br>\n\n\n\nNotre cuisine est pleine de saveurs, loin des plats sans saveurs ni odeurs ! Mélanger les épices et les herbes, c’est notre trip pour sortir des sentiers battus !",
+              "button": "Button",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1590741633899"
+        ],
+        "settings": {
+        }
+      },
+      "1590745733612": {
+        "type": "paralax",
+        "settings": {
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/background.jpg",
+          "sub_text": "Découvrez <br>\nnotre nouvelle recette: <br>\nlentilles à la tomate<br>\net au paprika !",
+          "heading_color": "#fff",
+          "title_size": 43,
+          "cta_url": "shopify:\/\/collections",
+          "cta_text": "je découvre",
+          "text_color": "primary",
+          "content_position": "text-align--left align--bottom"
+        }
+      },
+      "articles-carousel-beendi": {
+        "type": "articles-carousel-beendi",
+        "settings": {
+          "display": true,
+          "blog": "les-amis-de-la-maison",
+          "title": "top recettes",
+          "bgcolor": "#ffffff"
+        }
+      },
+      "feature-collection-beendi": {
+        "type": "feature-collection-beendi",
+        "settings": {
+          "display": true,
+          "bg-color": "#ededed",
+          "title": "top produits",
+          "selected_collection": "les-melanges-beendi",
+          "no_products": 4,
+          "show_collection_link": false
+        }
+      },
+      "paralax-beendi": {
+        "type": "paralax-beendi",
+        "settings": {
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/Main_Img.jpg",
+          "sub_text": "",
+          "heading_color": "#fff",
+          "title_size": 30,
           "cta_url": "",
           "cta_text": "Shop Now",
           "text_color": "primary",
           "content_position": "text-align--center align--middle"
         }
+      },
+      "paralax-beendeli": {
+        "type": "paralax-beendeli",
+        "settings": {
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/Capture_d_ecran_2020-05-15_a_17.26.00.png",
+          "sub_text": "",
+          "heading_color": "#fff",
+          "title_size": 30,
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "primary",
+          "content_position": "text-align--center align--middle"
+        }
+      },
+      "page-beendeli-heading": {
+        "type": "page-beendeli-heading",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/LOGOBEEDEL.png",
+          "title": "Grain àpres grain: partageons et mélangeons nous!",
+          "button": "voir tous les produits",
+          "url": ""
+        }
+      },
+      "page-beendeli-image-text-block": {
+        "type": "page-beendeli-image-text-block",
+        "blocks": {
+          "1590748160332": {
+            "type": "image-text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/image-block.png",
+              "reverse": false,
+              "title": "La marque veggie du quotidien !",
+              "text": "Chez beedeli, nous croyons à un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. <br><br>\n\nNos mélanges gourmands et veggie sont là pour vous nourrir sainement, vous faire découvrir de nouvelles saveurs, vous permettre de respecter les ressources de la planète et de valoriser ceux qui cultivent nos ingrédients. <br><br>\n\nNotre cuisine est pleine de saveurs, loin des plats sans saveurs ni odeurs ! Mélanger les épices et les herbes, c’est notre trip pour sortir des sentiers battus !",
+              "button": "Button",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1590748160332"
+        ],
+        "settings": {
+        }
+      },
+      "feature-collection-beendeli": {
+        "type": "feature-collection-beendeli",
+        "settings": {
+          "display": true,
+          "bg-color": "#ededed",
+          "title": "top produits",
+          "selected_collection": "les-pack-beedeli",
+          "no_products": 4,
+          "show_collection_link": false
+        }
+      },
+      "articles-carousel-beendeli": {
+        "type": "articles-carousel-beendeli",
+        "settings": {
+          "display": true,
+          "blog": "recettes-parfaites",
+          "title": "top recettes",
+          "bgcolor": "#ffffff"
+        }
+      },
+      "1590762132848": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "helvetica_n4",
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": "<!-- -->"
+        }
       }
     },
     "content_for_index": [
       "1586264171772",
+      "1590745733612",
       "1590529047111",
       "1590574894700",
       "1590686197117",
       "1590687646183",
       "1586866711656",
       "1590573160195",
+      "1590762132848",
       "1534040684341"
     ]
   },

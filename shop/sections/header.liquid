@@ -40,7 +40,9 @@
       <li class="site-nav--has-dropdown {% if mega_nav %}site-nav--has-dropdown--meganav{% endif %} {% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
         <a href="{{ link.url }}" class="site-nav__link" tabindex="-1">
           <span class="align--middle">{{ link.title }}</span>
-          <span class="align--middle font-size--xxs">{% include 'svg-icon', icon: 'chevron-down' %}</span>
+          <span class="align--middle font-size--xxs">
+            <!-- {% include 'svg-icon', icon: 'chevron-down' %} -->
+          </span>
         </a>
 
     </li>
@@ -137,7 +139,9 @@
               <li class="site-nav--has-dropdown {% if mega_nav %}site-nav--has-dropdown--meganav{% endif %} {% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
                 <a href="{{ link.url }}" class="site-nav__link">
                   <span class="align--middle">{{ link.title }}</span>
-                  <span class="align--middle font-size--xxs">{% include 'svg-icon', icon: 'chevron-down' %}</span>
+                  <span class="align--middle font-size--xxs">
+                    <!-- {% include 'svg-icon', icon: 'chevron-down' %} -->
+                  </span>
                 </a>
 
                 {% comment %}
@@ -169,7 +173,7 @@
                         <a href="{{ childlink.url }}" class="site-nav__link site-nav__link--thirdlevel">
                           <span class="align--middle">{{ childlink.title | escape }}</span>
                           <span class="align--middle right font-size--xxs">
-                            {% include 'svg-icon', icon: 'chevron-right' %}
+                            <!-- {% include 'svg-icon', icon: 'chevron-right' %} -->
                           </span>
                         </a>
                         <ul class="site-nav__third-level">
@@ -259,6 +263,20 @@
 
 
       <ul class="header_desktop-meta list-reset align--middle inline-block inline-list">
+        {% if section.settings.logo-beendi != blank %}
+          <li class="logo-beendi">
+            <a href="{{ section.settings.beendi }}">
+             <img src="{{ section.settings.logo-beendi | img_url: 'master' }}" alt="{{ section.settings.logo-beendi.alt }}">
+            </a>
+          </li>
+        {% endif %}
+        {% if section.settings.logo-beendeli != blank %}
+          <li class="logo-beendeli">
+            <a href="{{ section.settings.beendeli-url }}">
+            <img src="{{ section.settings.logo-beendeli | img_url: 'master' }}" alt="{{ section.settings.logo-beendeli.alt }}">
+            </a>
+          </li>
+        {% endif %}
 
         {% if shop.customer_accounts_enabled %}
         <li class="header_desktop-meta-item relative">
@@ -401,6 +419,30 @@
       "type": "checkbox",
       "id": "show_social_sidebar",
       "label": "Show social icons"
+    },
+    {
+      "type": "header",
+      "content": "logos"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo-beendi",
+      "label": "Logo beendi"
+    },
+    {
+      "type": "url",
+      "id": "beendi", 
+      "label": "Beendi link"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo-beendeli",
+      "label": "Logo beedeli"
+    },
+    {
+      "type": "url",
+      "id": "beendeli-url",
+      "label": "Beendeli link"
     }
   ],
   "blocks": [

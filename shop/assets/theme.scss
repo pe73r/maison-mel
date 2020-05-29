@@ -6108,7 +6108,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?2525) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?2768) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6320,6 +6320,15 @@ https://flickity.metafizzy.co
 }
 
 
+/*------  utilities --------*/
+
+.relative{
+  position: relative;
+}
+
+
+
+
 /*------  slideshow --------*/
 
 .Slideshow--title{
@@ -6513,9 +6522,11 @@ https://flickity.metafizzy.co
   width: 95%;
   margin: auto;
   padding: 40px 0;
+  min-height: 270px;
 
   .carousel-cell {
     margin-right: 10px;
+    height: 180px;
   }
 
   .c-100{
@@ -6682,10 +6693,55 @@ https://flickity.metafizzy.co
 }
 
 .image-block_image{
-  margin: auto; 
+  margin: auto;
   img{
     width: 100%;
   }
+}
+
+// page heading //
+
+.section-page-heading{
+  padding-bottom: 40px;
+}
+
+.heading-logo{
+   position: absolute;
+   max-width: 250px;
+   left: 50%;
+   top: -50px;
+   transform: translate(-50%, 10px);
+}
+
+.heading-title{
+  font-size: $font-size--xxxxl;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+// image-block //
+
+.image-text-block{
+  padding: 40px 0;
+}
+
+.image-block_title {
+  font-size: $font-size--xxl;
+}
+
+.image-block_text{
+   max-width: 80%;
+}
+
+.image-block-beendi{
+  max-width: 270px;
+}
+
+// featured-collection //
+
+.bg-collection{
+  padding: 30px 0; 
 }
 
 // paralax //
@@ -6696,76 +6752,111 @@ https://flickity.metafizzy.co
   background-position: top;
 }
 
+.parallax-title{
+  line-height: 1em;
+}
+
 // product template //
 
 .product-template-title {
   width: 100%;
 }
 
-.product-template-ammounts {
-  display: flex;
+button.addToCart {
+  width: 100%;
+}
 
-  .product-template-options {
-    width: 50%;
+.product-template-options {
+  width: 51%;
 
-    select {
-      border-bottom: none;
-    }
+  select {
+    border: 4px solid #e94c2b;
+    padding: 0px;
+    min-height: 30px;
   }
+}
 
-  .product-template-quantity{
-    width: 50%;
+.product-template-quantity{
+  width: 51%;
+  height: 48px;
 
-    .js-qty.relative {
-      border-bottom: none;
+  .js-qty.relative {
+    border-bottom: none;
 
-      label {
+    label {
+      display: none;
+    }
+
+    .table.relative {
+      min-height: 32px;
+    }
+
+    button {
+      .icon-chevron-left {
         display: none;
       }
 
-      button {
-        .icon-chevron-left {
-          display: none;
-        }
-
-        .icon-chevron-right {
-          display: none;
-        }
-
+      .icon-chevron-right {
+        display: none;
       }
 
-      button.js-qty__adjust--minus {
-        width: 25px;
-        text-align: right;
-      }
-      
-      button.js-qty__adjust--minus:after {
-        content: "-";
-        display: inline;
-        color: black;
-        font-size: 20px;
-        line-height: 1px;
-      }
+    }
+
+    button.js-qty__adjust--minus {
+      width: 25px;
+      text-align: right;
+    }
+
+    button.js-qty__adjust--minus:after {
+      content: "-";
+      display: inline;
+      color: black;
+      font-size: 20px;
+      line-height: 1px;
+    }
 
 
-      button.js-qty__adjust--plus {
-        width: 25px;
-        text-align: left;
-        padding-top: 5px;
-      }
-      
-      button.js-qty__adjust--plus:before {
-        content: "+";
-        display: inline;
-        color: black;
-        font-size: 20px;
-        line-height: 1px;
-      }
+    button.js-qty__adjust--plus {
+      width: 25px;
+      text-align: left;
+      padding-top: 5px;
+    }
 
-      .table-cell.align--middle.full--w {
-        border: 4px solid red;
-      }
+    button.js-qty__adjust--plus:before {
+      content: "+";
+      display: inline;
+      color: black;
+      font-size: 20px;
+      line-height: 1px;
+    }
+
+    .table-cell.align--middle.full--w {
+      border: 4px solid #e94c2b;
     }
   }
+}
 
+.product-tamplate-media {
+
+  .product-tamplate-featured {
+    width: 80%;
+    margin: auto;
+    max-width: 600px;
+  }
+
+  .product-featured-media {
+    height: 720px;
+  }
+}
+
+.product-template-carousel {
+  .flickity-viewport {
+    width: 100%;
+  }
+
+  .carousel-cell {
+    margin-right: 10px;
+    height: 180px;
+    width: 180px;
+  }
 }

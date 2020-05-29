@@ -80,9 +80,15 @@ Check for any supporting pages
   
 
     <div class="grid">
-      <div class="1/2--lap-and-up grid__cell homepage_block">
-        <div class="main-carousel carousel-flex"
-          data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true}'>
+      <div class="1/2--lap-and-up grid__cell homepage_block product-tamplate-media">
+        <div class="product-tamplate-featured">
+          {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+          <meta itemprop="image" content="{{ product.featured_media | img_url: '1200x' }}">
+          <img src="{{ featured_media | img_url: 'master' }}" alt="{{ featured_media.alt }}" id="FeaturedMedia-{{ section.id }}" class="product-featured-media" style="max-width: 720px;">
+        </div>
+
+        <div class="main-carousel carousel-flex product-template-carousel"
+          data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "width":"100%"}'>
           {% for media in product.media %}
 
             <div class="carousel-cell">

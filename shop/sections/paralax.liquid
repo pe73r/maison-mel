@@ -12,7 +12,7 @@
 
 {% assign style = section.settings.image_style %}
 
-<section id="section-{{ section.id }}" class="feature-image  section section--feature-image bg--section">
+<section id="section-{{ section.id }}" class="feature-image section-parallax section section--feature-image bg--section">
 
 
   <div  class="p0 clearfix relative feature-image__container--{% if style == 'full_screen' %}full_screen{% else %}content{% endif %} ">
@@ -23,7 +23,7 @@
         {{ 'lifestyle-1' | placeholder_svg_tag }}
       </div>
       {% else %}
-      <div class="relative full">
+      <div class="relative parallax-height">
         <div  class="lazyload feature-image__cover paralax"
               data-bgset="{% include 'bgset', image: feature_image %}"
               data-sizes="auto"
@@ -66,9 +66,9 @@
       {% endif %}
     {% endif %}
 
-    <div class="absolute top--0 left--0 full p2 lg--p4">
-      <div class="table full">
-        <div class="table-cell {{ section.settings.content_position }}">
+    <div class="absolute top--0 left--0 parallax-height p2 lg--p3">
+      <div class="table parallax-height">
+        <div class="table-cell text-align--left align--bottom parallax-text-align">
 
           {% if sub_text != '' %}
           <div class="feature-image__overlay-text h2 f--title font-size--xxxl lg--font-size--xxxxxl parallax-title mt2">{{ sub_text }}</div>
@@ -93,8 +93,7 @@
 
 {% schema %}
 {
-  "name": "Image with text paralax",
-  "class": "full_bleed",
+  "name": "Image parallax",
   "settings": [
 
     {
@@ -162,56 +161,13 @@
         { "value": "white ", "label": "White"},
         { "value": "black", "label": "Black"}
      ],
-     "label": "Text and button color"
-     },
-     {
-      "type": "select",
-      "id": "content_position",
-      "label": "Content Position",
-      "options": [
-        {
-          "value": "text-align--left align--top",
-          "label": "Top Left"
-        },
-        {
-          "value": "text-align--center align--top",
-          "label": "Top Center"
-        },
-        {
-          "value": "text-align--right align--top",
-          "label": "Top Right"
-        },
-        {
-          "value": "text-align--left align--middle",
-          "label": "Middle Left"
-        },
-        {
-          "value": "text-align--center align--middle",
-          "label": "Middle Center"
-        },
-        {
-          "value": "text-align--right align--middle",
-          "label": "Middle Right"
-        },
-        {
-          "value": "text-align--left align--bottom",
-          "label": "Bottom Left"
-        },
-        {
-          "value": "text-align--center align--bottom",
-          "label": "Bottom Center"
-        },
-        {
-          "value": "text-align--right align--bottom",
-          "label": "Bottom Right"
-        }
-      ],
-      "default":   "text-align--center align--middle"
-    }
+     "label": "Button color"
+   }
+
   ],
   "presets": [
     {
-      "name": "Image with text paralax",
+      "name": "Image Parallax",
       "category": "Image"
     }
   ]

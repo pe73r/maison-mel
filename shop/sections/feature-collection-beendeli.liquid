@@ -14,7 +14,8 @@
 {% endcase %}
 
 {% if section.settings.display %}
-<section class="store section m0 py2 bg--section">
+<section id="section-{{ section.id }}" class="store section m0 py2 bg--section ">
+  <div class="bg-collection">
   <div class="wrapper section--wrapper">
 
     {% assign heading_class = 't--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3' %}
@@ -55,7 +56,13 @@
     </div>
 
   </div>
+  </div>
 </section>
+<style >
+   #section-{{ section.id }} .bg-collection{
+      background-color: {{ section.settings.bg-color }};
+    }
+</style>
 {% endif %}
 
 {% schema %}
@@ -68,6 +75,12 @@
       "id": "display",
       "label": "Display section?",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "Background color",
+      "default": "#ededed"
     },
     {
        "type":      "text",
