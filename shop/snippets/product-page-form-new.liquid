@@ -3,8 +3,8 @@
 <div class="product-page--form {% if current_variant.unit_price_measurement %} has-unit-price{% endif %}" itemprop="offers" itemscope itemtype="http://schema.org/Offer" data-product-form>
 
   {% if show_vendor %}
-  <h1 class="{%- if in_list -%}mt1 mb3{%- else -%}mt2{%- endif -%}">
-    <span class="t--meta">{{ product.vendor }}</span>
+  <h1 class="product-vendor">
+     {{ product.vendor }}
   </h1>
   {% endif %}
   <h2 class="product__title f--title product-template-title">
@@ -21,7 +21,7 @@
   {% if product.compare_at_price_max > product.price %}
     <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
   {% endif %}
-  <div class="h2 f--main caps regular font-size--ml" data-price-wrapper>
+  <div class="Price-box h2 f--main caps regular font-size--ml" data-price-wrapper>
     {% if product.compare_at_price_max > product.price %}
       <s id="ComparePrice" class="ComparePrice f--main t--meta color--primary-faded" data-compare-price>{{ current_variant.compare_at_price | money }}</s>
       &nbsp;
@@ -129,7 +129,7 @@
             </div>
           {% endif %}
         </div>
-      
+
       <div class="cta-content {% unless current_variant.available %}hide-pay-buttons{% endunless %}  {% if show_payment_button %}cta-content--pay-buttons{% endif %}"  data-cta-content>
 
         <button type="submit" name="add" id="AddToCart--{{ sectionID }}" class="btn addToCart mt2 mx--auto {% if show_payment_button %}{{ __primary_shop_button__ }}{% else %}{{ __shop_button__ }}{% endif %}" {% unless current_variant.available %}disabled="disabled"{% endunless %}  data-add-to-cart>

@@ -30,8 +30,8 @@
         {% include 'image-style' with image: media, width: '2000', height: '2000', small_style: false, wrapper_id: media_wrapper_id, img_id_class: img_id_class %}
         <img
           id="{{ media_id }}"
-          class="resp-img lazyload {{ img_id_class }}"
-          src="{{ media | img_url: '300x300' }}"
+          class="resp-img lazyload {{ img_id_class }} product-template-carousel-media"
+          src="{{ media | img_url: '600x600' }}"
           data-src="{{ img_url }}"
           data-widths="[180, 360, 590, 720, 900, 1080, 1296, 1512, 1728, 2048]"
           data-aspectratio="{{ media.preview_image.aspect_ratio }}"

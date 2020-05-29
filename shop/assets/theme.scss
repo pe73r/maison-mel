@@ -146,9 +146,9 @@ $colorBlack: #000;
 
 
 
-  
+
     $colorPrimaryOverlay: #ffffff;
-  
+
 
 
 //overlay color for main accent color (white, primary or black)
@@ -156,9 +156,9 @@ $colorBlack: #000;
 
 
 
-  
+
     $colorMainAccentOverlay: #141414;
-  
+
 
 
 //overlay color for secondary accent color (white, primary or black)
@@ -166,10 +166,10 @@ $colorBlack: #000;
 
 
 
-  
+
     $colorSecondaryAccentOverlay: #141414;
     $secondaryOverlayFaded: rgba(20, 20, 20, 0.2 );
-  
+
 
 
 //overlay color for shop accent color (white, primary or black)
@@ -177,11 +177,11 @@ $colorBlack: #000;
 
 
 
-  
-    
+
+
       $colorShopAccentOverlay: #ffffff;
-    
-  
+
+
 
 
 $mainAccentRGBA: rgba(237, 189, 64, 0.95 );
@@ -533,7 +533,7 @@ $titleFontWeight: 400;
 $titleFontStyle: normal;
 
 
-  
+
 
 
 
@@ -2377,17 +2377,17 @@ html input[disabled] {
 .btn--main-accent {
   background-color: $colorMainAccent;
 
-  
-  
 
-  
-  
 
-  
-    
+
+
+
+
+
+
       color: $colorBlack;
-    
-  
+
+
 
   &:hover {
     background-color: darken($colorMainAccent, 10%);
@@ -2398,16 +2398,16 @@ html input[disabled] {
 .btn--shop-accent {
   background-color: $colorShopAccent;
 
-  
-  
-
-  
-  
 
 
-  
+
+
+
+
+
+
     color: $colorWhite;
-  
+
 
   &:hover {
     background-color: darken($colorShopAccent, 10%);
@@ -2418,17 +2418,17 @@ html input[disabled] {
 .btn--white {
   background-color: $colorWhite;
 
-  
-  
 
-  
-  
 
-  
-    
+
+
+
+
+
+
       color: $colorBlack;
-    
-  
+
+
 
   &:hover {
     background-color: darken($colorWhite, 10%);
@@ -2440,15 +2440,15 @@ html input[disabled] {
 .btn--black {
   background-color: $colorBlack;
 
-  
-  
 
-  
-  
 
-  
+
+
+
+
+
     color: $colorWhite;
-  
+
 
   &:hover {
     background-color: darken($colorBlack, 10%);
@@ -5531,18 +5531,18 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
   button {
     font-family: $mainFontStack;
     padding: 4px 8px;
-    
+
     color: $colorShopAccent;
-    
+
     font-size: $font-size--s;
     text-transform: none;
     font-weight: 400;
   }
   li.slick-active button {
     color: $colorPrimary;
-    
+
     border-bottom: $borderHrHeight solid $colorPrimary;
-    
+
 
   }
 }
@@ -6108,7 +6108,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?2768) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?2897) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6626,6 +6626,21 @@ https://flickity.metafizzy.co
 
 /// header //
 
+
+.logo-beendi,
+.logo-beendeli{
+  margin-right: 15px;
+  img{
+    max-width: 80px;
+  }
+}
+@media screen and (max-width: 1000px){
+  .logo-beendi,
+  .logo-beendeli{
+    display: none !important;
+    }
+}
+
 /// no more grid padding//
 .site-header__main {
   padding: 0;
@@ -6707,6 +6722,7 @@ https://flickity.metafizzy.co
 
 .heading-logo{
    position: absolute;
+   width: 100%;
    max-width: 250px;
    left: 50%;
    top: -50px;
@@ -6738,13 +6754,43 @@ https://flickity.metafizzy.co
   max-width: 270px;
 }
 
+@media screen and (max-width: 800px) {
+  .image-block_title {
+    text-align: center;
+  }
+
+  .image-block_text{
+     text-align: center;
+     margin: auto;
+  }
+
+}
+
+
+
+
 // featured-collection //
 
 .bg-collection{
-  padding: 30px 0; 
+  padding: 30px 0;
 }
 
-// paralax //
+// parallax //
+
+.section-parallax {
+  .feature-image__container--full_screen{
+    height: 400px !important; // only for the homepage //
+  }
+}
+
+.parallax-text-align{
+   padding-bottom: 40px;
+}
+
+.parallax-height{
+  width: 100%;
+  height: 100%;
+}
 
 .paralax {
   background-attachment: fixed;
@@ -6858,5 +6904,16 @@ button.addToCart {
     margin-right: 10px;
     height: 180px;
     width: 180px;
+  }
+} 
+
+// instagram //
+.ooo-instagram-header__title{
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .ooo-instagram-header__title{
+      font-size: 1.25rem;
   }
 }

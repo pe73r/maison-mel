@@ -72,37 +72,47 @@ Check for any supporting pages
     <meta itemprop="name" content="{{ product.title }}">
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
     <meta itemprop="image" content="{{ product.featured_media | img_url: '1200x' }}">
-  
+
     {% comment %}
       Get first variant, or deep linked one
     {% endcomment %}
     {% assign current_variant = product.selected_or_first_available_variant %}
-  
+
 
     <div class="grid">
       <div class="1/2--lap-and-up grid__cell homepage_block product-tamplate-media">
         <div class="product-tamplate-featured">
           {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
           <meta itemprop="image" content="{{ product.featured_media | img_url: '1200x' }}">
-          <img src="{{ featured_media | img_url: 'master' }}" alt="{{ featured_media.alt }}" id="FeaturedMedia-{{ section.id }}" class="product-featured-media" style="max-width: 720px;">
+          <img src="{{ featured_media | img_url: 'master' }}" alt="{{ featured_media.alt }}" id="FeaturedMedia-{{ section.id }}" class="product-featured-media">
         </div>
 
-        <div class="main-carousel carousel-flex product-template-carousel"
-          data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "width":"100%"}'>
-          {% for media in product.media %}
-
-            <div class="carousel-cell">
-              {% include 'media', media: media, featured_media: featured_media, zoom_enabled: zoom_enabled %}
+         <div class="product__carousel">
+            <div class="main-carousel carousel-flex product-template-carousel"
+              data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "width":"100%"}'>
+                {% for media in product.media %}
+                  <div class="carousel-cell">
+                    {% include 'media', media: media, featured_media: featured_media, zoom_enabled: zoom_enabled %}
+                  </div>
+                {% endfor %}
             </div>
-
-          {% endfor %}
-
-        </div>
+          </div>
       </div>
       <div class="1/2--lap-and-up grid__cell homepage_block {{ product_form_class }} dt--pt4 product-page--form-sticky">
-
           {% include 'product-page-form-new', show_vendor: true, show_payment_button: false, show_quantity:true %}
 
+         {% if section.settings.display-preparation and product.metafields.product.preparation != blank %}
+           <div class="metafields-preparation">
+             {% if section.settings.preparation-image != blank %}
+                <div class="metafields-preparation__image">
+                   <img src="{{ section.settings.preparation-image | img_url: 'master' }}" alt="{{ section.settings.preparation-image.alt }}">
+                </div>
+              {% endif %}
+              <div class="metafields-preparation__text">
+                 {{ product.metafields.product.preparation }}
+              </div>
+           </div>
+         {% endif %}
       </div>
     </div>
   </div>
@@ -136,7 +146,23 @@ Check for any supporting pages
         "id": "text",
         "label": "Text",
         "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.</p>"
+      },
+      {
+        "type": "header",
+          "content": "Metafields preparation"
+      },
+      {
+        "type": "checkbox",
+        "id": "display-preparation",
+        "label": "Display preparation ?",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "preparation-image",
+        "label": "image"
       }
+
   ],
   "presets": [
     {

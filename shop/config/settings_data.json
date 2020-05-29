@@ -102,7 +102,11 @@
           "always_use_mobile_menu": false,
           "secondary_linklist": "",
           "show_search_sidebar": true,
-          "show_social_sidebar": true
+          "show_social_sidebar": true,
+          "logo-beendi": "shopify:\/\/shop_images\/beendi_logo_rose_150dpi_200116_479f7906-b061-48ec-b139-92612471b53b.png",
+          "beendi": "shopify:\/\/pages\/beendi",
+          "logo-beendeli": "shopify:\/\/shop_images\/LOGOBEEDEL.png",
+          "beendeli-url": "shopify:\/\/pages\/beedeli-1"
         }
       },
       "footer": {
@@ -201,15 +205,6 @@
           "full_width_images": false
         }
       },
-      "1534040684341": {
-        "type": "newsletter",
-        "settings": {
-          "title": "Suivez-nous!",
-          "text": "<p><span style=\"text-decoration: none;\">Retrouvez les recettes, les coups de coeur et les conseils bien-&ecirc;tre de la Maison des M&eacute;langes en vous abonnant &agrave; la newsletter.<\/span><\/p>",
-          "button-text": "je m'inscris",
-          "bg-color": "#fcdf6b"
-        }
-      },
       "product-related-articles": {
         "type": "product-related-articles",
         "settings": {
@@ -265,7 +260,7 @@
               "text_color": "white",
               "button_color": "black",
               "button_text_color": "primary",
-              "content_position": "text-align--left align--middle"
+              "content_position": "text-align--left align--bottom"
             }
           }
         },
@@ -668,6 +663,7 @@
       },
       "1590573160195": {
         "type": "homepage-logos",
+        "disabled": true,
         "blocks": {
           "1590573299522": {
             "type": "Logo",
@@ -798,19 +794,12 @@
             "settings": {
               "blog": "recettes-parfaites"
             }
-          },
-          "1590690288312": {
-            "type": "Blog",
-            "settings": {
-              "blog": "podcast-melangeons-nous"
-            }
           }
         },
         "block_order": [
           "1590689901851",
           "1590689913835",
-          "1590689921866",
-          "1590690288312"
+          "1590689921866"
         ],
         "settings": {
           "title": "découvrez nos blogs",
@@ -866,8 +855,7 @@
           "title_size": 47,
           "cta_url": "",
           "cta_text": "Shop Now",
-          "text_color": "primary",
-          "content_position": "text-align--left align--bottom"
+          "text_color": "primary"
         }
       },
       "product-template-new": {
@@ -917,8 +905,7 @@
           "title_size": 43,
           "cta_url": "shopify:\/\/collections",
           "cta_text": "je découvre",
-          "text_color": "primary",
-          "content_position": "text-align--left align--bottom"
+          "text_color": "primary"
         }
       },
       "articles-carousel-beendi": {
@@ -975,7 +962,7 @@
           "logo": "shopify:\/\/shop_images\/LOGOBEEDEL.png",
           "title": "Grain àpres grain: partageons et mélangeons nous!",
           "button": "voir tous les produits",
-          "url": ""
+          "url": "shopify:\/\/collections\/les-pack-beedeli"
         }
       },
       "page-beendeli-image-text-block": {
@@ -1019,13 +1006,38 @@
           "bgcolor": "#ffffff"
         }
       },
-      "1590762132848": {
-        "type": "instafeed",
+      "1590766097198": {
+        "type": "maestrooo-instagram",
         "settings": {
-          "heading_font": "helvetica_n4",
-          "heading_size": 20,
-          "feed_width": 100,
-          "html_area": "<!-- -->"
+          "title": "on parle de nous",
+          "subheading": "",
+          "button_text": "",
+          "button_link": "",
+          "layout": "grid",
+          "image_size": "medium",
+          "full_width": false,
+          "add_spacing": true,
+          "rows_count": 1,
+          "show_author": false,
+          "show_caption": true,
+          "show_date": true,
+          "click_action": "open_instagram",
+          "heading_color": "#000000",
+          "subheading_color": "#000000",
+          "button_background": "#000000",
+          "button_color": "#ffffff",
+          "overlay_color": "#000000",
+          "overlay_text_color": "#ffffff",
+          "overlay_opacity": 65
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "settings": {
+          "title": "Sign up to our newsletter",
+          "text": "<p>Receive special offers and first look at new products.<\/p>",
+          "button-text": "je m'inscris",
+          "bg-color": "#fcdf6b"
         }
       }
     },
@@ -1038,8 +1050,7 @@
       "1590687646183",
       "1586866711656",
       "1590573160195",
-      "1590762132848",
-      "1534040684341"
+      "1590766097198"
     ]
   },
   "presets": {
