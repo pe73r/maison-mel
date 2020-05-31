@@ -6461,6 +6461,7 @@ https://flickity.metafizzy.co
 
 .homepages_text{
   max-width: 80%;
+  margin-bottom: 15px; 
 }
 
 @media screen and (max-width: 800px){
@@ -6879,19 +6880,23 @@ https://flickity.metafizzy.co
 
 // parallax //
 
-.section-parallax {
-  .feature-image__container--full_screen{
-    height: 400px !important; // only for the homepage //
-  }
-}
+// .section-parallax {
+//   .feature-image__container--full_screen{
+//     height: 400px !important; // only for the homepage //
+//   }
+// }
 
 .parallax-text-align{
-   padding-bottom: 40px;
+  padding-bottom: 40px;
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .parallax-height{
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .paralax {
@@ -6930,6 +6935,7 @@ button.addToCart {
 .product-template-quantity{
   width: 51%;
   height: 48px;
+  margin-top: 5px;
 
   .js-qty.relative {
     border-bottom: none;
@@ -6995,6 +7001,7 @@ button.addToCart {
     width: 80%;
     max-width: 600px;
     margin: auto;
+    text-align: center;
   }
 
   .product-featured-media {
@@ -7035,9 +7042,22 @@ button.addToCart {
   }
 }
 
+.ProductForm_box{
+  width: 100%;
+
+}
+
 .product-vendor{
   margin: 0;
   font-weight: bold;
+}
+
+.ProductDescription{
+  max-width: 400px;
+   ul{
+     list-style: none;
+     margin: 0;
+   }
 }
 
 .Price-box{
@@ -7049,6 +7069,19 @@ button.addToCart {
   font-weight: bold;
 
 }
+
+.product-articles-carousel {
+  .grid__item {
+    padding: 0px;
+  }
+
+  .carousel-cell {
+    width: 400px;
+    padding: 0px 20px;
+  }
+
+}
+
 
 // metafields preparation //
 
@@ -7083,22 +7116,16 @@ button.addToCart {
   display: flex;
   flex-direction: column;
   margin-right: 30px;
-  margin-top: 10px; 
+  margin-top: 10px;
    img{
-     max-width: 40px;
+    width: 100%;
+     max-width: 60px;
+     margin-bottom: 25px;
    }
 }
 
 
-// instagram //
-.ooo-instagram-header__title{
-  font-size: 2rem;
-}
-
 @media screen and (max-width: 768px) {
-  .ooo-instagram-header__title{
-      font-size: 1.25rem;
-  }
 
   .product-tamplate-media {
 
@@ -7115,5 +7142,19 @@ button.addToCart {
   .product-metafields_instructions{
     width: 100%;
     margin-bottom: 40px;
+  }
+
+  .product-form_flex{
+  flex-direction: column;
+  }
+
+  .product--pictos{
+    flex-direction: row;
+    margin: 0;
+    justify-content: space-around;
+     img{
+       max-width: 50px;
+       margin-bottom: 20px;
+     }
   }
 }

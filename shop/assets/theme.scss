@@ -146,9 +146,9 @@ $colorBlack: #000;
 
 
 
-
+  
     $colorPrimaryOverlay: #ffffff;
-
+  
 
 
 //overlay color for main accent color (white, primary or black)
@@ -156,9 +156,9 @@ $colorBlack: #000;
 
 
 
-
+  
     $colorMainAccentOverlay: #141414;
-
+  
 
 
 //overlay color for secondary accent color (white, primary or black)
@@ -166,10 +166,10 @@ $colorBlack: #000;
 
 
 
-
+  
     $colorSecondaryAccentOverlay: #141414;
     $secondaryOverlayFaded: rgba(20, 20, 20, 0.2 );
-
+  
 
 
 //overlay color for shop accent color (white, primary or black)
@@ -177,11 +177,11 @@ $colorBlack: #000;
 
 
 
-
-
+  
+    
       $colorShopAccentOverlay: #ffffff;
-
-
+    
+  
 
 
 $mainAccentRGBA: rgba(237, 189, 64, 0.95 );
@@ -533,7 +533,7 @@ $titleFontWeight: 400;
 $titleFontStyle: normal;
 
 
-
+  
 
 
 
@@ -2377,17 +2377,17 @@ html input[disabled] {
 .btn--main-accent {
   background-color: $colorMainAccent;
 
+  
+  
 
+  
+  
 
-
-
-
-
-
-
+  
+    
       color: $colorBlack;
-
-
+    
+  
 
   &:hover {
     background-color: darken($colorMainAccent, 10%);
@@ -2398,16 +2398,16 @@ html input[disabled] {
 .btn--shop-accent {
   background-color: $colorShopAccent;
 
+  
+  
+
+  
+  
 
 
-
-
-
-
-
-
+  
     color: $colorWhite;
-
+  
 
   &:hover {
     background-color: darken($colorShopAccent, 10%);
@@ -2418,17 +2418,17 @@ html input[disabled] {
 .btn--white {
   background-color: $colorWhite;
 
+  
+  
 
+  
+  
 
-
-
-
-
-
-
+  
+    
       color: $colorBlack;
-
-
+    
+  
 
   &:hover {
     background-color: darken($colorWhite, 10%);
@@ -2440,15 +2440,15 @@ html input[disabled] {
 .btn--black {
   background-color: $colorBlack;
 
+  
+  
 
+  
+  
 
-
-
-
-
-
+  
     color: $colorWhite;
-
+  
 
   &:hover {
     background-color: darken($colorBlack, 10%);
@@ -4654,6 +4654,7 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
   padding: 8px 0;
   position: relative;
 
+
   @include at-query($min,$wide) {
     width: 50%;
   }
@@ -4662,9 +4663,9 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 .js-qty__controls {
   width: 80px;
   height: 30px;
-  position: absolute;
+  position: initial;
   top: 5px;
-  right: -5px;
+  // right: -5px;
   @include transition(width,0.2s,ease-in-out);
   > .table {
     height: 100%;
@@ -5531,18 +5532,18 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
   button {
     font-family: $mainFontStack;
     padding: 4px 8px;
-
+    
     color: $colorShopAccent;
-
+    
     font-size: $font-size--s;
     text-transform: none;
     font-weight: 400;
   }
   li.slick-active button {
     color: $colorPrimary;
-
+    
     border-bottom: $borderHrHeight solid $colorPrimary;
-
+    
 
   }
 }
@@ -6108,7 +6109,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?2897) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?3067) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6784,12 +6785,16 @@ https://flickity.metafizzy.co
 }
 
 .parallax-text-align{
-   padding-bottom: 40px;
+  padding-bottom: 40px;
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .parallax-height{
   width: 100%;
   height: 100%;
+  display: flex;
 }
 
 .paralax {
@@ -6806,6 +6811,9 @@ https://flickity.metafizzy.co
 
 .product-template-title {
   width: 100%;
+  max-width: 300px;
+  margin: 0;
+
 }
 
 button.addToCart {
@@ -6828,6 +6836,7 @@ button.addToCart {
 
   .js-qty.relative {
     border-bottom: none;
+    margin: 0;
 
     label {
       display: none;
@@ -6878,6 +6887,7 @@ button.addToCart {
 
     .table-cell.align--middle.full--w {
       border: 4px solid #e94c2b;
+      padding: 5px 10px;
     }
   }
 }
@@ -6886,26 +6896,115 @@ button.addToCart {
 
   .product-tamplate-featured {
     width: 80%;
-    margin: auto;
     max-width: 600px;
+    margin: auto;
   }
 
   .product-featured-media {
-    height: 720px;
+    max-width: 500px;
+
   }
 }
 
+.product__carousel{
+  width: 80%;
+  margin: auto;
+}
+
 .product-template-carousel {
+
   .flickity-viewport {
     width: 100%;
   }
 
   .carousel-cell {
     margin-right: 10px;
-    height: 180px;
-    width: 180px;
+    height: 150px;
+    width: 150px;
   }
-} 
+
+  .flickity-prev-next-button.previous:after,
+  .flickity-prev-next-button.next:after{
+    background-size: contain;
+    height: 30px;
+  }
+}
+
+
+.product-template-options {
+  select {
+      padding: 5px 10px;
+      margin: 0;
+  }
+}
+
+.product-vendor{
+  margin: 0;
+  font-weight: bold;
+}
+
+.Price-box{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.ProductPrice{
+  font-weight: bold;
+
+}
+
+.product-articles-carousel {
+  .grid__item {
+    padding: 0px;
+  }
+
+  .carousel-cell {
+    width: 400px;
+    padding: 0px 20px;
+  }
+
+}
+
+
+// metafields preparation //
+
+.metafields-preparation{
+  margin-top: 50px;
+}
+
+.metafields-preparation__image{
+  max-width: 150px;
+}
+
+// metafields ingredients //
+
+.product-metafields-bg{
+  padding: 40px 0;
+   ul{
+     list-style: none;
+     margin: 0;
+   }
+}
+
+.product-metafields_instructions{
+  width: 80%;
+  margin: auto;
+}
+
+.product-form_flex{
+  display: flex;
+}
+
+.product--pictos{
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  margin-top: 10px; 
+   img{
+     max-width: 40px;
+   }
+}
+
 
 // instagram //
 .ooo-instagram-header__title{
@@ -6915,5 +7014,22 @@ button.addToCart {
 @media screen and (max-width: 768px) {
   .ooo-instagram-header__title{
       font-size: 1.25rem;
+  }
+
+  .product-tamplate-media {
+
+    .product-tamplate-featured {
+      width: 90%;
+      margin-bottom: 20px;
+    }
+    .product-featured-media {
+      max-width: 300px;
+      margin: auto;
+    }
+  }
+
+  .product-metafields_instructions{
+    width: 100%;
+    margin-bottom: 40px;
   }
 }

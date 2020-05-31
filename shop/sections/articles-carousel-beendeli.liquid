@@ -3,30 +3,34 @@
 <section id="section-{{ section.id }}" data-section-type="blog_carousel" data-section-id="{{ section.id }}">
   <div class="blog_carousel">
     <div class="container-small">
-      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3">
+      <h2 class="f--title text-align--center font-size--l lg--font-size--xxl m0 mb3">
         {{ section.settings.title | escape }}</h2>
       <div class="main-carousel"
         data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
         {% for article in blog.articles limit: section.settings.post_limit %}
-        <div class="carousel-cell">
-          <div class="blog_carousel_image" style="background-image: url('{{ article.image | img_url:'master' }}')">
-            {% for tag in article.tags %}
-              {% if tag contains "recette" %}
-              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/nos_recettes.png?v=1590542515" alt="">
-              {% endif %}
-              {% if tag contains "astuces" %}
-              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/truc_et_astuces.png?v=1590542527" alt="">
-              {% endif %}
-              {% if tag contains "amis" %}
-              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/nos_amis.png?v=1590542143" alt="">
-              {% endif %}
-              {% if tag contains "podcast" %}
-              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/notre_podcast.png?v=1590542515" alt="">
-              {% endif %}
-            {% endfor %}
-          </div>
-          <h4>{{ article.title }}</h4>
-        </div>
+         {% if article.tags contains "beedeli" %}
+            <div class="carousel-cell">
+              <a href="{{ article.url }}">
+                <div class="blog_carousel_image" style="background-image: url('{{ article.image | img_url:'master' }}')">
+                  {% for tag in article.tags %}
+                    {% if tag contains "recette" %}
+                    <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/nos_recettes.png?v=1590542515" alt="">
+                    {% endif %}
+                    {% if tag contains "astuces" %}
+                    <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/truc_et_astuces.png?v=1590542527" alt="">
+                    {% endif %}
+                    {% if tag contains "amis" %}
+                    <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/nos_amis.png?v=1590542143" alt="">
+                    {% endif %}
+                    {% if tag contains "podcast" %}
+                    <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/notre_podcast.png?v=1590542515" alt="">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <h4>{{ article.title }}</h4>
+              </a>
+            </div>
+          {% endif %}
         {% endfor %}
       </div>
     </div>

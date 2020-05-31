@@ -130,7 +130,7 @@ Receive articles on all blogs selected
       {% else %}
         <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl  m0 pb3">{{ 'homepage.onboarding.blog_name' | t }}</h2>
       {% endif %}
-      
+
       {% if block.settings.show_blog_link %}
 	  		<div class="grid__item text-align--center">
               {%- assign blog = blogs[block.settings.selected_blog] -%}
@@ -139,7 +139,7 @@ Receive articles on all blogs selected
               </a>
       		</div>
       {% endif %}
-      
+
       <div class="grid grid-uniform">
         {%- assign blog = blogs[block.settings.selected_blog] -%}
         {% if blog and blog != empty %}
@@ -170,9 +170,9 @@ Receive articles on all blogs selected
               {% endif %}
             {% endunless %}
         	{% endfor %}
-            
-      		
-         
+
+
+
         {% else %}
           {% for i in (1..4) %}
             <div class="grid__item lg--one-half dt--one-quarter">

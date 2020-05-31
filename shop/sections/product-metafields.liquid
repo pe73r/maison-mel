@@ -3,13 +3,16 @@
   <section id="section-{{ section.id }}" class="product-metafields"  data-section-type="product-metafields" data-section-id="{{ section.id }}">
     <div class="product-metafields-bg">
       <div class="container-medium">
+          {% if section.settings.metafields_title %}
+            <h2 class="t--section-title f--title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3">{{ section.settings.metafields_title }}</h2>
+          {% endif %}
           <div class="grid">
-             <div class="1/2--lap-and-up grid__cell">
+             <div class="2/3--lap-and-up grid__cell">
                <div class="product-metafields_instructions">
                   {{ product.metafields.product.instructions }}
                </div>
              </div>
-             <div class="1/2--lap-and-up grid__cell">
+             <div class="1/3--lap-and-up grid__cell">
                 {{ product.metafields.product.ingredients }}
              </div>
           </div>
@@ -28,9 +31,19 @@
   "name": "Metafields",
   "settings": [
       {
+      "type": "header",
+       "content": "METAFIELDS"
+     },
+      {
       "type": "paragraph",
        "content": "product.metafields.product.instructions and product.metafields.product.ingredients"
      },
+      {
+        "type": "text",
+        "id": "metafields_title",
+        "label": "Section title",
+        "default": "composition et valeurs nutritionnelles"
+      },
      {
        "type": "checkbox",
        "id": "display",

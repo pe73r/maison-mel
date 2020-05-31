@@ -18,7 +18,7 @@
   <div class="bg-collection">
   <div class="wrapper section--wrapper">
 
-    {% assign heading_class = 't--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3' %}
+    {% assign heading_class = 'f--title text-align--center font-size--l lg--font-size--xxl m0 mb3' %}
       {% if section.settings.selected_collection and section.settings.selected_collection != '' %}
         {% if section.settings.title == blank %}
           <h2 class="{{ heading_class }}">{{ collections[section.settings.selected_collection].title }}</h2>

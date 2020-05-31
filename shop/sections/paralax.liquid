@@ -84,6 +84,10 @@
   </div>
 </section>
 <style>
+
+  #section-{{ section.id }} .feature-image__container--full_screen{
+      height: {{ section.settings.section_height }}px;
+   }
   #section-{{ section.id }} .parallax-title{
      color: {{ section.settings.heading_color }};
      font-size: {{ section.settings.title_size}}px;
@@ -96,6 +100,18 @@
   "name": "Image parallax",
   "settings": [
 
+      {
+     "type": "select",
+     "id": "section_height",
+     "options": [
+        { "value": "200", "label": "small"},
+        { "value": "400", "label": "medium"},
+        { "value": "500", "label": "large"},
+        { "value": "600", "label": "xlarge"}
+     ],
+     "label": "Section height",
+     "default":   "500"
+   },
     {
       "type": "select",
       "id": "image_style",

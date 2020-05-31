@@ -7,7 +7,7 @@
     "color_borders": "#e5e5e5",
     "color_body_bg": "#ffffff",
     "color_section_bg": "#ffffff",
-    "button_color": "accent",
+    "button_color": "primary",
     "secondary_color": "accent",
     "color_footer_bg": "secondary-accent",
     "color_footer_accent": "primary",
@@ -794,12 +794,19 @@
             "settings": {
               "blog": "recettes-parfaites"
             }
+          },
+          "1590879151010": {
+            "type": "Blog",
+            "settings": {
+              "blog": "podcast-melangeons-nous"
+            }
           }
         },
         "block_order": [
           "1590689901851",
           "1590689913835",
-          "1590689921866"
+          "1590689921866",
+          "1590879151010"
         ],
         "settings": {
           "title": "découvrez nos blogs",
@@ -842,7 +849,7 @@
         "type": "product-metafields",
         "settings": {
           "display": true,
-          "color": ""
+          "color": "#ebdcdb"
         }
       },
       "paralax": {
@@ -862,7 +869,9 @@
         "type": "product-template-new",
         "settings": {
           "image": "",
-          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>"
+          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+          "display-preparation": true,
+          "preparation-image": "shopify:\/\/shop_images\/pot.png"
         }
       },
       "page-beendi-heading": {
@@ -912,7 +921,7 @@
         "type": "articles-carousel-beendi",
         "settings": {
           "display": true,
-          "blog": "les-amis-de-la-maison",
+          "blog": "recettes-parfaites",
           "title": "top recettes",
           "bgcolor": "#ffffff"
         }
@@ -923,7 +932,7 @@
           "display": true,
           "bg-color": "#ededed",
           "title": "top produits",
-          "selected_collection": "les-melanges-beendi",
+          "selected_collection": "beendi",
           "no_products": 4,
           "show_collection_link": false
         }
@@ -1034,10 +1043,22 @@
       "newsletter": {
         "type": "newsletter",
         "settings": {
-          "title": "Sign up to our newsletter",
-          "text": "<p>Receive special offers and first look at new products.<\/p>",
+          "title": "Suivez nous !",
+          "text": "<p>Retrouvez les recettes, les coups de coeur et les conseils bien &ecirc;tre de la Maison des M&eacute;langes en vous abonnant &agrave; la newsletter.&nbsp;&nbsp;<\/p>",
           "button-text": "je m'inscris",
           "bg-color": "#fcdf6b"
+        }
+      },
+      "product-articles-carousel": {
+        "type": "product-articles-carousel",
+        "settings": {
+          "show_related_articles": true,
+          "blog_1": "les-amis-de-la-maison",
+          "blog_2": "les-astuces",
+          "blog_3": "recettes-parfaites",
+          "blog_4": "",
+          "blog_5": "",
+          "thumbnail_cropping": "square"
         }
       }
     },

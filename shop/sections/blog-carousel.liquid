@@ -1,7 +1,7 @@
 <section id="section-{{ section.id }}" data-section-type="blog_carousel" data-section-id="{{ section.id }}">
   <div class="blog_carousel">
     <div class="container-small">
-      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3">
+      <h2 class="f--title text-align--center font-size--l lg--font-size--xxl m0 mb3">
         {{ section.settings.title | escape }}</h2>
       <div class="main-carousel"
         data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
@@ -24,10 +24,12 @@
               <div class="carousel-cell">
                 {% for article in blog.articles %}
                   {% if forloop.last %}
-                    <div class="blog_carousel_image" style="background-image: url('{{ article.image | img_url:'master' }}')">
-                      {{  blog-picto }}
-                     </div>
-                    <h4>{{ article.title }}</h4>
+                    <a href="{{ blog.url }}">
+                      <div class="blog_carousel_image" style="background-image: url('{{ article.image | img_url:'master' }}')">
+                        {{  blog-picto }}
+                       </div>
+                      <h4>{{ article.title }}</h4>
+                    </a>
                   {% endif %}
                 {% endfor %}
               </div>

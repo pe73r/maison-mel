@@ -101,19 +101,23 @@ Check for any supporting pages
       <div class="1/2--lap-and-up grid__cell homepage_block {{ product_form_class }} dt--pt4 product-page--form-sticky">
 
        <div class="product-form_flex">
-          <div class="product--pictos">
-              {% if product.metafields.product.picto-1 != blank %}
-                <img src="{{ product.metafields.product.picto-1 }}" alt="">
-              {% endif %}
-              {% if product.metafields.product.picto-2 != blank %}
-                <div class="">
-                  {{ product.metafields.product.picto-2 }}
-                </div>
-              {% endif %}
-          </div>
-          <div class="">
-            {% include 'product-page-form-new', show_vendor: true, show_payment_button: false, show_quantity:true %}
-             {% if section.settings.display-preparation and product.metafields.product.preparation != blank %}
+         {% if product.metafields.product.picto-1 != blank %}
+            <div class="product--pictos">
+                {% if product.metafields.product.picto-1 != blank %}
+                  <img src="{{ product.metafields.product.picto-1 }}" alt="{{ product.metafields.product.picto-1.alt }}">
+                {% endif %}
+                {% if product.metafields.product.picto-2 != blank %}
+                   <img src="{{ product.metafields.product.picto-2 }}" alt="{{ product.metafields.product.picto-2.alt }}">
+                {% endif %}
+                {% if product.metafields.product.picto-3 != blank %}
+                   <img src="{{ product.metafields.product.picto-3 }}" alt="{{ product.metafields.product.picto-3.alt }}">
+                {% endif %}
+            </div>
+          {% endif %}
+          <div class="ProductForm_box">
+            {% include 'product-page-form-new' %}
+            <!-- metafields preparation -->
+            {% if section.settings.display-preparation and product.metafields.product.preparation != blank %}
                <div class="metafields-preparation">
                  {% if section.settings.preparation-image != blank %}
                     <div class="metafields-preparation__image">
@@ -151,15 +155,23 @@ Check for any supporting pages
   "name": "Product Pages",
   "settings": [
       {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+        "type": "header",
+          "content": "General"
       },
       {
-        "type": "richtext",
-        "id": "text",
-        "label": "Text",
-        "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.</p>"
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor ?"
+      },
+      {
+        "type": "checkbox",
+        "id": "show-description",
+        "label": "Show description ?"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity",
+        "label": "Show quantity ?"
       },
       {
         "type": "header",
