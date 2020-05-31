@@ -6461,7 +6461,7 @@ https://flickity.metafizzy.co
 
 .homepages_text{
   max-width: 80%;
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 800px){
@@ -6614,7 +6614,7 @@ https://flickity.metafizzy.co
   }
 }
 
-/*------ logos --------*/
+/*------ homepage logos --------*/
 
 .homepage-logos__image{
   max-width: 110px;
@@ -6845,6 +6845,7 @@ https://flickity.metafizzy.co
   padding: 40px 0;
 }
 
+
 .image-block_title {
   font-size: $font-size--xxl;
 }
@@ -6937,6 +6938,10 @@ button.addToCart {
   height: 48px;
   margin-top: 5px;
 
+  .js-qty__controls{
+    min-width: 100px; 
+  }
+
   .js-qty.relative {
     border-bottom: none;
     margin: 0;
@@ -7005,8 +7010,7 @@ button.addToCart {
   }
 
   .product-featured-media {
-    max-width: 500px;
-
+    max-width: 100%;
   }
 }
 
@@ -7070,13 +7074,15 @@ button.addToCart {
 
 }
 
+// prodcut realted articles  //
+
 .product-articles-carousel {
   .grid__item {
     padding: 0px;
   }
 
   .carousel-cell {
-    width: 400px;
+    width: 33%;
     padding: 0px 20px;
   }
 
@@ -7156,5 +7162,17 @@ button.addToCart {
        max-width: 50px;
        margin-bottom: 20px;
      }
+  }
+
+  .product-articles-carousel {
+    .main-carousel{
+      max-width: 80%;
+      margin: auto;
+    }
+    .carousel-cell {
+      width: 100%;
+      padding: 0;
+    }
+
   }
 }

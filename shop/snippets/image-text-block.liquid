@@ -1,0 +1,38 @@
+<section id="section-{{ section.id }}" class="image-block"  data-section-type="image-block" data-section-id="{{ section.id }}">
+  <div class="container-medium">
+    {% for block in section.blocks %}
+     <div id="block-{{ block.id }}">
+        <div class="image-text-block">
+          <div class="grid {% if block.settings.reverse %} grid--rev {% endif %} image-text-block ">
+             <div class="1/2--lap-and-up  grid__cell">
+                {% if block.settings.image != blank  %}
+                  <div class="image-block_image">
+                     <img src="{{  block.settings.image | img_url:'master' }}" alt="{{ block.settings.image }}">
+                  </div>
+                {% endif %}
+              </div>
+              <div class="1/2--lap-and-up grid__cell">
+                 <h3 class="image-block_title f--title">{{ block.settings.title }}</h3>
+                 <div class="image-block_text">{{ block.settings.text}}</div>
+                 {% if block.settings.url != blank %}
+                   <a href="{{ cta_url }}" class="btn bg--primary btn--pages">
+                      {{ block.settings.button }}
+                   </a>
+                 {% endif %}
+             </div>
+            </div>
+          </div>
+       </div>
+      {% endfor %}
+  </div>
+</section>
+<style>
+{% for block in section.blocks %}
+   #block-{{ block.id }} .image-text-block{
+      padding-top: {{ block.settings.padding}}px;
+    }
+
+ {% endfor %}
+
+
+</style>

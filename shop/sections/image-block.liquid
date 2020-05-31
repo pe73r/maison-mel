@@ -1,27 +1,4 @@
-<section id="section-{{ section.id }}" class="image-block"  data-section-type="image-block" data-section-id="{{ section.id }}">
-  <div class="container-medium">
-      {% for block in section.blocks %}
-        <div class="grid {% if block.settings.reverse %} grid--rev {% endif %} ">
-           <div class="1/2--lap-and-up  grid__cell">
-              {% if block.settings.image != blank  %}
-                <div class="image-block_image">
-                   <img src="{{  block.settings.image | img_url:'master' }}" alt="{{ block.settings.image }}">
-                </div>
-              {% endif %}
-            </div>
-            <div class="1/2--lap-and-up grid__cell">
-               <h3 class="image-block_title">{{ block.settings.title }}</h3>
-               <div class="image-block_text">{{ block.settings.text}}</div>
-               {% if block.settings.url != blank %}
-                 <a href="{{ cta_url }}" class="btn bg--primary btn--pages">
-                    {{ block.settings.button }}
-                 </a>
-               {% endif %}
-           </div>
-         </div>
-      {% endfor %}
-  </div>
-</section>
+{% include 'image-text-block' %}
 {% schema %}
 {
   "name": "Image block",
@@ -33,6 +10,15 @@
       "type": "image-text",
       "name": "Image text",
       "settings": [
+          {
+             "type":      "range",
+             "id":        "padding",
+             "min":       0,
+             "max":        50,
+             "step":       1,
+             "label":     "Block padding top",
+             "default":   10
+          },
           {
             "type": "image_picker",
             "id": "image",
@@ -51,7 +37,7 @@
             "default": "Title"
           },
           {
-            "type": "richtext",
+            "type": "textarea",
             "id": "text",
             "label": "Text",
             "info": "info",
@@ -70,6 +56,6 @@
           }
       ]
     }
-  ] 
+  ]
 }
 {% endschema %}

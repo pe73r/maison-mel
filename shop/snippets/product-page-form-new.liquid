@@ -123,7 +123,7 @@
           {% comment %}
           <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
           {% endcomment %}
-          {% if section.settings.show_quantity %}   
+          {% if section.settings.show_quantity %}
             <div class="product-quantity-selector">
               <input type="number" id="Quantity" name="quantity" value="1" min="1">
             </div>
@@ -136,10 +136,13 @@
 
           <span class="AddToCartText" data-add-to-cart-text>
             {% if current_variant.available %}
-            {{ 'products.product.add_to_cart' | t }} {{- current_variant.unit_price | money -}}
+            {{ 'products.product.add_to_cart' | t }}
             {% else %}
               <span class="SoldOutText">{{ 'products.product.sold_out' | t }}
             {% endif %}
+          </span>
+          <span class="t--meta" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}"  data-product-price>
+            - {{ current_variant.price | money }}
           </span>
 
         </button>
