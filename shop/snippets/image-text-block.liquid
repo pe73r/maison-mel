@@ -3,7 +3,7 @@
     {% for block in section.blocks %}
      <div id="block-{{ block.id }}">
         <div class="image-text-block">
-          <div class="grid {% if block.settings.reverse %} grid--rev {% endif %} image-text-block ">
+          <div class="grid {% if block.settings.reverse %} grid--rev {% endif %} image-text-block grid--middle">
              <div class="1/2--lap-and-up  grid__cell">
                 {% if block.settings.image != blank  %}
                   <div class="image-block_image">

@@ -482,10 +482,10 @@ $bodyFontStack: "Crimson Text", serif ;
 
 @font-face {
   font-family: "Gill Sans Nova";
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_n4.bb07ca19f1ff19b6ca9f72c55add75de6c568354.woff2?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=4f56ef46e4897fb316011dfb35d5d2a125375b18647875c3596b86446f36053b") format("woff2"),
-       url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_n4.4d765821604d183de75a5db211fbf52345d31d03.woff?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=dee6013be70f4bce96b7107fb4a08f04f1bf0c5e3db6ab0f66e77386873402f3") format("woff");
+  src: url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_n5.2a8dea7b8da8a11a3d28c1cd33016c77ca1b2831.woff2?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=735d3aaa0a108f66d4dc626f258bd27ae8694ffb260aaf525e352c751aafd7d8") format("woff2"),
+       url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_n5.1fb24ca1ed7e25f1a82ab8f16a8a2555b128a13f.woff?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=f54998df28058be4a3d7712ffd893835353b9041375e3d441d213fe6749ee327") format("woff");
 }
 
 @font-face {
@@ -506,10 +506,10 @@ $bodyFontStack: "Crimson Text", serif ;
 
 @font-face {
   font-family: "Gill Sans Nova";
-  font-weight: 400;
+  font-weight: 500;
   font-style: italic;
-  src: url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_i4.358608bc9fd20032ea31f67c9b49a3a2e4a48dae.woff2?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=0fa47682b6d6e2ff9396ec3d0816ec9f0780d733d2f7ef5f6f785039ac93cfd0") format("woff2"),
-       url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_i4.1f8b4021d296fa19b054165ade25b4bd49762958.woff?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=0267f06105f58f40a3dc4a21c2c2f59af6322c716d29413cbb7034eb6e053e1c") format("woff");
+  src: url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_i5.1edae8b5d003f49a347b947217da435d00e86bfb.woff2?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=efc50eef2e7d5f416db4a2e8e38df0e473dbfb89b49d6d02d97d82e64b6d65b1") format("woff2"),
+       url("https://fonts.shopifycdn.com/gill_sans_nova/gillsansnova_i5.e3e8a9e02058cd7e934f5ebb60a9a6c84d2a7e76.woff?h1=bWFpc29uZGVzbWVsYW5nZXMuY29t&h2=bWFpc29uZGVzbWVsYW5nZXMuZnI&h3=YmVlZGVsaS5jb20&h4=YmVlbmRpLmNvbQ&h5=YmVlbmRoaS5jb20&hmac=cb3961db52b78a47461c2682617727bd7cfd82948d67e1de0606936bbcc6704b") format("woff");
 }
 
 @font-face {
@@ -529,7 +529,7 @@ $mainFontStyle: normal;
 $mainFontWeight: 400;
 
 $titleFontStack: "Gill Sans Nova", sans-serif;
-$titleFontWeight: 400;
+$titleFontWeight: 500;
 $titleFontStyle: normal;
 
 
@@ -1739,7 +1739,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $sectionTitleFontWeight;
   font-style: $sectionTitleFontStyle;
   text-transform: none;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.0;
 }
 
 .t--nav {
@@ -6109,7 +6109,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?3067) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?3386) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6360,6 +6360,7 @@ https://flickity.metafizzy.co
 
 .homepages_text{
   max-width: 80%;
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 800px){
@@ -6512,7 +6513,7 @@ https://flickity.metafizzy.co
   }
 }
 
-/*------ logos --------*/
+/*------ homepage logos --------*/
 
 .homepage-logos__image{
   max-width: 110px;
@@ -6743,6 +6744,7 @@ https://flickity.metafizzy.co
   padding: 40px 0;
 }
 
+
 .image-block_title {
   font-size: $font-size--xxl;
 }
@@ -6778,11 +6780,11 @@ https://flickity.metafizzy.co
 
 // parallax //
 
-.section-parallax {
-  .feature-image__container--full_screen{
-    height: 400px !important; // only for the homepage //
-  }
-}
+// .section-parallax {
+//   .feature-image__container--full_screen{
+//     height: 400px !important; // only for the homepage //
+//   }
+// }
 
 .parallax-text-align{
   padding-bottom: 40px;
@@ -6833,6 +6835,11 @@ button.addToCart {
 .product-template-quantity{
   width: 51%;
   height: 48px;
+  margin-top: 5px;
+
+  .js-qty__controls{
+    min-width: 100px; 
+  }
 
   .js-qty.relative {
     border-bottom: none;
@@ -6898,11 +6905,11 @@ button.addToCart {
     width: 80%;
     max-width: 600px;
     margin: auto;
+    text-align: center;
   }
 
   .product-featured-media {
-    max-width: 500px;
-
+    max-width: 100%;
   }
 }
 
@@ -6938,9 +6945,22 @@ button.addToCart {
   }
 }
 
+.ProductForm_box{
+  width: 100%;
+
+}
+
 .product-vendor{
   margin: 0;
   font-weight: bold;
+}
+
+.ProductDescription{
+  max-width: 400px;
+   ul{
+     list-style: none;
+     margin: 0;
+   }
 }
 
 .Price-box{
@@ -6953,13 +6973,20 @@ button.addToCart {
 
 }
 
+// prodcut realted articles  //
+
 .product-articles-carousel {
   .grid__item {
     padding: 0px;
   }
 
+  .main-carousel {
+    max-width: 90%;
+    margin: auto;
+  }
+
   .carousel-cell {
-    width: 400px;
+    width: 33%;
     padding: 0px 20px;
   }
 
@@ -6999,22 +7026,16 @@ button.addToCart {
   display: flex;
   flex-direction: column;
   margin-right: 30px;
-  margin-top: 10px; 
+  margin-top: 10px;
    img{
-     max-width: 40px;
+    width: 100%;
+     max-width: 60px;
+     margin-bottom: 25px;
    }
 }
 
 
-// instagram //
-.ooo-instagram-header__title{
-  font-size: 2rem;
-}
-
 @media screen and (max-width: 768px) {
-  .ooo-instagram-header__title{
-      font-size: 1.25rem;
-  }
 
   .product-tamplate-media {
 
@@ -7031,5 +7052,78 @@ button.addToCart {
   .product-metafields_instructions{
     width: 100%;
     margin-bottom: 40px;
+  }
+
+  .product-form_flex{
+  flex-direction: column;
+  }
+
+  .product--pictos{
+    flex-direction: row;
+    margin: 0;
+    justify-content: space-around;
+     img{
+       max-width: 50px;
+       margin-bottom: 20px;
+     }
+  }
+
+  .product-articles-carousel {
+    .main-carousel{
+      max-width: 80%;
+      margin: auto;
+    }
+    .carousel-cell {
+      width: 100%;
+      padding: 0;
+    }
+
+  }
+}
+
+
+// Product list // 
+
+.menu-products {
+  flex-direction: column;
+  display: flex;
+
+  li { 
+    margin: 0px;
+
+    a {
+      padding: 0px;
+      margin: 5px 0px;
+    }
+
+    .tag__item--active.color--main-accent {
+      border-bottom: none;
+      font-weight: 600;
+      color: black;
+    }
+
+  }
+}
+
+.collection-item {
+  position: relative;
+
+  .collection-picto {
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translate(-50%, 10px);
+
+    img {
+      max-width: 60px;
+    }
+  }
+
+  .grid__image.relative {
+    margin-top: 30px;
   }
 }

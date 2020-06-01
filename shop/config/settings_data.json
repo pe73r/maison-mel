@@ -12,13 +12,13 @@
     "color_footer_bg": "secondary-accent",
     "color_footer_accent": "primary",
     "type_main": "gill_sans_nova_n4",
-    "type_header": "gill_sans_nova_n4",
+    "type_header": "gill_sans_nova_n5",
     "type_body": "gill_sans_nova_n4",
     "header_text_transform": "none",
     "section_title_typeface": "main",
     "section_title_weight": "inherit",
     "section_title_text_transform": "none",
-    "section_title_letterspacing": 1,
+    "section_title_letterspacing": 0,
     "navigation_text_transform": "Uppercase",
     "navigation_letterspacing": 1,
     "buttons_text_transform": "Uppercase",
@@ -26,7 +26,7 @@
     "meta_text_transform": "none",
     "meta_letterspacing": 0,
     "hr_border_height": 1,
-    "show_vendor": false,
+    "show_vendor": true,
     "products_show_second_image_on_hover": true,
     "show_author": true,
     "favicon": "shopify:\/\/shop_images\/logo_MM.png",
@@ -128,7 +128,7 @@
           "posts_per_row_desktop": "one-quarter",
           "posts_per_row_mobile": "one-half",
           "enable_tag_filter": true,
-          "enable_sort_filter": false
+          "enable_sort_filter": true
         }
       },
       "product-template": {
@@ -243,35 +243,6 @@
         "settings": {
           "show_related_articles": false,
           "thumbnail_cropping": "none"
-        }
-      },
-      "1586264171772": {
-        "type": "slideshow",
-        "disabled": true,
-        "blocks": {
-          "1589548379231": {
-            "type": "slide",
-            "settings": {
-              "feature_image": "shopify:\/\/shop_images\/87-03-BANDEAU01-1800X598.jpg",
-              "title": "Decouvrez <br>\nnotre nouvelle recette : <br>\nlentilles à la tomate <br>\net au paprika !",
-              "main_text": "",
-              "cta_url": "shopify:\/\/collections\/tous-nos-produits",
-              "cta_text": "je découvre",
-              "text_color": "white",
-              "button_color": "black",
-              "button_text_color": "primary",
-              "content_position": "text-align--left align--bottom"
-            }
-          }
-        },
-        "block_order": [
-          "1589548379231"
-        ],
-        "settings": {
-          "slideshow_style": "fit_content",
-          "auto_rotate": true,
-          "slide_speed": "6000",
-          "title_size": 43
         }
       },
       "list-collections-template": {
@@ -830,17 +801,31 @@
           "1590696254319": {
             "type": "image-text",
             "settings": {
+              "padding": 10,
               "image": "shopify:\/\/shop_images\/BEEDELI-RIZ-QUINOA_24.png",
               "reverse": false,
-              "title": "Title",
-              "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+              "title": "Notre histoire",
+              "text": "<p>La cuisine, c’est avant tout une histoire de mélanges. Des mélanges de saveurs, d’ingrédients, de savoir faire. Et chez nous, les mélanges c’est une véritables source d’inspiration: On développe le mélange des goûts pour créer des expériences gustatives nouvelles et différentes ;On invente des mélanges de produits grâce et à notre savoir faire industriel dans notre atelier à Saint-Marcel-Lès-Valence ;On s’inspire du mélange des cultures pour s'ouvrir au monde et aux différentes cultures sans distinction ;Et on se construit avec le mélange des genres pour s’enrichir de l’autre!<\/p>\n<br>\n<p>Notre aventure commence suite à un pari lancé à la fin d’un dîner entre amis : Beena Paradin, la fondatrice, est mise au défi d’écrire un livre de cuisine. Défi relevé avec trois livres et un Gourmand Award ! Sur cette belle lancée, elle se perfectionne auprès de grands chefs comme Alain Ducasse et Olivier Roellinger avec lequel elle part à la recherche des meilleures épices indiennes et développe une gamme de mélanges d’épices « Olivier Roellinger by Beena ».<\/p>\n<p><\/p><br>\n<p>Au cours de ses différentes expériences, Beena se rend compte de l’engouement des consommateurs pour la cuisine exotique et végétarienne, avec une exigence de goût et de qualité. Elle crée donc beendi pour permettre aux consommateurs de préparer facilement des recettes savoureuses et saines  en 2013. Après avoir séduit de nombreux clients avec beendi, Beena créée une nouvelle marque beedeli qui s’adresse au plus grand nombre. beedeli est distribué en grande surfaces, avec des recettes exclusives de mélanges simples, accessibles, et bien sûr toujours bio. <\/p>\n<p><\/p>\n<p>Tandis que beedeli s’adresse aux veggie débutants voulant s’approprier une nouvelle façon de cuisiner, beendi répond aux besoins des plus experts.<\/p>",
+              "button": "Button",
+              "url": ""
+            }
+          },
+          "1590934447029": {
+            "type": "image-text",
+            "settings": {
+              "padding": 0,
+              "image": "shopify:\/\/shop_images\/propos-pictos.jpg",
+              "reverse": true,
+              "title": "Notre raison d'être",
+              "text": "Nous rêvons d’un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. La tâche est immense, mais nous nous y attelons avec tout notre cœur, grain après grain, pour un monde où il fait bon vivre.",
               "button": "Button",
               "url": ""
             }
           }
         },
         "block_order": [
-          "1590696254319"
+          "1590696254319",
+          "1590934447029"
         ],
         "settings": {
         }
@@ -848,6 +833,7 @@
       "product-metafields": {
         "type": "product-metafields",
         "settings": {
+          "metafields_title": "composition et valeurs nutritionnelles",
           "display": true,
           "color": "#ebdcdb"
         }
@@ -855,6 +841,7 @@
       "paralax": {
         "type": "paralax",
         "settings": {
+          "section_height": "500",
           "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/Capture_d_ecran_2020-05-15_a_17.52.41.png",
           "sub_text": "",
@@ -868,8 +855,9 @@
       "product-template-new": {
         "type": "product-template-new",
         "settings": {
-          "image": "",
-          "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing et dolore magna aliqua.<\/p>",
+          "show_vendor": true,
+          "show-description": true,
+          "show_quantity": true,
           "display-preparation": true,
           "preparation-image": "shopify:\/\/shop_images\/pot.png"
         }
@@ -907,6 +895,7 @@
       "1590745733612": {
         "type": "paralax",
         "settings": {
+          "section_height": "400",
           "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/background.jpg",
           "sub_text": "Découvrez <br>\nnotre nouvelle recette: <br>\nlentilles à la tomate<br>\net au paprika !",
@@ -940,6 +929,7 @@
       "paralax-beendi": {
         "type": "paralax-beendi",
         "settings": {
+          "section_height": "400",
           "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/Main_Img.jpg",
           "sub_text": "",
@@ -947,22 +937,21 @@
           "title_size": 30,
           "cta_url": "",
           "cta_text": "Shop Now",
-          "text_color": "primary",
-          "content_position": "text-align--center align--middle"
+          "text_color": "primary"
         }
       },
       "paralax-beendeli": {
         "type": "paralax-beendeli",
         "settings": {
+          "section_height": "400",
           "image_style": "full_screen",
-          "feature_image": "shopify:\/\/shop_images\/Capture_d_ecran_2020-05-15_a_17.26.00.png",
+          "feature_image": "shopify:\/\/shop_images\/products-beedeli.png",
           "sub_text": "",
           "heading_color": "#fff",
-          "title_size": 30,
+          "title_size": 50,
           "cta_url": "",
           "cta_text": "Shop Now",
-          "text_color": "primary",
-          "content_position": "text-align--center align--middle"
+          "text_color": "primary"
         }
       },
       "page-beendeli-heading": {
@@ -1060,10 +1049,34 @@
           "blog_5": "",
           "thumbnail_cropping": "square"
         }
+      },
+      "collection-template-new": {
+        "type": "collection-template-new",
+        "settings": {
+          "title": "filtrer ma sélection :",
+          "no_posts": 11,
+          "posts_per_row_desktop": "one-quarter",
+          "posts_per_row_mobile": "one-half",
+          "enable_tag_filter": true,
+          "enable_sort_filter": false
+        }
+      },
+      "paralax-collection": {
+        "type": "paralax-collection",
+        "settings": {
+          "section_height": "400",
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS.jpg",
+          "sub_text": "Découvrez<br>\ntous nos produits !",
+          "heading_color": "#fff",
+          "title_size": 50,
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "primary"
+        }
       }
     },
     "content_for_index": [
-      "1586264171772",
       "1590745733612",
       "1590529047111",
       "1590574894700",

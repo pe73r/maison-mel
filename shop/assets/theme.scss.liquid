@@ -6851,7 +6851,8 @@ https://flickity.metafizzy.co
 }
 
 .image-block_text{
-   max-width: 80%;
+   max-width: 90%;
+   text-align: justify;
 }
 
 .image-block-beendi{
@@ -6864,8 +6865,9 @@ https://flickity.metafizzy.co
   }
 
   .image-block_text{
-     text-align: center;
-     margin: auto;
+     max-width: 100%;
+     text-align: justify;
+     
   }
 
 }
@@ -6939,7 +6941,7 @@ button.addToCart {
   margin-top: 5px;
 
   .js-qty__controls{
-    min-width: 100px; 
+    min-width: 100px;
   }
 
   .js-qty.relative {
@@ -7081,6 +7083,11 @@ button.addToCart {
     padding: 0px;
   }
 
+  .main-carousel {
+    max-width: 90%;
+    margin: auto;
+  }
+
   .carousel-cell {
     width: 33%;
     padding: 0px 20px;
@@ -7174,5 +7181,52 @@ button.addToCart {
       padding: 0;
     }
 
+  }
+}
+
+
+// Product list //
+
+.menu-products {
+  flex-direction: column;
+  display: flex;
+
+  li {
+    margin: 0px;
+
+    a {
+      padding: 0px;
+      margin: 5px 0px;
+    }
+
+    .tag__item--active.color--main-accent {
+      border-bottom: none;
+      font-weight: 600;
+      color: black;
+    }
+
+  }
+}
+
+.collection-item {
+  position: relative;
+
+  .collection-picto {
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translate(-50%, 10px);
+
+    img {
+      max-width: 60px;
+    }
+  }
+
+  .grid__image.relative {
+    margin-top: 30px;
   }
 }
