@@ -6867,7 +6867,7 @@ https://flickity.metafizzy.co
   .image-block_text{
      max-width: 100%;
      text-align: justify;
-     
+
   }
 
 }
@@ -7185,7 +7185,7 @@ button.addToCart {
 }
 
 
-// Product list //
+// collection //
 
 .menu-products {
   flex-direction: column;
@@ -7208,7 +7208,7 @@ button.addToCart {
   }
 }
 
-.collection-grid { 
+.collection-grid {
   display: flex;
 
  .collection-menu-sticky {
@@ -7261,7 +7261,7 @@ button.addToCart {
 
 @media screen and (max-width: 768px) {
 
-  .collection-grid { 
+  .collection-grid {
     flex-wrap: wrap;
 
     .collection-menu-sticky {
@@ -7271,5 +7271,62 @@ button.addToCart {
      .collection-grid-items {
       width: 100%;
     }
+  }
+}
+
+// article //
+
+.ArticleImage{
+   width: 100%;
+   height: 450px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.ArticleContent{
+  background-color: white;
+  max-width: 70%;
+  margin: auto;
+  position: relative;
+  margin-top: -130px;
+  padding: 40px 60px;
+}
+
+.ArticleFlex{
+  display: flex;
+ text-align: center;
+ justify-content: center;
+  div:not(:last-child){
+    margin-right: 15px;
+  }
+}
+
+.Article__blog-title {
+    max-width: fit-content;
+    margin: auto;
+}
+
+.Article__blog-title-picto{
+  position: absolute;
+  top: -20px;
+  right: -55px;
+  max-width: 65px;
+    img{
+      width: 100%;
+    }
+} 
+.article__content{
+  text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+  .ArticleContent{
+    max-width: 90%;
+    padding: 40px 0;
+  }
+  .Article__blog-title-picto {
+    right: 20px;
+    max-width: 50px;
   }
 }

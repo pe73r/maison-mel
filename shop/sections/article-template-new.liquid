@@ -1,0 +1,207 @@
+<!-- /sections/article-template.liquid -->
+{% comment %}
+
+  Comments will not appear right after they are submitted, either to be checked for spam
+  or to await moderation. When a comment is submitted, the browser is redirected to a page
+  that includes the new comment id in its URL.
+    Example: http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
+
+  More information:
+    - http://docs.shopify.com/themes/liquid-variables/comment
+
+{% endcomment %}
+
+{% assign number_of_comments = article.comments_count %}
+{% assign feature_image_size = section.settings.feature_image_size %}
+
+{% comment %}
+  If a comment was just submitted and it has no blank fields, we have an extra comment to count.
+{% endcomment %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+
+
+<section class="section bg--section article " data-section-type="article" data-section-id="{{ section.id }}">
+  <div class="wrapper section--wrapper relative">
+      {% if article.image %}
+      <div class="full">
+        {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+        {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}
+        {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
+           <div class="ArticleImage {% if section.settings.paralax %} paralax {% endif %}" style="background-image: url('{{ article.image | img_url:'master' }}')">
+           </div>
+        </div>
+        <noscript>
+          <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+        </noscript>
+      </div>
+      {% endif %}
+
+   <div class="ArticleContent">
+    <div class="article__header text-align--center mx--auto">
+        {% assign article_blog = article.url  | split: '/' %}
+        {% assign blog_slug = article_blog[2] %}
+        {% assign blog_title = blogs[blog_slug].title %}
+        <div class="Article__blog-title relative">
+          <h4 class="f--title font-size--xxl lg--font-size--xxxxl f--title m0 mt2 mb2 px2 ">
+            <a href="/blogs/{{ blog_slug }}">{{ blog_title }}</a>
+          </h4>
+          <div class="Article__blog-title-picto">
+            {% if blog.title contains "amis" %}
+             <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/nos_amis.png?v=1590542143" alt="">
+            {% elsif  blog.title contains "recettes" %}
+              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/nos_recettes.png?v=1590542515" alt="">
+            {% elsif  blog.title contains "astuces" %}
+              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/truc_et_astuces.png?v=1590542527" alt="">
+            {% elsif  blog.title contains "podcast" %}
+              <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/notre_podcast.png?v=1590542515" alt="">
+            {% endif %}
+          </div>
+        </div>
+        <h1 class="f--title font-size--xl lg--font-size--xxl">{{ article.title }}</h1>
+        {% if article.excerpt.size > 0 and section.settings.show_excerpt %}
+          <div class="f--body font-size--ml">
+            {{ article.excerpt }}
+          </div>
+        {% endif %}
+        <div class="ArticleFlex">
+
+            {% if settings.show_author and section.settings.show_author %}
+              <div>
+              {% capture author %}{{ article.author }}{% endcapture %}
+              <p>{{ 'blogs.article.author_by_html' | t: author: author }}</p>
+              </div>
+            {% endif %}
+
+           {% if section.settings.show_date%}
+             <div>
+               <p>{% include 'date', date_object: article.published_at  %}</p>
+             </div>
+           {% endif %}
+
+           {% if section.settings.show_share_links %}
+             <div>
+               {% include 'share' %}
+             </div>
+           {% endif %}
+        </div>
+    </div>
+    {% if section.settings.show_metafields %}
+    <div class="Article__metafields">
+      <div class="article__metafields-flex">
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="f--main">
+      <div class="rte article__content">
+        {{ article.content }}
+      </div>
+      {% if blog.comments_enabled? %}
+        <div class="article-comments lg--ten-twelfths push--lg--two-twelfths">
+          {% include 'article-comments' %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div><!-- close articlecontent -->
+</div><!-- close section wrapper -->
+</section>
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "articleBody": {{ article.content | strip_html | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ shop.url | append: page.url | json }}
+    },
+    "headline": {{ article.title | json }},
+    {% if article.excerpt != blank %}
+      "description": {{ article.excerpt | strip_html | json }},
+    {% endif %}
+    {% if article.image %}
+      {% assign image_size = article.image.width | append: 'x' %}
+      "image": [
+        {{ article | img_url: image_size | prepend: "https:" | json }}
+      ],
+    {% endif %}
+    "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+    {% if settings.show_author %}
+    "author": {
+      "@type": "Person",
+      "name": {{ article.author | json }}
+    },
+    {% else %}
+    "author": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    },
+    {% endif %}
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.share_image %}
+      {% assign image_size = settings.share_image.width | append: 'x' %}
+      "logo": {
+        "@type": "ImageObject",
+        "height": {{ settings.share_image.height | json }},
+        "url": {{ settings.share_image | img_url: image_size | prepend: "https:" | json }},
+        "width": {{ settings.share_image.width | json }}
+      },
+      {% endif %}
+      "name": {{ shop.name | json }}
+    }
+  }
+  </script>
+
+{% schema %}
+  {
+    "name": "Article pages",
+    "class": "section-article",
+    "settings": [
+      {
+         "type":    "header",
+         "content": "Article"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show author"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_links",
+        "label": "Show share links"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_date",
+        "label": "Show date"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_excerpt",
+        "label": "show excerpt",
+        "info": "résumé de l'article"
+      },
+      {
+        "type": "checkbox",
+        "id": "paralax",
+        "label": "image paralax ?",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
