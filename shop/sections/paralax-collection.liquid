@@ -1,9 +1,23 @@
 
 {% assign placeholder = false %}
-{% if section.settings.feature_image %}
-  {% assign feature_image = section.settings.feature_image %}
+{% if collection.handle contains 'tous-nos-produits' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS_d36047c1-73c0-44e4-8cc5-e909bebfafe1.jpg?v=1591116182" %}
+{% elsif collection.handle contains 'couscous-et-taboules' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-TABOULE.jpg?v=1591116183" %}
+{% elsif collection.handle contains 'riz-sautes-et-risotto' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-RISOTTO.jpg?v=1591116177" %}
+{% elsif collection.handle contains 'kits-joyeux' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-KITJOYEUX.jpg?v=1591116171" %}
+{% elsif collection.handle contains 'mijotes-de-legumineuses-dals' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-DALS.jpg?v=1591116150" %}
+{% elsif collection.handle contains 'plats-de-cereales-legumineuses' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-PLATCEREALES.jpg?v=1591116163" %}
+{% elsif collection.handle contains 'autres-produits' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS_d36047c1-73c0-44e4-8cc5-e909bebfafe1.jpg?v=1591116182" %}
+{% elsif collection.handle contains 'les-epices-roellinger' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-ROELLINGER.jpg?v=1591116130" %}
 {% else %}
-  {% assign placeholder = true %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS_d36047c1-73c0-44e4-8cc5-e909bebfafe1.jpg?v=1591116182" %}
 {% endif %}
 {% assign text =  section.settings.text  %}
 {% assign sub_text =  section.settings.sub_text %}
@@ -28,7 +42,7 @@
               data-bgset="{% include 'bgset', image: feature_image %}"
               data-sizes="auto"
               data-parent-fit="cover"
-              style="background-image: url('{{ feature_image | img_url: '300x300' }});"
+              style="background-image: url('{{ feature_image }});"
               >
         </div>
       </div>
@@ -47,7 +61,7 @@
         <div style="padding-top:{{ 1 | divided_by: feature_image.aspect_ratio | times: 100}}%;">
           <img id="{{ img_id }}"
                class="resp-img feature-image__img-content lazyload"
-               src="{{ feature_image | img_url: '300x' }}"
+               src="{{ feature_image }}"
                data-src="{{ img_url }}"
                data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
                data-aspectratio="{{ feature_image.aspect_ratio }}"
@@ -127,11 +141,6 @@
           "label": "Static"
         }
       ]
-    },
-    {
-      "type": "image_picker",
-      "id": "feature_image",
-      "label": "Image"
     },
     {
       "type": "textarea",

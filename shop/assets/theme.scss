@@ -6109,7 +6109,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?3386) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?3497) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6750,7 +6750,8 @@ https://flickity.metafizzy.co
 }
 
 .image-block_text{
-   max-width: 80%;
+   max-width: 90%;
+   text-align: justify;
 }
 
 .image-block-beendi{
@@ -6763,8 +6764,9 @@ https://flickity.metafizzy.co
   }
 
   .image-block_text{
-     text-align: center;
-     margin: auto;
+     max-width: 100%;
+     text-align: justify;
+     
   }
 
 }
@@ -6838,7 +6840,7 @@ button.addToCart {
   margin-top: 5px;
 
   .js-qty__controls{
-    min-width: 100px; 
+    min-width: 100px;
   }
 
   .js-qty.relative {
@@ -7082,13 +7084,13 @@ button.addToCart {
 }
 
 
-// Product list // 
+// Product list //
 
 .menu-products {
   flex-direction: column;
   display: flex;
 
-  li { 
+  li {
     margin: 0px;
 
     a {
@@ -7105,11 +7107,39 @@ button.addToCart {
   }
 }
 
+.collection-grid { 
+  display: flex;
+
+ .collection-menu-sticky {
+  position: sticky;
+  top: 0px;
+  height: fit-content;
+  padding-top: 50px;
+  padding-left: 30px;
+
+    ul {
+      list-style: none;
+    }
+
+    .tag__item--active.color--main-accent {
+      border-bottom: none;
+      font-weight: 600;
+      color: black;
+    }
+
+  }
+
+  .collection-grid-items {
+    width: 75%;
+  }
+
+}
+
 .collection-item {
   position: relative;
 
   .collection-picto {
-    z-index: 10;
+    z-index: 9;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -7125,5 +7155,20 @@ button.addToCart {
 
   .grid__image.relative {
     margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .collection-grid { 
+    flex-wrap: wrap;
+
+    .collection-menu-sticky {
+      position: initial;
+     }
+
+     .collection-grid-items {
+      width: 100%;
+    }
   }
 }

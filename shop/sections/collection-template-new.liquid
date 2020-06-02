@@ -56,134 +56,165 @@ For more information on collection tags:
 
 
 
+
+
+
+
         {% comment %}
         Use class grid-uniform to have evenly sized columns clear
         each other properly at each breakpoint.
         {% endcomment %}
         <div class="grid-uniform product-grid">
-          <div class="product-grid__inner clearfix">
-            {% comment %}
-            Loop through our products in the current collection.
-            See the snippet 'product-grid-item' for the layout.
-            {% endcomment %}
-            {% for product in collection.products %}
+          <div class="collection-grid">
+
+            <div class="product-grid__inner clearfix md-dn--one-whole lg--one-quarter collection-menu-sticky">
+
+                <h1 class="f--main t--section-title font-size--xxl {{ header_class }}">{{section.settings.title}}</h1>
+
+              <!--
+              <div class="">
 
 
-            {% assign grid_item_width = 'md-dn--one-half lg--one-quarter dt--one-quarter mt4' %}
-            {% capture grid_item_width %}md-dn--{{ posts_per_row_mobile }} lg--{{ posts_per_row_desktop }}
-            dt--{{ posts_per_row_desktop }} mt4{% endcapture %}
 
-            {% if forloop.first == true and section.settings.enable_tag_filter or section.settings.enable_sort_filter %}
+                {% if section.settings.enable_tag_filter or section.settings.enable_sort_filter %}
+                <div class="filters text-align--center pt3 pb4 {% if only_tags %}lg--hide{% endif %}">
+                  {% if section.settings.enable_tag_filter %}
+                  <div class="filters__tags f--main t--meta inline-block relative mx2">
+                    <select class="filters__tag--select coll-filter  f--main"
+                      data-url="{% if collection.handle %}{{ routes.collections_url }}/{{ collection.handle }}{% elsif collection.products.first.type == collection.title %}{{ collection.title | url_for_type }}{% elsif collection.products.first.vendor == collection.title %}{{ collection.title | url_for_vendor }}{% endif %}"
+                      data-handle="{{ collection.handle }}">
+                      <option value="">{{ 'collections.sorting.all_tags' | t }}</option>
+                      {% for tag in collection.all_tags %}
+                      {% if current_tags contains tag %}
+                      <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+                      {% else %}
+                      <option value="{{ tag | handle }}">{{ tag }}</option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                  {% endif %}
+                  {% if section.settings.enable_sort_filter %}
+                  <div class="filters__sort f--main t--meta inline-block relative mx2">
+                    <select class="filters__sort--select f--main" name="SortBy" id="SortBy"
+                      data-default="{{ collection.sort_by | default: collection.default_sort_by }}">
+                      <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
+                      <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
+                      <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
+                      <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
+                      <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
+                      <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
+                      <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
+                      <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
+                    </select>
+                  </div>
+                  {% endif %}
+                </div>
+                {% endif %}
 
 
-            <div class="grid__item {{ grid_item_width }} product-grid-item{% if current_variant.unit_price_measurement %} has-unit-price{% endif %}">
-
-              <h1 class="f--main t--section-title font-size--xxl {{ header_class }}">{{section.settings.title}}</h1>
-
-
-              {% if section.settings.enable_tag_filter or section.settings.enable_sort_filter %}
-              <div class="filters text-align--center pt3 pb4 {% if only_tags %}lg--hide{% endif %}">
-                {% if section.settings.enable_tag_filter %}
-                <div class="filters__tags f--main t--meta inline-block relative mx2">
-                  <select class="filters__tag--select coll-filter  f--main"
-                    data-url="{% if collection.handle %}{{ routes.collections_url }}/{{ collection.handle }}{% elsif collection.products.first.type == collection.title %}{{ collection.title | url_for_type }}{% elsif collection.products.first.vendor == collection.title %}{{ collection.title | url_for_vendor }}{% endif %}"
-                    data-handle="{{ collection.handle }}">
-                    <option value="">{{ 'collections.sorting.all_tags' | t }}</option>
+                {% if only_tags %}
+                <div class="tags tags--collection md-dn--hide">
+                  <ul class="list-reset m0 mx--auto f--main t--meta font-size--xl color--main-accent menu-products">
+                    <li class="inline-block mx1 my1">
+                      {% if collection.handle %}
+                      {% assign all_tags_url = routes.collections_url  | append: '/' | append: collection.handle %}
+                      {% elsif collection.current_type %}
+                      {% assign all_tags_url = collection.current_type | url_for_type %}
+                      {% elsif collection.current_vendor %}
+                      {% assign all_tags_url = collection.current_vendor | url_for_vendor %}
+                      {% endif %}
+                      <a class="tag__item {% if current_tags == blank %}tag__item--active color--main-accent{% endif %} h6 font-size--m md--font-size--ml f--title"
+                        href="{{ all_tags_url }}">
+                        {{ 'collections.sorting.all_tags' | t }}
+                      </a>
+                    </li>
                     {% for tag in collection.all_tags %}
                     {% if current_tags contains tag %}
-                    <option value="{{ tag | handle }}" selected>{{ tag }}</option>
+                    <li class="inline-block mx1 my1">
+                      <a class="tag__item tag__item--active color--main-accent h6 font-size--m md--font-size--ml f--title" href="{{ tag | handle }} ">{{ tag }}</a>
+                    </li>
                     {% else %}
-                    <option value="{{ tag | handle }}">{{ tag }}</option>
+                    <li class="inline-block mx1 my1">
+                      <a class="tag__item {{ __shop_secondary__ }} h6 font-size--m md--font-size--ml f--title"
+                        href="{% if collection.handle %}{{ routes.collections_url }}/{{ collection.handle }}{% elsif collection.products.first.type == collection.title %}{{ collection.title | url_for_type }}{% elsif collection.products.first.vendor == collection.title %}{{ collection.title | url_for_vendor }}{% endif %}/{{ tag | handle }}">{{ tag }}</a>
+                    </li>
                     {% endif %}
                     {% endfor %}
-                  </select>
+                  </ul>
                 </div>
                 {% endif %}
-                {% if section.settings.enable_sort_filter %}
-                <div class="filters__sort f--main t--meta inline-block relative mx2">
-                  <select class="filters__sort--select f--main" name="SortBy" id="SortBy"
-                    data-default="{{ collection.sort_by | default: collection.default_sort_by }}">
-                    <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
-                    <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
-                    <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
-                    <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
-                    <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
-                    <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
-                    <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
-                    <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
-                  </select>
-                </div>
-                {% endif %}
+      
               </div>
-              {% endif %}
+            -->
 
 
-              {% if only_tags %}
-              <div class="tags tags--collection md-dn--hide">
-                <ul class="list-reset m0 mx--auto f--main t--meta font-size--xl color--main-accent menu-products">
-                  <li class="inline-block mx1 my1">
-                    {% if collection.handle %}
-                    {% assign all_tags_url = routes.collections_url  | append: '/' | append: collection.handle %}
-                    {% elsif collection.current_type %}
-                    {% assign all_tags_url = collection.current_type | url_for_type %}
-                    {% elsif collection.current_vendor %}
-                    {% assign all_tags_url = collection.current_vendor | url_for_vendor %}
-                    {% endif %}
-                    <a class="tag__item {% if current_tags == blank %}tag__item--active color--main-accent{% endif %} h6 font-size--m md--font-size--ml f--title"
-                      href="{{ all_tags_url }}">
-                      {{ 'collections.sorting.all_tags' | t }}
-                    </a>
+            <ul class="parent collection-menu h6 font-size--m md--font-size--ml f--title">
+              {% for link in linklists[section.settings.collection_linklist].links %}
+              <li class="mb1"><a href="{{ link.url }}" class="{% if link.active %}tag__item--active color--main-accent{% endif %}">{{ link.title }}</a>
+              {% if link.links != blank %}
+                <ul class="child">
+                  {% for child_link in link.links %}  
+                  <li><a href= "{{ child_link.url }}">{{ child_link.title }}</a>
+                  {% if child_link.links != blank %}
+                    <ul class="grandchild">
+                    {% for grandchild_link in child_link.links %}  
+                      <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                  {% endif %}   
                   </li>
-                  {% for tag in collection.all_tags %}
-                  {% if current_tags contains tag %}
-                  <li class="inline-block mx1 my1">
-                    <a class="tag__item tag__item--active color--main-accent h6 font-size--m md--font-size--ml f--title" href="{{ tag | handle }} ">{{ tag }}</a>
-                  </li>
-                  {% else %}
-                  <li class="inline-block mx1 my1">
-                    <a class="tag__item {{ __shop_secondary__ }} h6 font-size--m md--font-size--ml f--title"
-                      href="{% if collection.handle %}{{ routes.collections_url }}/{{ collection.handle }}{% elsif collection.products.first.type == collection.title %}{{ collection.title | url_for_type }}{% elsif collection.products.first.vendor == collection.title %}{{ collection.title | url_for_vendor }}{% endif %}/{{ tag | handle }}">{{ tag }}</a>
-                  </li>
-                  {% endif %}
                   {% endfor %}
-                </ul>
+                </ul> 
+              {% endif %} 
+              </li>
+              {% endfor %}
+              </ul>
+
+
+            </div>
+
+            <div class="product-grid__inner clearfix md-dn--one-whole lg--three-quarter collection-grid-items">
+              {% comment %}
+              Loop through our products in the current collection.
+              See the snippet 'product-grid-item' for the layout.
+              {% endcomment %}
+              {% for product in collection.products %}
+
+
+              {% assign grid_item_width = 'md-dn--one-half lg--one-quarter dt--one-quarter mt4' %}
+              {% capture grid_item_width %}md-dn--{{ posts_per_row_mobile }} lg--{{ posts_per_row_desktop }}
+              dt--{{ posts_per_row_desktop }} mt4{% endcapture %}
+              {% include 'product-grid-item-new' %}
+
+              {% else %}
+
+              {% if collection.handle == 'all' and current_tags == '' %}
+
+              {% comment %}
+              Add default products to help with onboarding for collections/all only
+              {% endcomment %}
+              {% unless emptyState %}
+              {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+              {% assign emptyState = true %}
+              {% endunless %}
+              {% include 'onboarding-empty-collection' %}
+
+              {% else %}
+
+              {% comment %}
+              If collection exists but is empty, display message
+              {% endcomment %}
+              <div class="grid__item text-align--center mt4">
+                <p class="f--main">{{ 'collections.general.no_matches' | t }}</p>
               </div>
+
               {% endif %}
-    
+
+              {% endfor %}
+
             </div>
-
-            {% endif %}
-
-            {% include 'product-grid-item-new' %}
-
-            {% else %}
-
-            {% if collection.handle == 'all' and current_tags == '' %}
-
-            {% comment %}
-            Add default products to help with onboarding for collections/all only
-            {% endcomment %}
-            {% unless emptyState %}
-            {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-            {% assign emptyState = true %}
-            {% endunless %}
-            {% include 'onboarding-empty-collection' %}
-
-            {% else %}
-
-            {% comment %}
-            If collection exists but is empty, display message
-            {% endcomment %}
-            <div class="grid__item text-align--center mt4">
-              <p class="f--main">{{ 'collections.general.no_matches' | t }}</p>
-            </div>
-
-            {% endif %}
-
-            {% endfor %}
-
           </div>
-
         </div>
 
 
@@ -268,14 +299,18 @@ For more information on collection tags:
     "default": "filtrer ma sélection :"
   },
   {
+    "type": "link_list",
+    "id": "collection_linklist",
+    "label": "Menu"
+  },
+  {
     "type": "range",
     "id": "no_posts",
     "min": 4,
     "max": 24,
     "step": 1,
     "label": "No of products per page",
-    "default": 12,
-    "info": "if no filter is selected choose a multiple of 4"
+    "default": 12
   },
   {
   "type": "select",

@@ -7208,11 +7208,39 @@ button.addToCart {
   }
 }
 
+.collection-grid { 
+  display: flex;
+
+ .collection-menu-sticky {
+  position: sticky;
+  top: 0px;
+  height: fit-content;
+  padding-top: 50px;
+  padding-left: 30px;
+
+    ul {
+      list-style: none;
+    }
+
+    .tag__item--active.color--main-accent {
+      border-bottom: none;
+      font-weight: 600;
+      color: black;
+    }
+
+  }
+
+  .collection-grid-items {
+    width: 75%;
+  }
+
+}
+
 .collection-item {
   position: relative;
 
   .collection-picto {
-    z-index: 10;
+    z-index: 9;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -7228,5 +7256,20 @@ button.addToCart {
 
   .grid__image.relative {
     margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .collection-grid { 
+    flex-wrap: wrap;
+
+    .collection-menu-sticky {
+      position: initial;
+     }
+
+     .collection-grid-items {
+      width: 100%;
+    }
   }
 }
