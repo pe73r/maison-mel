@@ -11,13 +11,14 @@
 {% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
 
 <section class="section bg--section py3">
+  <div class="container-medium">
   <div class="wrapper section--wrapper">
 
     <header class="text-align--center pt3">
       {% if current_tags %}
-        <h1 class="f--main t--section-title  font-size--xl">{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}</h1>
+        <h1 class="f--main t--section-title  font-size--xxxl mb3">{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}</h1>
       {% else %}
-        <h1 class="f--main t--section-title font-size--xl">
+        <h1 class="f--main t--section-title font-size--xxxl mb3">
           {{ blog.title }}
           {% if section.settings.show_rss_icon %}
           <a class="inline-block font-size--xxs ml1 pb1" href="{{ shop.url }}{{ blogs[blog.handle].url }}.atom" target="_blank">{% include 'svg-icon', icon: 'subscribe' %}</a>
@@ -54,7 +55,7 @@
       {% capture thecycle %}{% cycle '1', '2', '3', '4', '5', '6' %}{% endcapture %}
 
       {% if thecycle == '1' %}
-      <div class="grid mt3">
+      <div class="grid-theme mt3">
         <div class="grid__item dt--seven-twelfths">
           {% assign feature_article = article %}
           {% include 'feature-articles__main-article' %}
@@ -95,6 +96,7 @@
     </div>
     {% endif %}
 
+   </div>
   </div>
 </section>
 

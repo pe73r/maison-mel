@@ -16,9 +16,10 @@
 {% if section.settings.display %}
 <section id="section-{{ section.id }}" class="store section m0 py2 bg--section ">
   <div class="bg-collection">
-  <div class="wrapper section--wrapper">
+   <div class="products_related">
+     <div class="wrapper section--wrapper">
 
-    {% assign heading_class = 'f--title text-align--center font-size--l lg--font-size--xxl m0 mb3' %}
+    {% assign heading_class = 'f--title text-align--center font-size--l lg--font-size--xxl m0 mb1' %}
       {% if section.settings.selected_collection and section.settings.selected_collection != '' %}
         {% if section.settings.title == blank %}
           <h2 class="{{ heading_class }}">{{ collections[section.settings.selected_collection].title }}</h2>
@@ -34,7 +35,7 @@
       {% endif %}
 
 
-    <div class="grid grid-uniform product-grid py2 text-align--center">
+    <div class="grid-theme grid-uniform product-grid py2 text-align--center">
       <div class="product-grid__inner">
         {% if section.settings.selected_collection and section.settings.selected_collection  != empty %}
           {% for product in collections[section.settings.selected_collection].products limit:no_products %}
@@ -55,7 +56,8 @@
       {% endif %}
     </div>
 
-  </div>
+   </div>
+   </div>
   </div>
 </section>
 <style >

@@ -25,129 +25,130 @@
 {% endcomment %}
 {% paginate search.results by 10 %}
 
+<div class="container-medium">
 
-<section class="section m0 py4 f--main">
-  <div class="wrapper section--wrapper text-align--center">
+  <section class="section m0 py4 f--main">
+    <div class="wrapper section--wrapper text-align--center">
 
-    {% comment %}
-    {% if search.performed %}
-      {% if search.results_count == 0 %}
-        <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
-      {% else %}
-        <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+      {% comment %}
+      {% if search.performed %}
+        {% if search.results_count == 0 %}
+          <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+        {% else %}
+          <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+        {% endif %}
       {% endif %}
-    {% endif %}
-    {% endcomment %}
+      {% endcomment %}
 
-    {% comment %}
-    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.title' | t }}</h1>
-    {% endcomment %}
-
-
-    <div class="mx--auto lg--one-half">
-      <form action="{{ routes.search_url }}" method="get" class="input-group search-bar " role="search">
-        {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
-        <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="search-input input-group-field input-underline input-underline--primary font-size--xl" aria-label="{{ 'general.search.placeholder' | t }}">
-        <span class="input-group-btn search-btn">
-          <button type="submit" class="block font-size--xl">
-            {% include 'svg-icon', icon: 'search' %}
-          </button>
-        </span>
-      </form>
-    </div>
-
-  </div>
-</section>
+      {% comment %}
+      <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.title' | t }}</h1>
+      {% endcomment %}
 
 
-{% if search.performed %}
-  {% if search.results_count == 0 %}
-    <section class="section bg--section m0 py4 f--main">
-      <div class="wrapper section--wrapper text-align--center">
-        <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+      <div class="mx--auto lg--one-half">
+        <form action="{{ routes.search_url }}" method="get" class="input-group search-bar " role="search">
+          {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+          <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="search-input input-group-field input-underline input-underline--primary font-size--xl" aria-label="{{ 'general.search.placeholder' | t }}">
+          <span class="input-group-btn search-btn">
+            <button type="submit" class="block font-size--xl">
+              {% include 'svg-icon', icon: 'search' %}
+            </button>
+          </span>
+        </form>
       </div>
-    </section>
-  {% endif %}
-{% endif %}
 
-{% assign has_products = false %}
-{% assign has_articles = false %}
-{% assign has_pages = false %}
+    </div>
+  </section>
 
-{% if search.performed %}
-  {% for item in search.results %}
-    {% if item.object_type == 'article' %}
-      {% assign has_articles = true %}
-    {% elsif item.object_type == 'page' %}
-      {% assign has_pages = true %}
-    {% else %}
-      {% assign has_products = true %}
+
+  {% if search.performed %}
+    {% if search.results_count == 0 %}
+      <section class="section bg--section m0 py4 f--main">
+        <div class="wrapper section--wrapper text-align--center">
+          <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+        </div>
+      </section>
     {% endif %}
-  {% endfor %}
-{% endif %}
+  {% endif %}
 
-{% comment %}
-Show articles first
-{% endcomment %}
+  {% assign has_products = false %}
+  {% assign has_articles = false %}
+  {% assign has_pages = false %}
 
-{% if has_articles %}
-<section class="section m0 py3 bg--section">
-  <div class="wrapper section--wrapper">
-    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Articles</h2>
-    <div class="grid grid-uniform">
-      {% for item in search.results %}
-        {% if item.object_type == 'article' %}
-          {% assign article = item %}
-          <div class="grid__item lg--one-half dt--one-quarter">
-            {% include 'article-standard' %}
-          </div>
-        {% endif %}
-      {% endfor %}
+  {% if search.performed %}
+    {% for item in search.results %}
+      {% if item.object_type == 'article' %}
+        {% assign has_articles = true %}
+      {% elsif item.object_type == 'page' %}
+        {% assign has_pages = true %}
+      {% else %}
+        {% assign has_products = true %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% comment %}
+  Show articles first
+  {% endcomment %}
+
+  {% if has_articles %}
+  <section class="section m0 py3 bg--section">
+    <div class="wrapper section--wrapper">
+      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Articles</h2>
+      <div class="grid grid-uniform">
+        {% for item in search.results %}
+          {% if item.object_type == 'article' %}
+            {% assign article = item %}
+            <div class="grid__item lg--one-half dt--one-quarter">
+              {% include 'article-standard' %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
-{% endif %}
+  </section>
+  {% endif %}
 
-{% if has_products %}
-<section class="section m0 py3 bg--section">
-  <div class="wrapper section--wrapper">
-    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Products</h2>
-    <div class="grid grid-uniform product-grid py2">
-      {% for item in search.results %}
-        {% if item.object_type == 'product' %}
-          {% assign product = item %}
-          {% assign grid_item_width = 'md-dn--one-half lg--one-quarter  dt--one-quarter mt4' %}
-          {% include 'product-grid-item' %}
-        {% endif %}
-      {% endfor %}
+  {% if has_products %}
+  <section class="section m0 py3 bg--section">
+    <div class="wrapper section--wrapper">
+      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Products</h2>
+      <div class="grid grid-uniform product-grid py2">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            {% assign product = item %}
+            {% assign grid_item_width = 'md-dn--one-half lg--one-quarter  dt--one-quarter mt4' %}
+            {% include 'product-grid-item' %}
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
-{% endif %}
+  </section>
+  {% endif %}
 
-{% if has_pages %}
-<section class="section m0 py3 bg--section">
-  <div class="wrapper section--wrapper">
-    <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Pages</h2>
-    <div class="grid grid-uniform">
-      {% for item in search.results %}
-        {% if item.object_type == 'page' %}
-          <div class="grid__item lg--one-half dt--one-quarter">
-            <article class="article article--row mb3 text-align--center">
-              <a href="{{ item.url }}">
-                <h3 class="font-size--l lg--font-size--xl mt2">{{ item.title }}</h3>
-                {% assign article_date = item.created_at  | date: "%s"  %}
-                <h5 class="regular f--main mt2 font-size--xs lg--font-size--s color--main-accent mt2">{% include 'date', date_object: article_date %}</h5>
-              </a>
-            </article>
-          </div>
-        {% endif %}
-      {% endfor %}
+  {% if has_pages %}
+  <section class="section m0 py3 bg--section">
+    <div class="wrapper section--wrapper">
+      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">Pages</h2>
+      <div class="grid grid-uniform">
+        {% for item in search.results %}
+          {% if item.object_type == 'page' %}
+            <div class="grid__item lg--one-half dt--one-quarter">
+              <article class="article article--row mb3 text-align--center">
+                <a href="{{ item.url }}">
+                  <h3 class="font-size--l lg--font-size--xl mt2">{{ item.title }}</h3>
+                  {% assign article_date = item.created_at  | date: "%s"  %}
+                  <h5 class="regular f--main mt2 font-size--xs lg--font-size--s color--main-accent mt2">{% include 'date', date_object: article_date %}</h5>
+                </a>
+              </article>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
-{% endif %}
-
+  </section>
+  {% endif %}
+</div>
 
 {% if paginate.pages > 1 %}
 <section class="section m0 pt3 pb2 bg--section">

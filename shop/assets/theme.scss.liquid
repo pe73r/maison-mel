@@ -819,6 +819,7 @@ $max: max-width;
 html, body {
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
@@ -2398,7 +2399,7 @@ html input[disabled] {
   font-family: $mainFontStack;
   // text-transform: {{ settings.buttons_text_transform }};
   letter-spacing: {{ settings.buttons_letterspacing | divided_by: 10.0 }}{% unless settings.buttons_letterspacing == 0 %}em{% endunless %};
-  font-weight: {{ settings.buttons_font_weight }};
+  font-weight: $titleFontWeight;
 
 
   /*================ Set primary button colors - can override later ================*/
@@ -6381,6 +6382,14 @@ https://flickity.metafizzy.co
 
    }
 
+
+  .grid-theme {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     margin-left: -32px;
+   }
+
 /*------  containers --------*/
 
 .container-xs{
@@ -7076,7 +7085,13 @@ button.addToCart {
 
 }
 
-// prodcut realted articles  //
+// beendi /  beedeli related products   //
+.products_related{
+  width: 98%;
+  margin: auto;
+}
+
+// product realted articles  //
 
 .product-articles-carousel {
   .grid__item {
@@ -7217,6 +7232,7 @@ button.addToCart {
   height: fit-content;
   padding-top: 50px;
   padding-left: 30px;
+  padding-bottom: 20px;
 
     ul {
       list-style: none;
@@ -7315,9 +7331,23 @@ button.addToCart {
     img{
       width: 100%;
     }
-} 
+}
 .article__content{
   text-align: justify;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .Article__blog-title {
+      margin-top: 50px;
+  }
+
+  .Article__blog-title-picto {
+    right: 50%;
+    top: -55px;
+    max-width: 60px;
+    transform: translate(50%,0);
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -7325,8 +7355,120 @@ button.addToCart {
     max-width: 90%;
     padding: 40px 0;
   }
-  .Article__blog-title-picto {
-    right: 20px;
-    max-width: 50px;
+
+}
+
+// blog //
+
+.container-anchors{
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.blog-anchors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  a {
+    min-width: 90px;
+    min-height: 90px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.blog-section-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 30px;
+
+  span {
+    width: 90px;
+    height: 90px;
+    display: block;
+    background-size: cover;
+    margin-left: 5px;
+  }
+}
+
+.homepage-blog-carousel {
+  max-width: 90%;
+  margin: auto;
+
+  .carousel-cell {
+    width: 33.333%;
+
+    .resp-img-wrapper {
+      max-height: 350px;
+
+      .resp-img {
+        max-height: 350px;
+      }
+    }
+  }
+}
+
+// blog paralax//
+
+.blog-paralax-title {
+  margin-bottom: 155px;
+  margin-top: 100px;
+}
+
+.blog-search {
+  max-width: 500px;
+  margin: auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      color: #fff;
+      font-size: 30px;
+      border-color: #fff;
+    }
+
+    input::-webkit-input-placeholder { /* Edge */
+      color: #fff;
+      text-transform: lowercase;
+    }
+
+    input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #fff;
+      text-transform: lowercase;
+    }
+
+    input::placeholder {
+      color: #fff;
+      text-transform: lowercase;
+    }
+
+    .input-group-btn {
+      width: 100%;
+      padding: 0px;
+
+      button {
+        width: 100%;
+        flex-direction: row;
+        padding: 0px;
+        margin: 20px 0px;
+
+        .icon-search {
+          display: none;
+        }
+
+        .fallback-text {
+          background-color: #000;
+          color: #fff;
+          width: 100%;
+          display: block;
+          line-height: 37px;
+        }
+      }
+    }
   }
 }
