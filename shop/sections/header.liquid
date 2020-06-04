@@ -14,6 +14,13 @@
 {% comment %}
 {% section 'sidebar-menu' %}
 {% endcomment %}
+<style >
+  {% for block in section.blocks %}
+    .announcement-bar-bg{
+        background-color: {{ block.settings.bg-color }};
+     }
+  {% endfor %}
+</style>
 
 
 
@@ -72,9 +79,9 @@
     {% if announcement_bar_home_only == false or template.name == 'index' %}
 
       {% if announcement_bar_link == blank %}
-        <div class="announcement-bar secondary site-header__notice font-size--s bg--secondary-accent color--secondary-accent-overlay">
+        <div class="announcement-bar-bg announcement-bar site-header__notice font-size--s bg--secondary-accent color--secondary-accent-overlay">
       {% else %}
-        <a href="{{ announcement_bar_link }}" class="announcement-bar announcement-bar--link site-header__notice font-size--s bg--secondary-accent color--secondary-accent-overlay secondary block full">
+        <a href="{{ announcement_bar_link }}" class="announcement-bar-bg announcement-bar announcement-bar--link site-header__notice font-size--s bg--secondary-accent color--secondary-accent-overlay secondary block full">
       {% endif %}
 
         <div class="announcement-bar__message wrapper t--meta">
@@ -346,8 +353,6 @@
     </div>
 
   </div>
-
-
 </header>
 
 {% include 'sidebar-menu' %}
@@ -431,7 +436,7 @@
     },
     {
       "type": "url",
-      "id": "beendi", 
+      "id": "beendi",
       "label": "Beendi link"
     },
     {
@@ -456,6 +461,12 @@
           "id": "home_page_only",
           "label": "Home page only",
           "default": true
+        },
+        {
+          "type": "color",
+          "id": "bg-color",
+          "label": "background color",
+          "default": "#fcdf6b"
         },
         {
           "type": "text",
