@@ -12,7 +12,17 @@
               </div>
               <div class="2/3--lap-and-up grid__cell">
                  <h3 class="image-block_title f--title">{{ block.settings.title }}</h3>
-                 <div class="image-block_text">{{ block.settings.text}}</div>
+                 <div class="image-block_text">{{ block.settings.text}}
+
+                    {% if block.settings.extra-text != blank %}
+                      <p class="marque-seemore-button">{{block.settings.extra-text-button}}</p>
+                      <div class="marque-seemore-text">
+                        {{ block.settings.extra-text}}
+                      </div>
+                    {% endif %}
+
+                 </div>
+
                  {% if block.settings.url != blank %}
                    <a href="{{ cta_url }}" class="btn bg--primary btn--pages">
                       {{ block.settings.button }}
@@ -56,6 +66,19 @@
             "type": "textarea",
             "id": "text",
             "label": "Text",
+            "info": "info",
+            "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>"
+          },
+          {
+            "type": "text",
+            "id": "extra-text-button",
+            "label": "Extra text button",
+            "default": "lire plus"
+          },
+          {
+            "type": "textarea",
+            "id": "extra-text",
+            "label": "Extra Text",
             "info": "info",
             "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>"
           },

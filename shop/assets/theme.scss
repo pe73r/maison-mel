@@ -752,6 +752,7 @@ $max: max-width;
 html, body {
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
@@ -2331,7 +2332,7 @@ html input[disabled] {
   font-family: $mainFontStack;
   // text-transform: Uppercase;
   letter-spacing: 0.1em;
-  font-weight: 400;
+  font-weight: $titleFontWeight;
 
 
   /*================ Set primary button colors - can override later ================*/
@@ -6109,7 +6110,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?3497) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?4061) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6280,6 +6281,14 @@ https://flickity.metafizzy.co
 
    }
 
+
+  .grid-theme {
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     margin-left: -32px;
+   }
+
 /*------  containers --------*/
 
 .container-xs{
@@ -6327,7 +6336,9 @@ https://flickity.metafizzy.co
   position: relative;
 }
 
-
+.full{
+  width: 100%;
+}
 
 
 /*------  slideshow --------*/
@@ -6766,7 +6777,7 @@ https://flickity.metafizzy.co
   .image-block_text{
      max-width: 100%;
      text-align: justify;
-     
+
   }
 
 }
@@ -6975,7 +6986,13 @@ button.addToCart {
 
 }
 
-// prodcut realted articles  //
+// beendi /  beedeli related products   //
+.products_related{
+  width: 98%;
+  margin: auto;
+}
+
+// product realted articles  //
 
 .product-articles-carousel {
   .grid__item {
@@ -7084,7 +7101,7 @@ button.addToCart {
 }
 
 
-// Product list //
+// collection //
 
 .menu-products {
   flex-direction: column;
@@ -7107,7 +7124,7 @@ button.addToCart {
   }
 }
 
-.collection-grid { 
+.collection-grid {
   display: flex;
 
  .collection-menu-sticky {
@@ -7116,6 +7133,7 @@ button.addToCart {
   height: fit-content;
   padding-top: 50px;
   padding-left: 30px;
+  padding-bottom: 20px;
 
     ul {
       list-style: none;
@@ -7160,7 +7178,7 @@ button.addToCart {
 
 @media screen and (max-width: 768px) {
 
-  .collection-grid { 
+  .collection-grid {
     flex-wrap: wrap;
 
     .collection-menu-sticky {
@@ -7170,5 +7188,238 @@ button.addToCart {
      .collection-grid-items {
       width: 100%;
     }
+  }
+}
+
+// article //
+
+.ArticleImage{
+   width: 100%;
+   height: 450px;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.ArticleContent{
+  background-color: white;
+  max-width: 70%;
+  margin: auto;
+  position: relative;
+  margin-top: -130px;
+  padding: 40px 60px;
+}
+
+.ArticleFlex{
+  display: flex;
+ text-align: center;
+ justify-content: center;
+  div:not(:last-child){
+    margin-right: 15px;
+  }
+}
+
+.Article__blog-title {
+    max-width: fit-content;
+    margin: auto;
+}
+
+.Article__blog-title-picto{
+  position: absolute;
+  top: -20px;
+  right: -55px;
+  max-width: 65px;
+    img{
+      width: 100%;
+    }
+}
+.article__content{
+  text-align: justify;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .Article__blog-title {
+      margin-top: 50px;
+  }
+
+  .Article__blog-title-picto {
+    right: 50%;
+    top: -55px;
+    max-width: 60px;
+    transform: translate(50%,0);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ArticleContent{
+    max-width: 90%;
+    padding: 40px 0;
+  }
+
+}
+
+// blog //
+
+.container-anchors{
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.blog-anchors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+  a {
+    min-width: 90px;
+    min-height: 90px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.blog-section-title {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 30px;
+
+  span {
+    width: 90px;
+    height: 90px;
+    display: block;
+    background-size: cover;
+    margin-left: 5px;
+  }
+}
+
+.homepage-blog-carousel {
+  max-width: 90%;
+  margin: auto;
+
+  .carousel-cell {
+    width: 33.333%;
+
+    .resp-img-wrapper {
+      max-height: 450px;
+
+      .resp-img {
+        max-height: 450px;
+      }
+    }
+  }
+}
+
+// blog paralax//
+
+.blog-paralax-title {
+  margin-bottom: 155px;
+  margin-top: 100px;
+}
+
+.blog-search {
+  max-width: 500px;
+  margin: auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      color: #fff;
+      font-size: 30px;
+      border-color: #fff;
+    }
+
+    input::-webkit-input-placeholder { /* Edge */
+      color: #fff;
+      text-transform: lowercase;
+    }
+
+    input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #fff;
+      text-transform: lowercase;
+    }
+
+    input::placeholder {
+      color: #fff;
+      text-transform: lowercase;
+    }
+
+    .input-group-btn {
+      width: 100%;
+      padding: 0px;
+
+      button {
+        width: 100%;
+        flex-direction: row;
+        padding: 0px;
+        margin: 20px 0px;
+
+        .icon-search {
+          display: none;
+        }
+
+        .fallback-text {
+          background-color: #000;
+          color: #fff;
+          width: 100%;
+          display: block;
+          line-height: 37px;
+        }
+      }
+    }
+  }
+}
+
+// marques see more //
+
+.marque-seemore-button {
+  margin-top: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.marque-seemore-button:after {
+  content: "V";
+  font-weight: bold;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.marque-seemore-text {
+  padding-top: 1.3em;
+  max-height: 0;
+  transition: max-height 1s;
+  overflow: hidden;
+}
+
+.show-seemore-text {
+  max-height: 2000px;
+  transition: max-height 0.5s;
+}
+
+/*
+.marque-seemore-text {
+  transform: scaleY(0);    
+  transform-origin: top;
+  transition: transform 0.5s ease;
+}
+
+.show-seemore-text {
+  transform: scaleY(1);
+}
+
+*/
+
+.article-related-articles-carousel {
+  max-width: 90%;
+  margin: auto;
+
+  .carousel-cell {
+    width: 33.333%;
+    padding: 0px 20px;
   }
 }

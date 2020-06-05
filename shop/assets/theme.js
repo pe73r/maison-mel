@@ -4892,3 +4892,14 @@ if (carousel) {
     });
   }
 }
+
+
+/* MARQUE SEE MORE BUTTON */
+
+let seeMoreButton = document.getElementsByClassName('marque-seemore-button')[0];
+if (seeMoreButton) {
+  seeMoreButton.addEventListener('click', (event) => {
+    document.getElementsByClassName('marque-seemore-text')[0].classList.add('show-seemore-text');
+    seeMoreButton.style.display = 'none';
+  });
+}

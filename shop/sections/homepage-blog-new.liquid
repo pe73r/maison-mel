@@ -8,7 +8,7 @@ Receive articles on all blogs selected
 {% assign all_articles_sorted = false %}
 {% assign onboarding = true %}
 
-{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+{% assign thumbnail_cropping = "square" %}
 
 {% if section.settings.blog_1 and section.settings.blog_1  != empty %}
   {% if all_articles %}

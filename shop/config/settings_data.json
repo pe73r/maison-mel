@@ -85,6 +85,7 @@
             "type": "announcement_bar",
             "settings": {
               "home_page_only": false,
+              "bg-color": "#fcdf6b",
               "text": "Les frais de livraison sont offerts dès 15€ d'achats !",
               "link": "shopify:\/\/policies\/terms-of-service"
             }
@@ -241,8 +242,8 @@
       "article-related-articles": {
         "type": "article-related-articles",
         "settings": {
-          "show_related_articles": false,
-          "thumbnail_cropping": "none"
+          "show_related_articles": true,
+          "thumbnail_cropping": "square"
         }
       },
       "list-collections-template": {
@@ -619,7 +620,7 @@
               "image": "shopify:\/\/shop_images\/Screenshot_2020-05-27_at_00.27.47.png",
               "title": "Nos marques",
               "text": "<p>Deux&nbsp;marques de m&eacute;langes avec la m&ecirc;me exigence !<\/p>",
-              "button": "Je decouvre",
+              "button": "Je découvre",
               "url": "shopify:\/\/pages\/beedeli-1"
             }
           }
@@ -702,7 +703,7 @@
           "1590577018202": {
             "type": "Gamme",
             "settings": {
-              "image": "shopify:\/\/shop_images\/87-03-HOME-AUTREPRODUIT_d7ca912a-f008-4604-b530-c3f7a7f205ed.png",
+              "image": "shopify:\/\/shop_images\/87-03-HOME-PATES.jpg",
               "title": "One pot pasta",
               "url": "shopify:\/\/collections\/one-pot-past"
             }
@@ -714,14 +715,6 @@
               "title": "Autres produits",
               "url": "shopify:\/\/collections\/les-melanges-beendi"
             }
-          },
-          "1590575179552": {
-            "type": "Gamme",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/87-03-HOME-VRAC_8b52454d-806a-4507-9ee1-e50e4883022e.png",
-              "title": "Le vrac",
-              "url": "shopify:\/\/collections\/le-vrac"
-            }
           }
         },
         "block_order": [
@@ -730,8 +723,7 @@
           "1590575194416",
           "1590576967180",
           "1590577018202",
-          "1590577029385",
-          "1590575179552"
+          "1590577029385"
         ],
         "settings": {
           "title": "Découvrez nos gammes de produits"
@@ -821,11 +813,37 @@
               "button": "Button",
               "url": ""
             }
+          },
+          "1591266451571": {
+            "type": "image-text",
+            "settings": {
+              "padding": 0,
+              "image": "shopify:\/\/shop_images\/BEEDELI-CURRY-LENTILLES-COCO_35-ok.png",
+              "reverse": false,
+              "title": "Notre mission",
+              "text": "Nous pensons que manger végétal, c’est se nourrir sainement, découvrir de nouvelles palettes de saveurs toute en respectant les ressources de la planète et ceux qui les cultivent. Notre mission est de faire de l'alimentation veggie un acte heureux, responsable et libre, sans stéréotype de goût ni de genre. Nous voulons révolutionner les usages et reconnecter les mangeurs à eux-mêmes et aux nourriciers.\n\nNos mélanges permettent aux mangeurs de cuisiner facilement et sainement tout en apportant de la joie dans leur quotidien culinaire. Nous proposons tous les éléments d'une assiette végétale équilibrée et savoureuse au travers de nos deux marques :\n\nbeendi, pour des recettes saines et originales !\nbeedeli, pour des recettes simples et joyeuses",
+              "button": "Button",
+              "url": ""
+            }
+          },
+          "1591266533746": {
+            "type": "image-text",
+            "settings": {
+              "padding": 0,
+              "image": "shopify:\/\/shop_images\/uniques.jpg",
+              "reverse": true,
+              "title": "Ce qui nous rend unique :",
+              "text": "Des produits Made in France<br>\nNous maîtrisons toute la chaîne de la conception à la commercialisation des produits grâce à son équipe pluridisciplinaire qui développe, fabrique et distribue les produits. \n\nDepuis quelques mois, nous avons installé notre nouvel atelier de production à Valence dans le Sud de la France et fabriquons tous les jours de délicieux produits !<br><br>\n\nDes ingrédients de qualité<br>\nNotre co-fondateur, Yannick Migotto passe énormément de temps à chercher les ingrédients les plus qualitatifs possibles. \nBeena, fondatrice et experte des épices, les goûtent un à un afin de ne garder que le meilleur. Bien entendu, tous nos ingrédients sont bio, cependant ce n'est pas le premier critère de sélection. Le plus important pour nous reste le goût !<br><br>\n\nUne nouvelle façon de consommer <br>\nAvec nos mélanges veggie beendi et beedeli, nous proposons aux mangeurs une nouvelle façon de consommer. Nous les accompagnons dans leur quotidien en leur permettant de préparer des bons repas veggie, complets et délicieux en moins de 20 minutes !",
+              "button": "Button",
+              "url": ""
+            }
           }
         },
         "block_order": [
           "1590696254319",
-          "1590934447029"
+          "1590934447029",
+          "1591266451571",
+          "1591266533746"
         ],
         "settings": {
         }
@@ -833,7 +851,7 @@
       "product-metafields": {
         "type": "product-metafields",
         "settings": {
-          "metafields_title": "composition et valeurs nutritionnelles",
+          "metafields_title": "Composition et valeurs nutritionnelles",
           "display": true,
           "color": "#ebdcdb"
         }
@@ -867,8 +885,8 @@
         "settings": {
           "logo": "shopify:\/\/shop_images\/beendi_logo_rose_150dpi_200116_479f7906-b061-48ec-b139-92612471b53b.png",
           "title": "Grain àpres grain: partageons et mélangeons nous!",
-          "button": "voir tous les produits",
-          "url": "shopify:\/\/collections"
+          "button": "J'achète",
+          "url": "shopify:\/\/collections\/les-melanges-beendi"
         }
       },
       "page-beendi-image-text-block": {
@@ -881,6 +899,8 @@
               "reverse": false,
               "title": "La marque beendi",
               "text": "Chez beendi, nous croyons à un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours.<br>\n<br>\nNos mélanges gourmands et veggie sont là pour vous nourrir sainement, vous faire découvrir de nouvelles saveurs, vous permettre de respecter les ressources de la planète et de valoriser ceux qui cultivent nos ingrédients. <br><br>\n\n\n\nNotre cuisine est pleine de saveurs, loin des plats sans saveurs ni odeurs ! Mélanger les épices et les herbes, c’est notre trip pour sortir des sentiers battus !",
+              "extra-text-button": "lire plus",
+              "extra-text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
               "button": "Button",
               "url": ""
             }
@@ -901,7 +921,7 @@
           "sub_text": "Découvrez <br>\nnotre shop veggie <br>\net gourmand ! <br>",
           "heading_color": "#fff",
           "title_size": 43,
-          "cta_url": "shopify:\/\/collections",
+          "cta_url": "shopify:\/\/collections\/tous-nos-produits",
           "cta_text": "J'achète",
           "text_color": "primary"
         }
@@ -911,7 +931,7 @@
         "settings": {
           "display": true,
           "blog": "recettes-parfaites",
-          "title": "top recettes",
+          "title": "Nos meilleures recettes",
           "bgcolor": "#ffffff"
         }
       },
@@ -920,7 +940,7 @@
         "settings": {
           "display": true,
           "bg-color": "#ededed",
-          "title": "top produits",
+          "title": "Nos top produits",
           "selected_collection": "beendi",
           "no_products": 4,
           "show_collection_link": false
@@ -959,8 +979,8 @@
         "settings": {
           "logo": "shopify:\/\/shop_images\/LOGOBEEDEL.png",
           "title": "Grain après grain : partageons et mélangeons nous!",
-          "button": "voir tous les produits",
-          "url": "shopify:\/\/collections\/les-pack-beedeli"
+          "button": "J'achète",
+          "url": "shopify:\/\/collections\/produits-beedeli"
         }
       },
       "page-beendeli-image-text-block": {
@@ -989,7 +1009,7 @@
         "settings": {
           "display": true,
           "bg-color": "#ededed",
-          "title": "top produits",
+          "title": "Nos top produits",
           "selected_collection": "les-pack-beedeli",
           "no_products": 4,
           "show_collection_link": false
@@ -1000,7 +1020,7 @@
         "settings": {
           "display": true,
           "blog": "recettes-parfaites",
-          "title": "top recettes",
+          "title": "Nos meilleures recettes",
           "bgcolor": "#ffffff"
         }
       },
@@ -1053,7 +1073,7 @@
       "collection-template-new": {
         "type": "collection-template-new",
         "settings": {
-          "title": "filtrer ma sélection :",
+          "title": "Filtrer ma sélection :",
           "collection_linklist": "menu-collection",
           "no_posts": 9,
           "posts_per_row_desktop": "one-third",
@@ -1067,13 +1087,95 @@
         "settings": {
           "section_height": "400",
           "image_style": "full_screen",
-          "feature_image": "shopify:\/\/shop_images\/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS.jpg",
           "sub_text": "Découvrez<br>\ntous nos produits !",
           "heading_color": "#fff",
           "title_size": 50,
           "cta_url": "",
           "cta_text": "Shop Now",
           "text_color": "primary"
+        }
+      },
+      "article-template-new": {
+        "type": "article-template-new",
+        "settings": {
+          "show_author": false,
+          "show_share_links": false,
+          "show_date": false,
+          "show_excerpt": false,
+          "paralax": true
+        }
+      },
+      "paralax-blog": {
+        "type": "paralax-blog",
+        "settings": {
+          "section_height": "500",
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/BEEDELI-TABOULE-MEDITERANEEN_61.png",
+          "sub_text": "Notre journal",
+          "heading_color": "#fff",
+          "title_size": 50,
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "primary"
+        }
+      },
+      "homepage-blog-new": {
+        "type": "homepage-blog-new",
+        "blocks": {
+          "1591258707118": {
+            "type": "articles_by_blog",
+            "settings": {
+              "title": "cuisiner : nos recettes",
+              "selected_blog": "recettes-parfaites",
+              "no_posts": 8,
+              "show_blog_link": false
+            }
+          },
+          "1591258765723": {
+            "type": "articles_by_blog",
+            "settings": {
+              "title": "rencontrer: nos amis",
+              "selected_blog": "les-amis-de-la-maison",
+              "no_posts": 8,
+              "show_blog_link": false
+            }
+          },
+          "1591259554991": {
+            "type": "articles_by_blog",
+            "settings": {
+              "title": "écouter: notre podcast",
+              "selected_blog": "podcast-melangeons-nous",
+              "no_posts": 4,
+              "show_blog_link": false
+            }
+          },
+          "1591259442306": {
+            "type": "articles_by_blog",
+            "settings": {
+              "title": "découvrir: nos trucs et astuces",
+              "selected_blog": "les-astuces",
+              "no_posts": 8,
+              "show_blog_link": false
+            }
+          }
+        },
+        "block_order": [
+          "1591258707118",
+          "1591258765723",
+          "1591259554991",
+          "1591259442306"
+        ],
+        "settings": {
+          "title": "Tous nos blogs"
+        }
+      },
+      "article-related-articles-new": {
+        "type": "article-related-articles-new",
+        "settings": {
+          "show_related_articles": true,
+          "title": "Découvrir tous les articles",
+          "show_excerpt": false,
+          "thumbnail_cropping": "square"
         }
       }
     },

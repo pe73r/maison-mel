@@ -1,0 +1,92 @@
+{% if section.settings.show_related_articles %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+{% assign current_article_tags = article.tags %}
+{% assign current_article_title = article.title %}
+{% assign related_article_handles = '' %}
+
+{% if blog.articles.size > 2 %}
+<section class="section bg--section m0 py4">
+  <div class="container-medium">
+    <div class="wrapper section--wrapper">
+
+      <h2 class="t--section-title text-align--center f--main font-size--l lg--font-size--xxl m0 mb3">
+        {{ section.settings.title }}
+      </h2>
+
+      <div class="grid">
+
+
+        <div class="main-carousel article-related-articles-carousel"
+          data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
+          {% for article in blog.articles %}
+
+            {% unless article.title == current_article_title or related_article_handles contains article.handle %}
+              <div class="carousel-cell">
+                {% include 'article-standard' %}
+                {% if article.excerpt != blank and section.settings.show_excerpt%}
+                  <p class="font-size--ml excerpt">
+                    {{ article.excerpt }}
+                  </p>
+                {% endif %}
+              </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+
+    </div>
+  </div>
+</section>
+
+{% endif %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Related articles",
+    "class": "section-article-related-products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_related_articles",
+        "label": "Enable related articles",
+        "info":   "Show related articles from the same blog."
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Découvrir tous les articles"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_excerpt",
+        "label": "Show excerpt",
+        "info":   "Show excerpt in articles."
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_cropping",
+        "label": "Crop thumbnails",
+        "options": [
+          {
+            "value": "none",
+            "label": "No crop"
+          },
+          {
+            "value": "landscape",
+            "label": "Landscape"
+          },
+          {
+            "value": "square",
+            "label": "Square"
+          },
+          {
+            "value": "portrait",
+            "label": "Portrait"
+          }
+        ],
+        "default": "none"
+      }
+    ]
+  }
+{% endschema %}
