@@ -5,6 +5,8 @@
         {{ section.settings.title | escape }}</h2>
       <div class="main-carousel"
         data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
+        {% assign num = 0 %}
+        {% for num in (1..2) %} <!-- workaround loop for only 3 blogs avalaible -->
           {% for block in section.blocks %}
           {%- assign blog = blogs[block.settings.blog] -%}
           {% capture blog-picto %}
@@ -34,6 +36,7 @@
                 {% endfor %}
               </div>
           {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </div>

@@ -757,19 +757,12 @@
             "settings": {
               "blog": "recettes-parfaites"
             }
-          },
-          "1590879151010": {
-            "type": "Blog",
-            "settings": {
-              "blog": "podcast-melangeons-nous"
-            }
           }
         },
         "block_order": [
           "1590689901851",
           "1590689913835",
-          "1590689921866",
-          "1590879151010"
+          "1590689921866"
         ],
         "settings": {
           "title": "Lire : notre journal",
@@ -895,12 +888,12 @@
           "1590741633899": {
             "type": "image-text",
             "settings": {
-              "image": "shopify:\/\/shop_images\/image-block.png",
+              "image": "shopify:\/\/shop_images\/beendi_TABOULE-BOULGOUR_200211.jpg",
               "reverse": false,
-              "title": "La marque beendi",
-              "text": "Chez beendi, nous croyons à un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours.<br>\n<br>\nNos mélanges gourmands et veggie sont là pour vous nourrir sainement, vous faire découvrir de nouvelles saveurs, vous permettre de respecter les ressources de la planète et de valoriser ceux qui cultivent nos ingrédients. <br><br>\n\n\n\nNotre cuisine est pleine de saveurs, loin des plats sans saveurs ni odeurs ! Mélanger les épices et les herbes, c’est notre trip pour sortir des sentiers battus !",
+              "title": "beendi : des mélanges veggie sains et originaux au quotidien !",
+              "text": "Chez beendi, nous aimons découvrir de nouvelles saveurs, manger des produits sains et savoureux et adopter une alimentation plus responsable. Que vous soyez en solo ou à plusieurs, nous sommes là pour apporter de la joie dans votre quotidien culinaire facilement, grâce à ses mélanges bio et végétariens. <br>\n<br>\n\nDepuis presque 7 ans, nous créons des mélanges veggies mêlant céréales,  légumineuses, légumes, herbes et épices soigneusement sélectionnés.<br>\n<br>",
               "extra-text-button": "lire plus",
-              "extra-text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<\/p>",
+              "extra-text": "<p>Les recettes beendi sont: <br><br>\n \nOriginales et savoureuses: <br>\n<\/p><ul>\n<li> Une expertise des herbes et épices pour des recettes au goût unique ; <\/li> \n<li> Des mélanges spécialement conçus pour faire réenchanter votre cuisine au quotidien !<br><br>\nSaines et de qualité: \n<\/li>\n<li>Nos mélanges beendi sont certifiés vegan et issus de l’agriculture biologique ! \n<\/li>\n<li>Nos produits sont made in France dans notre maison des mélanges à Saint-Marcel-lès-Valence !\n<\/li>\n<li>Des recettes 100% naturelles : nous n’utilisons aucun additif ni conservateur.\n<\/li>\n<li>Des recettes complètes et équilibrées utilisants des épices aux multiples bienfaits. \n<br><br>\n<\/li>\nA préparer en toute simplicité : \n\n<li>Des recettes prêtes en 5 à 20 minutes ;\n<\/li>\n<li>Rien à ajouter si ce n’est de l’eau ! <\/li>\n<\/ul> <br><br>\nTous nos mélanges beendi sont disponibles au format de 250g (3 à 4 portions) ainsi qu’en vrac : une nouvelle façon de consommer, plus responsable et zéro déchet, pour éviter le gaspillage !",
               "button": "Button",
               "url": ""
             }
@@ -992,7 +985,9 @@
               "image": "shopify:\/\/shop_images\/image-block.png",
               "reverse": false,
               "title": "La marque veggie du quotidien !",
-              "text": "Chez beedeli, nous croyons à un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. <br><br>\n\nNos mélanges gourmands et veggie sont là pour vous nourrir sainement, vous faire découvrir de nouvelles saveurs, vous permettre de respecter les ressources de la planète et de valoriser ceux qui cultivent nos ingrédients. <br><br>\n\nNotre cuisine est pleine de saveurs, loin des plats sans saveurs ni odeurs ! Mélanger les épices et les herbes, c’est notre trip pour sortir des sentiers battus !",
+              "text": "Chez beedeli, nous croyons à un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours.<br><br>\n\nNos mélanges gourmands et veggie sont là pour vous nourrir sainement, vous faire découvrir de nouvelles saveurs, vous permettre de respecter les ressources de la planète et de valoriser ceux qui cultivent nos ingrédients. <br><br>\nNotre cuisine est pleine de saveurs, loin des plats sans saveurs ni odeurs !\nMélanger les épices et les herbes, c’est notre trip pour sortir des sentiers battus ! \nNous sommes pour la cuisine. Pour le fait maison, pour que chacun crée du lien et se nourrisse sans casser sa tirelire. <br><br>\nLe bon, c’est pour tout le monde !\nNous sommes pour la diversité des ingrédients et des producteurs. \nNous sommes pour le vrac, contre le gaspillage et les déchets. \nNous sommes pour les différences.<br><br>\n\nSinon, nous aimons les rencontres, les couleurs, danser, rêver, faire la sieste au soleil… Faisons de notre assiette le mouvement, rejoignez-nous !<br><br>",
+              "extra-text-button": "lire plus",
+              "extra-text": "beedeli c'est :<br><br>\n1. Des recettes saines et naturelles sans additif ni conservateur !<br><br>\n2. Des recettes made  in France dans notre maison des mélanges à Saint-Marcel-lès-Valence !<br><br>\n3. Des recettes 100% biologiques évidemment ;) <br><br>\n4. Des recettes prêtes  en moins de 10 minutes à déguster en solo ou en duo (également disponibles en vrac)  !<br><br>",
               "button": "Button",
               "url": ""
             }
@@ -1140,15 +1135,6 @@
               "show_blog_link": false
             }
           },
-          "1591259554991": {
-            "type": "articles_by_blog",
-            "settings": {
-              "title": "écouter: notre podcast",
-              "selected_blog": "podcast-melangeons-nous",
-              "no_posts": 4,
-              "show_blog_link": false
-            }
-          },
           "1591259442306": {
             "type": "articles_by_blog",
             "settings": {
@@ -1162,7 +1148,6 @@
         "block_order": [
           "1591258707118",
           "1591258765723",
-          "1591259554991",
           "1591259442306"
         ],
         "settings": {

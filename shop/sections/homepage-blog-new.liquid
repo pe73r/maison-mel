@@ -130,10 +130,9 @@ Receive articles on all blogs selected
 
             {{ blog.handle }}
 
+          {% assign num = 0 %}
+            {% for num in (1..2) %} <!-- workaround loop for only 3 articles avalaible --> 
             {% for article in blog.articles %}
-
-
-
 
               {% assign already_shown = false %}
               {% assign current_handle = article.url %}
@@ -159,11 +158,8 @@ Receive articles on all blogs selected
                 {% endif %}
               {% endunless %}
 
-
-
-
-
             {% endfor %}
+          {% endfor %}
 
           </div>
 

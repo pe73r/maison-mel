@@ -30,13 +30,13 @@
       <div class="full">
         {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
         {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}
-        {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {%- assign img_url = article.image | img_url: 'master' | replace: '_1x1.', '_{width}x.' -%}
         <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
            <div class="ArticleImage {% if section.settings.paralax %} paralax {% endif %}" style="background-image: url('{{ article.image | img_url:'master' }}')">
            </div>
         </div>
         <noscript>
-          <img src="{{ article.image.src | img_url: 'large' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+          <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
         </noscript>
       </div>
       {% endif %}
@@ -90,14 +90,14 @@
            {% endif %}
         </div>
     </div>
-    {% if section.settings.show_metafields %}
+    {% if section.settings.show_metafields and article.metafields.article.ingrediens != blank %}
     <div class="Article__metafields">
       <div class="article__metafields-flex">
         <div>
-
+          {{ article.metafields.article.ingrediens }}
         </div>
         <div>
-
+         <img src="{{ article.metafields.article.image }}" alt="{{ article.metafields.article.image.alt }}">
         </div>
       </div>
     </div>
@@ -200,6 +200,12 @@
         "type": "checkbox",
         "id": "paralax",
         "label": "image paralax ?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_metafields",
+        "label": "Show metafields",
         "default": true
       }
     ]

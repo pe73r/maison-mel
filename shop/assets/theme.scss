@@ -6110,7 +6110,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?4061) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?4151) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -7237,6 +7237,25 @@ button.addToCart {
   text-align: justify;
 }
 
+.article-related-articles-carousel {
+  max-width: 90%;
+  margin: auto;
+
+  .carousel-cell {
+    width: 33.333%;
+    padding: 0px 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .article-related-articles-carousel {
+    .carousel-cell {
+      width: 100%;
+    }
+  }
+}
+
 @media screen and (max-width: 1000px) {
 
   .Article__blog-title {
@@ -7272,8 +7291,8 @@ button.addToCart {
   justify-content: space-evenly;
 
   a {
-    min-width: 90px;
-    min-height: 90px;
+    width: 90px;
+    height: 90px;
     display: block;
     background-size: contain;
     background-repeat: no-repeat;
@@ -7308,6 +7327,35 @@ button.addToCart {
       .resp-img {
         max-height: 450px;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .container-anchors{
+    margin: 40px auto;
+  }
+  .blog-anchors {
+    a {
+      width: 70px;
+      height: 70px;
+    }
+  }
+  .homepage-blog-carousel {
+    max-width: 80%;
+    .carousel-cell {
+      width: 100%;
+    }
+    .grid__item{
+      padding-left: 0;
+    }
+  }
+
+  .blog-section-title {
+    span {
+      width: 40px;
+      height: 40px;
     }
   }
 }
@@ -7378,13 +7426,13 @@ button.addToCart {
 
 .marque-seemore-button {
   margin-top: 30px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .marque-seemore-button:after {
   content: "V";
-  font-weight: bold;
+  font-weight: 500;
   padding: 0px 10px;
   cursor: pointer;
 }
@@ -7398,12 +7446,12 @@ button.addToCart {
 
 .show-seemore-text {
   max-height: 2000px;
-  transition: max-height 0.5s;
+  transition: max-height 1s;
 }
 
 /*
 .marque-seemore-text {
-  transform: scaleY(0);    
+  transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.5s ease;
 }
@@ -7413,13 +7461,3 @@ button.addToCart {
 }
 
 */
-
-.article-related-articles-carousel {
-  max-width: 90%;
-  margin: auto;
-
-  .carousel-cell {
-    width: 33.333%;
-    padding: 0px 20px;
-  }
-}

@@ -16,9 +16,23 @@
 
       <div class="grid">
 
-
         <div class="main-carousel article-related-articles-carousel"
           data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "arrowShape": {"x0": 10,"x1": 55, "y1": 45,"x2": 60, "y2": 40,"x3": 20} }'>
+
+          {% for article in blog.articles %}
+            {% unless article.title == current_article_title %}
+              {% for tag in article.tags %}
+                {% if current_article_tags contains tag %}
+                  {% assign related_article_handles = related_article_handles | append: article.handle %}
+                  <div class="carousel-cell">
+                    {% include 'article-standard' %}
+                  </div>
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endunless %}
+          {% endfor %}
+
           {% for article in blog.articles %}
 
             {% unless article.title == current_article_title or related_article_handles contains article.handle %}

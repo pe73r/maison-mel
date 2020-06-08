@@ -7338,6 +7338,47 @@ button.addToCart {
   text-align: justify;
 }
 
+.article-related-articles-carousel {
+  max-width: 90%;
+  margin: auto;
+
+  .carousel-cell {
+    width: 33.333%;
+    padding: 0px 20px;
+  }
+}
+
+.article__metafields-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px 0;
+
+  img{
+    max-width: 400px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .article-related-articles-carousel {
+    .carousel-cell {
+      width: 100%;
+    }
+  }
+
+  .article__metafields-flex{
+     flex-direction: column;
+     align-items: center;
+     img{
+       max-width: 300px;
+       margin-top: 20px;
+     }
+
+  }
+}
+
 @media screen and (max-width: 1000px) {
 
   .Article__blog-title {
@@ -7528,7 +7569,7 @@ button.addToCart {
 
 .show-seemore-text {
   max-height: 2000px;
-  transition: max-height 0.5s;
+  transition: max-height 1s;
 }
 
 /*
@@ -7543,22 +7584,3 @@ button.addToCart {
 }
 
 */
-
-.article-related-articles-carousel {
-  max-width: 90%;
-  margin: auto;
-
-  .carousel-cell {
-    width: 33.333%;
-    padding: 0px 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-
-  .article-related-articles-carousel {
-    .carousel-cell {
-      width: 100%;
-    }
-  }
-}
