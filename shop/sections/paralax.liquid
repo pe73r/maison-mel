@@ -75,7 +75,7 @@
           {% endif %}
 
           {% if cta_url != blank %}
-          <a href="{{ cta_url }}" class="btn bg--{{ section.settings.text_color }} color--{{ section.settings.text_color }}-overlay feature-image__btn font-size--s">{{ cta_text }}</a>
+          <a href="{{ cta_url }}" class="btn bg--{{ section.settings.text_color }} color--{{ section.settings.text_color }}-overlay feature-image__btn">{{ cta_text }}</a>
           {% endif %}
 
         </div>
@@ -112,7 +112,7 @@
      "label": "Parallax height",
      "default":   "500",
      "info": "only for parallax image"
-   }, 
+   },
     {
       "type": "select",
       "id": "image_style",

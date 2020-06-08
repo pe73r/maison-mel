@@ -1818,7 +1818,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .t--meta {
   text-transform: {{ settings.meta_text_transform }};
-  font-weight: $mainFontWeight;
+  font-weight: $titleFontWeight;
   letter-spacing: {{ settings.meta_letterspacing | divided_by: 10.0 }}{% unless settings.meta_letterspacing == 0 %}em{% endunless %};
 }
 
@@ -2398,7 +2398,8 @@ html input[disabled] {
   -moz-appearance: none;
   font-family: $mainFontStack;
   // text-transform: {{ settings.buttons_text_transform }};
-  letter-spacing: {{ settings.buttons_letterspacing | divided_by: 10.0 }}{% unless settings.buttons_letterspacing == 0 %}em{% endunless %};
+  // letter-spacing: {{ settings.buttons_letterspacing | divided_by: 10.0 }}{% unless settings.buttons_letterspacing == 0 %}em{% endunless %};
+  letter-spacing: 0;
   font-weight: $titleFontWeight;
 
 
@@ -6614,7 +6615,7 @@ https://flickity.metafizzy.co
 .footer--link{
     font-size: 16px;
     font-weight: 400;
-    letter-spacing: 0.1em;
+    letter-spacing: 0;
 }
 
 @media screen and (max-width: 800px){
@@ -6927,7 +6928,7 @@ https://flickity.metafizzy.co
 
 .product-template-title {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0;
 
 }
@@ -7066,8 +7067,8 @@ button.addToCart {
 
 .product-vendor{
   margin: 0;
-  font-weight: bold;
-}
+  font-weight: 600;
+} 
 
 .ProductDescription{
   max-width: 400px;
@@ -7083,7 +7084,6 @@ button.addToCart {
 }
 
 .ProductPrice{
-  font-weight: bold;
 
 }
 

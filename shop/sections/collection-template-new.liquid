@@ -144,7 +144,7 @@ For more information on collection tags:
                   </ul>
                 </div>
                 {% endif %}
-      
+
               </div>
             -->
 
@@ -154,19 +154,19 @@ For more information on collection tags:
               <li class="mb1"><a href="{{ link.url }}" class="{% if link.active %}tag__item--active color--main-accent{% endif %}">{{ link.title }}</a>
               {% if link.links != blank %}
                 <ul class="child">
-                  {% for child_link in link.links %}  
+                  {% for child_link in link.links %}
                   <li><a href= "{{ child_link.url }}">{{ child_link.title }}</a>
                   {% if child_link.links != blank %}
                     <ul class="grandchild">
-                    {% for grandchild_link in child_link.links %}  
+                    {% for grandchild_link in child_link.links %}
                       <li><a href= "{{ grandchild_link.url }}">{{ grandchild_link.title }}</a></li>
                     {% endfor %}
                     </ul>
-                  {% endif %}   
+                  {% endif %}
                   </li>
                   {% endfor %}
-                </ul> 
-              {% endif %} 
+                </ul>
+              {% endif %}
               </li>
               {% endfor %}
               </ul>
