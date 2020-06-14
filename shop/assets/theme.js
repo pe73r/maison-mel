@@ -4888,7 +4888,7 @@ let carousel = document.getElementsByClassName('product-template-carousel')[0];
 if (carousel) {
   for (let i= 0; i < carousel.getElementsByClassName('product-template-carousel-media').length; i++ ) {
     carousel.getElementsByClassName('product-template-carousel-media')[i].addEventListener('click', (event) => {
-      document.getElementsByClassName('product-featured-media')[0].setAttribute('src', event.srcElement.getAttribute('src'));
+      document.getElementsByClassName('slick-dots')[0].getElementsByTagName('li')[i].click();
     });
   }
 }

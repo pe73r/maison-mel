@@ -1,0 +1,104 @@
+{% if section.settings.display %}
+<section id="section-{{ section.id }}" class="section-about-unique" data-section-type="section-about-unique" data-section-id="{{ section.id }}">
+  <div class="grid">
+    <div class="1/2--lap-and-up grid__cell">
+      {% if section.settings.image != blank %}
+        <div class="">
+          <img  src="{{ section.settings.image | img_url: 'master' }}" alt="{{ section.settings.image.alt }}">
+        </div>
+      {% endif %}
+    </div>
+    <div class="1/2--lap-and-up grid__cell">
+      <div class="text-image-about">
+        <h3 class="image-block_title f--title">{{ section.settings.title }}</h3>
+        {% for block in section.blocks %}
+          <div class="text__block-about">
+            {% if block.settings.logo != blank %}
+              <div class="text-image-logo">
+                <img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.logo.alt }}">
+                {% if block.settings.logo-2 %}
+                  <img class="ml-2"src="{{ block.settings.logo-2 | img_url: 'master' }}" alt="{{ block.settings.logo-2.alt }}">
+                {% endif %}
+              </div>
+              <span>{{ block.settings.text-logo }}</span>
+            {% endif %}
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+        {% if section.settings.url != blank %}
+        <div class="full align-center">
+          <a href="{{ cta_url }}" class="btn-about btn bg--primary btn--pages align-center">
+             {{ section.settings.button }}
+          </a>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% schema %}
+{
+  "name": "Text image about",
+  "settings": [
+     {
+       "type": "checkbox",
+       "id": "display",
+       "label": "Display section ?",
+       "default": true
+     },
+     {
+       "type": "text",
+       "id": "title",
+       "label": "Title",
+       "default": "3/ Ce qui nous rend unique"
+     },
+     {
+       "type": "image_picker",
+       "id": "image",
+       "label": "image"
+     },
+     {
+       "type": "url",
+       "id": "url",
+       "label": "Link"
+     },
+     {
+       "type": "text",
+       "id": "button",
+       "label": "Button",
+       "default": "découvrir nos melanges"
+     }
+  ],
+  "blocks": [
+    {
+      "type": "logo-text",
+      "name": "Logo with text",
+      "settings": [
+         {
+           "type": "image_picker",
+           "id": "logo",
+           "label": "Picto 1"
+         },
+         {
+           "type": "image_picker",
+           "id": "logo-2",
+           "label": "Picto 2"
+         },
+         {
+           "type": "text",
+           "id": "text-logo",
+           "label": "Text logo",
+           "default": "Lorem ipsum"
+         },
+         {
+           "type": "textarea",
+           "id": "text",
+           "label": "text",
+           "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"
+         }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,325 @@
+<!-- /templates/product.liquid -->
+{% comment %}
+
+  Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
+  and allow search engines to easily understand what the content is.
+
+  For more information on these Scheme.org tags, visit:
+    - http://schema.org/docs/gs.html
+
+{% endcomment %}
+{% include 'global-variables' %}
+
+{% capture sectionID %}section-{{ product.handle }}{% endcapture %}
+
+{% comment %}
+Check for any supporting pages
+{% endcomment %}
+{% assign supporting_links = false %}
+{% for block in section.blocks %}
+  {% case block.type %}
+  {% when 'supporting_links' %}
+    {% assign supporting_links = true %}
+  {% endcase %}
+{% endfor %}
+
+{% assign show_quantity = section.settings.show_quantity %}
+
+{% if section.settings.product_media_size == 'large' %}
+  {% assign product_media_class = 'lg--one-half dt--two-thirds' %}
+  {% assign product_form_class = 'lg--one-half dt--one-third' %}
+  {% assign product_desc_class = 'lg--one-half dt--two-thirds' %}
+{% else %}
+  {% assign product_media_class = 'lg--one-half dt--one-half' %}
+  {% assign product_form_class = 'lg--one-half dt--one-half' %}
+  {% assign product_desc_class = 'lg--one-half dt--one-half' %}
+{% endif %}
+
+{% assign thumbnail_cropping = section.settings.thumbnail_cropping %}
+{% assign zoom_enabled = section.settings.enable_image_zoom %}
+
+{% comment %}
+  Check for product media
+{% endcomment %}
+
+{% assign has_video = false %}
+{% assign has_external_video = false %}
+{% assign has_model = false %}
+
+{% for media in product.media %}
+  {% case media.media_type %}
+  {% when 'video' %}
+    {% assign has_video = true %}
+  {% when 'external_video' %}
+    {% assign has_external_video = true %}
+  {% when 'model' %}
+    {% assign has_model = true %}
+  {% endcase %}
+{% endfor %}
+
+<section itemscope
+         itemtype="http://schema.org/Product"
+         class="section bg--section section-product section--product-page relative pb4 product-template-variant"
+         id="{{ sectionID }}"
+         data-section-id="{{ sectionID }}"
+         data-money-format="{{ shop.money_format }}"
+         data-section-type="product"
+         data-has-video="{{ has_video }}"
+         data-has-external-video="{{ has_external_video }}"
+         data-has-model="{{ has_model }}"
+         data-enable-product-zoom="{{ section.settings.enable_image_zoom }}"
+         {% if product.selected_variant %}
+         data-selected-variant="true"
+         data-selected-variant-id="{{ product.selected_variant.id }}"
+         data-selected-variant-media-id="{{ product.selected_variant.featured_media.id }}"
+         {% else %}
+         data-selected-variant="false"
+         {% endif %}
+         data-enable-history-state="true">
+
+  <div class="container-medium">
+    <div class="wrapper section--wrapper">
+
+    <meta itemprop="name" content="{{ product.title }}">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="image" content="{{ product.featured_media | img_url: '1200x' }}">
+
+    {% comment %}
+      Get first variant, or deep linked one
+    {% endcomment %}
+    {% assign current_variant = product.selected_or_first_available_variant %}
+
+    <div class="grid product-single">
+
+      <div class="grid__item {{ product_media_class }} text-center relative 1/2--lap-and-up grid__cell homepage_block product-tamplate-media" data-product-single-media-group>
+
+
+          {% if product.media.size > 1 %}
+          {% comment %}
+            Multiple product media
+          {% endcomment %}
+          <div class="relative product-slider-holder mb4 lg--pb0 lg--mb4">
+            <div class="product-media-slider m0 p0" data-product-media-slider>
+
+              {% assign featured_media = current_variant.featured_media | default: product.featured_media %}
+              {% assign image_counter = 0 %}
+              {% for media in product.media %}
+                <div class="product-media-slider__item">
+                  {% include 'media', media: media, featured_media: featured_media, zoom_enabled: zoom_enabled, enable_video_looping: section.settings.enable_video_looping, slider: true %}
+                </div>
+              {% endfor %}
+
+            </div>
+
+          </div>
+          {% else %}
+            {% comment %}
+              Single product media
+            {% endcomment %}
+            <div class="mb3 lg--mb0">
+              {% for media in product.media %}
+
+                {% include 'media', media: media, featured_media: featured_media, zoom_enabled: zoom_enabled %}
+
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div class="product__carousel">
+            <div class="main-carousel carousel-flex product-template-carousel"
+              data-flickity='{ "prevNextButtons": true , "pageDots": false, "wrapAround": true, "width":"100%"}'>
+                {% for media in product.media %}
+                  <div class="carousel-cell">
+                    {% include 'media', media: media, featured_media: featured_media, zoom_enabled: zoom_enabled %}
+                  </div>
+                {% endfor %}
+            </div>
+          </div>
+
+      </div><!-- end product media -->
+
+      <div class="grid__item {{ product_form_class }} dt--pt4 product-page--form-sticky 1/2--lap-and-up grid__cell homepage_block">
+
+        <div class="product-form_flex">
+          {% if product.metafields.product.picto-1 != blank %}
+             <div class="product--pictos">
+                 {% if product.metafields.product.picto-1 != blank %}
+                   <img src="{{ product.metafields.product.picto-1 }}" alt="{{ product.metafields.product.picto-1.alt }}">
+                 {% endif %}
+                 {% if product.metafields.product.picto-2 != blank %}
+                    <img src="{{ product.metafields.product.picto-2 }}" alt="{{ product.metafields.product.picto-2.alt }}">
+                 {% endif %}
+                 {% if product.metafields.product.picto-3 != blank %}
+                    <img src="{{ product.metafields.product.picto-3 }}" alt="{{ product.metafields.product.picto-3.alt }}">
+                 {% endif %}
+             </div>
+           {% endif %}
+           <div class="ProductForm_box">
+            {% include 'product-page-form-new', show_vendor: section.settings.show_vendor, show_payment_button: section.settings.show_payment_button %}
+            <!-- metafields preparation -->
+            {% if section.settings.display-preparation and product.metafields.product.preparation != blank %}
+               <div class="metafields-preparation">
+                 {% if section.settings.preparation-image != blank %}
+                    <div class="metafields-preparation__image">
+                       <img src="{{ section.settings.preparation-image | img_url: 'master' }}" alt="{{ section.settings.preparation-image.alt }}">
+                    </div>
+                  {% endif %}
+                  <div class="metafields-preparation__text">
+                     {{ product.metafields.product.preparation }}
+                  </div>
+               </div>
+             {% endif %}
+           </div>
+        </div>
+      </div><!-- end product form -->
+      
+
+    </div><!-- end media and form grid -->
+
+
+
+
+    </div>
+
+
+
+    {% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ sectionID}}" data-product-json>
+      {{ product | json }}
+    </script>
+    <script type="application/json" id="FirstVariantJson-{{ sectionID }}" data-first-variant-json>
+      {{ product.selected_or_first_available_variant | json }}
+    </script>
+    <script type="application/json" id="ModelJson-{{ sectionID}}">
+      {{ product.media | where: 'media_type', 'model' | json }}
+    </script>
+    {% endunless %}
+  </div>
+</section>
+{% if section.settings.enable_image_zoom %}
+  {% include 'photoswipe' %}
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "class": "section-single-product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_button",
+        "label": "Show dynamic checkout button",
+        "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay.  [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity",
+        "label": "Show quantity"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_links",
+        "label": "Show share links"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags"
+      },
+      {
+        "type": "header",
+        "content": "Media",
+        "info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_image_zoom",
+        "label": "Enable image zoom"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label":  "Enable video looping",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_media_size",
+        "label": "Product media size - desktop",
+        "options": [
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "large"
+      },
+      {
+        "type": "header",
+        "content": "Description"
+      },
+      {
+        "type": "checkbox",
+        "id": "large_first_paragraph",
+        "label": "Make first paragraph larger",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show-description",
+        "label": "Show description ?"
+      },
+      {
+        "type": "header",
+          "content": "Metafields preparation"
+      },
+      {
+        "type": "checkbox",
+        "id": "display-preparation",
+        "label": "Display preparation ?",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "preparation-image",
+        "label": "image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "supporting_links",
+        "name": "Supporting pages",
+        "settings": [
+          {
+             "type":      "paragraph",
+             "content":   "Add a related page that will be shown on all product pages. E.g. 'Shipping info'"
+          },
+          {
+             "type":      "text",
+             "id":        "title",
+             "label":     "Link label"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

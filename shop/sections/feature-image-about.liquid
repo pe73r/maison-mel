@@ -11,7 +11,8 @@
 {% assign cta_url = section.settings.cta_url %}
 
 {% assign style = section.settings.image_style %}
- 
+
+{% if section.settings.display %}
 <section class="feature-image  section section--feature-image bg--section">
   <div  class="p0 clearfix relative feature-image__container--{% if style == 'full_screen' %}full_screen{% else %}content{% endif %} ">
 
@@ -87,12 +88,19 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% schema %}
 {
   "name": "Image with text overlay",
   "class": "full_bleed",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "display",
+      "label": "Display section ?",
+      "default": true
+    },
     {
       "type": "select",
       "id": "image_style",
@@ -193,12 +201,6 @@
         }
       ],
       "default":   "text-align--center align--middle"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Image with text overlay",
-      "category": "Image"
     }
   ]
 }

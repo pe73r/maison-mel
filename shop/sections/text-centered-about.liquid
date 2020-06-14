@@ -1,0 +1,97 @@
+{% if section.settings.display %}
+<section id="section-{{ section.id }}" data-section-type="text-centered" data-section-id="{{ section.id }}">
+  <div class="container-about-small">
+    <div class="text-centered__content relative">
+      <h3 class="image-block_title f--title">{{ section.settings.title-1 }}</h3>
+      <div class="">{{ section.settings.text-1 }}</div>
+      {% if section.settings.picto != blank %}
+        <div class="picto-about desktop-only">
+          <img  src="{{ section.settings.picto | img_url: 'master' }}" alt="{{ section.settings.picto.alt }}">
+        </div>
+      {% endif %}
+    </div>
+    <div class="text-centered__content">
+      <h3 class="image-block_title f--title">{{ section.settings.title-2 }}</h3>
+      <div class="">{{ section.settings.text-2 }}</div>
+      <div class="text-centered__flex">
+        {% if section.settings.logo-1 != blank %}
+          <div class="text-centered__logo">
+            <img src="{{ section.settings.logo-1 | img_url: 'master' }}" alt="{{ section.settings.logo-1.alt }}">
+            <p>{{ section.settings.logo-1-text }}</p>
+          </div>
+        {% endif %}
+        {% if section.settings.logo-2 != blank %}
+          <div class="text-centered__logo">
+            <img src="{{ section.settings.logo-2 | img_url: 'master' }}" alt="{{ section.settings.logo-2.alt }}">
+            <p>{{ section.settings.logo-2-text }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% schema %}
+{
+  "name": "Text centered about",
+  "settings": [
+     {
+       "type": "checkbox",
+       "id": "display",
+       "label": "Display section ?",
+       "default": true
+     },
+     {
+       "type": "text",
+       "id": "title-1",
+       "label": "Title 1",
+       "default": "2/ Notre raison d'être"
+     },
+     {
+       "type": "textarea",
+       "id": "text-1",
+       "label": "Text 1",
+       "default": "<p>Nous rêvons d’un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. La tâche est immense, mais nous nous y attelons avec tout notre cœur, grain après grain, pour un monde où il fait bon vivre.</p>"
+     },
+     {
+       "type": "text",
+       "id": "title-2",
+       "label": "Title 2",
+       "default": "3 / Notre mission"
+     },
+     {
+       "type": "text",
+       "id": "text-2",
+       "label": "Text 2",
+       "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>"
+     },
+     {
+       "type": "image_picker",
+       "id": "picto",
+       "label": "Picto"
+     },
+     {
+       "type": "image_picker",
+       "id": "logo-1",
+       "label": "logo 1"
+     },
+     {
+       "type": "text",
+       "id": "logo-1-text",
+       "label": "Logo 1 text",
+       "default": "pour des recettes siane et originales"
+     },
+     {
+       "type": "image_picker",
+       "id": "logo-2",
+       "label": "logo 2"
+     },
+     {
+       "type": "text",
+       "id": "logo-2-text",
+       "label": "Logo 2 text",
+       "default": "pour des recettes samples et joyeuses"
+     }
+  ]
+}
+{% endschema %}

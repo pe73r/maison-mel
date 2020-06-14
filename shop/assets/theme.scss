@@ -548,11 +548,11 @@ $baseFontSize: 16px; // Henceforth known as 1em
 
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/icons.eot?v=15839920060943556384');
-  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/icons.eot?v=15839920060943556384#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/icons.woff?v=16994515853337970273') format("woff"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/icons.ttf?v=15269834025022278972') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/icons.svg?v=163269811207092844#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.eot?v=15839920060943556384');
+  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.eot?v=15839920060943556384#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.woff?v=16994515853337970273') format("woff"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.ttf?v=15269834025022278972') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.svg?v=163269811207092844#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -1751,7 +1751,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .t--meta {
   text-transform: none;
-  font-weight: $mainFontWeight;
+  font-weight: $titleFontWeight;
   letter-spacing: 0.0;
 }
 
@@ -2331,7 +2331,8 @@ html input[disabled] {
   -moz-appearance: none;
   font-family: $mainFontStack;
   // text-transform: Uppercase;
-  letter-spacing: 0.1em;
+  // letter-spacing: 0.1em;
+  letter-spacing: 0;
   font-weight: $titleFontWeight;
 
 
@@ -2844,7 +2845,7 @@ select {
   border-bottom: $borderHrHeight solid $colorPrimary;
   background-position: right center;
   background: {
-    image: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/ico-chevron.svg?v=15436986572571520724');
+    image: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/ico-chevron.svg?4475');
     repeat: no-repeat;
     position: right -1px center;
     color: transparent;
@@ -5318,6 +5319,8 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 }
 
 
+
+
 /*============================================================================
   #Search
 ==============================================================================*/
@@ -6110,7 +6113,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/4/assets/pswp-preloader.gif?4151) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/pswp-preloader.gif?4475) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6497,6 +6500,12 @@ https://flickity.metafizzy.co
   .newsletter-sub{
     padding-left: 0;
   }
+
+  .newsletter__title{
+     width: 90%;
+     margin: auto;
+     margin-bottom: 10px;
+  }
 }
 
 /*------ footer--------*/
@@ -6513,7 +6522,7 @@ https://flickity.metafizzy.co
 .footer--link{
     font-size: 16px;
     font-weight: 400;
-    letter-spacing: 0.1em;
+    letter-spacing: 0;
 }
 
 @media screen and (max-width: 800px){
@@ -6821,12 +6830,18 @@ https://flickity.metafizzy.co
 .parallax-title{
   line-height: 1em;
 }
+@media screen and (max-width: 500px) {
+  .paralax {
+    background-attachment: scroll !important;
+   	background-size: cover;
+  }
+}
 
 // product template //
 
 .product-template-title {
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   margin: 0;
 
 }
@@ -6965,7 +6980,7 @@ button.addToCart {
 
 .product-vendor{
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .ProductDescription{
@@ -6982,7 +6997,6 @@ button.addToCart {
 }
 
 .ProductPrice{
-  font-weight: bold;
 
 }
 
@@ -7044,6 +7058,7 @@ button.addToCart {
 .product--pictos{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   margin-right: 30px;
   margin-top: 10px;
    img{
@@ -7055,6 +7070,10 @@ button.addToCart {
 
 
 @media screen and (max-width: 768px) {
+
+  .product-template-options {
+    width: 70%;
+  }
 
   .product-tamplate-media {
 
@@ -7096,8 +7115,21 @@ button.addToCart {
       width: 100%;
       padding: 0;
     }
-
   }
+  .product__carousel{
+    .carousel-cell {
+      width: 100%;
+      height: 150px;
+      padding: 0;
+      img{
+        width: 50%;
+        height: 50%;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+
 }
 
 
@@ -7160,6 +7192,7 @@ button.addToCart {
     z-index: 9;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     width: 100%;
     position: absolute;
     top: -40px;
@@ -7247,12 +7280,36 @@ button.addToCart {
   }
 }
 
+.article__metafields-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 40px 0;
+
+  img{
+    max-width: 400px;
+  }
+
+}
+
 @media screen and (max-width: 768px) {
 
   .article-related-articles-carousel {
-    .carousel-cell {
+    max-width: 85%;
+    margin: auto;
+    .carousel-cell { 
       width: 100%;
     }
+  }
+
+  .article__metafields-flex{
+     flex-direction: column;
+     align-items: center;
+     img{
+       max-width: 300px;
+       margin-top: 20px;
+     }
+
   }
 }
 
@@ -7309,7 +7366,8 @@ button.addToCart {
     width: 90px;
     height: 90px;
     display: block;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     margin-left: 5px;
   }
 }
@@ -7461,3 +7519,11 @@ button.addToCart {
 }
 
 */
+
+/* product template variant */
+
+.product-template-variant {
+  .slick-dots {
+    z-index: -1;
+  }
+}

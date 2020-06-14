@@ -5139,6 +5139,15 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 /*============================================================================
   #Featured Content
 ==============================================================================*/
+.featured-content__title--xxs {
+  font-size: 1em;
+  line-height: 1.6;
+  font-weight: 400;
+  @include at-query($min, $medium) {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+}
 
 .featured-content__title--xs {
   font-size: 1.5rem;
@@ -5414,6 +5423,8 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
   }
 
 }
+
+
 
 
 /*============================================================================
@@ -6442,6 +6453,19 @@ https://flickity.metafizzy.co
   width: 100%;
 }
 
+.align-center{
+  text-align: center;
+}
+
+.desktop-only{
+   display: block;
+}
+
+@media screen and (max-width: 800px){
+  .desktop-only{
+     display: none;
+  }
+}
 
 /*------  slideshow --------*/
 
@@ -6598,6 +6622,12 @@ https://flickity.metafizzy.co
 
   .newsletter-sub{
     padding-left: 0;
+  }
+
+  .newsletter__title{
+     width: 90%;
+     margin: auto;
+     margin-bottom: 10px;
   }
 }
 
@@ -6860,6 +6890,7 @@ https://flickity.metafizzy.co
 
 .image-block_title {
   font-size: $font-size--xxl;
+  margin-top: 30px;
 }
 
 .image-block_text{
@@ -6872,6 +6903,11 @@ https://flickity.metafizzy.co
 }
 
 @media screen and (max-width: 800px) {
+
+  .image-text-block{
+    padding: 10px 0;
+  }
+
   .image-block_title {
     text-align: center;
   }
@@ -6922,6 +6958,12 @@ https://flickity.metafizzy.co
 
 .parallax-title{
   line-height: 1em;
+}
+@media screen and (max-width: 500px) {
+  .paralax {
+    background-attachment: scroll !important;
+   	background-size: cover;
+  }
 }
 
 // product template //
@@ -7068,7 +7110,7 @@ button.addToCart {
 .product-vendor{
   margin: 0;
   font-weight: 600;
-} 
+}
 
 .ProductDescription{
   max-width: 400px;
@@ -7145,6 +7187,7 @@ button.addToCart {
 .product--pictos{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   margin-right: 30px;
   margin-top: 10px;
    img{
@@ -7156,6 +7199,10 @@ button.addToCart {
 
 
 @media screen and (max-width: 768px) {
+
+  .product-template-options {
+    width: 70%;
+  }
 
   .product-tamplate-media {
 
@@ -7197,8 +7244,21 @@ button.addToCart {
       width: 100%;
       padding: 0;
     }
-
   }
+  .product__carousel{
+    .carousel-cell {
+      width: 100%;
+      height: 150px;
+      padding: 0;
+      img{
+        width: 50%;
+        height: 50%;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+
 }
 
 
@@ -7261,6 +7321,7 @@ button.addToCart {
     z-index: 9;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     width: 100%;
     position: absolute;
     top: -40px;
@@ -7363,6 +7424,8 @@ button.addToCart {
 @media screen and (max-width: 768px) {
 
   .article-related-articles-carousel {
+    max-width: 85%;
+    margin: auto;
     .carousel-cell {
       width: 100%;
     }
@@ -7432,7 +7495,8 @@ button.addToCart {
     width: 90px;
     height: 90px;
     display: block;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     margin-left: 5px;
   }
 }
@@ -7584,3 +7648,105 @@ button.addToCart {
 }
 
 */
+
+/* product template variant */
+
+.product-template-variant {
+  .slick-dots {
+    z-index: -1;
+  }
+}
+
+/* text centered page about  */
+
+.container-about-small{
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.text-centered__content{
+  margin-bottom: 20px;
+}
+
+.picto-about{
+  position: absolute;
+  top: 0;
+  left: -100px;
+  max-width: 80px;
+}
+
+.text-centered__logo{
+  max-width: 250px;
+}
+
+.text-centered__flex{
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .text-centered__flex{
+    flex-direction: column;
+    align-items: center;
+  }
+  .text-centered__logo{
+    img{
+      margin-top: 30px;
+    }
+  }
+}
+
+/// text-image about ///
+
+.section-about-unique{
+  padding: 50px 0; 
+}
+
+.text-image-about{
+    width: 90%;
+    margin: auto;
+}
+
+.text__block-about{
+  margin: 30px auto;
+  span{
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+  }
+  p{
+    margin-top: 20px;
+  }
+
+  .btn{
+    width: 80%;
+    margin: 20px auto;
+  }
+}
+
+.text-image-logo{
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+    img{
+      max-width: 80px;
+    }
+}
+
+.btn-about{
+  width: 80%;
+  margin: 10px auto;
+}
+
+.ml-2{
+  margin-left: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .section-about-unique{
+    padding: 40px 0;
+  }
+}

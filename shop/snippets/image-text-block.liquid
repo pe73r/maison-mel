@@ -3,15 +3,20 @@
     {% for block in section.blocks %}
      <div id="block-{{ block.id }}">
         <div class="image-text-block">
-          <div class="grid {% if block.settings.reverse %} grid--rev {% endif %} image-text-block grid--middle">
+          <div class="grid image-text-block {% if block.settings.reverse %} grid--rev {% endif %} {% if block.settings.grid-align == "center" %} grid--middle {% elsif block.settings.grid-align == "bottom" %} grid--bottom {% else %}{% endif %}">
              <div class="1/2--lap-and-up  grid__cell">
                 {% if block.settings.image != blank  %}
                   <div class="image-block_image">
-                     <img src="{{  block.settings.image | img_url:'master' }}" alt="{{ block.settings.image }}">
+                     <img src="{{  block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}">
                   </div>
                 {% endif %}
               </div>
               <div class="1/2--lap-and-up grid__cell">
+                {% if block.settings.image-2 != blank  %}
+                  <div class="image-block_image">
+                     <img src="{{  block.settings.image-2 | img_url:'master' }}" alt="{{ block.settings.image-2.alt }}">
+                  </div>
+                {% endif %}
                  <h3 class="image-block_title f--title">{{ block.settings.title }}</h3>
                  <div class="image-block_text">{{ block.settings.text}}</div>
                  {% if block.settings.url != blank %}

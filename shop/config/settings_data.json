@@ -29,7 +29,7 @@
     "show_vendor": true,
     "products_show_second_image_on_hover": true,
     "show_author": true,
-    "favicon": "shopify:\/\/shop_images\/logo_MM.png",
+    "favicon": "shopify:\/\/shop_images\/Capture_d_ecran_2020-06-09_a_14.53.13.png",
     "date_format": "standard",
     "cart_notes_enable": true,
     "cart_vendor_enable": false,
@@ -42,13 +42,13 @@
     "social_twitter_link": "",
     "social_facebook_link": "https:\/\/www.facebook.com\/Beendi.fr\/",
     "social_pinterest_link": "",
-    "social_instagram_link": "https:\/\/www.instagram.com\/beendi\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/beedeli.co\/",
     "social_tumblr_link": "",
     "social_snapchat_link": "",
     "social_youtube_link": "",
     "social_vimeo_link": "",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/Logo_MdM_afa85ee4-90e9-41e3-996f-17b0a3909bfe.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
@@ -85,9 +85,9 @@
             "type": "announcement_bar",
             "settings": {
               "home_page_only": false,
-              "bg-color": "#fcdf6b",
+              "bg-color": "#ec4c29",
               "text": "Les frais de livraison sont offerts dès 15€ d'achats !",
-              "link": "shopify:\/\/policies\/terms-of-service"
+              "link": "shopify:\/\/policies\/shipping-policy"
             }
           }
         },
@@ -285,7 +285,7 @@
           "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/IMG_5407.jpg",
           "sub_text": "Beena & Yannick",
-          "text": "<p>Alors que nous devrions &ecirc;tre naturellement heureux, on a appris &agrave; vivre mal. L&rsquo;alimentation, qui est notre premi&egrave;re m&eacute;decine, source de plaisir et de lien social, est devenue anxiog&egrave;ne face &agrave; la multiplication des injonctions et des scandales. Nous r&ecirc;vons d&rsquo;un monde o&ugrave; chacun est heureux de se nourrir, o&ugrave; l&rsquo;alimentation r&eacute;concilie le go&ucirc;t, le respect du corps et de l&rsquo;environnement, pour tous et tous les jours. La t&acirc;che est immense mais nous nous y attelons avec tout notre coeur, grain apr&egrave;s grain, pour un monde o&ugrave; il fait bon vivre.<\/p>",
+          "text": "<p>Alors que nous devrions &ecirc;tre naturellement heureux, nous avons appris &agrave; vivre mal. L&rsquo;alimentation, qui est notre premi&egrave;re m&eacute;decine, source de plaisir et de lien social, est devenue anxiog&egrave;ne face &agrave; la multiplication des injonctions et des scandales. Nous r&ecirc;vons d&rsquo;un monde o&ugrave; chacun est heureux de se nourrir, o&ugrave; l&rsquo;alimentation r&eacute;concilie le go&ucirc;t, le respect du corps et de l&rsquo;environnement, pour tous et tous les jours. La t&acirc;che est immense mais nous nous y attelons avec tout notre coeur, grain apr&egrave;s grain, pour un monde o&ugrave; il fait bon vivre.<\/p>",
           "cta_url": "",
           "cta_text": "Shop Now",
           "text_color": "white",
@@ -619,9 +619,9 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/Screenshot_2020-05-27_at_00.27.47.png",
               "title": "Nos marques",
-              "text": "<p>Deux&nbsp;marques de m&eacute;langes avec la m&ecirc;me exigence !<\/p>",
+              "text": "<p>Deux&nbsp;marques de m&eacute;langes &agrave; d&eacute;couvrir sur notre shop !<\/p>",
               "button": "Je découvre",
-              "url": "shopify:\/\/pages\/beedeli-1"
+              "url": "shopify:\/\/collections\/tous-nos-produits"
             }
           }
         },
@@ -697,7 +697,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/87-03-HOME-CEREALELEGUMINEUSE_c5312036-e81f-4bf3-9c4a-f74f4e4863bf.png",
               "title": "Céréales et légumineuses",
-              "url": "shopify:\/\/collections\/produits-beedeli"
+              "url": "shopify:\/\/collections\/plats-de-cereales-legumineuses"
             }
           },
           "1590577018202": {
@@ -713,7 +713,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/87-03-HOME-PDTS_391a4559-7bce-45d0-9fc3-71caf8b01df9.png",
               "title": "Autres produits",
-              "url": "shopify:\/\/collections\/les-melanges-beendi"
+              "url": "shopify:\/\/collections\/autres-produits"
             }
           }
         },
@@ -877,7 +877,7 @@
         "type": "page-beendi-heading",
         "settings": {
           "logo": "shopify:\/\/shop_images\/beendi_logo_rose_150dpi_200116_479f7906-b061-48ec-b139-92612471b53b.png",
-          "title": "Grain àpres grain: partageons et mélangeons nous!",
+          "title": "Grain après grain : partageons et mélangeons-nous !",
           "button": "J'achète",
           "url": "shopify:\/\/collections\/les-melanges-beendi"
         }
@@ -891,9 +891,9 @@
               "image": "shopify:\/\/shop_images\/beendi_TABOULE-BOULGOUR_200211.jpg",
               "reverse": false,
               "title": "beendi : des mélanges veggie sains et originaux au quotidien !",
-              "text": "Chez beendi, nous aimons découvrir de nouvelles saveurs, manger des produits sains et savoureux et adopter une alimentation plus responsable. Que vous soyez en solo ou à plusieurs, nous sommes là pour apporter de la joie dans votre quotidien culinaire facilement, grâce à ses mélanges bio et végétariens. <br>\n<br>\n\nDepuis presque 7 ans, nous créons des mélanges veggies mêlant céréales,  légumineuses, légumes, herbes et épices soigneusement sélectionnés.<br>\n<br>",
+              "text": "Chez beendi, nous aimons découvrir de nouvelles saveurs, manger des produits sains et savoureux et adopter une alimentation plus responsable. Que vous soyez en solo ou à plusieurs, nous sommes là pour apporter de la joie dans votre quotidien culinaire facilement, grâce à nos mélanges bio et végétariens. <br>\n<br>\n\nDepuis presque 7 ans, nous créons des mélanges veggies mêlant céréales,  légumineuses, légumes, herbes et épices soigneusement sélectionnés.<br>\n<br>",
               "extra-text-button": "lire plus",
-              "extra-text": "<p>Les recettes beendi sont: <br><br>\n \nOriginales et savoureuses: <br>\n<\/p><ul>\n<li> Une expertise des herbes et épices pour des recettes au goût unique ; <\/li> \n<li> Des mélanges spécialement conçus pour faire réenchanter votre cuisine au quotidien !<br><br>\nSaines et de qualité: \n<\/li>\n<li>Nos mélanges beendi sont certifiés vegan et issus de l’agriculture biologique ! \n<\/li>\n<li>Nos produits sont made in France dans notre maison des mélanges à Saint-Marcel-lès-Valence !\n<\/li>\n<li>Des recettes 100% naturelles : nous n’utilisons aucun additif ni conservateur.\n<\/li>\n<li>Des recettes complètes et équilibrées utilisants des épices aux multiples bienfaits. \n<br><br>\n<\/li>\nA préparer en toute simplicité : \n\n<li>Des recettes prêtes en 5 à 20 minutes ;\n<\/li>\n<li>Rien à ajouter si ce n’est de l’eau ! <\/li>\n<\/ul> <br><br>\nTous nos mélanges beendi sont disponibles au format de 250g (3 à 4 portions) ainsi qu’en vrac : une nouvelle façon de consommer, plus responsable et zéro déchet, pour éviter le gaspillage !",
+              "extra-text": "Les recettes beendi sont : \n<br>\n<br>\nOriginales et savoureuses : \n<ul>\n<li> Une expertise des herbes et épices pour des recettes au goût unique ; <\/li> \n<li> Des mélanges spécialement conçus pour faire réenchanter votre cuisine au quotidien !<\/li>\n<\/ul>\n<br>\nSaines et de qualité : \n<ul>\n<li>Nos mélanges beendi sont certifiés vegan et issus de l’agriculture biologique ! <\/li>\n<li>Nos produits sont made in France dans notre maison des mélanges à Saint-Marcel-lès-Valence !<\/li>\n<li>Des recettes 100% naturelles : nous n’utilisons aucun additif ni conservateur.<\/li>\n<li>Des recettes complètes et équilibrées utilisant des épices aux multiples bienfaits. <\/li>\n<\/ul>\n<br>\nA préparer en toute simplicité : \n<ul>\n<li>Des recettes prêtes en 5 à 20 minutes ;<\/li>\n<li>Rien à ajouter si ce n’est de l’eau ! <\/li>\n<\/ul>\n\n<br>\n<br>\nTous nos mélanges beendi sont disponibles au format de 250g (3 à 4 portions) ainsi qu’en vrac : une nouvelle façon de consommer, plus responsable et zéro déchet, pour éviter le gaspillage !",
               "button": "Button",
               "url": ""
             }
@@ -908,9 +908,9 @@
       "1590745733612": {
         "type": "paralax",
         "settings": {
-          "section_height": "400",
+          "section_height": "500",
           "image_style": "full_screen",
-          "feature_image": "shopify:\/\/shop_images\/background.jpg",
+          "feature_image": "shopify:\/\/shop_images\/Main_Img_1512x_9d9f2320-3b47-4e38-b8e3-9dc65a36dae3.jpg",
           "sub_text": "Découvrez <br>\nnotre shop veggie <br>\net gourmand ! <br>",
           "heading_color": "#fff",
           "title_size": 43,
@@ -931,7 +931,7 @@
       "feature-collection-beendi": {
         "type": "feature-collection-beendi",
         "settings": {
-          "display": true,
+          "display": false,
           "bg-color": "#ededed",
           "title": "Nos top produits",
           "selected_collection": "beendi",
@@ -942,9 +942,9 @@
       "paralax-beendi": {
         "type": "paralax-beendi",
         "settings": {
-          "section_height": "400",
+          "section_height": "500",
           "image_style": "full_screen",
-          "feature_image": "shopify:\/\/shop_images\/Main_Img.jpg",
+          "feature_image": "shopify:\/\/shop_images\/Main_Img_1512x_9d9f2320-3b47-4e38-b8e3-9dc65a36dae3.jpg",
           "sub_text": "",
           "heading_color": "#fff",
           "title_size": 30,
@@ -956,7 +956,7 @@
       "paralax-beendeli": {
         "type": "paralax-beendeli",
         "settings": {
-          "section_height": "400",
+          "section_height": "500",
           "image_style": "full_screen",
           "feature_image": "shopify:\/\/shop_images\/products-beedeli.png",
           "sub_text": "",
@@ -971,7 +971,7 @@
         "type": "page-beendeli-heading",
         "settings": {
           "logo": "shopify:\/\/shop_images\/LOGOBEEDEL.png",
-          "title": "Grain après grain : partageons et mélangeons nous!",
+          "title": "Grain après grain : partageons et mélangeons-nous !",
           "button": "J'achète",
           "url": "shopify:\/\/collections\/produits-beedeli"
         }
@@ -1048,7 +1048,7 @@
         "type": "newsletter",
         "settings": {
           "title": "Inscrivez-vous à notre newsletter gourmande !",
-          "text": "<p>Retrouvez les recettes, les coups de coeur et les conseils bien &ecirc;tre de la Maison des M&eacute;langes en vous abonnant &agrave; la newsletter.&nbsp;&nbsp;<\/p>",
+          "text": "<p>Retrouvez les recettes, les coups de coeur et les conseils bien-&ecirc;tre de la Maison des M&eacute;langes en vous abonnant &agrave; la newsletter.&nbsp;&nbsp;<\/p>",
           "button-text": "Je m'inscris",
           "bg-color": "#fcdf6b"
         }
@@ -1070,7 +1070,7 @@
         "settings": {
           "title": "Filtrer ma sélection :",
           "collection_linklist": "menu-collection",
-          "no_posts": 9,
+          "no_posts": 15,
           "posts_per_row_desktop": "one-third",
           "posts_per_row_mobile": "one-half",
           "enable_tag_filter": true,
@@ -1080,7 +1080,7 @@
       "paralax-collection": {
         "type": "paralax-collection",
         "settings": {
-          "section_height": "400",
+          "section_height": "500",
           "image_style": "full_screen",
           "sub_text": "Découvrez<br>\ntous nos produits !",
           "heading_color": "#fff",
@@ -1097,7 +1097,8 @@
           "show_share_links": false,
           "show_date": false,
           "show_excerpt": false,
-          "paralax": true
+          "paralax": true,
+          "show_metafields": true
         }
       },
       "paralax-blog": {
@@ -1120,7 +1121,7 @@
           "1591258707118": {
             "type": "articles_by_blog",
             "settings": {
-              "title": "cuisiner : nos recettes",
+              "title": "Cuisiner : nos recettes",
               "selected_blog": "recettes-parfaites",
               "no_posts": 8,
               "show_blog_link": false
@@ -1129,7 +1130,7 @@
           "1591258765723": {
             "type": "articles_by_blog",
             "settings": {
-              "title": "rencontrer: nos amis",
+              "title": "Rencontrer : nos amis",
               "selected_blog": "les-amis-de-la-maison",
               "no_posts": 8,
               "show_blog_link": false
@@ -1138,7 +1139,7 @@
           "1591259442306": {
             "type": "articles_by_blog",
             "settings": {
-              "title": "découvrir: nos trucs et astuces",
+              "title": "Découvrir : nos trucs et astuces",
               "selected_blog": "les-astuces",
               "no_posts": 8,
               "show_blog_link": false
@@ -1161,6 +1162,23 @@
           "title": "Découvrir tous les articles",
           "show_excerpt": false,
           "thumbnail_cropping": "square"
+        }
+      },
+      "product-template-variant": {
+        "type": "product-template-variant",
+        "settings": {
+          "show_payment_button": false,
+          "show_vendor": true,
+          "show_quantity": true,
+          "show_share_links": false,
+          "show_tags": false,
+          "enable_image_zoom": false,
+          "enable_video_looping": false,
+          "product_media_size": "medium",
+          "large_first_paragraph": false,
+          "show-description": true,
+          "display-preparation": true,
+          "preparation-image": "shopify:\/\/shop_images\/pot.png"
         }
       }
     },
@@ -1289,8 +1307,7 @@
           "settings": {
             "main_linklist": "main-menu",
             "secondary_linklist": "",
-            "extra_information": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>",
-            "show_social_icons": true
+            "extra_information": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>"
           }
         },
         "1488191749488": {
@@ -1456,7 +1473,6 @@
               "type": "slide",
               "settings": {
                 "feature_image": "",
-                "sub_text": "Heading goes here",
                 "main_text": "Slideshow",
                 "cta_url": "",
                 "cta_text": "Shop Now",
@@ -1468,7 +1484,6 @@
               "type": "slide",
               "settings": {
                 "feature_image": "",
-                "sub_text": "Heading goes here",
                 "main_text": "Slideshow",
                 "cta_url": "",
                 "cta_text": "Shop Now",
@@ -1600,8 +1615,7 @@
           "type": "footer",
           "settings": {
             "main_linklist": "general",
-            "secondary_linklist": "read",
-            "show_social_icons": true
+            "secondary_linklist": "read"
           }
         },
         "collection-template": {
@@ -1884,8 +1898,7 @@
           "settings": {
             "main_linklist": "footer",
             "secondary_linklist": "",
-            "extra_information": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>",
-            "show_social_icons": true
+            "extra_information": "<p>Use this to add additional information about your store, e.g. address \/ contact details.<\/p>"
           }
         },
         "collection-template": {

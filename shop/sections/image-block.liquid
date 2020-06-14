@@ -10,6 +10,17 @@
       "type": "image-text",
       "name": "Image text",
       "settings": [
+           {
+            "type": "select",
+            "id": "grid-align",
+            "options": [
+             { "value": "top", "label": "top"},
+             { "value": "center", "label": "center"},
+             { "value": "bottom", "label": "bottom"}
+            ],
+            "label": "Grid align",
+            "default": "top" 
+          },
           {
              "type":      "range",
              "id":        "padding",
@@ -22,7 +33,12 @@
           {
             "type": "image_picker",
             "id": "image",
-            "label": "label"
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image-2",
+            "label": "Image side with text"
           },
           {
             "type": "checkbox",

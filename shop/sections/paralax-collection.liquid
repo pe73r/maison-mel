@@ -1,23 +1,27 @@
 
 {% assign placeholder = false %}
 {% if collection.handle contains 'tous-nos-produits' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS_d36047c1-73c0-44e4-8cc5-e909bebfafe1.jpg?v=1591116182" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/EPICES_1512x850_27258a54-1bef-45b6-95df-772a2a9c1643.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'couscous-et-taboules' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-TABOULE.jpg?v=1591116183" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/SEMOULEETTABOULE_1512x850_36b9feaf-e3e8-414a-b05a-f5071f304749.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'riz-sautes-et-risotto' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-RISOTTO.jpg?v=1591116177" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/RIZSAUTE_1512x850_a5231e9e-b373-43b8-8c86-10b88ddfdde7.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'kits-joyeux' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-KITJOYEUX.jpg?v=1591116171" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/KITSJOYEUX_1512x850_3da03e36-75f1-4162-98c8-b67fddc6f142.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'mijotes-de-legumineuses-dals' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-DALS.jpg?v=1591116150" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/LEGUMINEUSES_1512x850_5d5d6b5b-70e0-4fe5-8d75-1e39d26428d3.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'plats-de-cereales-legumineuses' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-PLATCEREALES.jpg?v=1591116163" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/LEGUMINEUSES_1512x850_5d5d6b5b-70e0-4fe5-8d75-1e39d26428d3.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'autres-produits' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS_d36047c1-73c0-44e4-8cc5-e909bebfafe1.jpg?v=1591116182" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/AUTREPRODUITS_1512x850_c792a0ff-ac0f-4329-abd3-baa4fd46f517.jpg?v=1591720113" %}
 {% elsif collection.handle contains 'les-epices-roellinger' %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-ROELLINGER.jpg?v=1591116130" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/EPICES_1512x850_27258a54-1bef-45b6-95df-772a2a9c1643.jpg?v=1591720113" %}
+{% elsif collection.handle contains 'one-pot-past' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/ONEPOTPASTA_1512x850_fc2b8561-af20-4258-b0e8-49645ce4c423.jpg?v=1591720114" %}
+{% elsif collection.handle contains 'beedeli' %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/BEEDELI_1512x850_7c95fd37-0b1b-4a05-a9b9-669f9b4d4fa6.jpg?v=1591720113" %}
 {% else %}
-  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/87-03-PAGECOLLECTION-BANDEAU-AUTRESPRODUITS_d36047c1-73c0-44e4-8cc5-e909bebfafe1.jpg?v=1591116182" %}
+  {% assign feature_image = "https://cdn.shopify.com/s/files/1/0359/9178/1421/files/AUTREPRODUITS_1512x850_c792a0ff-ac0f-4329-abd3-baa4fd46f517.jpg?v=1591720113" %}
 {% endif %}
 {% assign text =  section.settings.text  %}
 {% assign sub_text =  section.settings.sub_text %}
