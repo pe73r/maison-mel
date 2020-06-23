@@ -1,0 +1,137 @@
+<!-- /sections/article-template.liquid -->
+{% comment %}
+
+  Comments will not appear right after they are submitted, either to be checked for spam
+  or to await moderation. When a comment is submitted, the browser is redirected to a page
+  that includes the new comment id in its URL.
+    Example: http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
+
+  More information:
+    - http://docs.shopify.com/themes/liquid-variables/comment
+
+{% endcomment %}
+
+{% assign number_of_comments = article.comments_count %}
+{% assign feature_image_size = section.settings.feature_image_size %}
+
+
+<section class="section bg--section article " data-section-type="article" data-section-id="{{ section.id }}">
+  <div class="wrapper section--wrapper relative">
+    {% if section.settings.bg_image != blank %}
+      <div class="full">
+        {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+        {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}
+        {%- assign img_url = section.settings.bg_image | img_url: 'master' | replace: '_1x1.', '_{width}x.' -%}
+        <div id="{{ wrapper_id }}" class="resp-img-wrapper article-image-wrapper js">
+           <div class="ArticleImage {% if section.settings.paralax %} paralax {% endif %}" style="background-image: url('{{ section.settings.bg_image | img_url:'master' }}')">
+           </div>
+        </div>
+        <noscript>
+          <img src="{{ article.image.src | img_url: 'master' }}" alt="{{ article.image.alt | escape }}" class="feature-image">
+        </noscript>
+      </div>
+    {% endif %}
+
+   <div class="PodcastContent">
+     <div class="Podcast__box">
+        <div class="article__header mx--auto">
+            <h2 class="f--title font-size--xxl lg--font-size--xxxl">{{ section.settings.subtitle }}</h2>
+            <div class="Podcast__title">
+              <div class="Podcast__picto">
+                <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/notre_podcast.png?v=1590542515" alt="">
+              </div>
+                <h1 class="f--title font-size--xxxxl lg--font-size--xxxxxl">{{ section.settings.title }}</h1>
+            </div>
+        </div>
+        <div class="f--main">
+          <div class="rte article__content">
+              {% for block in section.blocks %}
+                 <div class="Podcast__post">
+                   <h2 class="f--title font-size--xxl lg--font-size--xxxl text-align--center">{{ block.settings.title }}</h2>
+                   <div class="Podcast__post-content">
+                      {% if block.settings.photo != blank %}
+                        <div class="Podcast__author-pic">
+                          <img src="{{ block.settings.photo | img_url:'master' }}" alt="{{ block.settings.photo.alt }}">
+                        </div>
+                      {% endif %}
+                      <div class="Podcast__text">
+                          {{ block.settings.text }}
+                      </div>
+                   </div>
+                   <div class="Podcast__audio">
+                      {{ block.settings.podcast }}
+                   </div>
+                 </div>
+              {% endfor %}
+          </div>
+        </div>
+     </div>
+   </div>
+ </div><!-- close section wrapper -->
+</section>
+
+{% schema %}
+  {
+    "name": "Podcast",
+    "class": "section-article",
+    "settings": [
+      {
+         "type":    "header",
+         "content": "Podcast"
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "checkbox",
+        "id": "paralax",
+        "label": "image paralax ?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "subtitle",
+        "default": "Le podcast"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "foodkarma"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Podcast",
+        "name": "Podcast",
+        "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Episode # 1 - Pascale Weeks"
+            },
+            {
+              "type": "image_picker",
+              "id": "photo",
+              "label": "Author pic"
+            },
+            {
+              "type": "richtext",
+              "id": "text",
+              "label": "Text",
+              "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>"
+            },
+            {
+              "type": "textarea",
+              "id": "podcast",
+              "label": "Podcast audio"
+            }
+        ]
+      }
+    ]
+  }
+{% endschema %}

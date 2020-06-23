@@ -27,9 +27,9 @@
         {% endfor %}
         {% if section.settings.url != blank %}
         <div class="full align-center">
-          <a href="{{ cta_url }}" class="btn-about btn bg--primary btn--pages align-center">
+          <a href="{{ section.settings.url }}" class="btn-about btn bg--primary btn--pages align-center">
              {{ section.settings.button }}
-          </a>
+          </a> 
         {% endif %}
         </div>
       </div>

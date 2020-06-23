@@ -786,23 +786,13 @@
           "1590696254319": {
             "type": "image-text",
             "settings": {
+              "grid-align": "top",
               "padding": 0,
-              "image": "shopify:\/\/shop_images\/BEEDELI-RIZ-QUINOA_24.png",
+              "image": "shopify:\/\/shop_images\/image-with-padding-top.png",
+              "image-2": "shopify:\/\/shop_images\/Yannick_Beena.jpg",
               "reverse": false,
-              "title": "Notre histoire",
-              "text": "<p>La cuisine, c’est avant tout une histoire de mélanges. Des mélanges de saveurs, d’ingrédients, de savoir faire. Et chez nous, les mélanges c’est une véritables source d’inspiration: On développe le mélange des goûts pour créer des expériences gustatives nouvelles et différentes ;On invente des mélanges de produits grâce et à notre savoir faire industriel dans notre atelier à Saint-Marcel-Lès-Valence ;On s’inspire du mélange des cultures pour s'ouvrir au monde et aux différentes cultures sans distinction ;Et on se construit avec le mélange des genres pour s’enrichir de l’autre!<\/p>\n<br>\n<p>Notre aventure commence suite à un pari lancé à la fin d’un dîner entre amis : Beena Paradin, la fondatrice, est mise au défi d’écrire un livre de cuisine. Défi relevé avec trois livres et un Gourmand Award ! Sur cette belle lancée, elle se perfectionne auprès de grands chefs comme Alain Ducasse et Olivier Roellinger avec lequel elle part à la recherche des meilleures épices indiennes et développe une gamme de mélanges d’épices « Olivier Roellinger by Beena ».<\/p>\n<p><\/p><br>\n<p>Au cours de ses différentes expériences, Beena se rend compte de l’engouement des consommateurs pour la cuisine exotique et végétarienne, avec une exigence de goût et de qualité. Elle crée donc beendi pour permettre aux consommateurs de préparer facilement des recettes savoureuses et saines  en 2013. Après avoir séduit de nombreux clients avec beendi, Beena créée une nouvelle marque beedeli qui s’adresse au plus grand nombre. beedeli est distribué en grande surfaces, avec des recettes exclusives de mélanges simples, accessibles, et bien sûr toujours bio. <\/p>\n<p><\/p>\n<p>Tandis que beedeli s’adresse aux veggie débutants voulant s’approprier une nouvelle façon de cuisiner, beendi répond aux besoins des plus experts.<\/p>",
-              "button": "Button",
-              "url": ""
-            }
-          },
-          "1590934447029": {
-            "type": "image-text",
-            "settings": {
-              "padding": 0,
-              "image": "shopify:\/\/shop_images\/propos-pictos.jpg",
-              "reverse": true,
-              "title": "Notre raison d'être",
-              "text": "Nous rêvons d’un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. La tâche est immense, mais nous nous y attelons avec tout notre cœur, grain après grain, pour un monde où il fait bon vivre.",
+              "title": "Un petit mot de Beena et Yannick",
+              "text": "Alors que nous devrions être naturellement heureux, on a appris \u0003à vivre mal. L’alimentation, qui est notre première médecine, source de plaisir et de lien social, est devenue anxiogène face \u0003à la multiplication des injonctions et des scandales. \u0003Nous rêvons d’un monde où chacun est heureux de se nourrir, \u0003où l’alimentation réconcilie le goût, le respect du corps \u0003et de l’environnement, pour tous et tous les jours. \u0003La tâche est immense mais nous nous y attenlons avec tout notre coeur, grain après grain, pour un monde où il fait bon vivre.",
               "button": "Button",
               "url": ""
             }
@@ -810,23 +800,13 @@
           "1591266451571": {
             "type": "image-text",
             "settings": {
+              "grid-align": "top",
               "padding": 0,
-              "image": "shopify:\/\/shop_images\/BEEDELI-CURRY-LENTILLES-COCO_35-ok.png",
-              "reverse": false,
-              "title": "Notre mission",
-              "text": "Nous pensons que manger végétal, c’est se nourrir sainement, découvrir de nouvelles palettes de saveurs toute en respectant les ressources de la planète et ceux qui les cultivent. Notre mission est de faire de l'alimentation veggie un acte heureux, responsable et libre, sans stéréotype de goût ni de genre. Nous voulons révolutionner les usages et reconnecter les mangeurs à eux-mêmes et aux nourriciers.\n\nNos mélanges permettent aux mangeurs de cuisiner facilement et sainement tout en apportant de la joie dans leur quotidien culinaire. Nous proposons tous les éléments d'une assiette végétale équilibrée et savoureuse au travers de nos deux marques :\n\nbeendi, pour des recettes saines et originales !\nbeedeli, pour des recettes simples et joyeuses",
-              "button": "Button",
-              "url": ""
-            }
-          },
-          "1591266533746": {
-            "type": "image-text",
-            "settings": {
-              "padding": 0,
-              "image": "shopify:\/\/shop_images\/uniques.jpg",
+              "image": "shopify:\/\/shop_images\/BEEDELI-CURRY-LENTILLES-COCO_35-ok_3358f115-93b9-4db5-ab75-37e7448f78b5.png",
+              "image-2": "",
               "reverse": true,
-              "title": "Ce qui nous rend unique :",
-              "text": "Des produits Made in France<br>\nNous maîtrisons toute la chaîne de la conception à la commercialisation des produits grâce à son équipe pluridisciplinaire qui développe, fabrique et distribue les produits. \n\nDepuis quelques mois, nous avons installé notre nouvel atelier de production à Valence dans le Sud de la France et fabriquons tous les jours de délicieux produits !<br><br>\n\nDes ingrédients de qualité<br>\nNotre co-fondateur, Yannick Migotto passe énormément de temps à chercher les ingrédients les plus qualitatifs possibles. \nBeena, fondatrice et experte des épices, les goûtent un à un afin de ne garder que le meilleur. Bien entendu, tous nos ingrédients sont bio, cependant ce n'est pas le premier critère de sélection. Le plus important pour nous reste le goût !<br><br>\n\nUne nouvelle façon de consommer <br>\nAvec nos mélanges veggie beendi et beedeli, nous proposons aux mangeurs une nouvelle façon de consommer. Nous les accompagnons dans leur quotidien en leur permettant de préparer des bons repas veggie, complets et délicieux en moins de 20 minutes !",
+              "title": "1\/ Notre mission",
+              "text": "La cuisine, c’est avant tout une histoire de mélanges. Des mélanges de saveurs, d’ingrédients, de savoir faire.\nEt chez nous, les mélanges c’est une véritable source d’inspiration : <br><br>\n<ul>\n<li>Nous développons le mélange des goûts pour créer des expériences gustatives nouvelles et différentes ;<\/li>\n<br>\n<li>Nous développons des mélanges de produits grâce et à notre savoir faire industriel dans notre atelier à Saint-Marcel-Lès-Valence ;<\/li>\n<br>\n<li>Nous nous inspirons du mélange des cultures pour s'ouvrir au monde et aux différentes cultures sans distinction ;<\/li>\n<br>\n<li>Et nous nous construisons avec le mélange des genres pour s’enrichir de l’autre !<\/li>\n<\/ul>\n <br>\nNotre aventure commence suite à un pari lancé à la fin d’un dîner entre amis. Beena Paradin, la fondatrice, est mise au défi d’écrire un livre de cuisine. Défi relevé avec trois livres et un Gourmand Award !\n<br><br>\nSur cette belle lancée, elle se perfectionne auprès de grands chefs comme Alain Ducasse et Olivier Roellinger avec lequel elle part à la recherche des meilleures épices indiennes et développe une gamme de mélanges d’épices « Olivier Roellinger by Beena ».\n <br>\nAu cours de ses différentes expériences, Beena se rend compte de l’engouement des consommateurs pour la cuisine exotique et végétarienne, avec une exigence de goût et de qualité. Elle crée donc beendi pour permettre aux mangeurs de préparer facilement des recettes savoureuses et saines en 2013. \nAprès avoir séduit de nombreux mangeurs avec beendi, Beena créée une nouvelle marque beedeli qui s’adresse au plus grand nombre. Elle est distribuée en grande surfaces, avec des recettes exclusives de mélanges simples, accessibles, et bien sûr toujours bio. <br>\nTandis que beedeli s’adresse aux veggies débutants voulant s’approprier une nouvelle façon de cuisiner, beendi répond aux besoins des plus experts.",
               "button": "Button",
               "url": ""
             }
@@ -834,9 +814,7 @@
         },
         "block_order": [
           "1590696254319",
-          "1590934447029",
-          "1591266451571",
-          "1591266533746"
+          "1591266451571"
         ],
         "settings": {
         }
@@ -1179,6 +1157,91 @@
           "show-description": true,
           "display-preparation": true,
           "preparation-image": "shopify:\/\/shop_images\/pot.png"
+        }
+      },
+      "feature-image-about": {
+        "type": "feature-image-about",
+        "settings": {
+          "display": false,
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/IMG_5407.jpg",
+          "sub_text": "Beena & Yannick",
+          "text": "<p>Alors que nous devrions &ecirc;tre naturellement heureux, nous avons appris &agrave; vivre mal. L&rsquo;alimentation, qui est notre premi&egrave;re m&eacute;decine, source de plaisir et de lien social, est devenue anxiog&egrave;ne face &agrave; la multiplication des injonctions et des scandales. Nous r&ecirc;vons d&rsquo;un monde o&ugrave; chacun est heureux de se nourrir, o&ugrave; l&rsquo;alimentation r&eacute;concilie le go&ucirc;t, le respect du corps et de l&rsquo;environnement, pour tous et tous les jours. La t&acirc;che est immense mais nous nous y attelons avec tout notre coeur, grain apr&egrave;s grain, pour un monde o&ugrave; il fait bon vivre.<\/p>",
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "white",
+          "content_position": "text-align--right align--bottom"
+        }
+      },
+      "richtext-about": {
+        "type": "richtext-about",
+        "settings": {
+          "display": false,
+          "title": "Un petit mot de Beena et Yannick",
+          "rich_text": "<p>Alors que nous devrions &ecirc;tre naturellement heureux, on a appris \u0003&agrave; vivre mal. L&rsquo;alimentation, qui est notre premi&egrave;re m&eacute;decine, source de plaisir et de lien social, est devenue anxiog&egrave;ne face \u0003&agrave; la multiplication des injonctions et des scandales. Nous r&ecirc;vons d&rsquo;un monde o&ugrave; chacun est heureux de se nourrir,\u0003o&ugrave; l&rsquo;alimentation r&eacute;concilie le go&ucirc;t, le respect du corps \u0003et de l&rsquo;environnement, pour tous et tous les jours.\u0003La t&acirc;che est immense mais nous nous y attelons avec tout notre coeur, grain apr&egrave;s grain, pour un monde o&ugrave; il fait bon vivre.<\/p>",
+          "rich_text_mobile": "",
+          "font_size": "featured-content__title--xxs",
+          "text_color": "primary",
+          "highlight_color": "primary"
+        }
+      },
+      "text-centered-about": {
+        "type": "text-centered-about",
+        "settings": {
+          "display": true,
+          "title-1": "2 \/ Notre raison d'être",
+          "text-1": "<p>Nous rêvons d’un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. La tâche est immense, mais nous nous y attelons avec tout notre cœur, grain après grain, pour un monde où il fait bon vivre.<\/p>",
+          "title-2": "3 \/ Notre mission",
+          "text-2": "<p>Nous pensons que manger végétal, c’est se nourrir sainement, découvrir de nouvelles palettes de saveurs toute en respectant les ressources de la planète et ceux qui les cultivent. Notre mission est de faire de l'alimentation veggie un acte heureux, responsable et libre, sans stéréotype de goût ni de genre. Nous voulons révolutionner les usages et vous reconnecter à vous-mêmes et aux nourriciers.<\/p><br><p>Nos mélanges permettent aux mangeurs de cuisiner facilement et sainement tout en apportant de la joie dans leur quotidien culinaire. Nous proposons tous les éléments d'une assiette végétale équilibrée et savoureuse au travers de nos deux marques :<\/p>",
+          "picto": "shopify:\/\/shop_images\/PICTO_DU_GRAIN_A_LASSIETTE.png",
+          "logo-1": "shopify:\/\/shop_images\/beendi_logo_rose_150dpi_200116_96f76064-8f1e-43a9-959e-05012aa9122f.png",
+          "logo-1-text": "pour des recettes saines et originales",
+          "logo-2": "shopify:\/\/shop_images\/beedeli__logo.jpg",
+          "logo-2-text": "pour des recettes simples et joyeuses"
+        }
+      },
+      "text-image-about": {
+        "type": "text-image-about",
+        "blocks": {
+          "1592139120096": {
+            "type": "logo-text",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/MADEINFRANCE.png",
+              "logo-2": "",
+              "text-logo": "Made in france",
+              "text": "<p>Nous maîtrisons toute la chaîne de la conception à la commercialisation des produits grâce à notre équipe pluridisciplinaire qui développe, fabrique et distribue les produits. \nDepuis quelques mois, nous avons installé notre nouvel atelier de production à Valence dans le Sud de la France et fabriquons tous les jours de délicieux produits ! <\/p>"
+            }
+          },
+          "1592139543601": {
+            "type": "logo-text",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/BIO_0311fc49-47f0-4b23-b912-5fe7e093cad2.png",
+              "logo-2": "",
+              "text-logo": "Des ingredients de quailité",
+              "text": "<p>Notre co-fondateur, Yannick Migotto passe énormément de temps à chercher les ingrédients les plus qualitatifs possibles. Beena, fondatrice et experte des épices, les goûtent un à un afin de ne garder que le meilleur. Bien entendu, tous nos ingrédients sont bio, cependant ce n'est pas le premier critère de sélection. Le plus important pour nous reste le goût !<\/p>"
+            }
+          },
+          "1592139573784": {
+            "type": "logo-text",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/PRET_EN_MOINS_DE_20_b24fe5ba-1c7e-4c20-9810-3d0fb6942874.png",
+              "logo-2": "shopify:\/\/shop_images\/PICTO_DU_GRAIN_A_LASSIETTE_7e8b064d-28cc-4039-8c34-9efaec06b85c.png",
+              "text-logo": "Une nouvelle façon de consommer",
+              "text": "<p>Avec nos mélanges veggies beendi et beedeli, nous vous proposons une nouvelle façon de consommer. Nous vous accompagnons dans votre quotidien en vous permettant de préparer des bons repas veggies, complets et délicieux en moins de 20 minutes ! <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1592139120096",
+          "1592139543601",
+          "1592139573784"
+        ],
+        "settings": {
+          "display": true,
+          "title": "4 \/ Ce qui nous rend unique",
+          "image": "shopify:\/\/shop_images\/about.png",
+          "url": "shopify:\/\/collections\/tous-nos-produits",
+          "button": "découvrir nos melanges"
         }
       }
     },

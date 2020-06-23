@@ -548,11 +548,11 @@ $baseFontSize: 16px; // Henceforth known as 1em
 
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.eot?v=15839920060943556384');
-  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.eot?v=15839920060943556384#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.woff?v=16994515853337970273') format("woff"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.ttf?v=15269834025022278972') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/icons.svg?v=163269811207092844#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.eot?v=15839920060943556384');
+  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.eot?v=15839920060943556384#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.woff?v=16994515853337970273') format("woff"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.ttf?v=15269834025022278972') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.svg?v=163269811207092844#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -2845,7 +2845,7 @@ select {
   border-bottom: $borderHrHeight solid $colorPrimary;
   background-position: right center;
   background: {
-    image: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/ico-chevron.svg?4475');
+    image: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/ico-chevron.svg?4833');
     repeat: no-repeat;
     position: right -1px center;
     color: transparent;
@@ -5042,6 +5042,15 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 /*============================================================================
   #Featured Content
 ==============================================================================*/
+.featured-content__title--xxs {
+  font-size: 1em;
+  line-height: 1.6;
+  font-weight: 400;
+  @include at-query($min, $medium) {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+}
 
 .featured-content__title--xs {
   font-size: 1.5rem;
@@ -6113,7 +6122,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/15/assets/pswp-preloader.gif?4475) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/pswp-preloader.gif?4833) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6343,6 +6352,19 @@ https://flickity.metafizzy.co
   width: 100%;
 }
 
+.align-center{
+  text-align: center;
+}
+
+.desktop-only{
+   display: block;
+}
+
+@media screen and (max-width: 800px){
+  .desktop-only{
+     display: none;
+  }
+}
 
 /*------  slideshow --------*/
 
@@ -6767,6 +6789,7 @@ https://flickity.metafizzy.co
 
 .image-block_title {
   font-size: $font-size--xxl;
+  margin-top: 30px;
 }
 
 .image-block_text{
@@ -6779,6 +6802,11 @@ https://flickity.metafizzy.co
 }
 
 @media screen and (max-width: 800px) {
+
+  .image-text-block{
+    padding: 10px 0;
+  }
+
   .image-block_title {
     text-align: center;
   }
@@ -7297,7 +7325,7 @@ button.addToCart {
   .article-related-articles-carousel {
     max-width: 85%;
     margin: auto;
-    .carousel-cell { 
+    .carousel-cell {
       width: 100%;
     }
   }
@@ -7525,5 +7553,100 @@ button.addToCart {
 .product-template-variant {
   .slick-dots {
     z-index: -1;
+  }
+}
+
+/* text centered page about  */
+
+.container-about-small{
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.text-centered__content{
+  margin-bottom: 20px;
+}
+
+.picto-about{
+  position: absolute;
+  top: 0;
+  left: -100px;
+  max-width: 80px;
+}
+
+.text-centered__logo{
+  max-width: 250px;
+}
+
+.text-centered__flex{
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .text-centered__flex{
+    flex-direction: column;
+    align-items: center;
+  }
+  .text-centered__logo{
+    img{
+      margin-top: 30px;
+    }
+  }
+}
+
+/// text-image about ///
+
+.section-about-unique{
+  padding: 50px 0;
+}
+
+.text-image-about{
+    width: 90%;
+    margin: auto;
+}
+
+.text__block-about{
+  margin: 30px auto;
+  span{
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 500;  
+  }
+  p{
+    margin-top: 20px;
+  }
+
+  .btn{
+    width: 80%;
+    margin: 20px auto;
+  }
+}
+
+.text-image-logo{
+  text-align: center;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+    img{
+      max-width: 80px;
+    }
+}
+
+.btn-about{
+  width: 80%;
+  margin: 10px auto;
+}
+
+.ml-2{
+  margin-left: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .section-about-unique{
+    padding: 40px 0;
   }
 }
