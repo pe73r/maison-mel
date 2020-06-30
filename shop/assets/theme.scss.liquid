@@ -6415,6 +6415,7 @@ https://flickity.metafizzy.co
 }
 
 .container-medium{
+  width: 90%;
   max-width: 1200px;
   margin: auto;
 }
@@ -6951,7 +6952,8 @@ https://flickity.metafizzy.co
 }
 
 .paralax {
-  background-attachment: fixed;
+  background-attachment: fixed !important;
+  background-size: cover !important;
   max-height: 600px;
   background-position: top;
 }
@@ -6959,6 +6961,15 @@ https://flickity.metafizzy.co
 .parallax-title{
   line-height: 1em;
 }
+
+/// no paralax from 1024px -- wasnt working good on ipad background-attachment fixed property //
+@media screen and (max-width: 1024px) {
+  .paralax {
+    background-attachment: scroll !important;
+   	background-size: cover;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .paralax {
     background-attachment: scroll !important;
@@ -7770,7 +7781,7 @@ button.addToCart {
 
 .Podcast__picto{
   position: absolute;
-  top: -10px;
+  top: -15px;
   right: -40px;
   max-width: 50px;
   img{
@@ -7785,7 +7796,7 @@ button.addToCart {
 }
 
 .Podcast__post{
-  margin-bottom: 50px;
+  margin-bottom: 50px !important;
 }
 
 .Podcast__post-content{
@@ -7801,8 +7812,28 @@ button.addToCart {
 .Podcast__audio{
   margin-top: 30px;
 }
+.Podcast__photo{
+  width: 35%;
+}
+
+.Podcast__text{
+  width: 100%;
+}
+
+.Podcast_photo-background{
+  width: 150px;
+  max-height: 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+}
 
 @media screen and (max-width: 768px) {
+
+  .Podcast__photo{
+    width: 100%;
+  }
 
   .PodcastContent {
       max-width: 90%;
@@ -7815,4 +7846,48 @@ button.addToCart {
      flex-direction: column;
      align-items: center;
   }
+  .Podcast__title{
+    text-align: center;
+  }
+  .Podcast__picto{
+    right: -15px;
+  }
+
+  .Podcast__photo{
+    margin-bottom: 40px;
+  }
+
+}
+
+// PAGE PRESSE ///
+
+.container-presse{
+   width: 90%;
+   max-width: 1000px;
+   margin: 50px auto;
+}
+
+.Presse-block{
+  padding: 10px 0; 
+}
+
+.Presse__logos_flex{
+  display: flex;
+  margin-bottom: 20px;
+   img{
+     max-width: 100px;
+     margin-right: 15px;
+   }
+}
+
+.image-block_content{
+  margin-top: 60px;
+  margin-bottom: 15px;
+}
+
+.btn--presse{
+  width: 100%;
+  min-width: 300px;
+  font-size: 16px;
+  color: white;
 }

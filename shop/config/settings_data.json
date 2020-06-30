@@ -743,26 +743,37 @@
           "1590689901851": {
             "type": "Blog",
             "settings": {
-              "blog": "les-astuces"
+              "blog": "les-astuces",
+              "link": ""
             }
           },
           "1590689913835": {
             "type": "Blog",
             "settings": {
-              "blog": "les-amis-de-la-maison"
+              "blog": "les-amis-de-la-maison",
+              "link": ""
             }
           },
           "1590689921866": {
             "type": "Blog",
             "settings": {
-              "blog": "recettes-parfaites"
+              "blog": "recettes-parfaites",
+              "link": ""
+            }
+          },
+          "1593460907287": {
+            "type": "Blog",
+            "settings": {
+              "blog": "podcast-melangeons-nous",
+              "link": "shopify:\/\/pages\/podcast"
             }
           }
         },
         "block_order": [
           "1590689901851",
           "1590689913835",
-          "1590689921866"
+          "1590689921866",
+          "1593460907287"
         ],
         "settings": {
           "title": "Lire : notre journal",
@@ -792,7 +803,7 @@
               "image-2": "shopify:\/\/shop_images\/Yannick_Beena.jpg",
               "reverse": false,
               "title": "Un petit mot de Beena et Yannick",
-              "text": "Alors que nous devrions être naturellement heureux, on a appris \u0003à vivre mal. L’alimentation, qui est notre première médecine, source de plaisir et de lien social, est devenue anxiogène face \u0003à la multiplication des injonctions et des scandales. \u0003Nous rêvons d’un monde où chacun est heureux de se nourrir, \u0003où l’alimentation réconcilie le goût, le respect du corps \u0003et de l’environnement, pour tous et tous les jours. \u0003La tâche est immense mais nous nous y attenlons avec tout notre coeur, grain après grain, pour un monde où il fait bon vivre.",
+              "text": "Alors que nous devrions être naturellement heureux, nous avons appris à vivre mal. L’alimentation, qui est notre première médecine, source de plaisir et de lien social, est devenue anxiogène face à la multiplication des injonctions et des scandales. Nous rêvons d’un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. La tâche est immense mais nous nous y attelons avec tout notre coeur, grain après grain, pour un monde où il fait bon vivre.",
               "button": "Button",
               "url": ""
             }
@@ -805,8 +816,8 @@
               "image": "shopify:\/\/shop_images\/BEEDELI-CURRY-LENTILLES-COCO_35-ok_3358f115-93b9-4db5-ab75-37e7448f78b5.png",
               "image-2": "",
               "reverse": true,
-              "title": "1\/ Notre mission",
-              "text": "La cuisine, c’est avant tout une histoire de mélanges. Des mélanges de saveurs, d’ingrédients, de savoir faire.\nEt chez nous, les mélanges c’est une véritable source d’inspiration : <br><br>\n<ul>\n<li>Nous développons le mélange des goûts pour créer des expériences gustatives nouvelles et différentes ;<\/li>\n<br>\n<li>Nous développons des mélanges de produits grâce et à notre savoir faire industriel dans notre atelier à Saint-Marcel-Lès-Valence ;<\/li>\n<br>\n<li>Nous nous inspirons du mélange des cultures pour s'ouvrir au monde et aux différentes cultures sans distinction ;<\/li>\n<br>\n<li>Et nous nous construisons avec le mélange des genres pour s’enrichir de l’autre !<\/li>\n<\/ul>\n <br>\nNotre aventure commence suite à un pari lancé à la fin d’un dîner entre amis. Beena Paradin, la fondatrice, est mise au défi d’écrire un livre de cuisine. Défi relevé avec trois livres et un Gourmand Award !\n<br><br>\nSur cette belle lancée, elle se perfectionne auprès de grands chefs comme Alain Ducasse et Olivier Roellinger avec lequel elle part à la recherche des meilleures épices indiennes et développe une gamme de mélanges d’épices « Olivier Roellinger by Beena ».\n <br>\nAu cours de ses différentes expériences, Beena se rend compte de l’engouement des consommateurs pour la cuisine exotique et végétarienne, avec une exigence de goût et de qualité. Elle crée donc beendi pour permettre aux mangeurs de préparer facilement des recettes savoureuses et saines en 2013. \nAprès avoir séduit de nombreux mangeurs avec beendi, Beena créée une nouvelle marque beedeli qui s’adresse au plus grand nombre. Elle est distribuée en grande surfaces, avec des recettes exclusives de mélanges simples, accessibles, et bien sûr toujours bio. <br>\nTandis que beedeli s’adresse aux veggies débutants voulant s’approprier une nouvelle façon de cuisiner, beendi répond aux besoins des plus experts.",
+              "title": "1 \/ Notre histoire",
+              "text": "La cuisine, c’est avant tout une histoire de mélanges. Des mélanges de saveurs, d’ingrédients, de savoir-faire. Et chez nous, les mélanges c’est une véritable source d’inspiration : <br><br>\n<ul>\n<li>Nous développons le mélange des goûts pour créer des expériences gustatives nouvelles et différentes ;<\/li>\n<br>\n<li>Nous développons des mélanges de produits grâce à notre savoir-faire industriel dans notre atelier à Saint-Marcel-Lès-Valence ;<\/li>\n<br>\n<li>Nous nous inspirons du mélange des cultures pour s'ouvrir au monde et aux différentes cultures sans distinction ;<\/li>\n<br>\n<li>Et nous nous construisons avec le mélange des genres pour s’enrichir de l’autre !<\/li>\n<\/ul>\n <br>\nNotre aventure commence suite à un pari lancé à la fin d’un dîner entre amis. Beena Paradin, la fondatrice, est mise au défi d’écrire un livre de cuisine. Défi relevé avec trois livres et un Gourmand Award !\n<br><br>\nSur cette belle lancée, elle se perfectionne auprès de grands chefs comme Alain Ducasse et Olivier Roellinger avec lequel elle part à la recherche des meilleures épices indiennes et développe une gamme de mélanges d’épices « Olivier Roellinger by Beena ».\n <br>\nAu cours de ses différentes expériences, Beena se rend compte de l’engouement des consommateurs pour la cuisine exotique et végétarienne, avec une exigence de goût et de qualité. Elle crée donc beendi pour permettre aux mangeurs de préparer facilement des recettes savoureuses et saines en 2013. \nAprès avoir séduit de nombreux mangeurs avec beendi, Beena créée une nouvelle marque beedeli qui s’adresse au plus grand nombre. Elle est distribuée en grandes surfaces, avec des recettes exclusives de mélanges simples, accessibles, et bien sûr toujours bio. <br>\nTandis que beedeli s’adresse aux veggie débutants voulant s’approprier une nouvelle façon de cuisiner, beendi répond aux besoins des plus experts.",
               "button": "Button",
               "url": ""
             }
@@ -983,8 +994,8 @@
           "display": true,
           "bg-color": "#ededed",
           "title": "Nos top produits",
-          "selected_collection": "les-pack-beedeli",
-          "no_products": 4,
+          "selected_collection": "produits-beedeli",
+          "no_products": 8,
           "show_collection_link": false
         }
       },
@@ -1102,6 +1113,7 @@
               "title": "Cuisiner : nos recettes",
               "selected_blog": "recettes-parfaites",
               "no_posts": 8,
+              "link": "",
               "show_blog_link": false
             }
           },
@@ -1111,6 +1123,7 @@
               "title": "Rencontrer : nos amis",
               "selected_blog": "les-amis-de-la-maison",
               "no_posts": 8,
+              "link": "",
               "show_blog_link": false
             }
           },
@@ -1120,6 +1133,17 @@
               "title": "Découvrir : nos trucs et astuces",
               "selected_blog": "les-astuces",
               "no_posts": 8,
+              "link": "",
+              "show_blog_link": false
+            }
+          },
+          "1593511106543": {
+            "type": "articles_by_blog",
+            "settings": {
+              "title": "",
+              "selected_blog": "podcast-melangeons-nous",
+              "no_posts": 4,
+              "link": "shopify:\/\/pages\/podcast",
               "show_blog_link": false
             }
           }
@@ -1127,7 +1151,8 @@
         "block_order": [
           "1591258707118",
           "1591258765723",
-          "1591259442306"
+          "1591259442306",
+          "1593511106543"
         ],
         "settings": {
           "title": "Tous nos blogs"
@@ -1178,7 +1203,7 @@
         "settings": {
           "display": false,
           "title": "Un petit mot de Beena et Yannick",
-          "rich_text": "<p>Alors que nous devrions &ecirc;tre naturellement heureux, on a appris \u0003&agrave; vivre mal. L&rsquo;alimentation, qui est notre premi&egrave;re m&eacute;decine, source de plaisir et de lien social, est devenue anxiog&egrave;ne face \u0003&agrave; la multiplication des injonctions et des scandales. Nous r&ecirc;vons d&rsquo;un monde o&ugrave; chacun est heureux de se nourrir,\u0003o&ugrave; l&rsquo;alimentation r&eacute;concilie le go&ucirc;t, le respect du corps \u0003et de l&rsquo;environnement, pour tous et tous les jours.\u0003La t&acirc;che est immense mais nous nous y attelons avec tout notre coeur, grain apr&egrave;s grain, pour un monde o&ugrave; il fait bon vivre.<\/p>",
+          "rich_text": "<p>Alors que nous devrions &ecirc;tre naturellement heureux, nous avons appris &agrave; vivre mal. L&rsquo;alimentation, qui est notre premi&egrave;re m&eacute;decine, source de plaisir et de lien social, est devenue anxiog&egrave;ne face &agrave; la multiplication des injonctions et des scandales. Nous r&ecirc;vons d&rsquo;un monde o&ugrave; chacun est heureux de se nourrir, o&ugrave; l&rsquo;alimentation r&eacute;concilie le go&ucirc;t, le respect du corps et de l&rsquo;environnement, pour tous et tous les jours. La t&acirc;che est immense mais nous nous y attelons avec tout notre coeur, grain apr&egrave;s grain, pour un monde o&ugrave; il fait bon vivre.<\/p>",
           "rich_text_mobile": "",
           "font_size": "featured-content__title--xxs",
           "text_color": "primary",
@@ -1192,7 +1217,7 @@
           "title-1": "2 \/ Notre raison d'être",
           "text-1": "<p>Nous rêvons d’un monde où chacun est heureux de se nourrir, où l’alimentation réconcilie le goût, le respect du corps et de l’environnement, pour tous et tous les jours. La tâche est immense, mais nous nous y attelons avec tout notre cœur, grain après grain, pour un monde où il fait bon vivre.<\/p>",
           "title-2": "3 \/ Notre mission",
-          "text-2": "<p>Nous pensons que manger végétal, c’est se nourrir sainement, découvrir de nouvelles palettes de saveurs toute en respectant les ressources de la planète et ceux qui les cultivent. Notre mission est de faire de l'alimentation veggie un acte heureux, responsable et libre, sans stéréotype de goût ni de genre. Nous voulons révolutionner les usages et vous reconnecter à vous-mêmes et aux nourriciers.<\/p><br><p>Nos mélanges permettent aux mangeurs de cuisiner facilement et sainement tout en apportant de la joie dans leur quotidien culinaire. Nous proposons tous les éléments d'une assiette végétale équilibrée et savoureuse au travers de nos deux marques :<\/p>",
+          "text-2": "<p>Nous pensons que manger végétal, c’est se nourrir sainement, découvrir de nouvelles palettes de saveurs tout en respectant les ressources de la planète et ceux qui les cultivent. Notre mission est de faire de l'alimentation veggie un acte heureux, responsable et libre, sans stéréotype de goût ni de genre. Nous voulons révolutionner les usages et vous reconnecter à vous-mêmes et aux nourriciers.<\/p><br><p>Nos mélanges vous permettent de cuisiner facilement et sainement tout en apportant de la joie dans votre quotidien culinaire. Nous proposons tous les éléments d'une assiette végétale équilibrée et savoureuse au travers de nos deux marques :<\/p>",
           "picto": "shopify:\/\/shop_images\/PICTO_DU_GRAIN_A_LASSIETTE.png",
           "logo-1": "shopify:\/\/shop_images\/beendi_logo_rose_150dpi_200116_96f76064-8f1e-43a9-959e-05012aa9122f.png",
           "logo-1-text": "pour des recettes saines et originales",
@@ -1208,8 +1233,8 @@
             "settings": {
               "logo": "shopify:\/\/shop_images\/MADEINFRANCE.png",
               "logo-2": "",
-              "text-logo": "Made in france",
-              "text": "<p>Nous maîtrisons toute la chaîne de la conception à la commercialisation des produits grâce à notre équipe pluridisciplinaire qui développe, fabrique et distribue les produits. \nDepuis quelques mois, nous avons installé notre nouvel atelier de production à Valence dans le Sud de la France et fabriquons tous les jours de délicieux produits ! <\/p>"
+              "text-logo": "Made in France",
+              "text": "<p>Nous maîtrisons toute la chaîne, de la conception à la commercialisation des produits, grâce à notre équipe pluridisciplinaire qui développe, fabrique et distribue les produits. \nDepuis quelques mois, nous avons installé notre nouvel atelier de production à Valence dans le Sud de la France et fabriquons tous les jours de délicieux mélanges !<\/p>"
             }
           },
           "1592139543601": {
@@ -1217,8 +1242,8 @@
             "settings": {
               "logo": "shopify:\/\/shop_images\/BIO_0311fc49-47f0-4b23-b912-5fe7e093cad2.png",
               "logo-2": "",
-              "text-logo": "Des ingredients de quailité",
-              "text": "<p>Notre co-fondateur, Yannick Migotto passe énormément de temps à chercher les ingrédients les plus qualitatifs possibles. Beena, fondatrice et experte des épices, les goûtent un à un afin de ne garder que le meilleur. Bien entendu, tous nos ingrédients sont bio, cependant ce n'est pas le premier critère de sélection. Le plus important pour nous reste le goût !<\/p>"
+              "text-logo": "Des ingrédients de qualité",
+              "text": "<p>Notre co-fondateur, Yannick Migotto, passe énormément de temps à chercher des ingrédients toujours bio et de qualité. Beena, fondatrice et experte des épices, les goûte un à un afin de ne garder que les meilleurs. Pour nous, le premier critère de sélection reste le goût !<\/p>"
             }
           },
           "1592139573784": {
@@ -1227,7 +1252,7 @@
               "logo": "shopify:\/\/shop_images\/PRET_EN_MOINS_DE_20_b24fe5ba-1c7e-4c20-9810-3d0fb6942874.png",
               "logo-2": "shopify:\/\/shop_images\/PICTO_DU_GRAIN_A_LASSIETTE_7e8b064d-28cc-4039-8c34-9efaec06b85c.png",
               "text-logo": "Une nouvelle façon de consommer",
-              "text": "<p>Avec nos mélanges veggies beendi et beedeli, nous vous proposons une nouvelle façon de consommer. Nous vous accompagnons dans votre quotidien en vous permettant de préparer des bons repas veggies, complets et délicieux en moins de 20 minutes ! <\/p>"
+              "text": "<p>Avec nos mélanges veggie beendi et beedeli, nous vous proposons une nouvelle façon de consommer. Nous vous accompagnons dans votre quotidien en vous permettant de préparer des bons repas veggie, complets et délicieux en moins de 20 minutes ! <\/p>"
             }
           }
         },
@@ -1242,6 +1267,30 @@
           "image": "shopify:\/\/shop_images\/about.png",
           "url": "shopify:\/\/collections\/tous-nos-produits",
           "button": "découvrir nos melanges"
+        }
+      },
+      "podcast": {
+        "type": "podcast",
+        "blocks": {
+          "1592912664952": {
+            "type": "Podcast",
+            "settings": {
+              "title": "Episode # 1 - Pascale Weeks",
+              "photo": "shopify:\/\/shop_images\/Sans_titre_6.jpg",
+              "photo-png": "",
+              "text": "<p>Invit&eacute;e de ce premier &eacute;pisode, Pascale Weeks, r&eacute;dactrice en chef de 750 grammes, l'un des sites leaders de cuisine en France. L&rsquo;auteure du fameux blog de cuisine &laquo; C&rsquo;est moi qui l&rsquo;ai fait ! &raquo; revient sur le succ&egrave;s de ses deux ouvrages sur le batch cooking parus en 2018 et 2019. Le batch cooking, c&rsquo;est quoi au fait ? Avec Beena Paradin, Pascale explique les int&eacute;r&ecirc;ts de cette m&eacute;thode qui permet d&rsquo;organiser des menus sans stress, tout en faisant des &eacute;conomies, et moins de gaspillage alimentaire.<\/p>\n<p>Retrouvez notre article du blog \"<a href=\"https:\/\/maisondesmelanges.com\/blogs\/les-amis-de-la-maison\/pascale-weeks-la-cuisiniere-sincere\" title=\"Pascale Weeks cuisin&egrave;re sinc&egrave;re article\">Pascale Weeks, la cuisini&egrave;re sinc&egrave;re<\/a>\"<\/p>",
+              "podcast": "<iframe src=\"https:\/\/anchor.fm\/foodkarma\/embed\/episodes\/Food-Karma-1---Pascale-Weeks-efasn8\" height=\"200px\" width=\"100%\" frameborder=\"0\" scrolling=\"no\"><\/iframe>"
+            }
+          }
+        },
+        "block_order": [
+          "1592912664952"
+        ],
+        "settings": {
+          "bg_image": "shopify:\/\/shop_images\/KITSJOYEUX_1512x850_3da03e36-75f1-4162-98c8-b67fddc6f142.jpg",
+          "paralax": true,
+          "subtitle": "Le podcast",
+          "title": "Food Karma"
         }
       }
     },

@@ -25,8 +25,8 @@
           {% endcapture %}
               <div class="carousel-cell">
                 {% for article in blog.articles %}
-                  {% if forloop.last %}
-                    <a href="{{ blog.url }}">
+                  {% if forloop.first %} 
+                    <a href="{% if block.settings.link != blank %} {{ block.settings.link }} {% else %}{{ blog.url }} {% endif %}">
                       <div class="blog_carousel_image" style="background-image: url('{{ article.image | img_url:'master' }}')">
                         {{  blog-picto }}
                        </div>
@@ -72,6 +72,12 @@
             "type": "blog",
             "id": "blog",
             "label": "Blog"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "If empty the link will go to the last article of the blog"
           }
       ]
     }

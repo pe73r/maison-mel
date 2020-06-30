@@ -1,6 +1,6 @@
 {%- assign placeholder_date = 'now' -%}
 <article class="article article--row text-align--center mb3 lg--mb0">
-  <a href="{{ article.url }}">
+  <a href="{% if block.settings.link != blank %} {{ block.settings.link }} {% else %}{{ article.url }} {% endif %}"> 
 
       <div class="full">
         <div class="ratio-box ratio-box--4-3">

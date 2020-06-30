@@ -11,9 +11,9 @@
 {% assign cta_url = section.settings.cta_url %}
 
 {% assign style = section.settings.image_style %}
- 
-<section id="section-{{ section.id }}" class="feature-image section-parallax section section--feature-image bg--section">
 
+{% if section.settings.display %}
+<section id="section-{{ section.id }}" class="feature-image section-parallax section section--feature-image bg--section">
 
   <div  class="p0 clearfix relative feature-image__container--{% if style == 'full_screen' %}full_screen{% else %}content{% endif %} ">
 
@@ -75,7 +75,7 @@
           {% endif %}
 
           {% if cta_url != blank %}
-          <a href="{{ cta_url }}" class="btn bg--{{ section.settings.text_color }} color--{{ section.settings.text_color }}-overlay feature-image__btn">{{ cta_text }}</a>
+          <a href="{{ cta_url }}" class="btn bg--{{ section.settings.text_color }} color--{{ section.settings.text_color }}-overlay feature-image__btn font-size--s">{{ cta_text }}</a>
           {% endif %}
 
         </div>
@@ -83,6 +83,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 <style>
 
   #section-{{ section.id }} .feature-image__container--full_screen{
@@ -99,7 +100,12 @@
 {
   "name": "Image parallax",
   "settings": [
-
+     {
+       "type": "checkbox",
+       "id": "display",
+       "label": "Display section ?",
+       "default": true
+     }, 
       {
      "type": "select",
      "id": "section_height",

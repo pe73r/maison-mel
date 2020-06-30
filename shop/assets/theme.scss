@@ -548,11 +548,11 @@ $baseFontSize: 16px; // Henceforth known as 1em
 
 @font-face {
   font-family: 'icons';
-  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.eot?v=15839920060943556384');
-  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.eot?v=15839920060943556384#iefix') format("embedded-opentype"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.woff?v=16994515853337970273') format("woff"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.ttf?v=15269834025022278972') format("truetype"),
-       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/icons.svg?v=163269811207092844#timber-icons') format("svg");
+  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/icons.eot?v=15839920060943556384');
+  src: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/icons.eot?v=15839920060943556384#iefix') format("embedded-opentype"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/icons.woff?v=16994515853337970273') format("woff"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/icons.ttf?v=15269834025022278972') format("truetype"),
+       url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/icons.svg?v=163269811207092844#timber-icons') format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -2845,7 +2845,7 @@ select {
   border-bottom: $borderHrHeight solid $colorPrimary;
   background-position: right center;
   background: {
-    image: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/ico-chevron.svg?4833');
+    image: url('//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/ico-chevron.svg?5143');
     repeat: no-repeat;
     position: right -1px center;
     color: transparent;
@@ -6122,7 +6122,7 @@ $pswp__include-minimal-style: true !default;
   opacity: 1; }
   .pswp__preloader--active .pswp__preloader__icn {
     /* We use .gif in browsers that don't support CSS animation */
-    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/16/assets/pswp-preloader.gif?4833) 0 0 no-repeat; }
+    background: url(//cdn.shopify.com/s/files/1/0359/9178/1421/t/17/assets/pswp-preloader.gif?5143) 0 0 no-repeat; }
 
 .pswp--css_animation .pswp__preloader--active {
   opacity: 1; }
@@ -6314,6 +6314,7 @@ https://flickity.metafizzy.co
 }
 
 .container-medium{
+  width: 90%;
   max-width: 1200px;
   margin: auto;
 }
@@ -6850,7 +6851,8 @@ https://flickity.metafizzy.co
 }
 
 .paralax {
-  background-attachment: fixed;
+  background-attachment: fixed !important;
+  background-size: cover !important;
   max-height: 600px;
   background-position: top;
 }
@@ -6858,6 +6860,15 @@ https://flickity.metafizzy.co
 .parallax-title{
   line-height: 1em;
 }
+
+/// no paralax from 1024px -- wasnt working good on ipad background-attachment fixed property //
+@media screen and (max-width: 1024px) {
+  .paralax {
+    background-attachment: scroll !important;
+   	background-size: cover;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .paralax {
     background-attachment: scroll !important;
@@ -7614,7 +7625,7 @@ button.addToCart {
     display: block;
     text-align: center;
     padding-top: 10px;
-    font-weight: 500;  
+    font-weight: 500;
   }
   p{
     margin-top: 20px;
@@ -7649,4 +7660,100 @@ button.addToCart {
   .section-about-unique{
     padding: 40px 0;
   }
+}
+
+/// PODCAST ///
+
+.PodcastContent {
+    background-color: white;
+    max-width: 70%;
+    margin: auto;
+    position: relative;
+    margin-top: -130px;
+}
+
+.Podcast__title{
+  position: relative;
+  text-align: right;
+  margin-right: 30px;
+}
+
+.Podcast__picto{
+  position: absolute;
+  top: -15px;
+  right: -40px;
+  max-width: 50px;
+  img{
+    width: 100%;
+  }
+}
+
+.Podcast__box{
+  width: 80%;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.Podcast__post{
+  margin-bottom: 50px !important;
+}
+
+.Podcast__post-content{
+  display: flex;
+}
+
+.Podcast__author-pic{
+  width: 30%;
+  min-width: 150px;
+  margin-right: 30px;
+}
+
+.Podcast__audio{
+  margin-top: 30px;
+}
+.Podcast__photo{
+  width: 35%;
+}
+
+.Podcast__text{
+  width: 100%;
+}
+
+.Podcast_photo-background{
+  width: 150px;
+  max-height: 130px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+
+  .Podcast__photo{
+    width: 100%;
+  }
+
+  .PodcastContent {
+      max-width: 90%;
+  }
+
+  .Podcast__box{
+    width: 90%;
+  }
+  .Podcast__post-content{
+     flex-direction: column;
+     align-items: center;
+  }
+  .Podcast__title{
+    text-align: center;
+  }
+  .Podcast__picto{
+    right: -15px;
+  }
+
+  .Podcast__photo{
+    margin-bottom: 40px;
+  }
+
 }
