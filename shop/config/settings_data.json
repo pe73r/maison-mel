@@ -1292,6 +1292,221 @@
           "subtitle": "Le podcast",
           "title": "Food Karma"
         }
+      },
+      "paralax-presse": {
+        "type": "paralax-presse",
+        "settings": {
+          "display": true,
+          "section_height": "400",
+          "image_style": "full_screen",
+          "feature_image": "shopify:\/\/shop_images\/presse.jpg",
+          "sub_text": "",
+          "heading_color": "#fff",
+          "title_size": 30,
+          "cta_url": "",
+          "cta_text": "Shop Now",
+          "text_color": "primary"
+        }
+      },
+      "presse": {
+        "type": "presse",
+        "blocks": {
+          "1593535863486": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "center",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 20,
+              "reverse": false,
+              "image": "shopify:\/\/shop_images\/Fou_de_cusine_2020.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "FOU DE CUISINE",
+              "date": "Hiver 2019",
+              "content": "\"Super réussies, les nouvelles recettes de beendi\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/FOU_DE_CUISINE_article_beendi.pdf?v=1588169516",
+              "button": "Lire l'article"
+            }
+          },
+          "1593551861607": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "center",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": true,
+              "image": "shopify:\/\/shop_images\/pour_nourrir_demain_novembre.jpg",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "POUR NOURRIR DEMAIN",
+              "date": "22 novembre 2019",
+              "content": "\"Beena Paradin Migotto, fondatrice de Beendi, nous a parlé de son engagement pour une alimentation plus végétale\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/Article_beendi_Pour_Nourrir_Demain_22_11_2019.pdf?v=1588170308",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047156944": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": false,
+              "image": "shopify:\/\/shop_images\/Article_Stylist_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "STYLIST",
+              "date": "21 novembre 2019",
+              "content": "\"C’est clairement grâce à la poussée du végétarisme\/lisme que les épices reviennent en force en cuisine, souligne Beena\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/Article_beendi_STYLIST_-_21_11_2019.pdf?v=1588092491",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047304775": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": true,
+              "image": "shopify:\/\/shop_images\/Esprit_veggie_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "ESPRIT VEGGIE",
+              "date": "Automne - hiver 2019",
+              "content": "\"Un peu d'eau... et c'est prêt !\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/Esprit_veggie_article_beendi.pdf?v=1588171156",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047493721": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": false,
+              "image": "shopify:\/\/shop_images\/Maxi_2019_1.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "MAXI",
+              "date": "Octobre - Novembre 2019",
+              "content": "\"Les produits que nous avons testés, adorés et sélectionnés pour vous\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/MAXI_Article_beendi_191002.pdf?v=1589479559",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047643414": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": true,
+              "image": "shopify:\/\/shop_images\/Maxi_Octobre_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "MAXI CUISINE",
+              "date": "Octobre 2019",
+              "content": "\"On a craqué pour...\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/Article_Maxi_Cuisine_beendi.pdf?v=1589480472",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047725808": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 10,
+              "reverse": false,
+              "image": "shopify:\/\/shop_images\/Management_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "MANAGEMENT",
+              "date": "Octobre 2019",
+              "content": "\"20 idées pour se mettre à son compte\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/MANAGEMENT_Article_beendi_190919.pdf?v=1589481472",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047801299": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": true,
+              "image": "shopify:\/\/shop_images\/Cuisine_actuelle_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "CUISINE ACTUELLE",
+              "date": "Septembre - Octobre 2019",
+              "content": "\"Semoule originale\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/Article_Cuisine_Actuelle_beendi.pdf?v=1589484555",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047862688": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": false,
+              "image": "shopify:\/\/shop_images\/Chef_d_entreprise_septembre_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "CHEF D'ENTREPRISE",
+              "date": "12 septembre 2019",
+              "content": "\"Les bonnes recettes d'un secteur savoureux\"",
+              "url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/Article_Chef_d_Entreprise_beendi_ee5872fc-c326-4f55-a81a-1c34b113082f.pdf?v=1594048056",
+              "button": "Lire l'article"
+            }
+          },
+          "1594047963628": {
+            "type": "presse",
+            "settings": {
+              "grid-align": "top",
+              "grid": "1\/2",
+              "gutter": "default",
+              "padding": 70,
+              "reverse": true,
+              "image": "shopify:\/\/shop_images\/JT_20h_Mai_2019.png",
+              "logo-1": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beendi.svg?v=1593550789",
+              "logo-2": "https:\/\/cdn.shopify.com\/s\/files\/1\/0359\/9178\/1421\/files\/logo-beedeli.svg?v=1593550565",
+              "title": "JT TF1",
+              "date": "Mai 2019",
+              "content": "\"Vrac : des prix plus justes, grâce aux économies réalisées dès la fabrication\"",
+              "url": "https:\/\/www.lci.fr\/conso-argent\/le-vrac-est-il-vraiment-moins-cher-2120430.html",
+              "button": "Lire l'article"
+            }
+          }
+        },
+        "block_order": [
+          "1593535863486",
+          "1593551861607",
+          "1594047156944",
+          "1594047304775",
+          "1594047493721",
+          "1594047643414",
+          "1594047725808",
+          "1594047801299",
+          "1594047862688",
+          "1594047963628"
+        ],
+        "settings": {
+          "title": "Revue de presse"
+        }
       }
     },
     "content_for_index": [

@@ -1,0 +1,198 @@
+
+{% assign placeholder = false %}
+{% if section.settings.feature_image %}
+  {% assign feature_image = section.settings.feature_image %}
+{% else %}
+  {% assign placeholder = true %}
+{% endif %}
+{% assign text =  section.settings.text  %}
+{% assign sub_text =  section.settings.sub_text %}
+{% assign cta_text = section.settings.cta_text | escape %}
+{% assign cta_url = section.settings.cta_url %}
+
+{% assign style = section.settings.image_style %}
+
+{% if section.settings.display %}
+<section id="section-{{ section.id }}" class="feature-image section-parallax section section--feature-image bg--section">
+
+
+  <div  class="p0 clearfix relative feature-image__container--{% if style == 'full_screen' %}full_screen{% else %}content{% endif %} ">
+
+    {% if style == 'full_screen' %}
+      {% if placeholder %}
+      <div class="placeholder full">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      </div>
+      {% else %}
+      <div class="relative parallax-height">
+        <div  class="lazyload feature-image__cover paralax"
+              data-bgset="{% include 'bgset', image: feature_image %}"
+              data-sizes="auto"
+              data-parent-fit="cover"
+              style="background-image: url('{{ feature_image | img_url: '300x300' }});"
+              >
+        </div>
+      </div>
+      {% endif %}
+    {% endif %}
+
+    {% if style == 'fit_content' %}
+
+
+      {% if section.settings.feature_image  %}
+
+      {% capture img_id %}FeatureImage-{{ feature_image.id }}{% endcapture %}
+      {% capture wrapper_id %}FeatureImageWrapper-{{ feature_image.id }}{% endcapture %}
+      {%- assign img_url = feature_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <div id="{{ wrapper_id }}" class="resp-img-wrapper js">
+        <div style="padding-top:{{ 1 | divided_by: feature_image.aspect_ratio | times: 100}}%;">
+          <img id="{{ img_id }}"
+               class="resp-img feature-image__img-content lazyload"
+               src="{{ feature_image | img_url: '300x' }}"
+               data-src="{{ img_url }}"
+               data-widths="[540, 720, 900, 1080, 1296, 1512, 1728, 1944, 2048, 4472]"
+               data-aspectratio="{{ feature_image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ feature_image.alt | escape }}">
+        </div>
+      </div>
+      <noscript>
+        <img src="{{ feature_image.src | img_url: 'large' }}" alt="{{ feature_image.alt | escape }}" class="feature-image__img-content">
+      </noscript>
+
+      {% else %}
+      <div class="placeholder full">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="absolute top--0 left--0 parallax-height p2 lg--p3">
+      <div class="table parallax-height">
+        <div class="table-cell text-align--left align--bottom parallax-text-align">
+
+          {% if sub_text != '' %}
+          <div class="feature-image__overlay-text h2 f--title font-size--xxxl lg--font-size--xxxxxl parallax-title mt2">{{ sub_text }}</div>
+          {% endif %}
+
+          {% if cta_url != blank %}
+          <a href="{{ cta_url }}" class="btn bg--{{ section.settings.text_color }} color--{{ section.settings.text_color }}-overlay feature-image__btn font-size--s">{{ cta_text }}</a>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<style>
+
+  #section-{{ section.id }} .feature-image__container--full_screen{
+      height: {{ section.settings.section_height }}px;
+   }
+  #section-{{ section.id }} .parallax-title{
+     color: {{ section.settings.heading_color }};
+     font-size: {{ section.settings.title_size}}px;
+   }
+//
+</style>
+
+{% schema %}
+{
+  "name": "Image parallax",
+  "settings": [
+     {
+       "type": "checkbox",
+       "id": "display",
+       "label": "Display section ?",
+       "default": true
+     }, 
+      {
+     "type": "select",
+     "id": "section_height",
+     "options": [
+        { "value": "200", "label": "small"},
+        { "value": "400", "label": "medium"},
+        { "value": "500", "label": "large"},
+        { "value": "600", "label": "xlarge"}
+     ],
+     "label": "Parallax height",
+     "default":   "500",
+     "info": "only for parallax image"
+   },
+    {
+      "type": "select",
+      "id": "image_style",
+      "label": "Image style:",
+      "options": [
+        {
+          "value": "full_screen",
+          "label": "Parallax"
+        },
+        {
+          "value": "fit_content",
+          "label": "Static"
+        }
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_text",
+      "label": "Heading",
+      "default": "Heading goes here"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+        "type":      "range",
+        "id":        "title_size",
+        "min":       20,
+        "max":        50,
+        "step":       1,
+        "unit":       "px",
+        "label":     "Heading font size",
+        "default":   30
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Optional: Call to action URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Call to action button text",
+      "default": "Shop Now"
+    },
+    {
+     "type": "select",
+     "id": "text_color",
+     "options": [
+        { "value": "primary", "label": "Primary"},
+        { "value": "main-accent", "label": "Main Accent"},
+        { "value": "shop-accent ", "label": "Shop Accent"},
+        { "value": "secondary-accent", "label": "Secondary Accent"},
+        { "value": "white ", "label": "White"},
+        { "value": "black", "label": "Black"}
+     ],
+     "label": "Button color"
+   }
+
+  ],
+  "presets": [
+    {
+      "name": "Image Parallax",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

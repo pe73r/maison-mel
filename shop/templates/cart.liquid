@@ -1,3 +1,6 @@
+
+{% section 'paralax-cart' %}
+
 <!-- /templates/cart.liquid -->
 {% include 'global-variables' %}
 {% comment %}
@@ -11,10 +14,14 @@
 {% if cart.item_count > 0 %}
 
 <section class="section bg--section m0 py3 f--main">
-  <div class="wrapper section--wrapper">
+  <div class="container-medium">
 
-
-    <h1 class="t--section-title text-align--center f--main font-size--l lg--font-size--xl m0 py3">{{ 'cart.general.title' | t }}</h1>
+    <div class="cart__header-flex">
+      <h1 class="f-title font-size--xxxxl lg--font-size--xxxxl m0 mr3 py3">{{ 'cart.general.title' | t }}</h1>
+       <div class="Cart__Picto">
+         <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/PANIER_copie.png?v=1594125365" alt="">
+       </div>
+    </div>
 
     <form action="{{ routes.cart_url }}" method="post" novalidate class="cart table-wrap overflow-visible">
       <table class="cart-table full table--responsive">
@@ -37,7 +44,7 @@
               </a>
 
               <div class="cart__info">
-                <a href="{{ item.url }}" class="product-grid-title f--title font-size--xl">
+                <a href="{{ item.url }}" class="product-grid-title f--title font-size--l">
                 {{ item.product.title }}
               </a>
 
@@ -94,7 +101,7 @@
             </td>
 
             <td class="data-price" data-label="{{ 'cart.label.price' | t }}">
-              <span class="feature-copy">
+              <span class="f--title feature-copy">
                 {%- if item.original_price != item.final_price -%}
                   <del class="cart__price block">{{ item.original_price | money }}</del>
                   <span class="order-discount cart__price color--shop-accent">{{ item.final_price | money }}</span>
@@ -126,7 +133,7 @@
               <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
             </td>
 
-            <td class="total-price text-right" data-label="{{ 'cart.label.total' | t }}" class="text-right">
+            <td class="f--title total-price text-right" data-label="{{ 'cart.label.total' | t }}" class="text-right">
               <span class="feature-copy">
 
                 {%- if item.original_line_price != item.final_line_price -%}
@@ -169,7 +176,7 @@
 
             <p>
               <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
-              <span class="h3 cart__subtotal f--main">{{ cart.total_price | money }}</span>
+              <span class="h3 cart__subtotal f--title">{{ cart.total_price | money }}</span> 
             </p>
 
             <p class="font-size--s">{{ 'cart.general.shipping_at_checkout' | t }}</p>
@@ -193,10 +200,24 @@
 
 
           </div>
+
         </div>
       </div>
     </form>
-
+    <div class="Cart__pictos">
+       <div class="Cart__picto">
+         <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/FRAIS_DE_LIVRAISON_PICTO.png?v=1594131253" alt="">
+       </div>
+       <div class="Cart__picto">
+         <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/Objet_dynamique_vectoriel.png?v=1594131253" alt="">
+       </div>
+       <div class="Cart__picto">
+         <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/camion.png?v=1594131294" alt="">
+       </div>
+       <div class="Cart__picto">
+         <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/ser.png?v=1594131254" alt="">
+       </div>
+    </div>
 
   </div>
 </section>

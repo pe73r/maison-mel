@@ -9,10 +9,10 @@
     {%- assign ratio = '0.8' -%}
   {% else %}
     {%- assign ratio = article.image.aspect_ratio -%}
-{% endcase %}
+{% endcase %} 
 
 <article class="article article--row text-align--center mb3 lg--mb0">
-  <a href="{{ article.url }}">
+  <a href="{% if block.settings.link != blank %} {{ block.settings.link }} {% else %}{{ article.url }} {% endif %}">
       {% if article.image %}
         {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
         {% capture wrapper_id %}ArticleImage-Wrapper-{{ article.image.id }}{% endcapture %}

@@ -1,7 +1,7 @@
 
 <section id="section-{{ section.id }}" class="image-block"  data-section-type="image-block" data-section-id="{{ section.id }}">
   <div class="container-presse">
-    {% if section.settings.title != blank %} 
+    {% if section.settings.title != blank %}
       <h2 class="f--title font-size--xxxl lg--font-size--xxxxl">{{ section.settings.title }}</h2>
     {% endif %}
     {% for block in section.blocks %}
@@ -12,15 +12,16 @@
                        {% if block.settings.grid-align == "center" %} grid--middle {% elsif block.settings.grid-align == "bottom" %} grid--bottom {% else %}{% endif %}
                        {% if block.settings.gutter == "large" %} grid--large {% else %} {% endif %}">
 
-             <div class="{% if block.settings.grid == "2/3" %} 2/3--lap-and-up {% else %} 1/2--lap-and-up {% endif %} grid__cell">
+              <div class="{% if block.settings.grid == "2/3" %} 2/3--lap-and-up {% else %} 1/2--lap-and-up {% endif %} grid__cell">
                 {% if block.settings.image != blank  %}
                   <div class="image-block_image">
                      <img src="{{  block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}">
-                  </div>
+                  </div> 
                 {% endif %}
               </div>
               <div class="{% if block.settings.grid == "2/3" %} 1/3--lap-and-up {% else %} 1/2--lap-and-up {% endif %} grid__cell">
                 <div class="image-block__content relative">
+
                   <div class="Presse__logos_flex">
                     {% if block.settings.logo-1 != blank %}
                       <img src="{{ block.settings.logo-1 }}" alt="{{ block.settings.logo-1.alt }}">
@@ -43,11 +44,10 @@
                   {% endif %}
 
                   {% if block.settings.button != blank %}
-                    <a href="{{ cta_url }}" class="btn bg--primary btn--presse">
+                    <a href="{{ block.settings.url }}" class="btn bg--primary btn--presse">
                        {{ block.settings.button }}
                     </a>
                   {% endif %}
-
                 </div>
              </div>
             </div>

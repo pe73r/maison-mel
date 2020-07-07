@@ -2676,7 +2676,7 @@ th, td {
       content: attr(data-label);
       float: left;
       text-align: center;
-      font-size: 12px;
+      font-size: 20px;
       padding-right: 10px;
     }
 
@@ -4518,7 +4518,7 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
   position: relative;
   margin-top: $gutter;
   padding-top: $gutter;
-  border-top: 1px solid $colorBorder;
+  border-top: 2px solid currentColor;
   &.cart__header-labels {
     border-top: none;
   }
@@ -4542,12 +4542,16 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 
 .cart-table {
   th {
-    font-weight: normal;
+    font-weight: 500;
+    font-size: 20px;
   }
   td,
   th {
     padding: 30px 0;
     border: none;
+  }
+  td:first-child{
+    width: 50%;
   }
 }
 
@@ -4598,6 +4602,7 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 @include at-query ($max, $medium) {
   .cart__image, .cart__info {
     display: block;
+    text-align: center;
   }
   .cart__info {
     margin: ($gutter/2) 0 0 0;
@@ -4637,8 +4642,17 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 }
 
 .cart__quantity {
+
   label {
     display: none;
+  }
+  .js-qty{
+    border: 4px solid #e94c2b;
+    padding: 5px 10px;
+    max-width: 120px;
+  }
+  .icon{
+    display: none !important;
   }
 }
 
@@ -7868,7 +7882,7 @@ button.addToCart {
 }
 
 .Presse-block{
-  padding: 10px 0; 
+  padding: 10px 0;
 }
 
 .Presse__logos_flex{
@@ -7890,4 +7904,77 @@ button.addToCart {
   min-width: 300px;
   font-size: 16px;
   color: white;
+}
+
+// workaway error page contact //
+
+.errors{
+  font-size: 14px;
+}
+
+#RecoverPassword{
+  font-size: 14px;
+}
+
+
+////// CART ///////
+
+.cart__header-flex{
+  display: flex;
+  align-items: baseline;
+}
+
+.Cart__Picto{
+  max-width: 60px;
+  img{
+    width: 100%;
+  }
+}
+
+.cart__info{
+  max-width: 300px;
+}
+
+.cart{
+  button.js-qty__adjust--plus:before {
+    content: "+";
+    display: block;
+    color: black;
+    font-size: 25px;
+    line-height: 1px;
+  }
+
+  button.js-qty__adjust--minus:after {
+    content: "-";
+    display: block;
+    color: black;
+    font-size: 25px;
+    line-height: 1px;
+    padding-bottom: 5px;
+  }
+}
+
+.Cart__pictos{
+  display: flex;
+  justify-content: space-between;
+  float: right;
+  margin-top: 40px;
+  min-width: 400px;
+}
+
+.Cart__picto{
+  max-width: 70px; 
+
+  img{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .cart-table {
+      td:first-child{
+        width: 100%;
+      }
+    }
+
 }
