@@ -1,18 +1,25 @@
 {% if settings.ajax_cart_method == "drawer" %}
 
 <div class="cart-drawer drawer drawer--right fixed top--0 bottom--0 f--main p2 bg--section">
-
+  <div class="cart-drawer__logo"> 
+    <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/LOGOTYPE_MDM.png?v=1594393012" alt="">
+  </div>
 
   <div class="cart-drawer__header relative my3">
-    <h3 class="cart-drawer__title t--section-title f--main font-size--ml m0">
-      {{ 'cart.general.title' | t }}
-    </h3>
+    <div class="cart-drawer__flex">
+      <h3 class="cart-drawer__title f--title font-size--xxl m0">
+        {{ 'cart.general.title' | t }}
+      </h3>
+      <div class="cart-drawer__picto">
+           <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/PANIER_copie.png?v=1594125365" alt="">
+      </div>
+    </div>
     <button type="button" class="cart-drawer__close-btn js--close-drawer absolute top--0 right--0 hv--shop-accent">
       {% include 'svg-icon', icon: 'close' %}
     </button>
   </div>
 
-  <hr class="rule rule--full bg--main-accent" />
+  <!-- <hr class="rule rule--full bg--main-accent" /> -->
 
   <div id="CartContainer" class="font-size--s"></div>
 </div>

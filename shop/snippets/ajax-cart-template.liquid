@@ -16,12 +16,14 @@
             <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--remove font-size--xxs color--primary" data-line="{{line}}">
             {% endraw %}{% include 'svg-icon', icon: 'close' %}{% raw %}
             </button>
-            <div class="grid">
-              <div class="grid__item one-quarter">
-                <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
+            <div class="cart-item__flex">
+              <div class="">
+                <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img }}" alt=""></a>
               </div>
-              <div class="grid__item three-quarters">
-                <p class="mb1 pr2">
+              <div class="cart-item__content">
+                <div class="inner__flex">
+
+                <p class="mb1">
                   <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
                   {{#if variation}}
                     <span class="ajaxcart__product-meta font-size--xs">{{variation}}</span>
@@ -55,10 +57,23 @@
                   </span>
                   {{/if}}
                 </p>
+                <div class="grid__item display-table-cell ajax-item-price">
+                  {{#if discountsApplied}}
+                    <small class="ajaxcart-item__price-strikethrough"><s>{{{price}}}</s></small><br/>
+                    <span class="font-size--m ajaxcart__price color--shop-accent">
+                      {{{discountedPrice}}}
+                    </span>
+                  {{else}}
+                    <span class="block font-size--m ajaxcart__price">
+                      {{{price}}}
+                    </span>
+                  {{/if}}
+                </div>
+              </div>
 
-                <div class="grid--full display-table">
+                <div class="grid--full display-table cart-drawer__quantity-line">
                   <div class="grid__item display-table-cell one-half cart__quantity">
-                    <div class="ajaxcart__qty">
+                    <div class="ajaxcart__qty ajax-quantity-box">
 
                       <div class="table relative">
                         <div class="table-cell align--middle js-qty__adjust-cell">
@@ -83,21 +98,11 @@
                       </button-->
                     </div>
                   </div>
-                  <div class="grid__item display-table-cell one-half text-right">
-                    {{#if discountsApplied}}
-                      <small class="ajaxcart-item__price-strikethrough"><s>{{{price}}}</s></small><br/>
-                      <span class="font-size--m ajaxcart__price color--shop-accent">
-                        {{{discountedPrice}}}
-                      </span>
-                    {{else}}
-                      <span class="block font-size--m ajaxcart__price">
-                        {{{price}}}
-                      </span>
-                    {{/if}}
-                  </div>
+                </div><!-- end quantity -->
 
-                </div>
-              </div>
+              </div><!-- close cart-item__content -->
+
+
 
               {{#if discountsApplied}}
                 <div class="grid__item one-whole">
@@ -111,7 +116,9 @@
                 </div>
               {{/if}}
 
-            </div>
+            </div><!-- close flex -->
+
+
           </div>
         </div>
         {{/items}}
@@ -124,8 +131,7 @@
         {% endraw %}{% endif %}{% raw %}
       </div>
       <div class="ajaxcart__footer">
-        <p class="text-align--left font-size--s mt3">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
-        <div class="grid--full font-size--m">
+        <div class="grid-theme font-size--m">
 
           {{#if cartDiscountsApplied}}
             {{#each cartDiscounts}}
@@ -135,24 +141,44 @@
             {{/each}}
           {{/if}}
 
-          <div class="grid__item two-thirds">
+          <!-- <div class="grid__item two-thirds">
             <p>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
-          </div>
-          <div class="grid__item one-third text-right">
-            <p>{{{totalPrice}}}</p>
+          </div>  -->
+          <div class="grid__item text-left">
+            <p class="cart-drawer__total font-size--m"><span class="f--title font-size--l">Total</span>{{{totalPrice}}}</p>
           </div>
 
         </div>
 
-        <button type="submit" class="btn {% endraw %}{% if settings.button_color == 'accent' %}bg--shop-accent color--shop-accent-overlay hv-bg--primary hv--primary-overlay{% else %}bg--primary color--primary-overlay hv-bg--shop-accent hv--shop-accent-overlay{% endif %}{% raw %} btn--full cart__checkout" name="checkout">
+        <!-- <button type="submit" class="btn btn-cart-drawer {% endraw %}{% if settings.button_color == 'accent' %}bg--shop-accent color--shop-accent-overlay hv-bg--primary hv--primary-overlay{% else %}bg--primary color--primary-overlay hv-bg--shop-accent hv--shop-accent-overlay{% endif %}{% raw %} btn--full cart__checkout" name="checkout">
           {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}
+        </button>  -->
+
+        <button class="btn btn-cart-drawer {% endraw %}{% if settings.button_color == 'accent' %}bg--shop-accent color--shop-accent-overlay hv-bg--primary hv--primary-overlay{% else %}bg--primary color--primary-overlay hv-bg--shop-accent hv--shop-accent-overlay{% endif %}{% raw %} btn--full cart__checkout">
+           <a href="/cart">  {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %}</a>
         </button>
         {% endraw %}{% if additional_checkout_buttons %}
           <div class="additional-checkout-buttons additional-checkout-buttons--vertical text-right mt2">{{ content_for_additional_checkout_buttons }}</div>
         {% endif %}{% raw %}
+        <p class="text-align--left font-size--s mt2">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
+
       </div>
     </form>
   {% endraw %}
+  <div class="cart-drawer__pictos">
+     <div class="Cart__picto">
+       <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/frais.png?v=1594149659" alt="">
+     </div>
+     <div class="Cart__picto">
+       <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/delai-2.png?v=1594150615" alt="">
+     </div>
+     <div class="Cart__picto">
+       <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/camion-2.png?v=1594150615" alt="">
+     </div>
+     <div class="Cart__picto">
+       <img src="https://cdn.shopify.com/s/files/1/0359/9178/1421/files/service-2.png?v=1594150615" alt="">
+     </div>
+  </div>
   </script>
   <script id="AjaxQty" type="text/template">
   {% raw %}
