@@ -151,7 +151,7 @@
     "form": {
       "name": "Nom",
       "email": "Email",
-      "phone": "Téléphone",
+      "phone": "Tel", 
       "message": "Message",
       "send": "Envoyer",
       "post_success": "Merci de nous avoir avoir contacté. Nous vous reviendrons le plus rapidement possible."

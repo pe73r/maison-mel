@@ -5765,9 +5765,10 @@ body.user-is-tabbing .slick-list model-viewer:focus::after {
 
 .page--contact-form {
   @include at-query($min,$large) {
-    max-width: 60%;
+    max-width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
   }
 }
 
@@ -8085,4 +8086,47 @@ button.addToCart {
    span{
      padding-right: 5px;
    }
+}
+
+/// contact ///
+
+.page--contact{
+  p{
+    font-size: $font-size--xl;
+  }
+}
+
+.contact__Flex{
+   display: flex;
+}
+
+.contact--label{
+   min-width: 100px;
+}
+
+.textarea--contact::placeholder{
+     font-size: $font-size--xxl;
+}
+
+.contact--submit{
+   min-width: 50%;
+   margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .contact--label{
+     min-width: 40px;
+  }
+  .page--contact{
+    p{
+      font-size: $font-size--m;
+    }
+  }
+  .textarea--contact::placeholder{
+       font-size: $font-size--l;
+  }
+  
+  .contact--submit{
+     width: 100%;
+  }
 }
